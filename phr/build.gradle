@@ -2,8 +2,26 @@ plugins {
     id 'java'
 }
 
-group 'org.medibloc.phr'
-version '0.0.1'
+ext {
+    bintrayRepo = "phr"
+    bintrayName = "org.medibloc.phr"
+
+    libraryName = "phr"
+
+    publishedGroupId = 'org.medibloc.phr'
+    artifact = 'phr'
+    libraryVersion = '0.1.0'
+
+    libraryDescription = 'Panacea(medibloc blockchain) data handler.'
+    siteUrl = 'https://github.com/medibloc/phr-java'
+    gitUrl = 'https://github.com/medibloc/phr-java.git'
+    developerId = 'medibloc'
+    developerName = 'medibloc'
+    developerEmail = 'dev@medibloc.org'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ['Apache-2.0']
+}
 
 dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.6.1'
@@ -25,4 +43,9 @@ task protoc(type: Exec) {
     commandLine "protoc"
     args = ["--proto_path=" + curPath + "/phr/src/protobuf --java_out=" + curPath + "/phr/src/main/java " + curPath + "/phr/src/protobuf/*.proto"]
     //args = ["--proto_path=./phr/src/protobuf --java_out=./phr/src/main/java ./phr/src/protobuf/*.proto"]
+}
+
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/bintrayv1.gradle'
 }

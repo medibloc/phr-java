@@ -22,6 +22,7 @@ allprojects {
         google()
         jcenter()
         maven { url "https://dl.bintray.com/medibloc/panacea" }
+        maven { url "https://dl.bintray.com/medibloc/phr" }
     }
 }
 
@@ -31,4 +32,19 @@ subprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+task installGradlew(type: Exec) {
+    commandLine "./gradlew"
+    args = ["install"]
+}
+
+task uploadAll(type: Exec) {
+    commandLine "./gradlew"
+    args = ["bintrayUpload"]
+}
+
+task uploadPhr(type: Exec) {
+    commandLine "./gradlew"
+    args = ["phr:bintrayUpload"]
 }
