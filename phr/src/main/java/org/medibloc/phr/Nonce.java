@@ -1,7 +1,7 @@
 package org.medibloc.phr;
 
 import com.google.protobuf.ByteString;
-import org.med4j.crypto.SecureRandomUtils;
+import org.medibloc.panacea.crypto.SecureRandomUtils;
 
 class Nonce {
     static final int NONCE_LENGTH = 32;

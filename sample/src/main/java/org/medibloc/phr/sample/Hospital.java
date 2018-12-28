@@ -1,13 +1,13 @@
 package org.medibloc.phr.sample;
 
-import org.med4j.Med4J;
-import org.med4j.account.Account;
-import org.med4j.account.AccountUtils;
-import org.med4j.core.HttpService;
-import org.med4j.core.protobuf.BlockChain;
-import org.med4j.core.protobuf.Rpc;
-import org.med4j.tx.Transaction;
-import org.med4j.utils.Numeric;
+import org.medibloc.panacea.core.Panacea;
+import org.medibloc.panacea.account.Account;
+import org.medibloc.panacea.account.AccountUtils;
+import org.medibloc.panacea.core.HttpService;
+import org.medibloc.panacea.core.protobuf.BlockChain;
+import org.medibloc.panacea.core.protobuf.Rpc;
+import org.medibloc.panacea.tx.Transaction;
+import org.medibloc.panacea.utils.Numeric;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1Utils;
 import org.medibloc.phr.HospitalDataV1.*;
@@ -195,9 +195,9 @@ public class Hospital {
      * 청구서를 병원의 개인키로 sign 하고, 블록체인에 기록 할 수 있는 transaction 형태로 반환 합니다.
      */
     public Rpc.SendTransactionRequest getSignedTransaction(Bill bill) throws Exception {
-        // Blockchain 에 접근하기 위한 med4j client 를 생성 합니다.
-        // med4j client 를 이용하여 Blockchain 과 통신 할 때에는 Rpc(Remote Procedure Call) 패키지 내의 클래스가 사용 됩니다.
-        Med4J med4J = Med4J.create(new HttpService(BLOCKCHAIN_URL));
+        // Blockchain 에 접근하기 위한 panacea client 를 생성 합니다.
+        // panacea client 를 이용하여 Blockchain 과 통신 할 때에는 Rpc(Remote Procedure Call) 패키지 내의 클래스가 사용 됩니다.
+        Panacea panacea = Panacea.create(new HttpService(BLOCKCHAIN_URL));
 
         // Blockchain 에 업로드 할 bill hash 값을 구합니다.
         byte[] billHash = HospitalDataV1Utils.hash(bill);
@@ -207,11 +207,11 @@ public class Hospital {
                 .setAddress(getAccount().getAddress())
                 .setType(ACCOUNT_REQUEST_TYPE_TAIL)
                 .build();
-        Rpc.Account accountBCInfo = med4J.getAccount(accountRequest).send();
+        Rpc.Account accountBCInfo = panacea.getAccount(accountRequest).send();
         long nextNonce = accountBCInfo.getNonce() + 1;
 
         // Blockchain 의 chainId 를 조회 합니다. 또는, 환경 설정 파일에 저장한 chainId 를 이용 할 수도 있습니다.
-        Rpc.MedState medState = med4J.getMedState().send();
+        Rpc.MedState medState = panacea.getMedState().send();
         int chainId = medState.getChainId();
 
         // Blockchain 에 기록 할 transaction 을 생성 합니다. 생성된 transaction 은 hash 및 sign 의 대상이 됩니다.
@@ -235,8 +235,8 @@ public class Hospital {
         String certificateHash = Numeric.toHexStringNoPrefix(CertificateDataV1Utils.hash(certificate));
 
         try {
-            Med4J med4J = Med4J.create(new HttpService(BLOCKCHAIN_URL));
-            Rpc.Transaction transaction = med4J.getTransaction(certificateTxHash).send();
+            Panacea panacea = Panacea.create(new HttpService(BLOCKCHAIN_URL));
+            Rpc.Transaction transaction = panacea.getTransaction(certificateTxHash).send();
 
             // 블록체인에 기록 된 인증서 hash 값
             String certificateHashOnBlockchain = transaction.getPayload();

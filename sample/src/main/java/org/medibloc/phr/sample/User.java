@@ -1,8 +1,8 @@
 package org.medibloc.phr.sample;
 
-import org.med4j.account.Account;
-import org.med4j.account.AccountUtils;
-import org.med4j.core.protobuf.Rpc;
+import org.medibloc.panacea.account.Account;
+import org.medibloc.panacea.account.AccountUtils;
+import org.medibloc.panacea.core.protobuf.Rpc;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
 import org.medibloc.phr.HospitalDataV1.Bill;

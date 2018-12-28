@@ -1,6 +1,6 @@
 package org.medibloc.phr;
 
-import org.med4j.crypto.Hash;
+import org.medibloc.panacea.crypto.Hash;
 import org.medibloc.phr.CertificateDataV1.*;
 
 public class CertificateDataV1Utils {

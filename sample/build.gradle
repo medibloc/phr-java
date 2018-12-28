@@ -9,6 +9,6 @@ repositories {
 }
 
 dependencies {
-    implementation "org.med4j:core:0.0.4"
+    implementation "org.medibloc.panacea:core:0.1.0"
     implementation project(':phr')
 }

@@ -1,13 +1,13 @@
 package org.medibloc.phr.sample;
 
-import org.med4j.Med4J;
-import org.med4j.account.Account;
-import org.med4j.account.AccountUtils;
-import org.med4j.core.HttpService;
-import org.med4j.core.protobuf.BlockChain;
-import org.med4j.core.protobuf.Rpc;
-import org.med4j.crypto.ECKeyPair;
-import org.med4j.tx.Transaction;
+import org.medibloc.panacea.account.Account;
+import org.medibloc.panacea.account.AccountUtils;
+import org.medibloc.panacea.core.HttpService;
+import org.medibloc.panacea.core.Panacea;
+import org.medibloc.panacea.core.protobuf.BlockChain;
+import org.medibloc.panacea.core.protobuf.Rpc;
+import org.medibloc.panacea.crypto.ECKeyPair;
+import org.medibloc.panacea.tx.Transaction;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
 import org.medibloc.phr.CertificateDataV1Utils;
@@ -39,7 +39,7 @@ public class MediBloc {
     }
 
     public String sendCertificate(Certificate certificate) throws Exception {
-        Med4J med4J = Med4J.create(new HttpService(BLOCKCHAIN_URL));
+        Panacea panacea = Panacea.create(new HttpService(BLOCKCHAIN_URL));
 
         byte[] certificateHash = CertificateDataV1Utils.hash(certificate);
 
@@ -47,17 +47,17 @@ public class MediBloc {
                 .setAddress(this.account.getAddress())
                 .setType(ACCOUNT_REQUEST_TYPE_TAIL)
                 .build();
-        Rpc.Account accountBCInfo = med4J.getAccount(accountRequest).send();
+        Rpc.Account accountBCInfo = panacea.getAccount(accountRequest).send();
         long nextNonce = accountBCInfo.getNonce() + 1;
 
-        Rpc.MedState medState = med4J.getMedState().send();
+        Rpc.MedState medState = panacea.getMedState().send();
         int chainId = medState.getChainId();
 
         BlockChain.TransactionHashTarget transactionHashTarget
                 = Transaction.getAddRecordTransactionHashTarget(certificateHash, this.account.getAddress(), nextNonce, chainId);
 
         Rpc.SendTransactionRequest transactionRequest = Transaction.getSignedTransactionRequest(transactionHashTarget, this.account, PASSWORD);
-        Rpc.TransactionHash resultHash = med4J.sendTransaction(transactionRequest).send();
+        Rpc.TransactionHash resultHash = panacea.sendTransaction(transactionRequest).send();
 
         return resultHash.getHash();
     }
