@@ -6,21 +6,28 @@ import org.med4j.account.AccountUtils;
 import org.med4j.core.HttpService;
 import org.med4j.core.protobuf.BlockChain;
 import org.med4j.core.protobuf.Rpc;
+import org.med4j.crypto.ECKeyPair;
 import org.med4j.tx.Transaction;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
 import org.medibloc.phr.CertificateDataV1Utils;
 
+import java.math.BigInteger;
+
 public class MediBloc {
     private static final String BLOCKCHAIN_URL = "https://testnet-node.medibloc.org";
     private static final String ACCOUNT_REQUEST_TYPE_TAIL = "tail";
 
-    private static final String PASSWORD = "mediBlocPassWord123!";
+    private static final String PASSWORD = "MediBlocPassWord123!";
 
     private Account account;
 
     public MediBloc() throws Exception {
-        this.account = AccountUtils.createAccount(PASSWORD, null);
+        ECKeyPair ecKeyPair = new ECKeyPair(
+                new BigInteger("9d10d24d7883c35f11dce98ba4da737f209808001748a595728dc326aa008b60", 16)
+                , new BigInteger("7d31268680a3de375fb57d9fcf724fa95a7dfaa3a3381c910ccc24e1c0cb80ee8dd8acd6a4474e95d7ec81866f63e0b48651cdc9fd3fddf3316a8d18fe3bf8c0", 16));
+
+        this.account = AccountUtils.createAccount(PASSWORD, ecKeyPair, null);
     }
 
     public Certificate generateCertificate(String address, Certification certification) {

@@ -22,7 +22,7 @@ public class Hospital {
     private static final String BLOCKCHAIN_URL = "https://testnet-node.medibloc.org";
     private static final String ACCOUNT_REQUEST_TYPE_TAIL = "tail";
 
-    private static final String ACCOUNT_FILE_PATH = "sample_ko/sample_accounts";
+    private static final String ACCOUNT_FILE_PATH = "sample/sample_accounts";
     private static final String PASSWORD = "hospitalPassWord123!";
 
     private List<Patient> patientList;
