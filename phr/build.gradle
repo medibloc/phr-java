@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group 'org.medibloc.phr'
+version '0.0.1'
+
+dependencies {
+    implementation 'com.google.protobuf:protobuf-java:3.6.1'
+    implementation 'com.google.protobuf:protobuf-java-util:3.6.1'
+    implementation "org.med4j:crypto:0.0.4"
+
+    testImplementation(
+            "junit:junit:$junitVersion"
+    )
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_6
+targetCompatibility = JavaVersion.VERSION_1_6
+
+task protoc(type: Exec) {
+    // TODO : fix "directory does not exist." error
+    def curPath = new File(".").absolutePath
+    curPath = curPath.substring(0, curPath.length() - 2)
+    commandLine "protoc"
+    args = ["--proto_path=" + curPath + "/phr/src/protobuf --java_out=" + curPath + "/phr/src/main/java " + curPath + "/phr/src/protobuf/*.proto"]
+    //args = ["--proto_path=./phr/src/protobuf --java_out=./phr/src/main/java ./phr/src/protobuf/*.proto"]
+}

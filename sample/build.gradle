@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_6
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation "org.med4j:core:0.0.4"
+    implementation project(':phr')
+}
