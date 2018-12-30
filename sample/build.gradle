@@ -9,10 +9,10 @@ repositories {
 }
 
 dependencies {
-    implementation "org.medibloc.panacea:core:0.1.0"
+    implementation "org.medibloc.panacea:core:0.0.6"
     
     // use jcenter
-    implementation "org.medibloc.phr:phr:0.1.0"
+    //implementation "org.medibloc.phr:phr:0.1.0"
     // use project
-    //implementation project(':phr')
+    implementation project(':phr')
 }

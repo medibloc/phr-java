@@ -21,8 +21,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://dl.bintray.com/medibloc/panacea" }
-        maven { url "https://dl.bintray.com/medibloc/phr" }
     }
 }
 
