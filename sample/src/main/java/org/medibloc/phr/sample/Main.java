@@ -21,6 +21,8 @@ public class Main {
         user.setCertificate(certificate);
         user.setCertificateTxHash(certificateTxHash);
 
+        Thread.sleep(1000);
+
         // 병원 객체 생성. 생성자 내부적으로 mockup data 와 블록체인 계정을 생성 합니다.
         Hospital hospital = new Hospital();
 
