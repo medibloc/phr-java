@@ -6,6 +6,7 @@ import org.medibloc.panacea.account.AccountUtils;
 import org.medibloc.panacea.core.HttpService;
 import org.medibloc.panacea.core.protobuf.BlockChain;
 import org.medibloc.panacea.core.protobuf.Rpc;
+import org.medibloc.panacea.crypto.ECKeyPair;
 import org.medibloc.panacea.tx.Transaction;
 import org.medibloc.panacea.utils.Numeric;
 import org.medibloc.phr.CertificateDataV1.Certificate;
@@ -15,15 +16,21 @@ import org.medibloc.phr.HospitalDataV1Utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Hospital {
-    private static final String BLOCKCHAIN_URL = "https://testnet-node.medibloc.org";
+    private static final String BLOCKCHAIN_URL = "https://stg-testnet-node.medibloc.org";
     private static final String ACCOUNT_REQUEST_TYPE_TAIL = "tail";
 
-    private static final String ACCOUNT_FILE_PATH = "sample/sample_accounts";
+    private static final String MNEMONIC = "canyon roast street knock library amount enter popular sea kidney pupil furnace";
+    private static final BigInteger PRIVATE_KEY = new BigInteger("eede9347908b2ac3801828cc3293da19109c0730c47314a694c9acacbb95d3da", 16);
+    // address: 02718101c8a565a58bf416c8d30b335e6bb9701d1532e76b38298ef7e252c321cd
+    private static final BigInteger PUBLIC_KEY = new BigInteger("718101c8a565a58bf416c8d30b335e6bb9701d1532e76b38298ef7e252c321cd3077389f0517d40faac6d8db45aa81ad86914f995abcbdbdc6e9605a1e46c844", 16);
     private static final String PASSWORD = "hospitalPassWord123!";
+
+    private static final String ACCOUNT_FILE_PATH = "sample/sample_accounts";
 
     private List<Patient> patientList;
     private Account account;
@@ -51,7 +58,9 @@ public class Hospital {
 
         // 새로운 account 를 생성합니다.
         // 옵션이 주어지지 않으면 기본 옵션 값이 설정 됩니다.
-        Account newAccount = AccountUtils.createAccount(PASSWORD, null);
+        ECKeyPair keyPair = new ECKeyPair(PRIVATE_KEY, PUBLIC_KEY); // 기 생성 된 keyPair 이용
+        Account newAccount = AccountUtils.createAccount(PASSWORD, keyPair, null);
+        // Account newAccount = AccountUtils.createAccount(PASSWORD, null); // 새로운 keyPair 를 생성 하는 경우
 
         // 생성한 account 를 주어진 경로에 저장합니다.
         // 저장되는 파일명은 "UTC--시간--account주소.json" 형식입니다.

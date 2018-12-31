@@ -15,19 +15,20 @@ import org.medibloc.phr.CertificateDataV1Utils;
 import java.math.BigInteger;
 
 public class MediBloc {
-    private static final String BLOCKCHAIN_URL = "https://testnet-node.medibloc.org";
+    private static final String BLOCKCHAIN_URL = "https://stg-testnet-node.medibloc.org";
     private static final String ACCOUNT_REQUEST_TYPE_TAIL = "tail";
 
+    private static final String MNEMONIC = "slam wool bulk fine reduce honey capital wheat evoke enjoy treat flip";
+    private static final BigInteger PRIVATE_KEY = new BigInteger("4da8bc28a095870433d8a7d57ca140d6132e722f177c9a94f70a6963b4b8f708", 16);
+    // address: 02e34caca7b7653eb6cbb64cdd9e7c691545cbbe002a5ef9ed86e71577d9c7c296
+    private static final BigInteger PUBLIC_KEY = new BigInteger("e34caca7b7653eb6cbb64cdd9e7c691545cbbe002a5ef9ed86e71577d9c7c2960da413ededc3216df47f27ba6d46babe0ba54ca35d682182d26a6c6aa63f7930", 16);
     private static final String PASSWORD = "MediBlocPassWord123!";
 
     private Account account;
 
     public MediBloc() throws Exception {
-        ECKeyPair ecKeyPair = new ECKeyPair(
-                new BigInteger("9d10d24d7883c35f11dce98ba4da737f209808001748a595728dc326aa008b60", 16)
-                , new BigInteger("7d31268680a3de375fb57d9fcf724fa95a7dfaa3a3381c910ccc24e1c0cb80ee8dd8acd6a4474e95d7ec81866f63e0b48651cdc9fd3fddf3316a8d18fe3bf8c0", 16));
-
-        this.account = AccountUtils.createAccount(PASSWORD, ecKeyPair, null);
+        ECKeyPair keyPair = new ECKeyPair(PRIVATE_KEY, PUBLIC_KEY);
+        this.account = AccountUtils.createAccount(PASSWORD, keyPair, null);
     }
 
     public Certificate generateCertificate(String address, Certification certification) {

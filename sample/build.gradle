@@ -6,7 +6,6 @@ sourceCompatibility = JavaVersion.VERSION_1_6
 
 repositories {
     jcenter()
-    maven { url "https://dl.bintray.com/medibloc/phr" }
 }
 
 dependencies {
