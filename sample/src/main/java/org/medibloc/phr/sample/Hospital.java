@@ -1,5 +1,6 @@
 package org.medibloc.phr.sample;
 
+import com.google.protobuf.ByteString;
 import org.medibloc.panacea.core.Panacea;
 import org.medibloc.panacea.account.Account;
 import org.medibloc.panacea.account.AccountUtils;
@@ -241,7 +242,10 @@ public class Hospital {
      */
     private boolean isUploadedOnBlockchain(Certificate certificate, String certificateTxHash) {
         // 주어진 인증서의 hash 깂
-        String certificateHash = Numeric.toHexStringNoPrefix(CertificateDataV1Utils.hash(certificate));
+        BlockChain.AddRecordPayload certificateHashPayload = BlockChain.AddRecordPayload.newBuilder()
+                .setHash(ByteString.copyFrom(CertificateDataV1Utils.hash(certificate)))
+                .build();
+        String certificateHash = Numeric.toHexStringNoPrefix(certificateHashPayload.toByteArray());
 
         try {
             Panacea panacea = Panacea.create(new HttpService(BLOCKCHAIN_URL));
@@ -250,9 +254,13 @@ public class Hospital {
             // 블록체인에 기록 된 인증서 hash 값
             String certificateHashOnBlockchain = transaction.getPayload();
 
+            if (certificateHashOnBlockchain == null || certificateHashOnBlockchain.isEmpty()) {
+                throw new RuntimeException("Transaction payload is empty.");
+            }
+
             return certificateHash.equals(certificateHashOnBlockchain);
         } catch (IOException ex) {
-            throw new RuntimeException("Blockchain 에서 transaction 을 읽지 못했습니다.", ex);
+            throw new RuntimeException("Can not find the transaction " + certificateTxHash, ex);
         }
     }
 
