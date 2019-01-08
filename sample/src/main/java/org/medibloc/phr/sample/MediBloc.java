@@ -29,6 +29,8 @@ public class MediBloc {
     public MediBloc() throws Exception {
         ECKeyPair keyPair = new ECKeyPair(PRIVATE_KEY, PUBLIC_KEY);
         this.account = AccountUtils.createAccount(PASSWORD, keyPair, null);
+
+        System.out.println("MediBloc - 초기화를 완료 하였습니다. Blockchain address: " + this.account.getAddress());
     }
 
     public Certificate generateCertificate(String address, Certification certification) {

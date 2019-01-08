@@ -68,10 +68,12 @@ public class Hospital {
         File savedFile = AccountUtils.saveAccount(newAccount, ACCOUNT_FILE_PATH);
         String savedFilePath = savedFile.getAbsolutePath();
 
-        System.out.println("생성한 account 를 저장 하였습니다. 파일명 : " + savedFilePath);
+        System.out.println("병원 - 새로운 account 를 생성하여 파일에 저장 하였습니다. 파일명 : " + savedFilePath);
 
         // 저장된 account 파일로부터 account 정보를 읽고, 읽은 account 를 병원의 account 로 설정 합니다.
         setAccount(AccountUtils.loadAccount(savedFilePath));
+
+        System.out.println("병원 - 초기화를 완료 하였습니다. Blockchain address: " + this.account.getAddress());
     }
 
     /**

@@ -29,6 +29,8 @@ public class User {
     public User() throws Exception {
         ECKeyPair keyPair = new ECKeyPair(PRIVATE_KEY, PUBLIC_KEY);
         this.account = AccountUtils.createAccount(PASSWORD, keyPair, null);
+
+        System.out.println("사용자 - 초기화를 완료 하였습니다. Blockchain address: " + this.account.getAddress());
     }
 
     public String getAddress() {
