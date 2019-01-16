@@ -39,7 +39,7 @@ public class Client {
     }
 
     private static String makeSignature(String nonce) throws Exception {
-        ECKeyPair keypair = Keys.generateKeysFromPassphrase(passphrase);
+        ECKeyPair keypair = Keys.generateKeyPair(passphrase);
         Sign.SignatureData signatureData = Sign.signMessage(Util.hexStringToByteArray(nonce), keypair);
 
         byte[] message = new byte[65];
