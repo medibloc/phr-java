@@ -19,45 +19,40 @@ public final class CertificateDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes nonce = 1;</code>
-     */
-    com.google.protobuf.ByteString getNonce();
-
-    /**
-     * <code>uint32 version = 2;</code>
+     * <code>uint32 version = 1;</code>
      */
     int getVersion();
 
     /**
-     * <code>string module_version = 3;</code>
+     * <code>string module_version = 2;</code>
      */
     java.lang.String getModuleVersion();
     /**
-     * <code>string module_version = 3;</code>
+     * <code>string module_version = 2;</code>
      */
     com.google.protobuf.ByteString
         getModuleVersionBytes();
 
     /**
-     * <code>string blockchain_address = 4;</code>
+     * <code>string blockchain_address = 3;</code>
      */
     java.lang.String getBlockchainAddress();
     /**
-     * <code>string blockchain_address = 4;</code>
+     * <code>string blockchain_address = 3;</code>
      */
     com.google.protobuf.ByteString
         getBlockchainAddressBytes();
 
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     boolean hasCertification();
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     org.medibloc.phr.CertificateDataV1.Certification getCertification();
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder();
   }
@@ -74,7 +69,6 @@ public final class CertificateDataV1 {
       super(builder);
     }
     private Certificate() {
-      nonce_ = com.google.protobuf.ByteString.EMPTY;
       version_ = 0;
       moduleVersion_ = "";
       blockchainAddress_ = "";
@@ -104,29 +98,24 @@ public final class CertificateDataV1 {
             case 0:
               done = true;
               break;
-            case 10: {
-
-              nonce_ = input.readBytes();
-              break;
-            }
-            case 16: {
+            case 8: {
 
               version_ = input.readUInt32();
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               moduleVersion_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               blockchainAddress_ = s;
               break;
             }
-            case 42: {
+            case 34: {
               org.medibloc.phr.CertificateDataV1.Certification.Builder subBuilder = null;
               if (certification_ != null) {
                 subBuilder = certification_.toBuilder();
@@ -171,28 +160,19 @@ public final class CertificateDataV1 {
               org.medibloc.phr.CertificateDataV1.Certificate.class, org.medibloc.phr.CertificateDataV1.Certificate.Builder.class);
     }
 
-    public static final int NONCE_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString nonce_;
-    /**
-     * <code>bytes nonce = 1;</code>
-     */
-    public com.google.protobuf.ByteString getNonce() {
-      return nonce_;
-    }
-
-    public static final int VERSION_FIELD_NUMBER = 2;
+    public static final int VERSION_FIELD_NUMBER = 1;
     private int version_;
     /**
-     * <code>uint32 version = 2;</code>
+     * <code>uint32 version = 1;</code>
      */
     public int getVersion() {
       return version_;
     }
 
-    public static final int MODULE_VERSION_FIELD_NUMBER = 3;
+    public static final int MODULE_VERSION_FIELD_NUMBER = 2;
     private volatile java.lang.Object moduleVersion_;
     /**
-     * <code>string module_version = 3;</code>
+     * <code>string module_version = 2;</code>
      */
     public java.lang.String getModuleVersion() {
       java.lang.Object ref = moduleVersion_;
@@ -207,7 +187,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string module_version = 3;</code>
+     * <code>string module_version = 2;</code>
      */
     public com.google.protobuf.ByteString
         getModuleVersionBytes() {
@@ -223,10 +203,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int BLOCKCHAIN_ADDRESS_FIELD_NUMBER = 4;
+    public static final int BLOCKCHAIN_ADDRESS_FIELD_NUMBER = 3;
     private volatile java.lang.Object blockchainAddress_;
     /**
-     * <code>string blockchain_address = 4;</code>
+     * <code>string blockchain_address = 3;</code>
      */
     public java.lang.String getBlockchainAddress() {
       java.lang.Object ref = blockchainAddress_;
@@ -241,7 +221,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string blockchain_address = 4;</code>
+     * <code>string blockchain_address = 3;</code>
      */
     public com.google.protobuf.ByteString
         getBlockchainAddressBytes() {
@@ -257,22 +237,22 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int CERTIFICATION_FIELD_NUMBER = 5;
+    public static final int CERTIFICATION_FIELD_NUMBER = 4;
     private org.medibloc.phr.CertificateDataV1.Certification certification_;
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public boolean hasCertification() {
       return certification_ != null;
     }
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public org.medibloc.phr.CertificateDataV1.Certification getCertification() {
       return certification_ == null ? org.medibloc.phr.CertificateDataV1.Certification.getDefaultInstance() : certification_;
     }
     /**
-     * <code>.Certification certification = 5;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder() {
       return getCertification();
@@ -292,20 +272,17 @@ public final class CertificateDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!nonce_.isEmpty()) {
-        output.writeBytes(1, nonce_);
-      }
       if (version_ != 0) {
-        output.writeUInt32(2, version_);
+        output.writeUInt32(1, version_);
       }
       if (!getModuleVersionBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, moduleVersion_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, moduleVersion_);
       }
       if (!getBlockchainAddressBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, blockchainAddress_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, blockchainAddress_);
       }
       if (certification_ != null) {
-        output.writeMessage(5, getCertification());
+        output.writeMessage(4, getCertification());
       }
       unknownFields.writeTo(output);
     }
@@ -316,23 +293,19 @@ public final class CertificateDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!nonce_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, nonce_);
-      }
       if (version_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, version_);
+          .computeUInt32Size(1, version_);
       }
       if (!getModuleVersionBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, moduleVersion_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, moduleVersion_);
       }
       if (!getBlockchainAddressBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, blockchainAddress_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, blockchainAddress_);
       }
       if (certification_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getCertification());
+          .computeMessageSize(4, getCertification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -350,8 +323,6 @@ public final class CertificateDataV1 {
       org.medibloc.phr.CertificateDataV1.Certificate other = (org.medibloc.phr.CertificateDataV1.Certificate) obj;
 
       boolean result = true;
-      result = result && getNonce()
-          .equals(other.getNonce());
       result = result && (getVersion()
           == other.getVersion());
       result = result && getModuleVersion()
@@ -374,8 +345,6 @@ public final class CertificateDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NONCE_FIELD_NUMBER;
-      hash = (53 * hash) + getNonce().hashCode();
       hash = (37 * hash) + VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getVersion();
       hash = (37 * hash) + MODULE_VERSION_FIELD_NUMBER;
@@ -519,8 +488,6 @@ public final class CertificateDataV1 {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        nonce_ = com.google.protobuf.ByteString.EMPTY;
-
         version_ = 0;
 
         moduleVersion_ = "";
@@ -559,7 +526,6 @@ public final class CertificateDataV1 {
       @java.lang.Override
       public org.medibloc.phr.CertificateDataV1.Certificate buildPartial() {
         org.medibloc.phr.CertificateDataV1.Certificate result = new org.medibloc.phr.CertificateDataV1.Certificate(this);
-        result.nonce_ = nonce_;
         result.version_ = version_;
         result.moduleVersion_ = moduleVersion_;
         result.blockchainAddress_ = blockchainAddress_;
@@ -616,9 +582,6 @@ public final class CertificateDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.CertificateDataV1.Certificate other) {
         if (other == org.medibloc.phr.CertificateDataV1.Certificate.getDefaultInstance()) return this;
-        if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
-          setNonce(other.getNonce());
-        }
         if (other.getVersion() != 0) {
           setVersion(other.getVersion());
         }
@@ -662,44 +625,15 @@ public final class CertificateDataV1 {
         return this;
       }
 
-      private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public com.google.protobuf.ByteString getNonce() {
-        return nonce_;
-      }
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public Builder setNonce(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        nonce_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public Builder clearNonce() {
-        
-        nonce_ = getDefaultInstance().getNonce();
-        onChanged();
-        return this;
-      }
-
       private int version_ ;
       /**
-       * <code>uint32 version = 2;</code>
+       * <code>uint32 version = 1;</code>
        */
       public int getVersion() {
         return version_;
       }
       /**
-       * <code>uint32 version = 2;</code>
+       * <code>uint32 version = 1;</code>
        */
       public Builder setVersion(int value) {
         
@@ -708,7 +642,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>uint32 version = 2;</code>
+       * <code>uint32 version = 1;</code>
        */
       public Builder clearVersion() {
         
@@ -719,7 +653,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object moduleVersion_ = "";
       /**
-       * <code>string module_version = 3;</code>
+       * <code>string module_version = 2;</code>
        */
       public java.lang.String getModuleVersion() {
         java.lang.Object ref = moduleVersion_;
@@ -734,7 +668,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string module_version = 3;</code>
+       * <code>string module_version = 2;</code>
        */
       public com.google.protobuf.ByteString
           getModuleVersionBytes() {
@@ -750,7 +684,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string module_version = 3;</code>
+       * <code>string module_version = 2;</code>
        */
       public Builder setModuleVersion(
           java.lang.String value) {
@@ -763,7 +697,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string module_version = 3;</code>
+       * <code>string module_version = 2;</code>
        */
       public Builder clearModuleVersion() {
         
@@ -772,7 +706,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string module_version = 3;</code>
+       * <code>string module_version = 2;</code>
        */
       public Builder setModuleVersionBytes(
           com.google.protobuf.ByteString value) {
@@ -788,7 +722,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object blockchainAddress_ = "";
       /**
-       * <code>string blockchain_address = 4;</code>
+       * <code>string blockchain_address = 3;</code>
        */
       public java.lang.String getBlockchainAddress() {
         java.lang.Object ref = blockchainAddress_;
@@ -803,7 +737,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string blockchain_address = 4;</code>
+       * <code>string blockchain_address = 3;</code>
        */
       public com.google.protobuf.ByteString
           getBlockchainAddressBytes() {
@@ -819,7 +753,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string blockchain_address = 4;</code>
+       * <code>string blockchain_address = 3;</code>
        */
       public Builder setBlockchainAddress(
           java.lang.String value) {
@@ -832,7 +766,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string blockchain_address = 4;</code>
+       * <code>string blockchain_address = 3;</code>
        */
       public Builder clearBlockchainAddress() {
         
@@ -841,7 +775,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string blockchain_address = 4;</code>
+       * <code>string blockchain_address = 3;</code>
        */
       public Builder setBlockchainAddressBytes(
           com.google.protobuf.ByteString value) {
@@ -859,13 +793,13 @@ public final class CertificateDataV1 {
       private com.google.protobuf.SingleFieldBuilderV3<
           org.medibloc.phr.CertificateDataV1.Certification, org.medibloc.phr.CertificateDataV1.Certification.Builder, org.medibloc.phr.CertificateDataV1.CertificationOrBuilder> certificationBuilder_;
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public boolean hasCertification() {
         return certificationBuilder_ != null || certification_ != null;
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.Certification getCertification() {
         if (certificationBuilder_ == null) {
@@ -875,7 +809,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder setCertification(org.medibloc.phr.CertificateDataV1.Certification value) {
         if (certificationBuilder_ == null) {
@@ -891,7 +825,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder setCertification(
           org.medibloc.phr.CertificateDataV1.Certification.Builder builderForValue) {
@@ -905,7 +839,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder mergeCertification(org.medibloc.phr.CertificateDataV1.Certification value) {
         if (certificationBuilder_ == null) {
@@ -923,7 +857,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder clearCertification() {
         if (certificationBuilder_ == null) {
@@ -937,7 +871,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.Certification.Builder getCertificationBuilder() {
         
@@ -945,7 +879,7 @@ public final class CertificateDataV1 {
         return getCertificationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder() {
         if (certificationBuilder_ != null) {
@@ -956,7 +890,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>.Certification certification = 5;</code>
+       * <code>.Certification certification = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.medibloc.phr.CertificateDataV1.Certification, org.medibloc.phr.CertificateDataV1.Certification.Builder, org.medibloc.phr.CertificateDataV1.CertificationOrBuilder> 
@@ -1029,86 +963,81 @@ public final class CertificateDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>bytes nonce = 1;</code>
-     */
-    com.google.protobuf.ByteString getNonce();
-
-    /**
-     * <code>string certification_result = 2;</code>
+     * <code>string certification_result = 1;</code>
      */
     java.lang.String getCertificationResult();
     /**
-     * <code>string certification_result = 2;</code>
+     * <code>string certification_result = 1;</code>
      */
     com.google.protobuf.ByteString
         getCertificationResultBytes();
 
     /**
-     * <code>string person_name = 3;</code>
+     * <code>string person_name = 2;</code>
      */
     java.lang.String getPersonName();
     /**
-     * <code>string person_name = 3;</code>
+     * <code>string person_name = 2;</code>
      */
     com.google.protobuf.ByteString
         getPersonNameBytes();
 
     /**
-     * <code>string person_birthday = 4;</code>
+     * <code>string person_birthday = 3;</code>
      */
     java.lang.String getPersonBirthday();
     /**
-     * <code>string person_birthday = 4;</code>
+     * <code>string person_birthday = 3;</code>
      */
     com.google.protobuf.ByteString
         getPersonBirthdayBytes();
 
     /**
-     * <code>string person_gender = 5;</code>
+     * <code>string person_gender = 4;</code>
      */
     java.lang.String getPersonGender();
     /**
-     * <code>string person_gender = 5;</code>
+     * <code>string person_gender = 4;</code>
      */
     com.google.protobuf.ByteString
         getPersonGenderBytes();
 
     /**
-     * <code>string person_nation = 6;</code>
+     * <code>string person_nation = 5;</code>
      */
     java.lang.String getPersonNation();
     /**
-     * <code>string person_nation = 6;</code>
+     * <code>string person_nation = 5;</code>
      */
     com.google.protobuf.ByteString
         getPersonNationBytes();
 
     /**
-     * <code>string person_ci = 7;</code>
+     * <code>string person_ci = 6;</code>
      */
     java.lang.String getPersonCi();
     /**
-     * <code>string person_ci = 7;</code>
+     * <code>string person_ci = 6;</code>
      */
     com.google.protobuf.ByteString
         getPersonCiBytes();
 
     /**
-     * <code>string person_mobile_company = 8;</code>
+     * <code>string person_mobile_company = 7;</code>
      */
     java.lang.String getPersonMobileCompany();
     /**
-     * <code>string person_mobile_company = 8;</code>
+     * <code>string person_mobile_company = 7;</code>
      */
     com.google.protobuf.ByteString
         getPersonMobileCompanyBytes();
 
     /**
-     * <code>string person_mobile_number = 9;</code>
+     * <code>string person_mobile_number = 8;</code>
      */
     java.lang.String getPersonMobileNumber();
     /**
-     * <code>string person_mobile_number = 9;</code>
+     * <code>string person_mobile_number = 8;</code>
      */
     com.google.protobuf.ByteString
         getPersonMobileNumberBytes();
@@ -1126,7 +1055,6 @@ public final class CertificateDataV1 {
       super(builder);
     }
     private Certification() {
-      nonce_ = com.google.protobuf.ByteString.EMPTY;
       certificationResult_ = "";
       personName_ = "";
       personBirthday_ = "";
@@ -1162,53 +1090,48 @@ public final class CertificateDataV1 {
               done = true;
               break;
             case 10: {
-
-              nonce_ = input.readBytes();
-              break;
-            }
-            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               certificationResult_ = s;
               break;
             }
-            case 26: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personName_ = s;
               break;
             }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personBirthday_ = s;
               break;
             }
-            case 42: {
+            case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personGender_ = s;
               break;
             }
-            case 50: {
+            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personNation_ = s;
               break;
             }
-            case 58: {
+            case 50: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personCi_ = s;
               break;
             }
-            case 66: {
+            case 58: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personMobileCompany_ = s;
               break;
             }
-            case 74: {
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
 
               personMobileNumber_ = s;
@@ -1246,19 +1169,10 @@ public final class CertificateDataV1 {
               org.medibloc.phr.CertificateDataV1.Certification.class, org.medibloc.phr.CertificateDataV1.Certification.Builder.class);
     }
 
-    public static final int NONCE_FIELD_NUMBER = 1;
-    private com.google.protobuf.ByteString nonce_;
-    /**
-     * <code>bytes nonce = 1;</code>
-     */
-    public com.google.protobuf.ByteString getNonce() {
-      return nonce_;
-    }
-
-    public static final int CERTIFICATION_RESULT_FIELD_NUMBER = 2;
+    public static final int CERTIFICATION_RESULT_FIELD_NUMBER = 1;
     private volatile java.lang.Object certificationResult_;
     /**
-     * <code>string certification_result = 2;</code>
+     * <code>string certification_result = 1;</code>
      */
     public java.lang.String getCertificationResult() {
       java.lang.Object ref = certificationResult_;
@@ -1273,7 +1187,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string certification_result = 2;</code>
+     * <code>string certification_result = 1;</code>
      */
     public com.google.protobuf.ByteString
         getCertificationResultBytes() {
@@ -1289,10 +1203,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_NAME_FIELD_NUMBER = 3;
+    public static final int PERSON_NAME_FIELD_NUMBER = 2;
     private volatile java.lang.Object personName_;
     /**
-     * <code>string person_name = 3;</code>
+     * <code>string person_name = 2;</code>
      */
     public java.lang.String getPersonName() {
       java.lang.Object ref = personName_;
@@ -1307,7 +1221,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_name = 3;</code>
+     * <code>string person_name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPersonNameBytes() {
@@ -1323,10 +1237,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_BIRTHDAY_FIELD_NUMBER = 4;
+    public static final int PERSON_BIRTHDAY_FIELD_NUMBER = 3;
     private volatile java.lang.Object personBirthday_;
     /**
-     * <code>string person_birthday = 4;</code>
+     * <code>string person_birthday = 3;</code>
      */
     public java.lang.String getPersonBirthday() {
       java.lang.Object ref = personBirthday_;
@@ -1341,7 +1255,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_birthday = 4;</code>
+     * <code>string person_birthday = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPersonBirthdayBytes() {
@@ -1357,10 +1271,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_GENDER_FIELD_NUMBER = 5;
+    public static final int PERSON_GENDER_FIELD_NUMBER = 4;
     private volatile java.lang.Object personGender_;
     /**
-     * <code>string person_gender = 5;</code>
+     * <code>string person_gender = 4;</code>
      */
     public java.lang.String getPersonGender() {
       java.lang.Object ref = personGender_;
@@ -1375,7 +1289,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_gender = 5;</code>
+     * <code>string person_gender = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPersonGenderBytes() {
@@ -1391,10 +1305,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_NATION_FIELD_NUMBER = 6;
+    public static final int PERSON_NATION_FIELD_NUMBER = 5;
     private volatile java.lang.Object personNation_;
     /**
-     * <code>string person_nation = 6;</code>
+     * <code>string person_nation = 5;</code>
      */
     public java.lang.String getPersonNation() {
       java.lang.Object ref = personNation_;
@@ -1409,7 +1323,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_nation = 6;</code>
+     * <code>string person_nation = 5;</code>
      */
     public com.google.protobuf.ByteString
         getPersonNationBytes() {
@@ -1425,10 +1339,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_CI_FIELD_NUMBER = 7;
+    public static final int PERSON_CI_FIELD_NUMBER = 6;
     private volatile java.lang.Object personCi_;
     /**
-     * <code>string person_ci = 7;</code>
+     * <code>string person_ci = 6;</code>
      */
     public java.lang.String getPersonCi() {
       java.lang.Object ref = personCi_;
@@ -1443,7 +1357,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_ci = 7;</code>
+     * <code>string person_ci = 6;</code>
      */
     public com.google.protobuf.ByteString
         getPersonCiBytes() {
@@ -1459,10 +1373,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_MOBILE_COMPANY_FIELD_NUMBER = 8;
+    public static final int PERSON_MOBILE_COMPANY_FIELD_NUMBER = 7;
     private volatile java.lang.Object personMobileCompany_;
     /**
-     * <code>string person_mobile_company = 8;</code>
+     * <code>string person_mobile_company = 7;</code>
      */
     public java.lang.String getPersonMobileCompany() {
       java.lang.Object ref = personMobileCompany_;
@@ -1477,7 +1391,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_mobile_company = 8;</code>
+     * <code>string person_mobile_company = 7;</code>
      */
     public com.google.protobuf.ByteString
         getPersonMobileCompanyBytes() {
@@ -1493,10 +1407,10 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_MOBILE_NUMBER_FIELD_NUMBER = 9;
+    public static final int PERSON_MOBILE_NUMBER_FIELD_NUMBER = 8;
     private volatile java.lang.Object personMobileNumber_;
     /**
-     * <code>string person_mobile_number = 9;</code>
+     * <code>string person_mobile_number = 8;</code>
      */
     public java.lang.String getPersonMobileNumber() {
       java.lang.Object ref = personMobileNumber_;
@@ -1511,7 +1425,7 @@ public final class CertificateDataV1 {
       }
     }
     /**
-     * <code>string person_mobile_number = 9;</code>
+     * <code>string person_mobile_number = 8;</code>
      */
     public com.google.protobuf.ByteString
         getPersonMobileNumberBytes() {
@@ -1541,32 +1455,29 @@ public final class CertificateDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!nonce_.isEmpty()) {
-        output.writeBytes(1, nonce_);
-      }
       if (!getCertificationResultBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, certificationResult_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, certificationResult_);
       }
       if (!getPersonNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, personName_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, personName_);
       }
       if (!getPersonBirthdayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, personBirthday_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, personBirthday_);
       }
       if (!getPersonGenderBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, personGender_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, personGender_);
       }
       if (!getPersonNationBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, personNation_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, personNation_);
       }
       if (!getPersonCiBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, personCi_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, personCi_);
       }
       if (!getPersonMobileCompanyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, personMobileCompany_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, personMobileCompany_);
       }
       if (!getPersonMobileNumberBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, personMobileNumber_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, personMobileNumber_);
       }
       unknownFields.writeTo(output);
     }
@@ -1577,33 +1488,29 @@ public final class CertificateDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!nonce_.isEmpty()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, nonce_);
-      }
       if (!getCertificationResultBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, certificationResult_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, certificationResult_);
       }
       if (!getPersonNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, personName_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, personName_);
       }
       if (!getPersonBirthdayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, personBirthday_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, personBirthday_);
       }
       if (!getPersonGenderBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, personGender_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, personGender_);
       }
       if (!getPersonNationBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, personNation_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, personNation_);
       }
       if (!getPersonCiBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, personCi_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, personCi_);
       }
       if (!getPersonMobileCompanyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, personMobileCompany_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, personMobileCompany_);
       }
       if (!getPersonMobileNumberBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, personMobileNumber_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, personMobileNumber_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1621,8 +1528,6 @@ public final class CertificateDataV1 {
       org.medibloc.phr.CertificateDataV1.Certification other = (org.medibloc.phr.CertificateDataV1.Certification) obj;
 
       boolean result = true;
-      result = result && getNonce()
-          .equals(other.getNonce());
       result = result && getCertificationResult()
           .equals(other.getCertificationResult());
       result = result && getPersonName()
@@ -1650,8 +1555,6 @@ public final class CertificateDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + NONCE_FIELD_NUMBER;
-      hash = (53 * hash) + getNonce().hashCode();
       hash = (37 * hash) + CERTIFICATION_RESULT_FIELD_NUMBER;
       hash = (53 * hash) + getCertificationResult().hashCode();
       hash = (37 * hash) + PERSON_NAME_FIELD_NUMBER;
@@ -1801,8 +1704,6 @@ public final class CertificateDataV1 {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        nonce_ = com.google.protobuf.ByteString.EMPTY;
-
         certificationResult_ = "";
 
         personName_ = "";
@@ -1845,7 +1746,6 @@ public final class CertificateDataV1 {
       @java.lang.Override
       public org.medibloc.phr.CertificateDataV1.Certification buildPartial() {
         org.medibloc.phr.CertificateDataV1.Certification result = new org.medibloc.phr.CertificateDataV1.Certification(this);
-        result.nonce_ = nonce_;
         result.certificationResult_ = certificationResult_;
         result.personName_ = personName_;
         result.personBirthday_ = personBirthday_;
@@ -1902,9 +1802,6 @@ public final class CertificateDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.CertificateDataV1.Certification other) {
         if (other == org.medibloc.phr.CertificateDataV1.Certification.getDefaultInstance()) return this;
-        if (other.getNonce() != com.google.protobuf.ByteString.EMPTY) {
-          setNonce(other.getNonce());
-        }
         if (!other.getCertificationResult().isEmpty()) {
           certificationResult_ = other.certificationResult_;
           onChanged();
@@ -1966,38 +1863,9 @@ public final class CertificateDataV1 {
         return this;
       }
 
-      private com.google.protobuf.ByteString nonce_ = com.google.protobuf.ByteString.EMPTY;
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public com.google.protobuf.ByteString getNonce() {
-        return nonce_;
-      }
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public Builder setNonce(com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        nonce_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bytes nonce = 1;</code>
-       */
-      public Builder clearNonce() {
-        
-        nonce_ = getDefaultInstance().getNonce();
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object certificationResult_ = "";
       /**
-       * <code>string certification_result = 2;</code>
+       * <code>string certification_result = 1;</code>
        */
       public java.lang.String getCertificationResult() {
         java.lang.Object ref = certificationResult_;
@@ -2012,7 +1880,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string certification_result = 2;</code>
+       * <code>string certification_result = 1;</code>
        */
       public com.google.protobuf.ByteString
           getCertificationResultBytes() {
@@ -2028,7 +1896,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string certification_result = 2;</code>
+       * <code>string certification_result = 1;</code>
        */
       public Builder setCertificationResult(
           java.lang.String value) {
@@ -2041,7 +1909,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string certification_result = 2;</code>
+       * <code>string certification_result = 1;</code>
        */
       public Builder clearCertificationResult() {
         
@@ -2050,7 +1918,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string certification_result = 2;</code>
+       * <code>string certification_result = 1;</code>
        */
       public Builder setCertificationResultBytes(
           com.google.protobuf.ByteString value) {
@@ -2066,7 +1934,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personName_ = "";
       /**
-       * <code>string person_name = 3;</code>
+       * <code>string person_name = 2;</code>
        */
       public java.lang.String getPersonName() {
         java.lang.Object ref = personName_;
@@ -2081,7 +1949,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_name = 3;</code>
+       * <code>string person_name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getPersonNameBytes() {
@@ -2097,7 +1965,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_name = 3;</code>
+       * <code>string person_name = 2;</code>
        */
       public Builder setPersonName(
           java.lang.String value) {
@@ -2110,7 +1978,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_name = 3;</code>
+       * <code>string person_name = 2;</code>
        */
       public Builder clearPersonName() {
         
@@ -2119,7 +1987,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_name = 3;</code>
+       * <code>string person_name = 2;</code>
        */
       public Builder setPersonNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2135,7 +2003,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personBirthday_ = "";
       /**
-       * <code>string person_birthday = 4;</code>
+       * <code>string person_birthday = 3;</code>
        */
       public java.lang.String getPersonBirthday() {
         java.lang.Object ref = personBirthday_;
@@ -2150,7 +2018,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_birthday = 4;</code>
+       * <code>string person_birthday = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPersonBirthdayBytes() {
@@ -2166,7 +2034,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_birthday = 4;</code>
+       * <code>string person_birthday = 3;</code>
        */
       public Builder setPersonBirthday(
           java.lang.String value) {
@@ -2179,7 +2047,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_birthday = 4;</code>
+       * <code>string person_birthday = 3;</code>
        */
       public Builder clearPersonBirthday() {
         
@@ -2188,7 +2056,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_birthday = 4;</code>
+       * <code>string person_birthday = 3;</code>
        */
       public Builder setPersonBirthdayBytes(
           com.google.protobuf.ByteString value) {
@@ -2204,7 +2072,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personGender_ = "";
       /**
-       * <code>string person_gender = 5;</code>
+       * <code>string person_gender = 4;</code>
        */
       public java.lang.String getPersonGender() {
         java.lang.Object ref = personGender_;
@@ -2219,7 +2087,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_gender = 5;</code>
+       * <code>string person_gender = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPersonGenderBytes() {
@@ -2235,7 +2103,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_gender = 5;</code>
+       * <code>string person_gender = 4;</code>
        */
       public Builder setPersonGender(
           java.lang.String value) {
@@ -2248,7 +2116,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_gender = 5;</code>
+       * <code>string person_gender = 4;</code>
        */
       public Builder clearPersonGender() {
         
@@ -2257,7 +2125,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_gender = 5;</code>
+       * <code>string person_gender = 4;</code>
        */
       public Builder setPersonGenderBytes(
           com.google.protobuf.ByteString value) {
@@ -2273,7 +2141,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personNation_ = "";
       /**
-       * <code>string person_nation = 6;</code>
+       * <code>string person_nation = 5;</code>
        */
       public java.lang.String getPersonNation() {
         java.lang.Object ref = personNation_;
@@ -2288,7 +2156,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_nation = 6;</code>
+       * <code>string person_nation = 5;</code>
        */
       public com.google.protobuf.ByteString
           getPersonNationBytes() {
@@ -2304,7 +2172,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_nation = 6;</code>
+       * <code>string person_nation = 5;</code>
        */
       public Builder setPersonNation(
           java.lang.String value) {
@@ -2317,7 +2185,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_nation = 6;</code>
+       * <code>string person_nation = 5;</code>
        */
       public Builder clearPersonNation() {
         
@@ -2326,7 +2194,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_nation = 6;</code>
+       * <code>string person_nation = 5;</code>
        */
       public Builder setPersonNationBytes(
           com.google.protobuf.ByteString value) {
@@ -2342,7 +2210,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personCi_ = "";
       /**
-       * <code>string person_ci = 7;</code>
+       * <code>string person_ci = 6;</code>
        */
       public java.lang.String getPersonCi() {
         java.lang.Object ref = personCi_;
@@ -2357,7 +2225,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_ci = 7;</code>
+       * <code>string person_ci = 6;</code>
        */
       public com.google.protobuf.ByteString
           getPersonCiBytes() {
@@ -2373,7 +2241,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_ci = 7;</code>
+       * <code>string person_ci = 6;</code>
        */
       public Builder setPersonCi(
           java.lang.String value) {
@@ -2386,7 +2254,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_ci = 7;</code>
+       * <code>string person_ci = 6;</code>
        */
       public Builder clearPersonCi() {
         
@@ -2395,7 +2263,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_ci = 7;</code>
+       * <code>string person_ci = 6;</code>
        */
       public Builder setPersonCiBytes(
           com.google.protobuf.ByteString value) {
@@ -2411,7 +2279,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personMobileCompany_ = "";
       /**
-       * <code>string person_mobile_company = 8;</code>
+       * <code>string person_mobile_company = 7;</code>
        */
       public java.lang.String getPersonMobileCompany() {
         java.lang.Object ref = personMobileCompany_;
@@ -2426,7 +2294,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_mobile_company = 8;</code>
+       * <code>string person_mobile_company = 7;</code>
        */
       public com.google.protobuf.ByteString
           getPersonMobileCompanyBytes() {
@@ -2442,7 +2310,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_mobile_company = 8;</code>
+       * <code>string person_mobile_company = 7;</code>
        */
       public Builder setPersonMobileCompany(
           java.lang.String value) {
@@ -2455,7 +2323,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_mobile_company = 8;</code>
+       * <code>string person_mobile_company = 7;</code>
        */
       public Builder clearPersonMobileCompany() {
         
@@ -2464,7 +2332,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_mobile_company = 8;</code>
+       * <code>string person_mobile_company = 7;</code>
        */
       public Builder setPersonMobileCompanyBytes(
           com.google.protobuf.ByteString value) {
@@ -2480,7 +2348,7 @@ public final class CertificateDataV1 {
 
       private java.lang.Object personMobileNumber_ = "";
       /**
-       * <code>string person_mobile_number = 9;</code>
+       * <code>string person_mobile_number = 8;</code>
        */
       public java.lang.String getPersonMobileNumber() {
         java.lang.Object ref = personMobileNumber_;
@@ -2495,7 +2363,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_mobile_number = 9;</code>
+       * <code>string person_mobile_number = 8;</code>
        */
       public com.google.protobuf.ByteString
           getPersonMobileNumberBytes() {
@@ -2511,7 +2379,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>string person_mobile_number = 9;</code>
+       * <code>string person_mobile_number = 8;</code>
        */
       public Builder setPersonMobileNumber(
           java.lang.String value) {
@@ -2524,7 +2392,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_mobile_number = 9;</code>
+       * <code>string person_mobile_number = 8;</code>
        */
       public Builder clearPersonMobileNumber() {
         
@@ -2533,7 +2401,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>string person_mobile_number = 9;</code>
+       * <code>string person_mobile_number = 8;</code>
        */
       public Builder setPersonMobileNumberBytes(
           com.google.protobuf.ByteString value) {
@@ -2618,18 +2486,17 @@ public final class CertificateDataV1 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027CertificateDataV1.proto\"\210\001\n\013Certificat" +
-      "e\022\r\n\005nonce\030\001 \001(\014\022\017\n\007version\030\002 \001(\r\022\026\n\016mod" +
-      "ule_version\030\003 \001(\t\022\032\n\022blockchain_address\030" +
-      "\004 \001(\t\022%\n\rcertification\030\005 \001(\0132\016.Certifica" +
-      "tion\"\350\001\n\rCertification\022\r\n\005nonce\030\001 \001(\014\022\034\n" +
-      "\024certification_result\030\002 \001(\t\022\023\n\013person_na" +
-      "me\030\003 \001(\t\022\027\n\017person_birthday\030\004 \001(\t\022\025\n\rper" +
-      "son_gender\030\005 \001(\t\022\025\n\rperson_nation\030\006 \001(\t\022" +
-      "\021\n\tperson_ci\030\007 \001(\t\022\035\n\025person_mobile_comp" +
-      "any\030\010 \001(\t\022\034\n\024person_mobile_number\030\t \001(\tB" +
-      "%\n\020org.medibloc.phrB\021CertificateDataV1b\006" +
-      "proto3"
+      "\n\027CertificateDataV1.proto\"y\n\013Certificate" +
+      "\022\017\n\007version\030\001 \001(\r\022\026\n\016module_version\030\002 \001(" +
+      "\t\022\032\n\022blockchain_address\030\003 \001(\t\022%\n\rcertifi" +
+      "cation\030\004 \001(\0132\016.Certification\"\331\001\n\rCertifi" +
+      "cation\022\034\n\024certification_result\030\001 \001(\t\022\023\n\013" +
+      "person_name\030\002 \001(\t\022\027\n\017person_birthday\030\003 \001" +
+      "(\t\022\025\n\rperson_gender\030\004 \001(\t\022\025\n\rperson_nati" +
+      "on\030\005 \001(\t\022\021\n\tperson_ci\030\006 \001(\t\022\035\n\025person_mo" +
+      "bile_company\030\007 \001(\t\022\034\n\024person_mobile_numb" +
+      "er\030\010 \001(\tB%\n\020org.medibloc.phrB\021Certificat" +
+      "eDataV1b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2648,13 +2515,13 @@ public final class CertificateDataV1 {
     internal_static_Certificate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Certificate_descriptor,
-        new java.lang.String[] { "Nonce", "Version", "ModuleVersion", "BlockchainAddress", "Certification", });
+        new java.lang.String[] { "Version", "ModuleVersion", "BlockchainAddress", "Certification", });
     internal_static_Certification_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Certification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Certification_descriptor,
-        new java.lang.String[] { "Nonce", "CertificationResult", "PersonName", "PersonBirthday", "PersonGender", "PersonNation", "PersonCi", "PersonMobileCompany", "PersonMobileNumber", });
+        new java.lang.String[] { "CertificationResult", "PersonName", "PersonBirthday", "PersonGender", "PersonNation", "PersonCi", "PersonMobileCompany", "PersonMobileNumber", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
