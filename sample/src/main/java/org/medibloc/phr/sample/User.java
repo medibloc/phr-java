@@ -72,7 +72,7 @@ public class User {
                 .setPersonBirthday("19750101")
                 .setPersonGender("1")
                 .setPersonNation("0")
-                .setPersonCi("136a78e6v7awe8arw71ver89es17vr8a9ws612vr78es1vr7a8691v7res74164sa7ver68asv6sb87r9h6tg9a2")
+                .setPersonCi("136a78e6v7awe8")
                 .setPersonMobileCompany("ABC")
                 .setPersonMobileNumber("01012345678")
                 .build();

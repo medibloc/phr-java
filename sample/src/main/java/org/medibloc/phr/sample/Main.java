@@ -1,5 +1,6 @@
 package org.medibloc.phr.sample;
 
+import com.google.protobuf.util.JsonFormat;
 import org.medibloc.panacea.core.protobuf.Rpc;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
@@ -17,6 +18,7 @@ public class Main {
 
         // 본인인증 결과를 블록체인에 기록
         Certificate certificate = mediBloc.generateCertificate(user.getAddress(), certification);
+        System.out.println("json certificate : " + JsonFormat.printer().print(certificate));
         String certificateTxHash = mediBloc.sendCertificate(certificate);
         System.out.println("MediBloc - 사용자의 본인인증 결과를 블록체인에 기록 하였습니다.");
         System.out.println("           transaction 조회: https://stg-testnet-node.medibloc.org/v1/transaction?hash=" + certificateTxHash);
