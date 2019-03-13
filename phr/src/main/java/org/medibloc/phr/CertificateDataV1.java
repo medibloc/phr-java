@@ -846,14 +846,14 @@ public final class CertificateDataV1 {
         getPersonNameBytes();
 
     /**
-     * <code>string person_birthday = 3;</code>
+     * <code>string person_birthdate = 3;</code>
      */
-    java.lang.String getPersonBirthday();
+    java.lang.String getPersonBirthdate();
     /**
-     * <code>string person_birthday = 3;</code>
+     * <code>string person_birthdate = 3;</code>
      */
     com.google.protobuf.ByteString
-        getPersonBirthdayBytes();
+        getPersonBirthdateBytes();
 
     /**
      * <code>string person_gender = 4;</code>
@@ -920,7 +920,7 @@ public final class CertificateDataV1 {
     private Certification() {
       certificationResult_ = "";
       personName_ = "";
-      personBirthday_ = "";
+      personBirthdate_ = "";
       personGender_ = "";
       personNation_ = "";
       personCi_ = "";
@@ -967,7 +967,7 @@ public final class CertificateDataV1 {
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              personBirthday_ = s;
+              personBirthdate_ = s;
               break;
             }
             case 34: {
@@ -1100,34 +1100,34 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int PERSON_BIRTHDAY_FIELD_NUMBER = 3;
-    private volatile java.lang.Object personBirthday_;
+    public static final int PERSON_BIRTHDATE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object personBirthdate_;
     /**
-     * <code>string person_birthday = 3;</code>
+     * <code>string person_birthdate = 3;</code>
      */
-    public java.lang.String getPersonBirthday() {
-      java.lang.Object ref = personBirthday_;
+    public java.lang.String getPersonBirthdate() {
+      java.lang.Object ref = personBirthdate_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        personBirthday_ = s;
+        personBirthdate_ = s;
         return s;
       }
     }
     /**
-     * <code>string person_birthday = 3;</code>
+     * <code>string person_birthdate = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getPersonBirthdayBytes() {
-      java.lang.Object ref = personBirthday_;
+        getPersonBirthdateBytes() {
+      java.lang.Object ref = personBirthdate_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        personBirthday_ = b;
+        personBirthdate_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1324,8 +1324,8 @@ public final class CertificateDataV1 {
       if (!getPersonNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, personName_);
       }
-      if (!getPersonBirthdayBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, personBirthday_);
+      if (!getPersonBirthdateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, personBirthdate_);
       }
       if (!getPersonGenderBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, personGender_);
@@ -1357,8 +1357,8 @@ public final class CertificateDataV1 {
       if (!getPersonNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, personName_);
       }
-      if (!getPersonBirthdayBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, personBirthday_);
+      if (!getPersonBirthdateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, personBirthdate_);
       }
       if (!getPersonGenderBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, personGender_);
@@ -1395,8 +1395,8 @@ public final class CertificateDataV1 {
           .equals(other.getCertificationResult());
       result = result && getPersonName()
           .equals(other.getPersonName());
-      result = result && getPersonBirthday()
-          .equals(other.getPersonBirthday());
+      result = result && getPersonBirthdate()
+          .equals(other.getPersonBirthdate());
       result = result && getPersonGender()
           .equals(other.getPersonGender());
       result = result && getPersonNation()
@@ -1422,8 +1422,8 @@ public final class CertificateDataV1 {
       hash = (53 * hash) + getCertificationResult().hashCode();
       hash = (37 * hash) + PERSON_NAME_FIELD_NUMBER;
       hash = (53 * hash) + getPersonName().hashCode();
-      hash = (37 * hash) + PERSON_BIRTHDAY_FIELD_NUMBER;
-      hash = (53 * hash) + getPersonBirthday().hashCode();
+      hash = (37 * hash) + PERSON_BIRTHDATE_FIELD_NUMBER;
+      hash = (53 * hash) + getPersonBirthdate().hashCode();
       hash = (37 * hash) + PERSON_GENDER_FIELD_NUMBER;
       hash = (53 * hash) + getPersonGender().hashCode();
       hash = (37 * hash) + PERSON_NATION_FIELD_NUMBER;
@@ -1571,7 +1571,7 @@ public final class CertificateDataV1 {
 
         personName_ = "";
 
-        personBirthday_ = "";
+        personBirthdate_ = "";
 
         personGender_ = "";
 
@@ -1611,7 +1611,7 @@ public final class CertificateDataV1 {
         org.medibloc.phr.CertificateDataV1.Certification result = new org.medibloc.phr.CertificateDataV1.Certification(this);
         result.certificationResult_ = certificationResult_;
         result.personName_ = personName_;
-        result.personBirthday_ = personBirthday_;
+        result.personBirthdate_ = personBirthdate_;
         result.personGender_ = personGender_;
         result.personNation_ = personNation_;
         result.personCi_ = personCi_;
@@ -1673,8 +1673,8 @@ public final class CertificateDataV1 {
           personName_ = other.personName_;
           onChanged();
         }
-        if (!other.getPersonBirthday().isEmpty()) {
-          personBirthday_ = other.personBirthday_;
+        if (!other.getPersonBirthdate().isEmpty()) {
+          personBirthdate_ = other.personBirthdate_;
           onChanged();
         }
         if (!other.getPersonGender().isEmpty()) {
@@ -1864,71 +1864,71 @@ public final class CertificateDataV1 {
         return this;
       }
 
-      private java.lang.Object personBirthday_ = "";
+      private java.lang.Object personBirthdate_ = "";
       /**
-       * <code>string person_birthday = 3;</code>
+       * <code>string person_birthdate = 3;</code>
        */
-      public java.lang.String getPersonBirthday() {
-        java.lang.Object ref = personBirthday_;
+      public java.lang.String getPersonBirthdate() {
+        java.lang.Object ref = personBirthdate_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          personBirthday_ = s;
+          personBirthdate_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string person_birthday = 3;</code>
+       * <code>string person_birthdate = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getPersonBirthdayBytes() {
-        java.lang.Object ref = personBirthday_;
+          getPersonBirthdateBytes() {
+        java.lang.Object ref = personBirthdate_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          personBirthday_ = b;
+          personBirthdate_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string person_birthday = 3;</code>
+       * <code>string person_birthdate = 3;</code>
        */
-      public Builder setPersonBirthday(
+      public Builder setPersonBirthdate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        personBirthday_ = value;
+        personBirthdate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string person_birthday = 3;</code>
+       * <code>string person_birthdate = 3;</code>
        */
-      public Builder clearPersonBirthday() {
+      public Builder clearPersonBirthdate() {
         
-        personBirthday_ = getDefaultInstance().getPersonBirthday();
+        personBirthdate_ = getDefaultInstance().getPersonBirthdate();
         onChanged();
         return this;
       }
       /**
-       * <code>string person_birthday = 3;</code>
+       * <code>string person_birthdate = 3;</code>
        */
-      public Builder setPersonBirthdayBytes(
+      public Builder setPersonBirthdateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        personBirthday_ = value;
+        personBirthdate_ = value;
         onChanged();
         return this;
       }
@@ -2352,13 +2352,13 @@ public final class CertificateDataV1 {
       "\n\027CertificateDataV1.proto\"a\n\013Certificate" +
       "\022\017\n\007version\030\001 \001(\r\022\032\n\022blockchain_address\030" +
       "\002 \001(\t\022%\n\rcertification\030\003 \001(\0132\016.Certifica" +
-      "tion\"\331\001\n\rCertification\022\034\n\024certification_" +
-      "result\030\001 \001(\t\022\023\n\013person_name\030\002 \001(\t\022\027\n\017per" +
-      "son_birthday\030\003 \001(\t\022\025\n\rperson_gender\030\004 \001(" +
-      "\t\022\025\n\rperson_nation\030\005 \001(\t\022\021\n\tperson_ci\030\006 " +
-      "\001(\t\022\035\n\025person_mobile_company\030\007 \001(\t\022\034\n\024pe" +
-      "rson_mobile_number\030\010 \001(\tB%\n\020org.medibloc" +
-      ".phrB\021CertificateDataV1b\006proto3"
+      "tion\"\332\001\n\rCertification\022\034\n\024certification_" +
+      "result\030\001 \001(\t\022\023\n\013person_name\030\002 \001(\t\022\030\n\020per" +
+      "son_birthdate\030\003 \001(\t\022\025\n\rperson_gender\030\004 \001" +
+      "(\t\022\025\n\rperson_nation\030\005 \001(\t\022\021\n\tperson_ci\030\006" +
+      " \001(\t\022\035\n\025person_mobile_company\030\007 \001(\t\022\034\n\024p" +
+      "erson_mobile_number\030\010 \001(\tB%\n\020org.mediblo" +
+      "c.phrB\021CertificateDataV1b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2383,7 +2383,7 @@ public final class CertificateDataV1 {
     internal_static_Certification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Certification_descriptor,
-        new java.lang.String[] { "CertificationResult", "PersonName", "PersonBirthday", "PersonGender", "PersonNation", "PersonCi", "PersonMobileCompany", "PersonMobileNumber", });
+        new java.lang.String[] { "CertificationResult", "PersonName", "PersonBirthdate", "PersonGender", "PersonNation", "PersonCi", "PersonMobileCompany", "PersonMobileNumber", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

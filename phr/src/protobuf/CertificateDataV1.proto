@@ -11,7 +11,7 @@ message Certificate {
 message Certification {
     string certification_result = 1;
     string person_name = 2;
-    string person_birthday = 3;
+    string person_birthdate = 3;
     string person_gender = 4;
     string person_nation = 5;
     string person_ci = 6;
