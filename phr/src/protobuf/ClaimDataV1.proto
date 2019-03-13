@@ -3,89 +3,83 @@ option java_package = "org.medibloc.phr";
 option java_outer_classname = "ClaimDataV1";
 
 message Claim {
-    bytes nonce = 1;
-    uint32 version = 2;
-    string module_version = 3;
-    string bill_no = 4;
-    string treatment_no = 5;
-    string pay_complete_date = 6;
-    string bill_issue_date = 7;
-    string patient_no = 8;
-    string patient_name = 9;
-    repeated Receipt receipts = 10;
-    repeated Prescription prescriptions = 11;
+    uint32 version = 1;
+    string bill_no = 2;
+    string treatment_no = 3;
+    string pay_complete_date = 4;
+    string bill_issue_date = 5;
+    string patient_no = 6;
+    string patient_name = 7;
+    repeated Receipt receipts = 8;
+    repeated Prescription prescriptions = 9;
 }
 
 message Receipt {
-    bytes nonce = 1;
-    string receipt_no = 2;
-    string receipt_type = 3;
-    string patient_no = 4;
-    string patient_name = 5;
-    string company_registration_no = 6;
-    string treatment_start_date = 7;
-    string treatment_end_date = 8;
-    string treatment_department = 9;
-    string treatment_department_code = 10;
-    string treatment_type = 11;
-    string treatment_type_code = 12;
-    string covered_fee = 13;
-    string uncovered_fee = 14;
-    string upper_limit_excess = 15;
-    string pay_total = 16;
-    string patient_pay_total = 17;
-    string deduct_amount = 18;
-    string advance_pay_amount = 19;
-    string pay_amount = 20;
-    string uncollected_pay_amount = 21;
-    string receipt_amount = 22;
-    string surtax_amount = 23;
-    string cash_pay_amount = 24;
-    string card_pay_amount = 25;
-    repeated FeeItem fee_items = 26;
+    string receipt_no = 1;
+    string receipt_type = 2;
+    string patient_no = 3;
+    string patient_name = 4;
+    string company_registration_no = 5;
+    string treatment_start_date = 6;
+    string treatment_end_date = 7;
+    string treatment_department = 8;
+    string treatment_department_code = 9;
+    string treatment_type = 10;
+    string treatment_type_code = 11;
+    string covered_fee = 12;
+    string uncovered_fee = 13;
+    string upper_limit_excess = 14;
+    string pay_total = 15;
+    string patient_pay_total = 16;
+    string deduct_amount = 17;
+    string advance_pay_amount = 18;
+    string pay_amount = 19;
+    string uncollected_pay_amount = 20;
+    string receipt_amount = 21;
+    string surtax_amount = 22;
+    string cash_pay_amount = 23;
+    string card_pay_amount = 24;
+    repeated FeeItem fee_items = 25;
 }
 
 message FeeItem {
-    bytes nonce = 1;
-    string fee_item_name = 2;
-    string fee_item_code = 3;
-    string treatment_date = 4;
-    string covered_type = 5;
-    string medical_charge_code = 6;
-    string price = 7;
-    string quantity = 8;
-    string repeat_number = 9;
-    string fee_total = 10;
-    string covered_patient_fee = 11;
-    string covered_insurance_fee = 12;
-    string covered_patient_all_fee = 13;
-    string uncovered_chosen_fee = 14;
-    string uncovered_unchosen_fee = 15;
+    string fee_item_name = 1;
+    string fee_item_code = 2;
+    string treatment_date = 3;
+    string covered_type = 4;
+    string medical_charge_code = 5;
+    string price = 6;
+    string quantity = 7;
+    string repeat_number = 8;
+    string fee_total = 9;
+    string covered_patient_fee = 10;
+    string covered_insurance_fee = 11;
+    string covered_patient_all_fee = 12;
+    string uncovered_chosen_fee = 13;
+    string uncovered_unchosen_fee = 14;
 }
 
 message Prescription {
-    bytes nonce = 1;
-    string prescription_no = 2;
-    string receipt_no = 3;
-    string treatment_type_code = 4;
-    string given_no = 5;
-    string patient_name = 6;
-    string patient_birthdate = 7;
-    string patient_gender = 8;
-    string medical_institution_type = 9;
-    string medical_institution_name = 10;
-    string diagnosis_code = 11;
-    string doctor_name = 12;
-    string doctor_license_no = 13;
-    repeated PrescriptionItem prescription_items = 14;
+    string prescription_no = 1;
+    string receipt_no = 2;
+    string treatment_type_code = 3;
+    string given_no = 4;
+    string patient_name = 5;
+    string patient_birthdate = 6;
+    string patient_gender = 7;
+    string medical_institution_type = 8;
+    string medical_institution_name = 9;
+    string diagnosis_code = 10;
+    string doctor_name = 11;
+    string doctor_license_no = 12;
+    repeated PrescriptionItem prescription_items = 13;
 }
 
 message PrescriptionItem {
-    bytes nonce = 1;
-    string drug_code = 2;
-    string drug_name = 3;
-    string daily_dose = 4;
-    string daily_frequency = 5;
-    string prescription_duration = 6;
-    string usage = 7;
+    string drug_code = 1;
+    string drug_name = 2;
+    string daily_dose = 3;
+    string daily_frequency = 4;
+    string prescription_duration = 5;
+    string usage = 6;
 }

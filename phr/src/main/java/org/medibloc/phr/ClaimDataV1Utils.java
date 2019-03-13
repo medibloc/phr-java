@@ -15,9 +15,7 @@ public class ClaimDataV1Utils {
     public static ClaimDataV1.Claim fillClaim(ClaimDataV1.Claim claim) {
         ClaimDataV1.Claim.Builder builder = ClaimDataV1.Claim.newBuilder(claim);
 
-        builder.setNonce(Nonce.generateNonce());
         builder.setVersion(1);
-        builder.setModuleVersion("0.0.1");
 
         builder.clearReceipts();
         builder.addAllReceipts(fillReceiptList(claim.getReceiptsList()));
@@ -38,7 +36,6 @@ public class ClaimDataV1Utils {
     public static ClaimDataV1.Receipt fillReceipt(ClaimDataV1.Receipt receipt) {
         ClaimDataV1.Receipt.Builder builder = ClaimDataV1.Receipt.newBuilder(receipt);
 
-        builder.setNonce(Nonce.generateNonce());
         builder.clearFeeItems();
         builder.addAllFeeItems(fillFeeItemList(receipt.getFeeItemsList()));
 
@@ -55,9 +52,6 @@ public class ClaimDataV1Utils {
 
     public static ClaimDataV1.FeeItem fillFeeItem(ClaimDataV1.FeeItem feeItem) {
         ClaimDataV1.FeeItem.Builder builder = ClaimDataV1.FeeItem.newBuilder(feeItem);
-
-        builder.setNonce(Nonce.generateNonce());
-
         return builder.build();
     }
 
@@ -72,7 +66,6 @@ public class ClaimDataV1Utils {
     public static ClaimDataV1.Prescription fillPrescription(ClaimDataV1.Prescription prescription) {
         ClaimDataV1.Prescription.Builder builder = ClaimDataV1.Prescription.newBuilder(prescription);
 
-        builder.setNonce(Nonce.generateNonce());
         builder.clearPrescriptionItems();
         builder.addAllPrescriptionItems(fillPrescriptionItemList(prescription.getPrescriptionItemsList()));
 
@@ -89,9 +82,6 @@ public class ClaimDataV1Utils {
 
     public static ClaimDataV1.PrescriptionItem fillPrescriptionItem(ClaimDataV1.PrescriptionItem prescriptionItem) {
         ClaimDataV1.PrescriptionItem.Builder builder = ClaimDataV1.PrescriptionItem.newBuilder(prescriptionItem);
-
-        builder.setNonce(Nonce.generateNonce());
-
         return builder.build();
     }
 }
