@@ -6,7 +6,7 @@ import org.medibloc.panacea.core.protobuf.Rpc;
 import org.medibloc.panacea.crypto.ECKeyPair;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
-import org.medibloc.phr.HospitalDataV1.Bill;
+import org.medibloc.phr.ClaimDataV1.Claim;
 
 import java.math.BigInteger;
 
@@ -23,8 +23,8 @@ public class User {
     private Certificate certificate;
     private String certificateTxHash;
 
-    private Bill bill;
-    private Rpc.SendTransactionRequest billTxRequest;
+    private Claim claim;
+    private Rpc.SendTransactionRequest claimTxRequest;
 
     public User() throws Exception {
         ECKeyPair keyPair = new ECKeyPair(PRIVATE_KEY, PUBLIC_KEY);
@@ -57,19 +57,19 @@ public class User {
         return this.certificateTxHash;
     }
 
-    public void setBill(Bill bill) {
-        this.bill = bill;
+    public void setClaim(Claim claim) {
+        this.claim = claim;
     }
 
-    public void setBillTxRequest(Rpc.SendTransactionRequest billTxRequest) {
-        this.billTxRequest = billTxRequest;
+    public void setClaimTxRequest(Rpc.SendTransactionRequest claimTxRequest) {
+        this.claimTxRequest = claimTxRequest;
     }
 
     public Certification certify() {
         return Certification.newBuilder()
                 .setCertificationResult("success")
                 .setPersonName("홍길동")
-                .setPersonBirthday("19750101")
+                .setPersonBirthdate("19750101")
                 .setPersonGender("1")
                 .setPersonNation("0")
                 .setPersonCi("136a78e6v7awe8arw71ver89es17vr8a9ws612vr78es1vr7a8691v7res74164sa7ver68asv6sb87r9h6tg9a2")

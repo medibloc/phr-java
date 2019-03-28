@@ -36,6 +36,7 @@ public class MediBloc {
     public Certificate generateCertificate(String address, Certification certification) {
         Certificate certificate = Certificate.newBuilder()
                 .setBlockchainAddress(address) // user's blockchain address
+                .setExpiryDate("2099-07-01 15:01:20")
                 .setCertification(certification)
                 .build();
         return CertificateDataV1Utils.fillCertificate(certificate);

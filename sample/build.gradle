@@ -13,7 +13,7 @@ dependencies {
     implementation "org.medibloc.panacea:core:0.1.1"
     
     // use jcenter
-    implementation "org.medibloc.phr:phr:0.1.1"
+    implementation "org.medibloc.phr:phr:0.1.3"
     // use project
     //implementation project(':phr')
 }

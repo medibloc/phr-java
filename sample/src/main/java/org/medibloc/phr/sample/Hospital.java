@@ -12,8 +12,8 @@ import org.medibloc.panacea.tx.Transaction;
 import org.medibloc.panacea.utils.Numeric;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1Utils;
-import org.medibloc.phr.HospitalDataV1.*;
-import org.medibloc.phr.HospitalDataV1Utils;
+import org.medibloc.phr.ClaimDataV1.*;
+import org.medibloc.phr.ClaimDataV1Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -109,16 +109,16 @@ public class Hospital {
     /**
      * 주어진 블록체인 address 를 갖는 환자의 진료 청구서를 생성하여 반환 합니다.
      */
-    public Bill getBill(String patientBlockchainAddress) {
+    public Claim getClaim(String patientBlockchainAddress) {
         Patient patient = findPatientWithBlockchainAddress(patientBlockchainAddress);
 
         if (patient != null) {
-            /*** Bill ***/
-            Bill.Builder billBuilder = Bill.newBuilder();
-            billBuilder.setPatientNo(patient.getPatientNo());
-            billBuilder.setPatientName(patient.getPatientName());
+            /*** Claim ***/
+            Claim.Builder claimBuilder = Claim.newBuilder();
+            claimBuilder.setPatientNo(patient.getPatientNo());
+            claimBuilder.setPatientName(patient.getPatientName());
 
-            /*** Bill.Receipt ***/
+            /*** Claim.Receipt ***/
             Receipt.Builder receiptBuilder = Receipt.newBuilder();
             receiptBuilder.setReceiptNo("20181204-S1284");
             receiptBuilder.setReceiptType("I");
@@ -142,7 +142,7 @@ public class Hospital {
             receiptBuilder.setCashPayAmount("0");
             receiptBuilder.setCardPayAmount("21000");
 
-            /*** Bill.Receipt.FeeItems ***/
+            /*** Claim.Receipt.FeeItems ***/
             receiptBuilder.addFeeItems(FeeItem.newBuilder()
                     .setFeeItemName("초진 진찰료")
                     .setTreatmentDate("2018-12-06")
@@ -172,7 +172,7 @@ public class Hospital {
                     .setUncoveredUnchosenFee("0")
                     .build());
 
-            /*** Bill.Prescription ***/
+            /*** Claim.Prescription ***/
             Prescription.Builder prescriptionBuilder = Prescription.newBuilder();
             prescriptionBuilder.setGivenNo("301");
             prescriptionBuilder.setPatientName(patient.getPatientName());
@@ -182,7 +182,7 @@ public class Hospital {
             prescriptionBuilder.setDoctorName("김철수");
             prescriptionBuilder.setDoctorLicenseNo("00000");
 
-            /*** Bill.Prescription.PrescriptionItems ***/
+            /*** Claim.Prescription.PrescriptionItems ***/
             prescriptionBuilder.addPrescriptionItems(PrescriptionItem.newBuilder()
                     .setDrugCode("AA01")
                     .setDrugName("DrugName")
@@ -192,12 +192,12 @@ public class Hospital {
                     .setUsage("용법")
                     .build());
 
-            /*** Bill - build, fill, and return ***/
-            Bill partialBill = billBuilder
+            /*** Claim - build, fill, and return ***/
+            Claim partialClaim = claimBuilder
                     .addReceipts(receiptBuilder)
                     .addPrescriptions(prescriptionBuilder).build();
 
-            return HospitalDataV1Utils.fillBill(partialBill);
+            return ClaimDataV1Utils.fillClaim(partialClaim);
         } else {
             throw new RuntimeException(patientBlockchainAddress + " 주소를 가진 환자 정보를 찾을 수 없습니다.");
         }
@@ -206,13 +206,13 @@ public class Hospital {
     /**
      * 청구서를 병원의 개인키로 sign 하고, 블록체인에 기록 할 수 있는 transaction 형태로 반환 합니다.
      */
-    public Rpc.SendTransactionRequest getSignedTransaction(Bill bill) throws Exception {
+    public Rpc.SendTransactionRequest getSignedTransaction(Claim claim) throws Exception {
         // Blockchain 에 접근하기 위한 panacea client 를 생성 합니다.
         // panacea client 를 이용하여 Blockchain 과 통신 할 때에는 Rpc(Remote Procedure Call) 패키지 내의 클래스가 사용 됩니다.
         Panacea panacea = Panacea.create(new HttpService(BLOCKCHAIN_URL));
 
-        // Blockchain 에 업로드 할 bill hash 값을 구합니다.
-        byte[] billHash = HospitalDataV1Utils.hash(bill);
+        // Blockchain 에 업로드 할 claim hash 값을 구합니다.
+        byte[] claimHash = ClaimDataV1Utils.hash(claim);
 
         // Blockchain 에서 병원 account 의 현재 정보를 조회 합니다.
         Rpc.GetAccountRequest accountRequest = Rpc.GetAccountRequest.newBuilder()
@@ -228,7 +228,7 @@ public class Hospital {
 
         // Blockchain 에 기록 할 transaction 을 생성 합니다. 생성된 transaction 은 hash 및 sign 의 대상이 됩니다.
         BlockChain.TransactionHashTarget transactionHashTarget
-                = Transaction.getAddRecordTransactionHashTarget(billHash, getAccount().getAddress(), nextNonce, chainId);
+                = Transaction.getAddRecordTransactionHashTarget(claimHash, getAccount().getAddress(), nextNonce, chainId);
 
         // transactionHashTarget 을 hash 하고, 개인키로 sign 합니다. 주어진 account 와 비밀번호는 개인키를 복호화 하는 데 사용 됩니다.
         Rpc.SendTransactionRequest transactionRequest = Transaction.getSignedTransactionRequest(transactionHashTarget, getAccount(), PASSWORD);
@@ -274,9 +274,9 @@ public class Hospital {
         return true;
     }
 
-    private Patient findPatientWithRRN(String RRN) {
+    private Patient findPatientWithRRN(String rrn) {
         for (Patient p: this.patientList) {
-            if (p.getRRN() == RRN) {
+            if (rrn.equals(p.getRRN())) {
                 return p;
             }
         }
@@ -285,7 +285,7 @@ public class Hospital {
 
     private Patient findPatientWithBlockchainAddress(String address) {
         for (Patient p: this.patientList) {
-            if (p.getBlockchainAddress() == address) {
+            if (address.equals(p.getBlockchainAddress())) {
                 return p;
             }
         }

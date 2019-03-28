@@ -3,7 +3,7 @@ package org.medibloc.phr.sample;
 import org.medibloc.panacea.core.protobuf.Rpc;
 import org.medibloc.phr.CertificateDataV1.Certificate;
 import org.medibloc.phr.CertificateDataV1.Certification;
-import org.medibloc.phr.HospitalDataV1.Bill;
+import org.medibloc.phr.ClaimDataV1.Claim;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -35,11 +35,11 @@ public class Main {
         System.out.println("병원 - 환자 id 와 사용자의 블록체인 account 를 연계 하였습니다.");
 
         // 병원이 청구서, signed tx 생성하여 사용자(환자)에게 전달
-        Bill bill = hospital.getBill(user.getAddress());
-        Rpc.SendTransactionRequest billTransactionRequest = hospital.getSignedTransaction(bill);
+        Claim claim = hospital.getClaim(user.getAddress());
+        Rpc.SendTransactionRequest claimTransactionRequest = hospital.getSignedTransaction(claim);
         System.out.println("병원 - 환자의 진료 청구서에 sign 하였습니다.");
 
-        user.setBill(bill);
-        user.setBillTxRequest(billTransactionRequest);
+        user.setClaim(claim);
+        user.setClaimTxRequest(claimTransactionRequest);
     }
 }
