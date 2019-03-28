@@ -34,15 +34,25 @@ public final class CertificateDataV1 {
         getBlockchainAddressBytes();
 
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>string expiry_date = 3;</code>
+     */
+    java.lang.String getExpiryDate();
+    /**
+     * <code>string expiry_date = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getExpiryDateBytes();
+
+    /**
+     * <code>.Certification certification = 4;</code>
      */
     boolean hasCertification();
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>.Certification certification = 4;</code>
      */
     org.medibloc.phr.CertificateDataV1.Certification getCertification();
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>.Certification certification = 4;</code>
      */
     org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder();
   }
@@ -61,6 +71,7 @@ public final class CertificateDataV1 {
     private Certificate() {
       version_ = 0;
       blockchainAddress_ = "";
+      expiryDate_ = "";
     }
 
     @java.lang.Override
@@ -99,6 +110,12 @@ public final class CertificateDataV1 {
               break;
             }
             case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              expiryDate_ = s;
+              break;
+            }
+            case 34: {
               org.medibloc.phr.CertificateDataV1.Certification.Builder subBuilder = null;
               if (certification_ != null) {
                 subBuilder = certification_.toBuilder();
@@ -186,22 +203,56 @@ public final class CertificateDataV1 {
       }
     }
 
-    public static final int CERTIFICATION_FIELD_NUMBER = 3;
+    public static final int EXPIRY_DATE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object expiryDate_;
+    /**
+     * <code>string expiry_date = 3;</code>
+     */
+    public java.lang.String getExpiryDate() {
+      java.lang.Object ref = expiryDate_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        expiryDate_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string expiry_date = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getExpiryDateBytes() {
+      java.lang.Object ref = expiryDate_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        expiryDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CERTIFICATION_FIELD_NUMBER = 4;
     private org.medibloc.phr.CertificateDataV1.Certification certification_;
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public boolean hasCertification() {
       return certification_ != null;
     }
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public org.medibloc.phr.CertificateDataV1.Certification getCertification() {
       return certification_ == null ? org.medibloc.phr.CertificateDataV1.Certification.getDefaultInstance() : certification_;
     }
     /**
-     * <code>.Certification certification = 3;</code>
+     * <code>.Certification certification = 4;</code>
      */
     public org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder() {
       return getCertification();
@@ -227,8 +278,11 @@ public final class CertificateDataV1 {
       if (!getBlockchainAddressBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, blockchainAddress_);
       }
+      if (!getExpiryDateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, expiryDate_);
+      }
       if (certification_ != null) {
-        output.writeMessage(3, getCertification());
+        output.writeMessage(4, getCertification());
       }
       unknownFields.writeTo(output);
     }
@@ -246,9 +300,12 @@ public final class CertificateDataV1 {
       if (!getBlockchainAddressBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, blockchainAddress_);
       }
+      if (!getExpiryDateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, expiryDate_);
+      }
       if (certification_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getCertification());
+          .computeMessageSize(4, getCertification());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -270,6 +327,8 @@ public final class CertificateDataV1 {
           == other.getVersion());
       result = result && getBlockchainAddress()
           .equals(other.getBlockchainAddress());
+      result = result && getExpiryDate()
+          .equals(other.getExpiryDate());
       result = result && (hasCertification() == other.hasCertification());
       if (hasCertification()) {
         result = result && getCertification()
@@ -290,6 +349,8 @@ public final class CertificateDataV1 {
       hash = (53 * hash) + getVersion();
       hash = (37 * hash) + BLOCKCHAIN_ADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getBlockchainAddress().hashCode();
+      hash = (37 * hash) + EXPIRY_DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getExpiryDate().hashCode();
       if (hasCertification()) {
         hash = (37 * hash) + CERTIFICATION_FIELD_NUMBER;
         hash = (53 * hash) + getCertification().hashCode();
@@ -431,6 +492,8 @@ public final class CertificateDataV1 {
 
         blockchainAddress_ = "";
 
+        expiryDate_ = "";
+
         if (certificationBuilder_ == null) {
           certification_ = null;
         } else {
@@ -465,6 +528,7 @@ public final class CertificateDataV1 {
         org.medibloc.phr.CertificateDataV1.Certificate result = new org.medibloc.phr.CertificateDataV1.Certificate(this);
         result.version_ = version_;
         result.blockchainAddress_ = blockchainAddress_;
+        result.expiryDate_ = expiryDate_;
         if (certificationBuilder_ == null) {
           result.certification_ = certification_;
         } else {
@@ -523,6 +587,10 @@ public final class CertificateDataV1 {
         }
         if (!other.getBlockchainAddress().isEmpty()) {
           blockchainAddress_ = other.blockchainAddress_;
+          onChanged();
+        }
+        if (!other.getExpiryDate().isEmpty()) {
+          expiryDate_ = other.expiryDate_;
           onChanged();
         }
         if (other.hasCertification()) {
@@ -652,17 +720,86 @@ public final class CertificateDataV1 {
         return this;
       }
 
+      private java.lang.Object expiryDate_ = "";
+      /**
+       * <code>string expiry_date = 3;</code>
+       */
+      public java.lang.String getExpiryDate() {
+        java.lang.Object ref = expiryDate_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          expiryDate_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string expiry_date = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getExpiryDateBytes() {
+        java.lang.Object ref = expiryDate_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          expiryDate_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string expiry_date = 3;</code>
+       */
+      public Builder setExpiryDate(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        expiryDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string expiry_date = 3;</code>
+       */
+      public Builder clearExpiryDate() {
+        
+        expiryDate_ = getDefaultInstance().getExpiryDate();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string expiry_date = 3;</code>
+       */
+      public Builder setExpiryDateBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        expiryDate_ = value;
+        onChanged();
+        return this;
+      }
+
       private org.medibloc.phr.CertificateDataV1.Certification certification_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           org.medibloc.phr.CertificateDataV1.Certification, org.medibloc.phr.CertificateDataV1.Certification.Builder, org.medibloc.phr.CertificateDataV1.CertificationOrBuilder> certificationBuilder_;
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public boolean hasCertification() {
         return certificationBuilder_ != null || certification_ != null;
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.Certification getCertification() {
         if (certificationBuilder_ == null) {
@@ -672,7 +809,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder setCertification(org.medibloc.phr.CertificateDataV1.Certification value) {
         if (certificationBuilder_ == null) {
@@ -688,7 +825,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder setCertification(
           org.medibloc.phr.CertificateDataV1.Certification.Builder builderForValue) {
@@ -702,7 +839,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder mergeCertification(org.medibloc.phr.CertificateDataV1.Certification value) {
         if (certificationBuilder_ == null) {
@@ -720,7 +857,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public Builder clearCertification() {
         if (certificationBuilder_ == null) {
@@ -734,7 +871,7 @@ public final class CertificateDataV1 {
         return this;
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.Certification.Builder getCertificationBuilder() {
         
@@ -742,7 +879,7 @@ public final class CertificateDataV1 {
         return getCertificationFieldBuilder().getBuilder();
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       public org.medibloc.phr.CertificateDataV1.CertificationOrBuilder getCertificationOrBuilder() {
         if (certificationBuilder_ != null) {
@@ -753,7 +890,7 @@ public final class CertificateDataV1 {
         }
       }
       /**
-       * <code>.Certification certification = 3;</code>
+       * <code>.Certification certification = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           org.medibloc.phr.CertificateDataV1.Certification, org.medibloc.phr.CertificateDataV1.Certification.Builder, org.medibloc.phr.CertificateDataV1.CertificationOrBuilder> 
@@ -2349,16 +2486,17 @@ public final class CertificateDataV1 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\027CertificateDataV1.proto\"a\n\013Certificate" +
+      "\n\027CertificateDataV1.proto\"v\n\013Certificate" +
       "\022\017\n\007version\030\001 \001(\r\022\032\n\022blockchain_address\030" +
-      "\002 \001(\t\022%\n\rcertification\030\003 \001(\0132\016.Certifica" +
-      "tion\"\332\001\n\rCertification\022\034\n\024certification_" +
-      "result\030\001 \001(\t\022\023\n\013person_name\030\002 \001(\t\022\030\n\020per" +
-      "son_birthdate\030\003 \001(\t\022\025\n\rperson_gender\030\004 \001" +
-      "(\t\022\025\n\rperson_nation\030\005 \001(\t\022\021\n\tperson_ci\030\006" +
-      " \001(\t\022\035\n\025person_mobile_company\030\007 \001(\t\022\034\n\024p" +
-      "erson_mobile_number\030\010 \001(\tB%\n\020org.mediblo" +
-      "c.phrB\021CertificateDataV1b\006proto3"
+      "\002 \001(\t\022\023\n\013expiry_date\030\003 \001(\t\022%\n\rcertificat" +
+      "ion\030\004 \001(\0132\016.Certification\"\332\001\n\rCertificat" +
+      "ion\022\034\n\024certification_result\030\001 \001(\t\022\023\n\013per" +
+      "son_name\030\002 \001(\t\022\030\n\020person_birthdate\030\003 \001(\t" +
+      "\022\025\n\rperson_gender\030\004 \001(\t\022\025\n\rperson_nation" +
+      "\030\005 \001(\t\022\021\n\tperson_ci\030\006 \001(\t\022\035\n\025person_mobi" +
+      "le_company\030\007 \001(\t\022\034\n\024person_mobile_number" +
+      "\030\010 \001(\tB%\n\020org.medibloc.phrB\021CertificateD" +
+      "ataV1b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2377,7 +2515,7 @@ public final class CertificateDataV1 {
     internal_static_Certificate_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Certificate_descriptor,
-        new java.lang.String[] { "Version", "BlockchainAddress", "Certification", });
+        new java.lang.String[] { "Version", "BlockchainAddress", "ExpiryDate", "Certification", });
     internal_static_Certification_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Certification_fieldAccessorTable = new

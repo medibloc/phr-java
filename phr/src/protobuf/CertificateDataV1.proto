@@ -5,7 +5,8 @@ option java_outer_classname="CertificateDataV1";
 message Certificate {
     uint32 version = 1;
     string blockchain_address = 2;
-    Certification certification = 3;
+    string expiry_date = 3;
+    Certification certification = 4;
 }
 
 message Certification {
