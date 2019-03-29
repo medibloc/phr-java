@@ -58,5 +58,4 @@ message Diagnosis {
     string diagnosis_code_version = 1;
     uint32 diagnosis_code_type = 2;
     string diagnosis_code = 3;
-    string diagnosis_name = 4;
 }

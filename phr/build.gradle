@@ -10,7 +10,7 @@ ext {
 
     publishedGroupId = 'org.medibloc.phr'
     artifact = 'phr'
-    libraryVersion = '0.1.5'
+    libraryVersion = '0.1.6'
 
     libraryDescription = 'Panacea(medibloc blockchain) data handler.'
     siteUrl = 'https://github.com/medibloc/phr-java'
