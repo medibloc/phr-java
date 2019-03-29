@@ -56,7 +56,7 @@ message FeeItem {
 
 message Diagnosis {
     string diagnosis_code_version = 1;
-    string diagnosis_code_type = 2;
+    uint32 diagnosis_code_type = 2;
     string diagnosis_code = 3;
-    uint32 diagnosis_name = 4;
+    string diagnosis_name = 4;
 }

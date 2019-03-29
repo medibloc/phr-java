@@ -7785,14 +7785,9 @@ public final class ClaimDataV1 {
         getDiagnosisCodeVersionBytes();
 
     /**
-     * <code>string diagnosis_code_type = 2;</code>
+     * <code>uint32 diagnosis_code_type = 2;</code>
      */
-    java.lang.String getDiagnosisCodeType();
-    /**
-     * <code>string diagnosis_code_type = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getDiagnosisCodeTypeBytes();
+    int getDiagnosisCodeType();
 
     /**
      * <code>string diagnosis_code = 3;</code>
@@ -7805,9 +7800,14 @@ public final class ClaimDataV1 {
         getDiagnosisCodeBytes();
 
     /**
-     * <code>uint32 diagnosis_name = 4;</code>
+     * <code>string diagnosis_name = 4;</code>
      */
-    int getDiagnosisName();
+    java.lang.String getDiagnosisName();
+    /**
+     * <code>string diagnosis_name = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getDiagnosisNameBytes();
   }
   /**
    * Protobuf type {@code Diagnosis}
@@ -7823,9 +7823,9 @@ public final class ClaimDataV1 {
     }
     private Diagnosis() {
       diagnosisCodeVersion_ = "";
-      diagnosisCodeType_ = "";
+      diagnosisCodeType_ = 0;
       diagnosisCode_ = "";
-      diagnosisName_ = 0;
+      diagnosisName_ = "";
     }
 
     @java.lang.Override
@@ -7858,10 +7858,9 @@ public final class ClaimDataV1 {
               diagnosisCodeVersion_ = s;
               break;
             }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 16: {
 
-              diagnosisCodeType_ = s;
+              diagnosisCodeType_ = input.readUInt32();
               break;
             }
             case 26: {
@@ -7870,9 +7869,10 @@ public final class ClaimDataV1 {
               diagnosisCode_ = s;
               break;
             }
-            case 32: {
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              diagnosisName_ = input.readUInt32();
+              diagnosisName_ = s;
               break;
             }
             default: {
@@ -7942,37 +7942,12 @@ public final class ClaimDataV1 {
     }
 
     public static final int DIAGNOSIS_CODE_TYPE_FIELD_NUMBER = 2;
-    private volatile java.lang.Object diagnosisCodeType_;
+    private int diagnosisCodeType_;
     /**
-     * <code>string diagnosis_code_type = 2;</code>
+     * <code>uint32 diagnosis_code_type = 2;</code>
      */
-    public java.lang.String getDiagnosisCodeType() {
-      java.lang.Object ref = diagnosisCodeType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        diagnosisCodeType_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string diagnosis_code_type = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDiagnosisCodeTypeBytes() {
-      java.lang.Object ref = diagnosisCodeType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        diagnosisCodeType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getDiagnosisCodeType() {
+      return diagnosisCodeType_;
     }
 
     public static final int DIAGNOSIS_CODE_FIELD_NUMBER = 3;
@@ -8010,12 +7985,37 @@ public final class ClaimDataV1 {
     }
 
     public static final int DIAGNOSIS_NAME_FIELD_NUMBER = 4;
-    private int diagnosisName_;
+    private volatile java.lang.Object diagnosisName_;
     /**
-     * <code>uint32 diagnosis_name = 4;</code>
+     * <code>string diagnosis_name = 4;</code>
      */
-    public int getDiagnosisName() {
-      return diagnosisName_;
+    public java.lang.String getDiagnosisName() {
+      java.lang.Object ref = diagnosisName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        diagnosisName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string diagnosis_name = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDiagnosisNameBytes() {
+      java.lang.Object ref = diagnosisName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        diagnosisName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -8035,14 +8035,14 @@ public final class ClaimDataV1 {
       if (!getDiagnosisCodeVersionBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, diagnosisCodeVersion_);
       }
-      if (!getDiagnosisCodeTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, diagnosisCodeType_);
+      if (diagnosisCodeType_ != 0) {
+        output.writeUInt32(2, diagnosisCodeType_);
       }
       if (!getDiagnosisCodeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, diagnosisCode_);
       }
-      if (diagnosisName_ != 0) {
-        output.writeUInt32(4, diagnosisName_);
+      if (!getDiagnosisNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, diagnosisName_);
       }
       unknownFields.writeTo(output);
     }
@@ -8056,15 +8056,15 @@ public final class ClaimDataV1 {
       if (!getDiagnosisCodeVersionBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, diagnosisCodeVersion_);
       }
-      if (!getDiagnosisCodeTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, diagnosisCodeType_);
+      if (diagnosisCodeType_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, diagnosisCodeType_);
       }
       if (!getDiagnosisCodeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, diagnosisCode_);
       }
-      if (diagnosisName_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, diagnosisName_);
+      if (!getDiagnosisNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, diagnosisName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8084,12 +8084,12 @@ public final class ClaimDataV1 {
       boolean result = true;
       result = result && getDiagnosisCodeVersion()
           .equals(other.getDiagnosisCodeVersion());
-      result = result && getDiagnosisCodeType()
-          .equals(other.getDiagnosisCodeType());
+      result = result && (getDiagnosisCodeType()
+          == other.getDiagnosisCodeType());
       result = result && getDiagnosisCode()
           .equals(other.getDiagnosisCode());
-      result = result && (getDiagnosisName()
-          == other.getDiagnosisName());
+      result = result && getDiagnosisName()
+          .equals(other.getDiagnosisName());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -8104,11 +8104,11 @@ public final class ClaimDataV1 {
       hash = (37 * hash) + DIAGNOSIS_CODE_VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getDiagnosisCodeVersion().hashCode();
       hash = (37 * hash) + DIAGNOSIS_CODE_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getDiagnosisCodeType().hashCode();
+      hash = (53 * hash) + getDiagnosisCodeType();
       hash = (37 * hash) + DIAGNOSIS_CODE_FIELD_NUMBER;
       hash = (53 * hash) + getDiagnosisCode().hashCode();
       hash = (37 * hash) + DIAGNOSIS_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getDiagnosisName();
+      hash = (53 * hash) + getDiagnosisName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8244,11 +8244,11 @@ public final class ClaimDataV1 {
         super.clear();
         diagnosisCodeVersion_ = "";
 
-        diagnosisCodeType_ = "";
+        diagnosisCodeType_ = 0;
 
         diagnosisCode_ = "";
 
-        diagnosisName_ = 0;
+        diagnosisName_ = "";
 
         return this;
       }
@@ -8332,16 +8332,16 @@ public final class ClaimDataV1 {
           diagnosisCodeVersion_ = other.diagnosisCodeVersion_;
           onChanged();
         }
-        if (!other.getDiagnosisCodeType().isEmpty()) {
-          diagnosisCodeType_ = other.diagnosisCodeType_;
-          onChanged();
+        if (other.getDiagnosisCodeType() != 0) {
+          setDiagnosisCodeType(other.getDiagnosisCodeType());
         }
         if (!other.getDiagnosisCode().isEmpty()) {
           diagnosisCode_ = other.diagnosisCode_;
           onChanged();
         }
-        if (other.getDiagnosisName() != 0) {
-          setDiagnosisName(other.getDiagnosisName());
+        if (!other.getDiagnosisName().isEmpty()) {
+          diagnosisName_ = other.diagnosisName_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8441,71 +8441,28 @@ public final class ClaimDataV1 {
         return this;
       }
 
-      private java.lang.Object diagnosisCodeType_ = "";
+      private int diagnosisCodeType_ ;
       /**
-       * <code>string diagnosis_code_type = 2;</code>
+       * <code>uint32 diagnosis_code_type = 2;</code>
        */
-      public java.lang.String getDiagnosisCodeType() {
-        java.lang.Object ref = diagnosisCodeType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          diagnosisCodeType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getDiagnosisCodeType() {
+        return diagnosisCodeType_;
       }
       /**
-       * <code>string diagnosis_code_type = 2;</code>
+       * <code>uint32 diagnosis_code_type = 2;</code>
        */
-      public com.google.protobuf.ByteString
-          getDiagnosisCodeTypeBytes() {
-        java.lang.Object ref = diagnosisCodeType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          diagnosisCodeType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string diagnosis_code_type = 2;</code>
-       */
-      public Builder setDiagnosisCodeType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setDiagnosisCodeType(int value) {
+        
         diagnosisCodeType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string diagnosis_code_type = 2;</code>
+       * <code>uint32 diagnosis_code_type = 2;</code>
        */
       public Builder clearDiagnosisCodeType() {
         
-        diagnosisCodeType_ = getDefaultInstance().getDiagnosisCodeType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string diagnosis_code_type = 2;</code>
-       */
-      public Builder setDiagnosisCodeTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        diagnosisCodeType_ = value;
+        diagnosisCodeType_ = 0;
         onChanged();
         return this;
       }
@@ -8579,28 +8536,71 @@ public final class ClaimDataV1 {
         return this;
       }
 
-      private int diagnosisName_ ;
+      private java.lang.Object diagnosisName_ = "";
       /**
-       * <code>uint32 diagnosis_name = 4;</code>
+       * <code>string diagnosis_name = 4;</code>
        */
-      public int getDiagnosisName() {
-        return diagnosisName_;
+      public java.lang.String getDiagnosisName() {
+        java.lang.Object ref = diagnosisName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          diagnosisName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>uint32 diagnosis_name = 4;</code>
+       * <code>string diagnosis_name = 4;</code>
        */
-      public Builder setDiagnosisName(int value) {
-        
+      public com.google.protobuf.ByteString
+          getDiagnosisNameBytes() {
+        java.lang.Object ref = diagnosisName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          diagnosisName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string diagnosis_name = 4;</code>
+       */
+      public Builder setDiagnosisName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
         diagnosisName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 diagnosis_name = 4;</code>
+       * <code>string diagnosis_name = 4;</code>
        */
       public Builder clearDiagnosisName() {
         
-        diagnosisName_ = 0;
+        diagnosisName_ = getDefaultInstance().getDiagnosisName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string diagnosis_name = 4;</code>
+       */
+      public Builder setDiagnosisNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        diagnosisName_ = value;
         onChanged();
         return this;
       }
@@ -8716,8 +8716,8 @@ public final class ClaimDataV1 {
       "ncovered_chosen_fee\030\r \001(\t\022\036\n\026uncovered_u" +
       "nchosen_fee\030\016 \001(\t\"x\n\tDiagnosis\022\036\n\026diagno" +
       "sis_code_version\030\001 \001(\t\022\033\n\023diagnosis_code" +
-      "_type\030\002 \001(\t\022\026\n\016diagnosis_code\030\003 \001(\t\022\026\n\016d" +
-      "iagnosis_name\030\004 \001(\rB\037\n\020org.medibloc.phrB" +
+      "_type\030\002 \001(\r\022\026\n\016diagnosis_code\030\003 \001(\t\022\026\n\016d" +
+      "iagnosis_name\030\004 \001(\tB\037\n\020org.medibloc.phrB" +
       "\013ClaimDataV1b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
