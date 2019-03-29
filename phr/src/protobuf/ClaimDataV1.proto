@@ -4,14 +4,9 @@ option java_outer_classname = "ClaimDataV1";
 
 message Claim {
     uint32 version = 1;
-    string bill_no = 2;
-    string treatment_no = 3;
-    string pay_complete_date = 4;
-    string bill_issue_date = 5;
-    string patient_no = 6;
-    string patient_name = 7;
-    repeated Receipt receipts = 8;
-    repeated Prescription prescriptions = 9;
+    string claim_no = 2;
+    repeated Receipt receipts = 3;
+    repeated Diagnosis diagnoses = 4;
 }
 
 message Receipt {
@@ -59,27 +54,9 @@ message FeeItem {
     string uncovered_unchosen_fee = 14;
 }
 
-message Prescription {
-    string prescription_no = 1;
-    string receipt_no = 2;
-    string treatment_type_code = 3;
-    string given_no = 4;
-    string patient_name = 5;
-    string patient_birthdate = 6;
-    string patient_gender = 7;
-    string medical_institution_type = 8;
-    string medical_institution_name = 9;
-    string diagnosis_code = 10;
-    string doctor_name = 11;
-    string doctor_license_no = 12;
-    repeated PrescriptionItem prescription_items = 13;
-}
-
-message PrescriptionItem {
-    string drug_code = 1;
-    string drug_name = 2;
-    string daily_dose = 3;
-    string daily_frequency = 4;
-    string prescription_duration = 5;
-    string usage = 6;
+message Diagnosis {
+    string diagnosis_code_version = 1;
+    string diagnosis_code_type = 2;
+    string diagnosis_code = 3;
+    uint32 diagnosis_name = 4;
 }

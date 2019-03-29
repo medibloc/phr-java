@@ -12,15 +12,15 @@ public class ClaimDataV1Utils {
         return Hash.sha3256(claim.toByteArray());
     }
 
-    public static ClaimDataV1.Claim fillClaim(ClaimDataV1.Claim claim) {
-        ClaimDataV1.Claim.Builder builder = ClaimDataV1.Claim.newBuilder(claim);
+    public static Claim fillClaim(Claim claim) {
+        Claim.Builder builder = Claim.newBuilder(claim);
 
         builder.setVersion(1);
 
         builder.clearReceipts();
         builder.addAllReceipts(fillReceiptList(claim.getReceiptsList()));
-        builder.clearPrescriptions();
-        builder.addAllPrescriptions(fillPrescriptionList(claim.getPrescriptionsList()));
+        builder.clearDiagnoses();
+        builder.addAllDiagnoses(fillDiagnosisList(claim.getDiagnosesList()));
 
         return builder.build();
     }
@@ -55,33 +55,17 @@ public class ClaimDataV1Utils {
         return builder.build();
     }
 
-    public static List<ClaimDataV1.Prescription> fillPrescriptionList(List<ClaimDataV1.Prescription> prescriptionList) {
-        List<ClaimDataV1.Prescription> resultList = new ArrayList<ClaimDataV1.Prescription>();
-        for (ClaimDataV1.Prescription prescription: prescriptionList) {
-            resultList.add(fillPrescription(prescription));
+    public static List<ClaimDataV1.Diagnosis> fillDiagnosisList(List<ClaimDataV1.Diagnosis> diagnosisList) {
+        List<ClaimDataV1.Diagnosis> resultList = new ArrayList<ClaimDataV1.Diagnosis>();
+        for (ClaimDataV1.Diagnosis diagnosis: diagnosisList) {
+            resultList.add(fillDiagnosis(diagnosis));
         }
         return resultList;
     }
 
-    public static ClaimDataV1.Prescription fillPrescription(ClaimDataV1.Prescription prescription) {
-        ClaimDataV1.Prescription.Builder builder = ClaimDataV1.Prescription.newBuilder(prescription);
+    public static ClaimDataV1.Diagnosis fillDiagnosis(ClaimDataV1.Diagnosis diagnosis) {
+        ClaimDataV1.Diagnosis.Builder builder = ClaimDataV1.Diagnosis.newBuilder(diagnosis);
 
-        builder.clearPrescriptionItems();
-        builder.addAllPrescriptionItems(fillPrescriptionItemList(prescription.getPrescriptionItemsList()));
-
-        return builder.build();
-    }
-
-    public static List<ClaimDataV1.PrescriptionItem> fillPrescriptionItemList(List<ClaimDataV1.PrescriptionItem> prescriptionItemList) {
-        List<ClaimDataV1.PrescriptionItem> resultList = new ArrayList<ClaimDataV1.PrescriptionItem>();
-        for (ClaimDataV1.PrescriptionItem prescriptionItem: prescriptionItemList) {
-            resultList.add(fillPrescriptionItem(prescriptionItem));
-        }
-        return resultList;
-    }
-
-    public static ClaimDataV1.PrescriptionItem fillPrescriptionItem(ClaimDataV1.PrescriptionItem prescriptionItem) {
-        ClaimDataV1.PrescriptionItem.Builder builder = ClaimDataV1.PrescriptionItem.newBuilder(prescriptionItem);
         return builder.build();
     }
 }

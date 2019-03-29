@@ -24,111 +24,61 @@ public final class ClaimDataV1 {
     int getVersion();
 
     /**
-     * <code>string bill_no = 2;</code>
+     * <code>string claim_no = 2;</code>
      */
-    java.lang.String getBillNo();
+    java.lang.String getClaimNo();
     /**
-     * <code>string bill_no = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getBillNoBytes();
-
-    /**
-     * <code>string treatment_no = 3;</code>
-     */
-    java.lang.String getTreatmentNo();
-    /**
-     * <code>string treatment_no = 3;</code>
+     * <code>string claim_no = 2;</code>
      */
     com.google.protobuf.ByteString
-        getTreatmentNoBytes();
+        getClaimNoBytes();
 
     /**
-     * <code>string pay_complete_date = 4;</code>
-     */
-    java.lang.String getPayCompleteDate();
-    /**
-     * <code>string pay_complete_date = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getPayCompleteDateBytes();
-
-    /**
-     * <code>string bill_issue_date = 5;</code>
-     */
-    java.lang.String getBillIssueDate();
-    /**
-     * <code>string bill_issue_date = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getBillIssueDateBytes();
-
-    /**
-     * <code>string patient_no = 6;</code>
-     */
-    java.lang.String getPatientNo();
-    /**
-     * <code>string patient_no = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getPatientNoBytes();
-
-    /**
-     * <code>string patient_name = 7;</code>
-     */
-    java.lang.String getPatientName();
-    /**
-     * <code>string patient_name = 7;</code>
-     */
-    com.google.protobuf.ByteString
-        getPatientNameBytes();
-
-    /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     java.util.List<org.medibloc.phr.ClaimDataV1.Receipt> 
         getReceiptsList();
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     org.medibloc.phr.ClaimDataV1.Receipt getReceipts(int index);
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     int getReceiptsCount();
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     java.util.List<? extends org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder> 
         getReceiptsOrBuilderList();
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder getReceiptsOrBuilder(
         int index);
 
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    java.util.List<org.medibloc.phr.ClaimDataV1.Prescription> 
-        getPrescriptionsList();
+    java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis> 
+        getDiagnosesList();
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    org.medibloc.phr.ClaimDataV1.Prescription getPrescriptions(int index);
+    org.medibloc.phr.ClaimDataV1.Diagnosis getDiagnoses(int index);
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    int getPrescriptionsCount();
+    int getDiagnosesCount();
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder> 
-        getPrescriptionsOrBuilderList();
+    java.util.List<? extends org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder> 
+        getDiagnosesOrBuilderList();
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder getPrescriptionsOrBuilder(
+    org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder getDiagnosesOrBuilder(
         int index);
   }
   /**
@@ -145,14 +95,9 @@ public final class ClaimDataV1 {
     }
     private Claim() {
       version_ = 0;
-      billNo_ = "";
-      treatmentNo_ = "";
-      payCompleteDate_ = "";
-      billIssueDate_ = "";
-      patientNo_ = "";
-      patientName_ = "";
+      claimNo_ = "";
       receipts_ = java.util.Collections.emptyList();
-      prescriptions_ = java.util.Collections.emptyList();
+      diagnoses_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -187,55 +132,25 @@ public final class ClaimDataV1 {
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              billNo_ = s;
+              claimNo_ = s;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentNo_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              payCompleteDate_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              billIssueDate_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientNo_ = s;
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientName_ = s;
-              break;
-            }
-            case 66: {
-              if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 receipts_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Receipt>();
-                mutable_bitField0_ |= 0x00000080;
+                mutable_bitField0_ |= 0x00000004;
               }
               receipts_.add(
                   input.readMessage(org.medibloc.phr.ClaimDataV1.Receipt.parser(), extensionRegistry));
               break;
             }
-            case 74: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
-                prescriptions_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Prescription>();
-                mutable_bitField0_ |= 0x00000100;
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                diagnoses_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Diagnosis>();
+                mutable_bitField0_ |= 0x00000008;
               }
-              prescriptions_.add(
-                  input.readMessage(org.medibloc.phr.ClaimDataV1.Prescription.parser(), extensionRegistry));
+              diagnoses_.add(
+                  input.readMessage(org.medibloc.phr.ClaimDataV1.Diagnosis.parser(), extensionRegistry));
               break;
             }
             default: {
@@ -253,11 +168,11 @@ public final class ClaimDataV1 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           receipts_ = java.util.Collections.unmodifiableList(receipts_);
         }
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
-          prescriptions_ = java.util.Collections.unmodifiableList(prescriptions_);
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          diagnoses_ = java.util.Collections.unmodifiableList(diagnoses_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -286,278 +201,108 @@ public final class ClaimDataV1 {
       return version_;
     }
 
-    public static final int BILL_NO_FIELD_NUMBER = 2;
-    private volatile java.lang.Object billNo_;
+    public static final int CLAIM_NO_FIELD_NUMBER = 2;
+    private volatile java.lang.Object claimNo_;
     /**
-     * <code>string bill_no = 2;</code>
+     * <code>string claim_no = 2;</code>
      */
-    public java.lang.String getBillNo() {
-      java.lang.Object ref = billNo_;
+    public java.lang.String getClaimNo() {
+      java.lang.Object ref = claimNo_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        billNo_ = s;
+        claimNo_ = s;
         return s;
       }
     }
     /**
-     * <code>string bill_no = 2;</code>
+     * <code>string claim_no = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getBillNoBytes() {
-      java.lang.Object ref = billNo_;
+        getClaimNoBytes() {
+      java.lang.Object ref = claimNo_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        billNo_ = b;
+        claimNo_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int TREATMENT_NO_FIELD_NUMBER = 3;
-    private volatile java.lang.Object treatmentNo_;
-    /**
-     * <code>string treatment_no = 3;</code>
-     */
-    public java.lang.String getTreatmentNo() {
-      java.lang.Object ref = treatmentNo_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        treatmentNo_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string treatment_no = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTreatmentNoBytes() {
-      java.lang.Object ref = treatmentNo_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        treatmentNo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PAY_COMPLETE_DATE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object payCompleteDate_;
-    /**
-     * <code>string pay_complete_date = 4;</code>
-     */
-    public java.lang.String getPayCompleteDate() {
-      java.lang.Object ref = payCompleteDate_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        payCompleteDate_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string pay_complete_date = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPayCompleteDateBytes() {
-      java.lang.Object ref = payCompleteDate_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        payCompleteDate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int BILL_ISSUE_DATE_FIELD_NUMBER = 5;
-    private volatile java.lang.Object billIssueDate_;
-    /**
-     * <code>string bill_issue_date = 5;</code>
-     */
-    public java.lang.String getBillIssueDate() {
-      java.lang.Object ref = billIssueDate_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        billIssueDate_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string bill_issue_date = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getBillIssueDateBytes() {
-      java.lang.Object ref = billIssueDate_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        billIssueDate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PATIENT_NO_FIELD_NUMBER = 6;
-    private volatile java.lang.Object patientNo_;
-    /**
-     * <code>string patient_no = 6;</code>
-     */
-    public java.lang.String getPatientNo() {
-      java.lang.Object ref = patientNo_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        patientNo_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string patient_no = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPatientNoBytes() {
-      java.lang.Object ref = patientNo_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        patientNo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PATIENT_NAME_FIELD_NUMBER = 7;
-    private volatile java.lang.Object patientName_;
-    /**
-     * <code>string patient_name = 7;</code>
-     */
-    public java.lang.String getPatientName() {
-      java.lang.Object ref = patientName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        patientName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string patient_name = 7;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPatientNameBytes() {
-      java.lang.Object ref = patientName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        patientName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int RECEIPTS_FIELD_NUMBER = 8;
+    public static final int RECEIPTS_FIELD_NUMBER = 3;
     private java.util.List<org.medibloc.phr.ClaimDataV1.Receipt> receipts_;
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     public java.util.List<org.medibloc.phr.ClaimDataV1.Receipt> getReceiptsList() {
       return receipts_;
     }
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     public java.util.List<? extends org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder> 
         getReceiptsOrBuilderList() {
       return receipts_;
     }
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     public int getReceiptsCount() {
       return receipts_.size();
     }
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     public org.medibloc.phr.ClaimDataV1.Receipt getReceipts(int index) {
       return receipts_.get(index);
     }
     /**
-     * <code>repeated .Receipt receipts = 8;</code>
+     * <code>repeated .Receipt receipts = 3;</code>
      */
     public org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder getReceiptsOrBuilder(
         int index) {
       return receipts_.get(index);
     }
 
-    public static final int PRESCRIPTIONS_FIELD_NUMBER = 9;
-    private java.util.List<org.medibloc.phr.ClaimDataV1.Prescription> prescriptions_;
+    public static final int DIAGNOSES_FIELD_NUMBER = 4;
+    private java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis> diagnoses_;
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    public java.util.List<org.medibloc.phr.ClaimDataV1.Prescription> getPrescriptionsList() {
-      return prescriptions_;
+    public java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis> getDiagnosesList() {
+      return diagnoses_;
     }
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    public java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder> 
-        getPrescriptionsOrBuilderList() {
-      return prescriptions_;
+    public java.util.List<? extends org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder> 
+        getDiagnosesOrBuilderList() {
+      return diagnoses_;
     }
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    public int getPrescriptionsCount() {
-      return prescriptions_.size();
+    public int getDiagnosesCount() {
+      return diagnoses_.size();
     }
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    public org.medibloc.phr.ClaimDataV1.Prescription getPrescriptions(int index) {
-      return prescriptions_.get(index);
+    public org.medibloc.phr.ClaimDataV1.Diagnosis getDiagnoses(int index) {
+      return diagnoses_.get(index);
     }
     /**
-     * <code>repeated .Prescription prescriptions = 9;</code>
+     * <code>repeated .Diagnosis diagnoses = 4;</code>
      */
-    public org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder getPrescriptionsOrBuilder(
+    public org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder getDiagnosesOrBuilder(
         int index) {
-      return prescriptions_.get(index);
+      return diagnoses_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -577,29 +322,14 @@ public final class ClaimDataV1 {
       if (version_ != 0) {
         output.writeUInt32(1, version_);
       }
-      if (!getBillNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, billNo_);
-      }
-      if (!getTreatmentNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, treatmentNo_);
-      }
-      if (!getPayCompleteDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, payCompleteDate_);
-      }
-      if (!getBillIssueDateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, billIssueDate_);
-      }
-      if (!getPatientNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, patientNo_);
-      }
-      if (!getPatientNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, patientName_);
+      if (!getClaimNoBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, claimNo_);
       }
       for (int i = 0; i < receipts_.size(); i++) {
-        output.writeMessage(8, receipts_.get(i));
+        output.writeMessage(3, receipts_.get(i));
       }
-      for (int i = 0; i < prescriptions_.size(); i++) {
-        output.writeMessage(9, prescriptions_.get(i));
+      for (int i = 0; i < diagnoses_.size(); i++) {
+        output.writeMessage(4, diagnoses_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -614,31 +344,16 @@ public final class ClaimDataV1 {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, version_);
       }
-      if (!getBillNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, billNo_);
-      }
-      if (!getTreatmentNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, treatmentNo_);
-      }
-      if (!getPayCompleteDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, payCompleteDate_);
-      }
-      if (!getBillIssueDateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, billIssueDate_);
-      }
-      if (!getPatientNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, patientNo_);
-      }
-      if (!getPatientNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, patientName_);
+      if (!getClaimNoBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, claimNo_);
       }
       for (int i = 0; i < receipts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, receipts_.get(i));
+          .computeMessageSize(3, receipts_.get(i));
       }
-      for (int i = 0; i < prescriptions_.size(); i++) {
+      for (int i = 0; i < diagnoses_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, prescriptions_.get(i));
+          .computeMessageSize(4, diagnoses_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -658,22 +373,12 @@ public final class ClaimDataV1 {
       boolean result = true;
       result = result && (getVersion()
           == other.getVersion());
-      result = result && getBillNo()
-          .equals(other.getBillNo());
-      result = result && getTreatmentNo()
-          .equals(other.getTreatmentNo());
-      result = result && getPayCompleteDate()
-          .equals(other.getPayCompleteDate());
-      result = result && getBillIssueDate()
-          .equals(other.getBillIssueDate());
-      result = result && getPatientNo()
-          .equals(other.getPatientNo());
-      result = result && getPatientName()
-          .equals(other.getPatientName());
+      result = result && getClaimNo()
+          .equals(other.getClaimNo());
       result = result && getReceiptsList()
           .equals(other.getReceiptsList());
-      result = result && getPrescriptionsList()
-          .equals(other.getPrescriptionsList());
+      result = result && getDiagnosesList()
+          .equals(other.getDiagnosesList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -687,25 +392,15 @@ public final class ClaimDataV1 {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + VERSION_FIELD_NUMBER;
       hash = (53 * hash) + getVersion();
-      hash = (37 * hash) + BILL_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getBillNo().hashCode();
-      hash = (37 * hash) + TREATMENT_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentNo().hashCode();
-      hash = (37 * hash) + PAY_COMPLETE_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getPayCompleteDate().hashCode();
-      hash = (37 * hash) + BILL_ISSUE_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getBillIssueDate().hashCode();
-      hash = (37 * hash) + PATIENT_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientNo().hashCode();
-      hash = (37 * hash) + PATIENT_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientName().hashCode();
+      hash = (37 * hash) + CLAIM_NO_FIELD_NUMBER;
+      hash = (53 * hash) + getClaimNo().hashCode();
       if (getReceiptsCount() > 0) {
         hash = (37 * hash) + RECEIPTS_FIELD_NUMBER;
         hash = (53 * hash) + getReceiptsList().hashCode();
       }
-      if (getPrescriptionsCount() > 0) {
-        hash = (37 * hash) + PRESCRIPTIONS_FIELD_NUMBER;
-        hash = (53 * hash) + getPrescriptionsList().hashCode();
+      if (getDiagnosesCount() > 0) {
+        hash = (37 * hash) + DIAGNOSES_FIELD_NUMBER;
+        hash = (53 * hash) + getDiagnosesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -836,7 +531,7 @@ public final class ClaimDataV1 {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
           getReceiptsFieldBuilder();
-          getPrescriptionsFieldBuilder();
+          getDiagnosesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -844,29 +539,19 @@ public final class ClaimDataV1 {
         super.clear();
         version_ = 0;
 
-        billNo_ = "";
-
-        treatmentNo_ = "";
-
-        payCompleteDate_ = "";
-
-        billIssueDate_ = "";
-
-        patientNo_ = "";
-
-        patientName_ = "";
+        claimNo_ = "";
 
         if (receiptsBuilder_ == null) {
           receipts_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           receiptsBuilder_.clear();
         }
-        if (prescriptionsBuilder_ == null) {
-          prescriptions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+        if (diagnosesBuilder_ == null) {
+          diagnoses_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
-          prescriptionsBuilder_.clear();
+          diagnosesBuilder_.clear();
         }
         return this;
       }
@@ -897,29 +582,24 @@ public final class ClaimDataV1 {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.version_ = version_;
-        result.billNo_ = billNo_;
-        result.treatmentNo_ = treatmentNo_;
-        result.payCompleteDate_ = payCompleteDate_;
-        result.billIssueDate_ = billIssueDate_;
-        result.patientNo_ = patientNo_;
-        result.patientName_ = patientName_;
+        result.claimNo_ = claimNo_;
         if (receiptsBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             receipts_ = java.util.Collections.unmodifiableList(receipts_);
-            bitField0_ = (bitField0_ & ~0x00000080);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.receipts_ = receipts_;
         } else {
           result.receipts_ = receiptsBuilder_.build();
         }
-        if (prescriptionsBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100)) {
-            prescriptions_ = java.util.Collections.unmodifiableList(prescriptions_);
-            bitField0_ = (bitField0_ & ~0x00000100);
+        if (diagnosesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            diagnoses_ = java.util.Collections.unmodifiableList(diagnoses_);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
-          result.prescriptions_ = prescriptions_;
+          result.diagnoses_ = diagnoses_;
         } else {
-          result.prescriptions_ = prescriptionsBuilder_.build();
+          result.diagnoses_ = diagnosesBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -973,35 +653,15 @@ public final class ClaimDataV1 {
         if (other.getVersion() != 0) {
           setVersion(other.getVersion());
         }
-        if (!other.getBillNo().isEmpty()) {
-          billNo_ = other.billNo_;
-          onChanged();
-        }
-        if (!other.getTreatmentNo().isEmpty()) {
-          treatmentNo_ = other.treatmentNo_;
-          onChanged();
-        }
-        if (!other.getPayCompleteDate().isEmpty()) {
-          payCompleteDate_ = other.payCompleteDate_;
-          onChanged();
-        }
-        if (!other.getBillIssueDate().isEmpty()) {
-          billIssueDate_ = other.billIssueDate_;
-          onChanged();
-        }
-        if (!other.getPatientNo().isEmpty()) {
-          patientNo_ = other.patientNo_;
-          onChanged();
-        }
-        if (!other.getPatientName().isEmpty()) {
-          patientName_ = other.patientName_;
+        if (!other.getClaimNo().isEmpty()) {
+          claimNo_ = other.claimNo_;
           onChanged();
         }
         if (receiptsBuilder_ == null) {
           if (!other.receipts_.isEmpty()) {
             if (receipts_.isEmpty()) {
               receipts_ = other.receipts_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureReceiptsIsMutable();
               receipts_.addAll(other.receipts_);
@@ -1014,7 +674,7 @@ public final class ClaimDataV1 {
               receiptsBuilder_.dispose();
               receiptsBuilder_ = null;
               receipts_ = other.receipts_;
-              bitField0_ = (bitField0_ & ~0x00000080);
+              bitField0_ = (bitField0_ & ~0x00000004);
               receiptsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getReceiptsFieldBuilder() : null;
@@ -1023,29 +683,29 @@ public final class ClaimDataV1 {
             }
           }
         }
-        if (prescriptionsBuilder_ == null) {
-          if (!other.prescriptions_.isEmpty()) {
-            if (prescriptions_.isEmpty()) {
-              prescriptions_ = other.prescriptions_;
-              bitField0_ = (bitField0_ & ~0x00000100);
+        if (diagnosesBuilder_ == null) {
+          if (!other.diagnoses_.isEmpty()) {
+            if (diagnoses_.isEmpty()) {
+              diagnoses_ = other.diagnoses_;
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
-              ensurePrescriptionsIsMutable();
-              prescriptions_.addAll(other.prescriptions_);
+              ensureDiagnosesIsMutable();
+              diagnoses_.addAll(other.diagnoses_);
             }
             onChanged();
           }
         } else {
-          if (!other.prescriptions_.isEmpty()) {
-            if (prescriptionsBuilder_.isEmpty()) {
-              prescriptionsBuilder_.dispose();
-              prescriptionsBuilder_ = null;
-              prescriptions_ = other.prescriptions_;
-              bitField0_ = (bitField0_ & ~0x00000100);
-              prescriptionsBuilder_ = 
+          if (!other.diagnoses_.isEmpty()) {
+            if (diagnosesBuilder_.isEmpty()) {
+              diagnosesBuilder_.dispose();
+              diagnosesBuilder_ = null;
+              diagnoses_ = other.diagnoses_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              diagnosesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPrescriptionsFieldBuilder() : null;
+                   getDiagnosesFieldBuilder() : null;
             } else {
-              prescriptionsBuilder_.addAllMessages(other.prescriptions_);
+              diagnosesBuilder_.addAllMessages(other.diagnoses_);
             }
           }
         }
@@ -1105,416 +765,71 @@ public final class ClaimDataV1 {
         return this;
       }
 
-      private java.lang.Object billNo_ = "";
+      private java.lang.Object claimNo_ = "";
       /**
-       * <code>string bill_no = 2;</code>
+       * <code>string claim_no = 2;</code>
        */
-      public java.lang.String getBillNo() {
-        java.lang.Object ref = billNo_;
+      public java.lang.String getClaimNo() {
+        java.lang.Object ref = claimNo_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          billNo_ = s;
+          claimNo_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string bill_no = 2;</code>
+       * <code>string claim_no = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getBillNoBytes() {
-        java.lang.Object ref = billNo_;
+          getClaimNoBytes() {
+        java.lang.Object ref = claimNo_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          billNo_ = b;
+          claimNo_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string bill_no = 2;</code>
+       * <code>string claim_no = 2;</code>
        */
-      public Builder setBillNo(
+      public Builder setClaimNo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        billNo_ = value;
+        claimNo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string bill_no = 2;</code>
+       * <code>string claim_no = 2;</code>
        */
-      public Builder clearBillNo() {
+      public Builder clearClaimNo() {
         
-        billNo_ = getDefaultInstance().getBillNo();
+        claimNo_ = getDefaultInstance().getClaimNo();
         onChanged();
         return this;
       }
       /**
-       * <code>string bill_no = 2;</code>
+       * <code>string claim_no = 2;</code>
        */
-      public Builder setBillNoBytes(
+      public Builder setClaimNoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        billNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object treatmentNo_ = "";
-      /**
-       * <code>string treatment_no = 3;</code>
-       */
-      public java.lang.String getTreatmentNo() {
-        java.lang.Object ref = treatmentNo_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          treatmentNo_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string treatment_no = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTreatmentNoBytes() {
-        java.lang.Object ref = treatmentNo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          treatmentNo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string treatment_no = 3;</code>
-       */
-      public Builder setTreatmentNo(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        treatmentNo_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string treatment_no = 3;</code>
-       */
-      public Builder clearTreatmentNo() {
-        
-        treatmentNo_ = getDefaultInstance().getTreatmentNo();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string treatment_no = 3;</code>
-       */
-      public Builder setTreatmentNoBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        treatmentNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object payCompleteDate_ = "";
-      /**
-       * <code>string pay_complete_date = 4;</code>
-       */
-      public java.lang.String getPayCompleteDate() {
-        java.lang.Object ref = payCompleteDate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          payCompleteDate_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string pay_complete_date = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPayCompleteDateBytes() {
-        java.lang.Object ref = payCompleteDate_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          payCompleteDate_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string pay_complete_date = 4;</code>
-       */
-      public Builder setPayCompleteDate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        payCompleteDate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string pay_complete_date = 4;</code>
-       */
-      public Builder clearPayCompleteDate() {
-        
-        payCompleteDate_ = getDefaultInstance().getPayCompleteDate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string pay_complete_date = 4;</code>
-       */
-      public Builder setPayCompleteDateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        payCompleteDate_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object billIssueDate_ = "";
-      /**
-       * <code>string bill_issue_date = 5;</code>
-       */
-      public java.lang.String getBillIssueDate() {
-        java.lang.Object ref = billIssueDate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          billIssueDate_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string bill_issue_date = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getBillIssueDateBytes() {
-        java.lang.Object ref = billIssueDate_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          billIssueDate_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string bill_issue_date = 5;</code>
-       */
-      public Builder setBillIssueDate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        billIssueDate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string bill_issue_date = 5;</code>
-       */
-      public Builder clearBillIssueDate() {
-        
-        billIssueDate_ = getDefaultInstance().getBillIssueDate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string bill_issue_date = 5;</code>
-       */
-      public Builder setBillIssueDateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        billIssueDate_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object patientNo_ = "";
-      /**
-       * <code>string patient_no = 6;</code>
-       */
-      public java.lang.String getPatientNo() {
-        java.lang.Object ref = patientNo_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          patientNo_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string patient_no = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPatientNoBytes() {
-        java.lang.Object ref = patientNo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          patientNo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string patient_no = 6;</code>
-       */
-      public Builder setPatientNo(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        patientNo_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_no = 6;</code>
-       */
-      public Builder clearPatientNo() {
-        
-        patientNo_ = getDefaultInstance().getPatientNo();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_no = 6;</code>
-       */
-      public Builder setPatientNoBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        patientNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object patientName_ = "";
-      /**
-       * <code>string patient_name = 7;</code>
-       */
-      public java.lang.String getPatientName() {
-        java.lang.Object ref = patientName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          patientName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string patient_name = 7;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPatientNameBytes() {
-        java.lang.Object ref = patientName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          patientName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string patient_name = 7;</code>
-       */
-      public Builder setPatientName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        patientName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_name = 7;</code>
-       */
-      public Builder clearPatientName() {
-        
-        patientName_ = getDefaultInstance().getPatientName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_name = 7;</code>
-       */
-      public Builder setPatientNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        patientName_ = value;
+        claimNo_ = value;
         onChanged();
         return this;
       }
@@ -1522,9 +837,9 @@ public final class ClaimDataV1 {
       private java.util.List<org.medibloc.phr.ClaimDataV1.Receipt> receipts_ =
         java.util.Collections.emptyList();
       private void ensureReceiptsIsMutable() {
-        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           receipts_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Receipt>(receipts_);
-          bitField0_ |= 0x00000080;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -1532,7 +847,7 @@ public final class ClaimDataV1 {
           org.medibloc.phr.ClaimDataV1.Receipt, org.medibloc.phr.ClaimDataV1.Receipt.Builder, org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder> receiptsBuilder_;
 
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public java.util.List<org.medibloc.phr.ClaimDataV1.Receipt> getReceiptsList() {
         if (receiptsBuilder_ == null) {
@@ -1542,7 +857,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public int getReceiptsCount() {
         if (receiptsBuilder_ == null) {
@@ -1552,7 +867,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public org.medibloc.phr.ClaimDataV1.Receipt getReceipts(int index) {
         if (receiptsBuilder_ == null) {
@@ -1562,7 +877,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder setReceipts(
           int index, org.medibloc.phr.ClaimDataV1.Receipt value) {
@@ -1579,7 +894,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder setReceipts(
           int index, org.medibloc.phr.ClaimDataV1.Receipt.Builder builderForValue) {
@@ -1593,7 +908,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder addReceipts(org.medibloc.phr.ClaimDataV1.Receipt value) {
         if (receiptsBuilder_ == null) {
@@ -1609,7 +924,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder addReceipts(
           int index, org.medibloc.phr.ClaimDataV1.Receipt value) {
@@ -1626,7 +941,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder addReceipts(
           org.medibloc.phr.ClaimDataV1.Receipt.Builder builderForValue) {
@@ -1640,7 +955,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder addReceipts(
           int index, org.medibloc.phr.ClaimDataV1.Receipt.Builder builderForValue) {
@@ -1654,7 +969,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder addAllReceipts(
           java.lang.Iterable<? extends org.medibloc.phr.ClaimDataV1.Receipt> values) {
@@ -1669,12 +984,12 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder clearReceipts() {
         if (receiptsBuilder_ == null) {
           receipts_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000080);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           receiptsBuilder_.clear();
@@ -1682,7 +997,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public Builder removeReceipts(int index) {
         if (receiptsBuilder_ == null) {
@@ -1695,14 +1010,14 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public org.medibloc.phr.ClaimDataV1.Receipt.Builder getReceiptsBuilder(
           int index) {
         return getReceiptsFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder getReceiptsOrBuilder(
           int index) {
@@ -1712,7 +1027,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public java.util.List<? extends org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder> 
            getReceiptsOrBuilderList() {
@@ -1723,14 +1038,14 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public org.medibloc.phr.ClaimDataV1.Receipt.Builder addReceiptsBuilder() {
         return getReceiptsFieldBuilder().addBuilder(
             org.medibloc.phr.ClaimDataV1.Receipt.getDefaultInstance());
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public org.medibloc.phr.ClaimDataV1.Receipt.Builder addReceiptsBuilder(
           int index) {
@@ -1738,7 +1053,7 @@ public final class ClaimDataV1 {
             index, org.medibloc.phr.ClaimDataV1.Receipt.getDefaultInstance());
       }
       /**
-       * <code>repeated .Receipt receipts = 8;</code>
+       * <code>repeated .Receipt receipts = 3;</code>
        */
       public java.util.List<org.medibloc.phr.ClaimDataV1.Receipt.Builder> 
            getReceiptsBuilderList() {
@@ -1751,7 +1066,7 @@ public final class ClaimDataV1 {
           receiptsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               org.medibloc.phr.ClaimDataV1.Receipt, org.medibloc.phr.ClaimDataV1.Receipt.Builder, org.medibloc.phr.ClaimDataV1.ReceiptOrBuilder>(
                   receipts_,
-                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           receipts_ = null;
@@ -1759,244 +1074,244 @@ public final class ClaimDataV1 {
         return receiptsBuilder_;
       }
 
-      private java.util.List<org.medibloc.phr.ClaimDataV1.Prescription> prescriptions_ =
+      private java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis> diagnoses_ =
         java.util.Collections.emptyList();
-      private void ensurePrescriptionsIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
-          prescriptions_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Prescription>(prescriptions_);
-          bitField0_ |= 0x00000100;
+      private void ensureDiagnosesIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          diagnoses_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.Diagnosis>(diagnoses_);
+          bitField0_ |= 0x00000008;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.medibloc.phr.ClaimDataV1.Prescription, org.medibloc.phr.ClaimDataV1.Prescription.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder> prescriptionsBuilder_;
+          org.medibloc.phr.ClaimDataV1.Diagnosis, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder, org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder> diagnosesBuilder_;
 
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public java.util.List<org.medibloc.phr.ClaimDataV1.Prescription> getPrescriptionsList() {
-        if (prescriptionsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(prescriptions_);
+      public java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis> getDiagnosesList() {
+        if (diagnosesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(diagnoses_);
         } else {
-          return prescriptionsBuilder_.getMessageList();
+          return diagnosesBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public int getPrescriptionsCount() {
-        if (prescriptionsBuilder_ == null) {
-          return prescriptions_.size();
+      public int getDiagnosesCount() {
+        if (diagnosesBuilder_ == null) {
+          return diagnoses_.size();
         } else {
-          return prescriptionsBuilder_.getCount();
+          return diagnosesBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public org.medibloc.phr.ClaimDataV1.Prescription getPrescriptions(int index) {
-        if (prescriptionsBuilder_ == null) {
-          return prescriptions_.get(index);
+      public org.medibloc.phr.ClaimDataV1.Diagnosis getDiagnoses(int index) {
+        if (diagnosesBuilder_ == null) {
+          return diagnoses_.get(index);
         } else {
-          return prescriptionsBuilder_.getMessage(index);
+          return diagnosesBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder setPrescriptions(
-          int index, org.medibloc.phr.ClaimDataV1.Prescription value) {
-        if (prescriptionsBuilder_ == null) {
+      public Builder setDiagnoses(
+          int index, org.medibloc.phr.ClaimDataV1.Diagnosis value) {
+        if (diagnosesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePrescriptionsIsMutable();
-          prescriptions_.set(index, value);
+          ensureDiagnosesIsMutable();
+          diagnoses_.set(index, value);
           onChanged();
         } else {
-          prescriptionsBuilder_.setMessage(index, value);
+          diagnosesBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder setPrescriptions(
-          int index, org.medibloc.phr.ClaimDataV1.Prescription.Builder builderForValue) {
-        if (prescriptionsBuilder_ == null) {
-          ensurePrescriptionsIsMutable();
-          prescriptions_.set(index, builderForValue.build());
+      public Builder setDiagnoses(
+          int index, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder builderForValue) {
+        if (diagnosesBuilder_ == null) {
+          ensureDiagnosesIsMutable();
+          diagnoses_.set(index, builderForValue.build());
           onChanged();
         } else {
-          prescriptionsBuilder_.setMessage(index, builderForValue.build());
+          diagnosesBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder addPrescriptions(org.medibloc.phr.ClaimDataV1.Prescription value) {
-        if (prescriptionsBuilder_ == null) {
+      public Builder addDiagnoses(org.medibloc.phr.ClaimDataV1.Diagnosis value) {
+        if (diagnosesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePrescriptionsIsMutable();
-          prescriptions_.add(value);
+          ensureDiagnosesIsMutable();
+          diagnoses_.add(value);
           onChanged();
         } else {
-          prescriptionsBuilder_.addMessage(value);
+          diagnosesBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder addPrescriptions(
-          int index, org.medibloc.phr.ClaimDataV1.Prescription value) {
-        if (prescriptionsBuilder_ == null) {
+      public Builder addDiagnoses(
+          int index, org.medibloc.phr.ClaimDataV1.Diagnosis value) {
+        if (diagnosesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensurePrescriptionsIsMutable();
-          prescriptions_.add(index, value);
+          ensureDiagnosesIsMutable();
+          diagnoses_.add(index, value);
           onChanged();
         } else {
-          prescriptionsBuilder_.addMessage(index, value);
+          diagnosesBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder addPrescriptions(
-          org.medibloc.phr.ClaimDataV1.Prescription.Builder builderForValue) {
-        if (prescriptionsBuilder_ == null) {
-          ensurePrescriptionsIsMutable();
-          prescriptions_.add(builderForValue.build());
+      public Builder addDiagnoses(
+          org.medibloc.phr.ClaimDataV1.Diagnosis.Builder builderForValue) {
+        if (diagnosesBuilder_ == null) {
+          ensureDiagnosesIsMutable();
+          diagnoses_.add(builderForValue.build());
           onChanged();
         } else {
-          prescriptionsBuilder_.addMessage(builderForValue.build());
+          diagnosesBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder addPrescriptions(
-          int index, org.medibloc.phr.ClaimDataV1.Prescription.Builder builderForValue) {
-        if (prescriptionsBuilder_ == null) {
-          ensurePrescriptionsIsMutable();
-          prescriptions_.add(index, builderForValue.build());
+      public Builder addDiagnoses(
+          int index, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder builderForValue) {
+        if (diagnosesBuilder_ == null) {
+          ensureDiagnosesIsMutable();
+          diagnoses_.add(index, builderForValue.build());
           onChanged();
         } else {
-          prescriptionsBuilder_.addMessage(index, builderForValue.build());
+          diagnosesBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder addAllPrescriptions(
-          java.lang.Iterable<? extends org.medibloc.phr.ClaimDataV1.Prescription> values) {
-        if (prescriptionsBuilder_ == null) {
-          ensurePrescriptionsIsMutable();
+      public Builder addAllDiagnoses(
+          java.lang.Iterable<? extends org.medibloc.phr.ClaimDataV1.Diagnosis> values) {
+        if (diagnosesBuilder_ == null) {
+          ensureDiagnosesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, prescriptions_);
+              values, diagnoses_);
           onChanged();
         } else {
-          prescriptionsBuilder_.addAllMessages(values);
+          diagnosesBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder clearPrescriptions() {
-        if (prescriptionsBuilder_ == null) {
-          prescriptions_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000100);
+      public Builder clearDiagnoses() {
+        if (diagnosesBuilder_ == null) {
+          diagnoses_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
-          prescriptionsBuilder_.clear();
+          diagnosesBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public Builder removePrescriptions(int index) {
-        if (prescriptionsBuilder_ == null) {
-          ensurePrescriptionsIsMutable();
-          prescriptions_.remove(index);
+      public Builder removeDiagnoses(int index) {
+        if (diagnosesBuilder_ == null) {
+          ensureDiagnosesIsMutable();
+          diagnoses_.remove(index);
           onChanged();
         } else {
-          prescriptionsBuilder_.remove(index);
+          diagnosesBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public org.medibloc.phr.ClaimDataV1.Prescription.Builder getPrescriptionsBuilder(
+      public org.medibloc.phr.ClaimDataV1.Diagnosis.Builder getDiagnosesBuilder(
           int index) {
-        return getPrescriptionsFieldBuilder().getBuilder(index);
+        return getDiagnosesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder getPrescriptionsOrBuilder(
+      public org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder getDiagnosesOrBuilder(
           int index) {
-        if (prescriptionsBuilder_ == null) {
-          return prescriptions_.get(index);  } else {
-          return prescriptionsBuilder_.getMessageOrBuilder(index);
+        if (diagnosesBuilder_ == null) {
+          return diagnoses_.get(index);  } else {
+          return diagnosesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder> 
-           getPrescriptionsOrBuilderList() {
-        if (prescriptionsBuilder_ != null) {
-          return prescriptionsBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder> 
+           getDiagnosesOrBuilderList() {
+        if (diagnosesBuilder_ != null) {
+          return diagnosesBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(prescriptions_);
+          return java.util.Collections.unmodifiableList(diagnoses_);
         }
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public org.medibloc.phr.ClaimDataV1.Prescription.Builder addPrescriptionsBuilder() {
-        return getPrescriptionsFieldBuilder().addBuilder(
-            org.medibloc.phr.ClaimDataV1.Prescription.getDefaultInstance());
+      public org.medibloc.phr.ClaimDataV1.Diagnosis.Builder addDiagnosesBuilder() {
+        return getDiagnosesFieldBuilder().addBuilder(
+            org.medibloc.phr.ClaimDataV1.Diagnosis.getDefaultInstance());
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public org.medibloc.phr.ClaimDataV1.Prescription.Builder addPrescriptionsBuilder(
+      public org.medibloc.phr.ClaimDataV1.Diagnosis.Builder addDiagnosesBuilder(
           int index) {
-        return getPrescriptionsFieldBuilder().addBuilder(
-            index, org.medibloc.phr.ClaimDataV1.Prescription.getDefaultInstance());
+        return getDiagnosesFieldBuilder().addBuilder(
+            index, org.medibloc.phr.ClaimDataV1.Diagnosis.getDefaultInstance());
       }
       /**
-       * <code>repeated .Prescription prescriptions = 9;</code>
+       * <code>repeated .Diagnosis diagnoses = 4;</code>
        */
-      public java.util.List<org.medibloc.phr.ClaimDataV1.Prescription.Builder> 
-           getPrescriptionsBuilderList() {
-        return getPrescriptionsFieldBuilder().getBuilderList();
+      public java.util.List<org.medibloc.phr.ClaimDataV1.Diagnosis.Builder> 
+           getDiagnosesBuilderList() {
+        return getDiagnosesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.medibloc.phr.ClaimDataV1.Prescription, org.medibloc.phr.ClaimDataV1.Prescription.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder> 
-          getPrescriptionsFieldBuilder() {
-        if (prescriptionsBuilder_ == null) {
-          prescriptionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              org.medibloc.phr.ClaimDataV1.Prescription, org.medibloc.phr.ClaimDataV1.Prescription.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder>(
-                  prescriptions_,
-                  ((bitField0_ & 0x00000100) == 0x00000100),
+          org.medibloc.phr.ClaimDataV1.Diagnosis, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder, org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder> 
+          getDiagnosesFieldBuilder() {
+        if (diagnosesBuilder_ == null) {
+          diagnosesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              org.medibloc.phr.ClaimDataV1.Diagnosis, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder, org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder>(
+                  diagnoses_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
-          prescriptions_ = null;
+          diagnoses_ = null;
         }
-        return prescriptionsBuilder_;
+        return diagnosesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -8455,180 +7770,62 @@ public final class ClaimDataV1 {
 
   }
 
-  public interface PrescriptionOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Prescription)
+  public interface DiagnosisOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:Diagnosis)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string prescription_no = 1;</code>
+     * <code>string diagnosis_code_version = 1;</code>
      */
-    java.lang.String getPrescriptionNo();
+    java.lang.String getDiagnosisCodeVersion();
     /**
-     * <code>string prescription_no = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getPrescriptionNoBytes();
-
-    /**
-     * <code>string receipt_no = 2;</code>
-     */
-    java.lang.String getReceiptNo();
-    /**
-     * <code>string receipt_no = 2;</code>
+     * <code>string diagnosis_code_version = 1;</code>
      */
     com.google.protobuf.ByteString
-        getReceiptNoBytes();
+        getDiagnosisCodeVersionBytes();
 
     /**
-     * <code>string treatment_type_code = 3;</code>
+     * <code>string diagnosis_code_type = 2;</code>
      */
-    java.lang.String getTreatmentTypeCode();
+    java.lang.String getDiagnosisCodeType();
     /**
-     * <code>string treatment_type_code = 3;</code>
+     * <code>string diagnosis_code_type = 2;</code>
      */
     com.google.protobuf.ByteString
-        getTreatmentTypeCodeBytes();
+        getDiagnosisCodeTypeBytes();
 
     /**
-     * <code>string given_no = 4;</code>
-     */
-    java.lang.String getGivenNo();
-    /**
-     * <code>string given_no = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getGivenNoBytes();
-
-    /**
-     * <code>string patient_name = 5;</code>
-     */
-    java.lang.String getPatientName();
-    /**
-     * <code>string patient_name = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getPatientNameBytes();
-
-    /**
-     * <code>string patient_birthdate = 6;</code>
-     */
-    java.lang.String getPatientBirthdate();
-    /**
-     * <code>string patient_birthdate = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getPatientBirthdateBytes();
-
-    /**
-     * <code>string patient_gender = 7;</code>
-     */
-    java.lang.String getPatientGender();
-    /**
-     * <code>string patient_gender = 7;</code>
-     */
-    com.google.protobuf.ByteString
-        getPatientGenderBytes();
-
-    /**
-     * <code>string medical_institution_type = 8;</code>
-     */
-    java.lang.String getMedicalInstitutionType();
-    /**
-     * <code>string medical_institution_type = 8;</code>
-     */
-    com.google.protobuf.ByteString
-        getMedicalInstitutionTypeBytes();
-
-    /**
-     * <code>string medical_institution_name = 9;</code>
-     */
-    java.lang.String getMedicalInstitutionName();
-    /**
-     * <code>string medical_institution_name = 9;</code>
-     */
-    com.google.protobuf.ByteString
-        getMedicalInstitutionNameBytes();
-
-    /**
-     * <code>string diagnosis_code = 10;</code>
+     * <code>string diagnosis_code = 3;</code>
      */
     java.lang.String getDiagnosisCode();
     /**
-     * <code>string diagnosis_code = 10;</code>
+     * <code>string diagnosis_code = 3;</code>
      */
     com.google.protobuf.ByteString
         getDiagnosisCodeBytes();
 
     /**
-     * <code>string doctor_name = 11;</code>
+     * <code>uint32 diagnosis_name = 4;</code>
      */
-    java.lang.String getDoctorName();
-    /**
-     * <code>string doctor_name = 11;</code>
-     */
-    com.google.protobuf.ByteString
-        getDoctorNameBytes();
-
-    /**
-     * <code>string doctor_license_no = 12;</code>
-     */
-    java.lang.String getDoctorLicenseNo();
-    /**
-     * <code>string doctor_license_no = 12;</code>
-     */
-    com.google.protobuf.ByteString
-        getDoctorLicenseNoBytes();
-
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem> 
-        getPrescriptionItemsList();
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    org.medibloc.phr.ClaimDataV1.PrescriptionItem getPrescriptionItems(int index);
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    int getPrescriptionItemsCount();
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder> 
-        getPrescriptionItemsOrBuilderList();
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder getPrescriptionItemsOrBuilder(
-        int index);
+    int getDiagnosisName();
   }
   /**
-   * Protobuf type {@code Prescription}
+   * Protobuf type {@code Diagnosis}
    */
-  public  static final class Prescription extends
+  public  static final class Diagnosis extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:Prescription)
-      PrescriptionOrBuilder {
+      // @@protoc_insertion_point(message_implements:Diagnosis)
+      DiagnosisOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use Prescription.newBuilder() to construct.
-    private Prescription(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Diagnosis.newBuilder() to construct.
+    private Diagnosis(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Prescription() {
-      prescriptionNo_ = "";
-      receiptNo_ = "";
-      treatmentTypeCode_ = "";
-      givenNo_ = "";
-      patientName_ = "";
-      patientBirthdate_ = "";
-      patientGender_ = "";
-      medicalInstitutionType_ = "";
-      medicalInstitutionName_ = "";
+    private Diagnosis() {
+      diagnosisCodeVersion_ = "";
+      diagnosisCodeType_ = "";
       diagnosisCode_ = "";
-      doctorName_ = "";
-      doctorLicenseNo_ = "";
-      prescriptionItems_ = java.util.Collections.emptyList();
+      diagnosisName_ = 0;
     }
 
     @java.lang.Override
@@ -8636,7 +7833,7 @@ public final class ClaimDataV1 {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private Prescription(
+    private Diagnosis(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8658,82 +7855,24 @@ public final class ClaimDataV1 {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              prescriptionNo_ = s;
+              diagnosisCodeVersion_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              receiptNo_ = s;
+              diagnosisCodeType_ = s;
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              treatmentTypeCode_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              givenNo_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientName_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientBirthdate_ = s;
-              break;
-            }
-            case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientGender_ = s;
-              break;
-            }
-            case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              medicalInstitutionType_ = s;
-              break;
-            }
-            case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              medicalInstitutionName_ = s;
-              break;
-            }
-            case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
               diagnosisCode_ = s;
               break;
             }
-            case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 32: {
 
-              doctorName_ = s;
-              break;
-            }
-            case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              doctorLicenseNo_ = s;
-              break;
-            }
-            case 106: {
-              if (!((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
-                prescriptionItems_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.PrescriptionItem>();
-                mutable_bitField0_ |= 0x00001000;
-              }
-              prescriptionItems_.add(
-                  input.readMessage(org.medibloc.phr.ClaimDataV1.PrescriptionItem.parser(), extensionRegistry));
+              diagnosisName_ = input.readUInt32();
               break;
             }
             default: {
@@ -8751,337 +7890,95 @@ public final class ClaimDataV1 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00001000) == 0x00001000)) {
-          prescriptionItems_ = java.util.Collections.unmodifiableList(prescriptionItems_);
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return org.medibloc.phr.ClaimDataV1.internal_static_Prescription_descriptor;
+      return org.medibloc.phr.ClaimDataV1.internal_static_Diagnosis_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return org.medibloc.phr.ClaimDataV1.internal_static_Prescription_fieldAccessorTable
+      return org.medibloc.phr.ClaimDataV1.internal_static_Diagnosis_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              org.medibloc.phr.ClaimDataV1.Prescription.class, org.medibloc.phr.ClaimDataV1.Prescription.Builder.class);
+              org.medibloc.phr.ClaimDataV1.Diagnosis.class, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder.class);
     }
 
-    private int bitField0_;
-    public static final int PRESCRIPTION_NO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object prescriptionNo_;
+    public static final int DIAGNOSIS_CODE_VERSION_FIELD_NUMBER = 1;
+    private volatile java.lang.Object diagnosisCodeVersion_;
     /**
-     * <code>string prescription_no = 1;</code>
+     * <code>string diagnosis_code_version = 1;</code>
      */
-    public java.lang.String getPrescriptionNo() {
-      java.lang.Object ref = prescriptionNo_;
+    public java.lang.String getDiagnosisCodeVersion() {
+      java.lang.Object ref = diagnosisCodeVersion_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        prescriptionNo_ = s;
+        diagnosisCodeVersion_ = s;
         return s;
       }
     }
     /**
-     * <code>string prescription_no = 1;</code>
+     * <code>string diagnosis_code_version = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getPrescriptionNoBytes() {
-      java.lang.Object ref = prescriptionNo_;
+        getDiagnosisCodeVersionBytes() {
+      java.lang.Object ref = diagnosisCodeVersion_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        prescriptionNo_ = b;
+        diagnosisCodeVersion_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int RECEIPT_NO_FIELD_NUMBER = 2;
-    private volatile java.lang.Object receiptNo_;
+    public static final int DIAGNOSIS_CODE_TYPE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object diagnosisCodeType_;
     /**
-     * <code>string receipt_no = 2;</code>
+     * <code>string diagnosis_code_type = 2;</code>
      */
-    public java.lang.String getReceiptNo() {
-      java.lang.Object ref = receiptNo_;
+    public java.lang.String getDiagnosisCodeType() {
+      java.lang.Object ref = diagnosisCodeType_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        receiptNo_ = s;
+        diagnosisCodeType_ = s;
         return s;
       }
     }
     /**
-     * <code>string receipt_no = 2;</code>
+     * <code>string diagnosis_code_type = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getReceiptNoBytes() {
-      java.lang.Object ref = receiptNo_;
+        getDiagnosisCodeTypeBytes() {
+      java.lang.Object ref = diagnosisCodeType_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        receiptNo_ = b;
+        diagnosisCodeType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int TREATMENT_TYPE_CODE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object treatmentTypeCode_;
-    /**
-     * <code>string treatment_type_code = 3;</code>
-     */
-    public java.lang.String getTreatmentTypeCode() {
-      java.lang.Object ref = treatmentTypeCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        treatmentTypeCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string treatment_type_code = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTreatmentTypeCodeBytes() {
-      java.lang.Object ref = treatmentTypeCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        treatmentTypeCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int GIVEN_NO_FIELD_NUMBER = 4;
-    private volatile java.lang.Object givenNo_;
-    /**
-     * <code>string given_no = 4;</code>
-     */
-    public java.lang.String getGivenNo() {
-      java.lang.Object ref = givenNo_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        givenNo_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string given_no = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getGivenNoBytes() {
-      java.lang.Object ref = givenNo_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        givenNo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PATIENT_NAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object patientName_;
-    /**
-     * <code>string patient_name = 5;</code>
-     */
-    public java.lang.String getPatientName() {
-      java.lang.Object ref = patientName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        patientName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string patient_name = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPatientNameBytes() {
-      java.lang.Object ref = patientName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        patientName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PATIENT_BIRTHDATE_FIELD_NUMBER = 6;
-    private volatile java.lang.Object patientBirthdate_;
-    /**
-     * <code>string patient_birthdate = 6;</code>
-     */
-    public java.lang.String getPatientBirthdate() {
-      java.lang.Object ref = patientBirthdate_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        patientBirthdate_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string patient_birthdate = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPatientBirthdateBytes() {
-      java.lang.Object ref = patientBirthdate_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        patientBirthdate_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PATIENT_GENDER_FIELD_NUMBER = 7;
-    private volatile java.lang.Object patientGender_;
-    /**
-     * <code>string patient_gender = 7;</code>
-     */
-    public java.lang.String getPatientGender() {
-      java.lang.Object ref = patientGender_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        patientGender_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string patient_gender = 7;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPatientGenderBytes() {
-      java.lang.Object ref = patientGender_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        patientGender_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MEDICAL_INSTITUTION_TYPE_FIELD_NUMBER = 8;
-    private volatile java.lang.Object medicalInstitutionType_;
-    /**
-     * <code>string medical_institution_type = 8;</code>
-     */
-    public java.lang.String getMedicalInstitutionType() {
-      java.lang.Object ref = medicalInstitutionType_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        medicalInstitutionType_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string medical_institution_type = 8;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMedicalInstitutionTypeBytes() {
-      java.lang.Object ref = medicalInstitutionType_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        medicalInstitutionType_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int MEDICAL_INSTITUTION_NAME_FIELD_NUMBER = 9;
-    private volatile java.lang.Object medicalInstitutionName_;
-    /**
-     * <code>string medical_institution_name = 9;</code>
-     */
-    public java.lang.String getMedicalInstitutionName() {
-      java.lang.Object ref = medicalInstitutionName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        medicalInstitutionName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string medical_institution_name = 9;</code>
-     */
-    public com.google.protobuf.ByteString
-        getMedicalInstitutionNameBytes() {
-      java.lang.Object ref = medicalInstitutionName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        medicalInstitutionName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DIAGNOSIS_CODE_FIELD_NUMBER = 10;
+    public static final int DIAGNOSIS_CODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object diagnosisCode_;
     /**
-     * <code>string diagnosis_code = 10;</code>
+     * <code>string diagnosis_code = 3;</code>
      */
     public java.lang.String getDiagnosisCode() {
       java.lang.Object ref = diagnosisCode_;
@@ -9096,7 +7993,7 @@ public final class ClaimDataV1 {
       }
     }
     /**
-     * <code>string diagnosis_code = 10;</code>
+     * <code>string diagnosis_code = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDiagnosisCodeBytes() {
@@ -9112,107 +8009,13 @@ public final class ClaimDataV1 {
       }
     }
 
-    public static final int DOCTOR_NAME_FIELD_NUMBER = 11;
-    private volatile java.lang.Object doctorName_;
+    public static final int DIAGNOSIS_NAME_FIELD_NUMBER = 4;
+    private int diagnosisName_;
     /**
-     * <code>string doctor_name = 11;</code>
+     * <code>uint32 diagnosis_name = 4;</code>
      */
-    public java.lang.String getDoctorName() {
-      java.lang.Object ref = doctorName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        doctorName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string doctor_name = 11;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDoctorNameBytes() {
-      java.lang.Object ref = doctorName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        doctorName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DOCTOR_LICENSE_NO_FIELD_NUMBER = 12;
-    private volatile java.lang.Object doctorLicenseNo_;
-    /**
-     * <code>string doctor_license_no = 12;</code>
-     */
-    public java.lang.String getDoctorLicenseNo() {
-      java.lang.Object ref = doctorLicenseNo_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        doctorLicenseNo_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string doctor_license_no = 12;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDoctorLicenseNoBytes() {
-      java.lang.Object ref = doctorLicenseNo_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        doctorLicenseNo_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRESCRIPTION_ITEMS_FIELD_NUMBER = 13;
-    private java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem> prescriptionItems_;
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    public java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem> getPrescriptionItemsList() {
-      return prescriptionItems_;
-    }
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    public java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder> 
-        getPrescriptionItemsOrBuilderList() {
-      return prescriptionItems_;
-    }
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    public int getPrescriptionItemsCount() {
-      return prescriptionItems_.size();
-    }
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    public org.medibloc.phr.ClaimDataV1.PrescriptionItem getPrescriptionItems(int index) {
-      return prescriptionItems_.get(index);
-    }
-    /**
-     * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-     */
-    public org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder getPrescriptionItemsOrBuilder(
-        int index) {
-      return prescriptionItems_.get(index);
+    public int getDiagnosisName() {
+      return diagnosisName_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -9229,44 +8032,17 @@ public final class ClaimDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getPrescriptionNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, prescriptionNo_);
+      if (!getDiagnosisCodeVersionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, diagnosisCodeVersion_);
       }
-      if (!getReceiptNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, receiptNo_);
-      }
-      if (!getTreatmentTypeCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, treatmentTypeCode_);
-      }
-      if (!getGivenNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, givenNo_);
-      }
-      if (!getPatientNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, patientName_);
-      }
-      if (!getPatientBirthdateBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, patientBirthdate_);
-      }
-      if (!getPatientGenderBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, patientGender_);
-      }
-      if (!getMedicalInstitutionTypeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, medicalInstitutionType_);
-      }
-      if (!getMedicalInstitutionNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, medicalInstitutionName_);
+      if (!getDiagnosisCodeTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, diagnosisCodeType_);
       }
       if (!getDiagnosisCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, diagnosisCode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, diagnosisCode_);
       }
-      if (!getDoctorNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 11, doctorName_);
-      }
-      if (!getDoctorLicenseNoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, doctorLicenseNo_);
-      }
-      for (int i = 0; i < prescriptionItems_.size(); i++) {
-        output.writeMessage(13, prescriptionItems_.get(i));
+      if (diagnosisName_ != 0) {
+        output.writeUInt32(4, diagnosisName_);
       }
       unknownFields.writeTo(output);
     }
@@ -9277,45 +8053,18 @@ public final class ClaimDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!getPrescriptionNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, prescriptionNo_);
+      if (!getDiagnosisCodeVersionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, diagnosisCodeVersion_);
       }
-      if (!getReceiptNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, receiptNo_);
-      }
-      if (!getTreatmentTypeCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, treatmentTypeCode_);
-      }
-      if (!getGivenNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, givenNo_);
-      }
-      if (!getPatientNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, patientName_);
-      }
-      if (!getPatientBirthdateBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, patientBirthdate_);
-      }
-      if (!getPatientGenderBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, patientGender_);
-      }
-      if (!getMedicalInstitutionTypeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, medicalInstitutionType_);
-      }
-      if (!getMedicalInstitutionNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, medicalInstitutionName_);
+      if (!getDiagnosisCodeTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, diagnosisCodeType_);
       }
       if (!getDiagnosisCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, diagnosisCode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, diagnosisCode_);
       }
-      if (!getDoctorNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, doctorName_);
-      }
-      if (!getDoctorLicenseNoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, doctorLicenseNo_);
-      }
-      for (int i = 0; i < prescriptionItems_.size(); i++) {
+      if (diagnosisName_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, prescriptionItems_.get(i));
+          .computeUInt32Size(4, diagnosisName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9327,38 +8076,20 @@ public final class ClaimDataV1 {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof org.medibloc.phr.ClaimDataV1.Prescription)) {
+      if (!(obj instanceof org.medibloc.phr.ClaimDataV1.Diagnosis)) {
         return super.equals(obj);
       }
-      org.medibloc.phr.ClaimDataV1.Prescription other = (org.medibloc.phr.ClaimDataV1.Prescription) obj;
+      org.medibloc.phr.ClaimDataV1.Diagnosis other = (org.medibloc.phr.ClaimDataV1.Diagnosis) obj;
 
       boolean result = true;
-      result = result && getPrescriptionNo()
-          .equals(other.getPrescriptionNo());
-      result = result && getReceiptNo()
-          .equals(other.getReceiptNo());
-      result = result && getTreatmentTypeCode()
-          .equals(other.getTreatmentTypeCode());
-      result = result && getGivenNo()
-          .equals(other.getGivenNo());
-      result = result && getPatientName()
-          .equals(other.getPatientName());
-      result = result && getPatientBirthdate()
-          .equals(other.getPatientBirthdate());
-      result = result && getPatientGender()
-          .equals(other.getPatientGender());
-      result = result && getMedicalInstitutionType()
-          .equals(other.getMedicalInstitutionType());
-      result = result && getMedicalInstitutionName()
-          .equals(other.getMedicalInstitutionName());
+      result = result && getDiagnosisCodeVersion()
+          .equals(other.getDiagnosisCodeVersion());
+      result = result && getDiagnosisCodeType()
+          .equals(other.getDiagnosisCodeType());
       result = result && getDiagnosisCode()
           .equals(other.getDiagnosisCode());
-      result = result && getDoctorName()
-          .equals(other.getDoctorName());
-      result = result && getDoctorLicenseNo()
-          .equals(other.getDoctorLicenseNo());
-      result = result && getPrescriptionItemsList()
-          .equals(other.getPrescriptionItemsList());
+      result = result && (getDiagnosisName()
+          == other.getDiagnosisName());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -9370,102 +8101,82 @@ public final class ClaimDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + PRESCRIPTION_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getPrescriptionNo().hashCode();
-      hash = (37 * hash) + RECEIPT_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getReceiptNo().hashCode();
-      hash = (37 * hash) + TREATMENT_TYPE_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentTypeCode().hashCode();
-      hash = (37 * hash) + GIVEN_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getGivenNo().hashCode();
-      hash = (37 * hash) + PATIENT_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientName().hashCode();
-      hash = (37 * hash) + PATIENT_BIRTHDATE_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientBirthdate().hashCode();
-      hash = (37 * hash) + PATIENT_GENDER_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientGender().hashCode();
-      hash = (37 * hash) + MEDICAL_INSTITUTION_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getMedicalInstitutionType().hashCode();
-      hash = (37 * hash) + MEDICAL_INSTITUTION_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getMedicalInstitutionName().hashCode();
+      hash = (37 * hash) + DIAGNOSIS_CODE_VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getDiagnosisCodeVersion().hashCode();
+      hash = (37 * hash) + DIAGNOSIS_CODE_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getDiagnosisCodeType().hashCode();
       hash = (37 * hash) + DIAGNOSIS_CODE_FIELD_NUMBER;
       hash = (53 * hash) + getDiagnosisCode().hashCode();
-      hash = (37 * hash) + DOCTOR_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getDoctorName().hashCode();
-      hash = (37 * hash) + DOCTOR_LICENSE_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getDoctorLicenseNo().hashCode();
-      if (getPrescriptionItemsCount() > 0) {
-        hash = (37 * hash) + PRESCRIPTION_ITEMS_FIELD_NUMBER;
-        hash = (53 * hash) + getPrescriptionItemsList().hashCode();
-      }
+      hash = (37 * hash) + DIAGNOSIS_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDiagnosisName();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(byte[] data)
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(java.io.InputStream input)
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseDelimitedFrom(java.io.InputStream input)
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseDelimitedFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static org.medibloc.phr.ClaimDataV1.Prescription parseFrom(
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -9478,7 +8189,7 @@ public final class ClaimDataV1 {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(org.medibloc.phr.ClaimDataV1.Prescription prototype) {
+    public static Builder newBuilder(org.medibloc.phr.ClaimDataV1.Diagnosis prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -9494,26 +8205,26 @@ public final class ClaimDataV1 {
       return builder;
     }
     /**
-     * Protobuf type {@code Prescription}
+     * Protobuf type {@code Diagnosis}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Prescription)
-        org.medibloc.phr.ClaimDataV1.PrescriptionOrBuilder {
+        // @@protoc_insertion_point(builder_implements:Diagnosis)
+        org.medibloc.phr.ClaimDataV1.DiagnosisOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_Prescription_descriptor;
+        return org.medibloc.phr.ClaimDataV1.internal_static_Diagnosis_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_Prescription_fieldAccessorTable
+        return org.medibloc.phr.ClaimDataV1.internal_static_Diagnosis_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                org.medibloc.phr.ClaimDataV1.Prescription.class, org.medibloc.phr.ClaimDataV1.Prescription.Builder.class);
+                org.medibloc.phr.ClaimDataV1.Diagnosis.class, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder.class);
       }
 
-      // Construct using org.medibloc.phr.ClaimDataV1.Prescription.newBuilder()
+      // Construct using org.medibloc.phr.ClaimDataV1.Diagnosis.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -9526,59 +8237,36 @@ public final class ClaimDataV1 {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getPrescriptionItemsFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        prescriptionNo_ = "";
+        diagnosisCodeVersion_ = "";
 
-        receiptNo_ = "";
-
-        treatmentTypeCode_ = "";
-
-        givenNo_ = "";
-
-        patientName_ = "";
-
-        patientBirthdate_ = "";
-
-        patientGender_ = "";
-
-        medicalInstitutionType_ = "";
-
-        medicalInstitutionName_ = "";
+        diagnosisCodeType_ = "";
 
         diagnosisCode_ = "";
 
-        doctorName_ = "";
+        diagnosisName_ = 0;
 
-        doctorLicenseNo_ = "";
-
-        if (prescriptionItemsBuilder_ == null) {
-          prescriptionItems_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
-        } else {
-          prescriptionItemsBuilder_.clear();
-        }
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_Prescription_descriptor;
+        return org.medibloc.phr.ClaimDataV1.internal_static_Diagnosis_descriptor;
       }
 
       @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.Prescription getDefaultInstanceForType() {
-        return org.medibloc.phr.ClaimDataV1.Prescription.getDefaultInstance();
+      public org.medibloc.phr.ClaimDataV1.Diagnosis getDefaultInstanceForType() {
+        return org.medibloc.phr.ClaimDataV1.Diagnosis.getDefaultInstance();
       }
 
       @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.Prescription build() {
-        org.medibloc.phr.ClaimDataV1.Prescription result = buildPartial();
+      public org.medibloc.phr.ClaimDataV1.Diagnosis build() {
+        org.medibloc.phr.ClaimDataV1.Diagnosis result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -9586,32 +8274,12 @@ public final class ClaimDataV1 {
       }
 
       @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.Prescription buildPartial() {
-        org.medibloc.phr.ClaimDataV1.Prescription result = new org.medibloc.phr.ClaimDataV1.Prescription(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        result.prescriptionNo_ = prescriptionNo_;
-        result.receiptNo_ = receiptNo_;
-        result.treatmentTypeCode_ = treatmentTypeCode_;
-        result.givenNo_ = givenNo_;
-        result.patientName_ = patientName_;
-        result.patientBirthdate_ = patientBirthdate_;
-        result.patientGender_ = patientGender_;
-        result.medicalInstitutionType_ = medicalInstitutionType_;
-        result.medicalInstitutionName_ = medicalInstitutionName_;
+      public org.medibloc.phr.ClaimDataV1.Diagnosis buildPartial() {
+        org.medibloc.phr.ClaimDataV1.Diagnosis result = new org.medibloc.phr.ClaimDataV1.Diagnosis(this);
+        result.diagnosisCodeVersion_ = diagnosisCodeVersion_;
+        result.diagnosisCodeType_ = diagnosisCodeType_;
         result.diagnosisCode_ = diagnosisCode_;
-        result.doctorName_ = doctorName_;
-        result.doctorLicenseNo_ = doctorLicenseNo_;
-        if (prescriptionItemsBuilder_ == null) {
-          if (((bitField0_ & 0x00001000) == 0x00001000)) {
-            prescriptionItems_ = java.util.Collections.unmodifiableList(prescriptionItems_);
-            bitField0_ = (bitField0_ & ~0x00001000);
-          }
-          result.prescriptionItems_ = prescriptionItems_;
-        } else {
-          result.prescriptionItems_ = prescriptionItemsBuilder_.build();
-        }
-        result.bitField0_ = to_bitField0_;
+        result.diagnosisName_ = diagnosisName_;
         onBuilt();
         return result;
       }
@@ -9650,89 +8318,30 @@ public final class ClaimDataV1 {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.medibloc.phr.ClaimDataV1.Prescription) {
-          return mergeFrom((org.medibloc.phr.ClaimDataV1.Prescription)other);
+        if (other instanceof org.medibloc.phr.ClaimDataV1.Diagnosis) {
+          return mergeFrom((org.medibloc.phr.ClaimDataV1.Diagnosis)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.Prescription other) {
-        if (other == org.medibloc.phr.ClaimDataV1.Prescription.getDefaultInstance()) return this;
-        if (!other.getPrescriptionNo().isEmpty()) {
-          prescriptionNo_ = other.prescriptionNo_;
+      public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.Diagnosis other) {
+        if (other == org.medibloc.phr.ClaimDataV1.Diagnosis.getDefaultInstance()) return this;
+        if (!other.getDiagnosisCodeVersion().isEmpty()) {
+          diagnosisCodeVersion_ = other.diagnosisCodeVersion_;
           onChanged();
         }
-        if (!other.getReceiptNo().isEmpty()) {
-          receiptNo_ = other.receiptNo_;
-          onChanged();
-        }
-        if (!other.getTreatmentTypeCode().isEmpty()) {
-          treatmentTypeCode_ = other.treatmentTypeCode_;
-          onChanged();
-        }
-        if (!other.getGivenNo().isEmpty()) {
-          givenNo_ = other.givenNo_;
-          onChanged();
-        }
-        if (!other.getPatientName().isEmpty()) {
-          patientName_ = other.patientName_;
-          onChanged();
-        }
-        if (!other.getPatientBirthdate().isEmpty()) {
-          patientBirthdate_ = other.patientBirthdate_;
-          onChanged();
-        }
-        if (!other.getPatientGender().isEmpty()) {
-          patientGender_ = other.patientGender_;
-          onChanged();
-        }
-        if (!other.getMedicalInstitutionType().isEmpty()) {
-          medicalInstitutionType_ = other.medicalInstitutionType_;
-          onChanged();
-        }
-        if (!other.getMedicalInstitutionName().isEmpty()) {
-          medicalInstitutionName_ = other.medicalInstitutionName_;
+        if (!other.getDiagnosisCodeType().isEmpty()) {
+          diagnosisCodeType_ = other.diagnosisCodeType_;
           onChanged();
         }
         if (!other.getDiagnosisCode().isEmpty()) {
           diagnosisCode_ = other.diagnosisCode_;
           onChanged();
         }
-        if (!other.getDoctorName().isEmpty()) {
-          doctorName_ = other.doctorName_;
-          onChanged();
-        }
-        if (!other.getDoctorLicenseNo().isEmpty()) {
-          doctorLicenseNo_ = other.doctorLicenseNo_;
-          onChanged();
-        }
-        if (prescriptionItemsBuilder_ == null) {
-          if (!other.prescriptionItems_.isEmpty()) {
-            if (prescriptionItems_.isEmpty()) {
-              prescriptionItems_ = other.prescriptionItems_;
-              bitField0_ = (bitField0_ & ~0x00001000);
-            } else {
-              ensurePrescriptionItemsIsMutable();
-              prescriptionItems_.addAll(other.prescriptionItems_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.prescriptionItems_.isEmpty()) {
-            if (prescriptionItemsBuilder_.isEmpty()) {
-              prescriptionItemsBuilder_.dispose();
-              prescriptionItemsBuilder_ = null;
-              prescriptionItems_ = other.prescriptionItems_;
-              bitField0_ = (bitField0_ & ~0x00001000);
-              prescriptionItemsBuilder_ = 
-                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getPrescriptionItemsFieldBuilder() : null;
-            } else {
-              prescriptionItemsBuilder_.addAllMessages(other.prescriptionItems_);
-            }
-          }
+        if (other.getDiagnosisName() != 0) {
+          setDiagnosisName(other.getDiagnosisName());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -9749,11 +8358,11 @@ public final class ClaimDataV1 {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        org.medibloc.phr.ClaimDataV1.Prescription parsedMessage = null;
+        org.medibloc.phr.ClaimDataV1.Diagnosis parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.medibloc.phr.ClaimDataV1.Prescription) e.getUnfinishedMessage();
+          parsedMessage = (org.medibloc.phr.ClaimDataV1.Diagnosis) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -9762,632 +8371,148 @@ public final class ClaimDataV1 {
         }
         return this;
       }
-      private int bitField0_;
 
-      private java.lang.Object prescriptionNo_ = "";
+      private java.lang.Object diagnosisCodeVersion_ = "";
       /**
-       * <code>string prescription_no = 1;</code>
+       * <code>string diagnosis_code_version = 1;</code>
        */
-      public java.lang.String getPrescriptionNo() {
-        java.lang.Object ref = prescriptionNo_;
+      public java.lang.String getDiagnosisCodeVersion() {
+        java.lang.Object ref = diagnosisCodeVersion_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          prescriptionNo_ = s;
+          diagnosisCodeVersion_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string prescription_no = 1;</code>
+       * <code>string diagnosis_code_version = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getPrescriptionNoBytes() {
-        java.lang.Object ref = prescriptionNo_;
+          getDiagnosisCodeVersionBytes() {
+        java.lang.Object ref = diagnosisCodeVersion_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          prescriptionNo_ = b;
+          diagnosisCodeVersion_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string prescription_no = 1;</code>
+       * <code>string diagnosis_code_version = 1;</code>
        */
-      public Builder setPrescriptionNo(
+      public Builder setDiagnosisCodeVersion(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        prescriptionNo_ = value;
+        diagnosisCodeVersion_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string prescription_no = 1;</code>
+       * <code>string diagnosis_code_version = 1;</code>
        */
-      public Builder clearPrescriptionNo() {
+      public Builder clearDiagnosisCodeVersion() {
         
-        prescriptionNo_ = getDefaultInstance().getPrescriptionNo();
+        diagnosisCodeVersion_ = getDefaultInstance().getDiagnosisCodeVersion();
         onChanged();
         return this;
       }
       /**
-       * <code>string prescription_no = 1;</code>
+       * <code>string diagnosis_code_version = 1;</code>
        */
-      public Builder setPrescriptionNoBytes(
+      public Builder setDiagnosisCodeVersionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        prescriptionNo_ = value;
+        diagnosisCodeVersion_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object receiptNo_ = "";
+      private java.lang.Object diagnosisCodeType_ = "";
       /**
-       * <code>string receipt_no = 2;</code>
+       * <code>string diagnosis_code_type = 2;</code>
        */
-      public java.lang.String getReceiptNo() {
-        java.lang.Object ref = receiptNo_;
+      public java.lang.String getDiagnosisCodeType() {
+        java.lang.Object ref = diagnosisCodeType_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          receiptNo_ = s;
+          diagnosisCodeType_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string receipt_no = 2;</code>
+       * <code>string diagnosis_code_type = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getReceiptNoBytes() {
-        java.lang.Object ref = receiptNo_;
+          getDiagnosisCodeTypeBytes() {
+        java.lang.Object ref = diagnosisCodeType_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          receiptNo_ = b;
+          diagnosisCodeType_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string receipt_no = 2;</code>
+       * <code>string diagnosis_code_type = 2;</code>
        */
-      public Builder setReceiptNo(
+      public Builder setDiagnosisCodeType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        receiptNo_ = value;
+        diagnosisCodeType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_no = 2;</code>
+       * <code>string diagnosis_code_type = 2;</code>
        */
-      public Builder clearReceiptNo() {
+      public Builder clearDiagnosisCodeType() {
         
-        receiptNo_ = getDefaultInstance().getReceiptNo();
+        diagnosisCodeType_ = getDefaultInstance().getDiagnosisCodeType();
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_no = 2;</code>
+       * <code>string diagnosis_code_type = 2;</code>
        */
-      public Builder setReceiptNoBytes(
+      public Builder setDiagnosisCodeTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        receiptNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object treatmentTypeCode_ = "";
-      /**
-       * <code>string treatment_type_code = 3;</code>
-       */
-      public java.lang.String getTreatmentTypeCode() {
-        java.lang.Object ref = treatmentTypeCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          treatmentTypeCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string treatment_type_code = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTreatmentTypeCodeBytes() {
-        java.lang.Object ref = treatmentTypeCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          treatmentTypeCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string treatment_type_code = 3;</code>
-       */
-      public Builder setTreatmentTypeCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        treatmentTypeCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string treatment_type_code = 3;</code>
-       */
-      public Builder clearTreatmentTypeCode() {
-        
-        treatmentTypeCode_ = getDefaultInstance().getTreatmentTypeCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string treatment_type_code = 3;</code>
-       */
-      public Builder setTreatmentTypeCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        treatmentTypeCode_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object givenNo_ = "";
-      /**
-       * <code>string given_no = 4;</code>
-       */
-      public java.lang.String getGivenNo() {
-        java.lang.Object ref = givenNo_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          givenNo_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string given_no = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getGivenNoBytes() {
-        java.lang.Object ref = givenNo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          givenNo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string given_no = 4;</code>
-       */
-      public Builder setGivenNo(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        givenNo_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string given_no = 4;</code>
-       */
-      public Builder clearGivenNo() {
-        
-        givenNo_ = getDefaultInstance().getGivenNo();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string given_no = 4;</code>
-       */
-      public Builder setGivenNoBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        givenNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object patientName_ = "";
-      /**
-       * <code>string patient_name = 5;</code>
-       */
-      public java.lang.String getPatientName() {
-        java.lang.Object ref = patientName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          patientName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string patient_name = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPatientNameBytes() {
-        java.lang.Object ref = patientName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          patientName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string patient_name = 5;</code>
-       */
-      public Builder setPatientName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        patientName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_name = 5;</code>
-       */
-      public Builder clearPatientName() {
-        
-        patientName_ = getDefaultInstance().getPatientName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_name = 5;</code>
-       */
-      public Builder setPatientNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        patientName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object patientBirthdate_ = "";
-      /**
-       * <code>string patient_birthdate = 6;</code>
-       */
-      public java.lang.String getPatientBirthdate() {
-        java.lang.Object ref = patientBirthdate_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          patientBirthdate_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string patient_birthdate = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPatientBirthdateBytes() {
-        java.lang.Object ref = patientBirthdate_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          patientBirthdate_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string patient_birthdate = 6;</code>
-       */
-      public Builder setPatientBirthdate(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        patientBirthdate_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_birthdate = 6;</code>
-       */
-      public Builder clearPatientBirthdate() {
-        
-        patientBirthdate_ = getDefaultInstance().getPatientBirthdate();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_birthdate = 6;</code>
-       */
-      public Builder setPatientBirthdateBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        patientBirthdate_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object patientGender_ = "";
-      /**
-       * <code>string patient_gender = 7;</code>
-       */
-      public java.lang.String getPatientGender() {
-        java.lang.Object ref = patientGender_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          patientGender_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string patient_gender = 7;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPatientGenderBytes() {
-        java.lang.Object ref = patientGender_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          patientGender_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string patient_gender = 7;</code>
-       */
-      public Builder setPatientGender(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        patientGender_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_gender = 7;</code>
-       */
-      public Builder clearPatientGender() {
-        
-        patientGender_ = getDefaultInstance().getPatientGender();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string patient_gender = 7;</code>
-       */
-      public Builder setPatientGenderBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        patientGender_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object medicalInstitutionType_ = "";
-      /**
-       * <code>string medical_institution_type = 8;</code>
-       */
-      public java.lang.String getMedicalInstitutionType() {
-        java.lang.Object ref = medicalInstitutionType_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          medicalInstitutionType_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string medical_institution_type = 8;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMedicalInstitutionTypeBytes() {
-        java.lang.Object ref = medicalInstitutionType_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          medicalInstitutionType_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string medical_institution_type = 8;</code>
-       */
-      public Builder setMedicalInstitutionType(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        medicalInstitutionType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string medical_institution_type = 8;</code>
-       */
-      public Builder clearMedicalInstitutionType() {
-        
-        medicalInstitutionType_ = getDefaultInstance().getMedicalInstitutionType();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string medical_institution_type = 8;</code>
-       */
-      public Builder setMedicalInstitutionTypeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        medicalInstitutionType_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object medicalInstitutionName_ = "";
-      /**
-       * <code>string medical_institution_name = 9;</code>
-       */
-      public java.lang.String getMedicalInstitutionName() {
-        java.lang.Object ref = medicalInstitutionName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          medicalInstitutionName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string medical_institution_name = 9;</code>
-       */
-      public com.google.protobuf.ByteString
-          getMedicalInstitutionNameBytes() {
-        java.lang.Object ref = medicalInstitutionName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          medicalInstitutionName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string medical_institution_name = 9;</code>
-       */
-      public Builder setMedicalInstitutionName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        medicalInstitutionName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string medical_institution_name = 9;</code>
-       */
-      public Builder clearMedicalInstitutionName() {
-        
-        medicalInstitutionName_ = getDefaultInstance().getMedicalInstitutionName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string medical_institution_name = 9;</code>
-       */
-      public Builder setMedicalInstitutionNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        medicalInstitutionName_ = value;
+        diagnosisCodeType_ = value;
         onChanged();
         return this;
       }
 
       private java.lang.Object diagnosisCode_ = "";
       /**
-       * <code>string diagnosis_code = 10;</code>
+       * <code>string diagnosis_code = 3;</code>
        */
       public java.lang.String getDiagnosisCode() {
         java.lang.Object ref = diagnosisCode_;
@@ -10402,7 +8527,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string diagnosis_code = 10;</code>
+       * <code>string diagnosis_code = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDiagnosisCodeBytes() {
@@ -10418,7 +8543,7 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string diagnosis_code = 10;</code>
+       * <code>string diagnosis_code = 3;</code>
        */
       public Builder setDiagnosisCode(
           java.lang.String value) {
@@ -10431,7 +8556,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>string diagnosis_code = 10;</code>
+       * <code>string diagnosis_code = 3;</code>
        */
       public Builder clearDiagnosisCode() {
         
@@ -10440,7 +8565,7 @@ public final class ClaimDataV1 {
         return this;
       }
       /**
-       * <code>string diagnosis_code = 10;</code>
+       * <code>string diagnosis_code = 3;</code>
        */
       public Builder setDiagnosisCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -10454,1615 +8579,28 @@ public final class ClaimDataV1 {
         return this;
       }
 
-      private java.lang.Object doctorName_ = "";
+      private int diagnosisName_ ;
       /**
-       * <code>string doctor_name = 11;</code>
+       * <code>uint32 diagnosis_name = 4;</code>
        */
-      public java.lang.String getDoctorName() {
-        java.lang.Object ref = doctorName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          doctorName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getDiagnosisName() {
+        return diagnosisName_;
       }
       /**
-       * <code>string doctor_name = 11;</code>
+       * <code>uint32 diagnosis_name = 4;</code>
        */
-      public com.google.protobuf.ByteString
-          getDoctorNameBytes() {
-        java.lang.Object ref = doctorName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          doctorName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string doctor_name = 11;</code>
-       */
-      public Builder setDoctorName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        doctorName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string doctor_name = 11;</code>
-       */
-      public Builder clearDoctorName() {
+      public Builder setDiagnosisName(int value) {
         
-        doctorName_ = getDefaultInstance().getDoctorName();
+        diagnosisName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string doctor_name = 11;</code>
+       * <code>uint32 diagnosis_name = 4;</code>
        */
-      public Builder setDoctorNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+      public Builder clearDiagnosisName() {
         
-        doctorName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object doctorLicenseNo_ = "";
-      /**
-       * <code>string doctor_license_no = 12;</code>
-       */
-      public java.lang.String getDoctorLicenseNo() {
-        java.lang.Object ref = doctorLicenseNo_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          doctorLicenseNo_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string doctor_license_no = 12;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDoctorLicenseNoBytes() {
-        java.lang.Object ref = doctorLicenseNo_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          doctorLicenseNo_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string doctor_license_no = 12;</code>
-       */
-      public Builder setDoctorLicenseNo(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        doctorLicenseNo_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string doctor_license_no = 12;</code>
-       */
-      public Builder clearDoctorLicenseNo() {
-        
-        doctorLicenseNo_ = getDefaultInstance().getDoctorLicenseNo();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string doctor_license_no = 12;</code>
-       */
-      public Builder setDoctorLicenseNoBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        doctorLicenseNo_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem> prescriptionItems_ =
-        java.util.Collections.emptyList();
-      private void ensurePrescriptionItemsIsMutable() {
-        if (!((bitField0_ & 0x00001000) == 0x00001000)) {
-          prescriptionItems_ = new java.util.ArrayList<org.medibloc.phr.ClaimDataV1.PrescriptionItem>(prescriptionItems_);
-          bitField0_ |= 0x00001000;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.medibloc.phr.ClaimDataV1.PrescriptionItem, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder> prescriptionItemsBuilder_;
-
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem> getPrescriptionItemsList() {
-        if (prescriptionItemsBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(prescriptionItems_);
-        } else {
-          return prescriptionItemsBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public int getPrescriptionItemsCount() {
-        if (prescriptionItemsBuilder_ == null) {
-          return prescriptionItems_.size();
-        } else {
-          return prescriptionItemsBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem getPrescriptionItems(int index) {
-        if (prescriptionItemsBuilder_ == null) {
-          return prescriptionItems_.get(index);
-        } else {
-          return prescriptionItemsBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder setPrescriptionItems(
-          int index, org.medibloc.phr.ClaimDataV1.PrescriptionItem value) {
-        if (prescriptionItemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.set(index, value);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder setPrescriptionItems(
-          int index, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder builderForValue) {
-        if (prescriptionItemsBuilder_ == null) {
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder addPrescriptionItems(org.medibloc.phr.ClaimDataV1.PrescriptionItem value) {
-        if (prescriptionItemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.add(value);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder addPrescriptionItems(
-          int index, org.medibloc.phr.ClaimDataV1.PrescriptionItem value) {
-        if (prescriptionItemsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.add(index, value);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder addPrescriptionItems(
-          org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder builderForValue) {
-        if (prescriptionItemsBuilder_ == null) {
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.add(builderForValue.build());
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder addPrescriptionItems(
-          int index, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder builderForValue) {
-        if (prescriptionItemsBuilder_ == null) {
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder addAllPrescriptionItems(
-          java.lang.Iterable<? extends org.medibloc.phr.ClaimDataV1.PrescriptionItem> values) {
-        if (prescriptionItemsBuilder_ == null) {
-          ensurePrescriptionItemsIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, prescriptionItems_);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder clearPrescriptionItems() {
-        if (prescriptionItemsBuilder_ == null) {
-          prescriptionItems_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00001000);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public Builder removePrescriptionItems(int index) {
-        if (prescriptionItemsBuilder_ == null) {
-          ensurePrescriptionItemsIsMutable();
-          prescriptionItems_.remove(index);
-          onChanged();
-        } else {
-          prescriptionItemsBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder getPrescriptionItemsBuilder(
-          int index) {
-        return getPrescriptionItemsFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder getPrescriptionItemsOrBuilder(
-          int index) {
-        if (prescriptionItemsBuilder_ == null) {
-          return prescriptionItems_.get(index);  } else {
-          return prescriptionItemsBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public java.util.List<? extends org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder> 
-           getPrescriptionItemsOrBuilderList() {
-        if (prescriptionItemsBuilder_ != null) {
-          return prescriptionItemsBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(prescriptionItems_);
-        }
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder addPrescriptionItemsBuilder() {
-        return getPrescriptionItemsFieldBuilder().addBuilder(
-            org.medibloc.phr.ClaimDataV1.PrescriptionItem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder addPrescriptionItemsBuilder(
-          int index) {
-        return getPrescriptionItemsFieldBuilder().addBuilder(
-            index, org.medibloc.phr.ClaimDataV1.PrescriptionItem.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .PrescriptionItem prescription_items = 13;</code>
-       */
-      public java.util.List<org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder> 
-           getPrescriptionItemsBuilderList() {
-        return getPrescriptionItemsFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          org.medibloc.phr.ClaimDataV1.PrescriptionItem, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder> 
-          getPrescriptionItemsFieldBuilder() {
-        if (prescriptionItemsBuilder_ == null) {
-          prescriptionItemsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              org.medibloc.phr.ClaimDataV1.PrescriptionItem, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder, org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder>(
-                  prescriptionItems_,
-                  ((bitField0_ & 0x00001000) == 0x00001000),
-                  getParentForChildren(),
-                  isClean());
-          prescriptionItems_ = null;
-        }
-        return prescriptionItemsBuilder_;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:Prescription)
-    }
-
-    // @@protoc_insertion_point(class_scope:Prescription)
-    private static final org.medibloc.phr.ClaimDataV1.Prescription DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new org.medibloc.phr.ClaimDataV1.Prescription();
-    }
-
-    public static org.medibloc.phr.ClaimDataV1.Prescription getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Prescription>
-        PARSER = new com.google.protobuf.AbstractParser<Prescription>() {
-      @java.lang.Override
-      public Prescription parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Prescription(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Prescription> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Prescription> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public org.medibloc.phr.ClaimDataV1.Prescription getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface PrescriptionItemOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:PrescriptionItem)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string drug_code = 1;</code>
-     */
-    java.lang.String getDrugCode();
-    /**
-     * <code>string drug_code = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getDrugCodeBytes();
-
-    /**
-     * <code>string drug_name = 2;</code>
-     */
-    java.lang.String getDrugName();
-    /**
-     * <code>string drug_name = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getDrugNameBytes();
-
-    /**
-     * <code>string daily_dose = 3;</code>
-     */
-    java.lang.String getDailyDose();
-    /**
-     * <code>string daily_dose = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getDailyDoseBytes();
-
-    /**
-     * <code>string daily_frequency = 4;</code>
-     */
-    java.lang.String getDailyFrequency();
-    /**
-     * <code>string daily_frequency = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getDailyFrequencyBytes();
-
-    /**
-     * <code>string prescription_duration = 5;</code>
-     */
-    java.lang.String getPrescriptionDuration();
-    /**
-     * <code>string prescription_duration = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getPrescriptionDurationBytes();
-
-    /**
-     * <code>string usage = 6;</code>
-     */
-    java.lang.String getUsage();
-    /**
-     * <code>string usage = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getUsageBytes();
-  }
-  /**
-   * Protobuf type {@code PrescriptionItem}
-   */
-  public  static final class PrescriptionItem extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:PrescriptionItem)
-      PrescriptionItemOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use PrescriptionItem.newBuilder() to construct.
-    private PrescriptionItem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private PrescriptionItem() {
-      drugCode_ = "";
-      drugName_ = "";
-      dailyDose_ = "";
-      dailyFrequency_ = "";
-      prescriptionDuration_ = "";
-      usage_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private PrescriptionItem(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              drugCode_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              drugName_ = s;
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dailyDose_ = s;
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dailyFrequency_ = s;
-              break;
-            }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              prescriptionDuration_ = s;
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              usage_ = s;
-              break;
-            }
-            default: {
-              if (!parseUnknownFieldProto3(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return org.medibloc.phr.ClaimDataV1.internal_static_PrescriptionItem_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return org.medibloc.phr.ClaimDataV1.internal_static_PrescriptionItem_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              org.medibloc.phr.ClaimDataV1.PrescriptionItem.class, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder.class);
-    }
-
-    public static final int DRUG_CODE_FIELD_NUMBER = 1;
-    private volatile java.lang.Object drugCode_;
-    /**
-     * <code>string drug_code = 1;</code>
-     */
-    public java.lang.String getDrugCode() {
-      java.lang.Object ref = drugCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        drugCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string drug_code = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDrugCodeBytes() {
-      java.lang.Object ref = drugCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        drugCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DRUG_NAME_FIELD_NUMBER = 2;
-    private volatile java.lang.Object drugName_;
-    /**
-     * <code>string drug_name = 2;</code>
-     */
-    public java.lang.String getDrugName() {
-      java.lang.Object ref = drugName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        drugName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string drug_name = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDrugNameBytes() {
-      java.lang.Object ref = drugName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        drugName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DAILY_DOSE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object dailyDose_;
-    /**
-     * <code>string daily_dose = 3;</code>
-     */
-    public java.lang.String getDailyDose() {
-      java.lang.Object ref = dailyDose_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        dailyDose_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string daily_dose = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDailyDoseBytes() {
-      java.lang.Object ref = dailyDose_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dailyDose_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int DAILY_FREQUENCY_FIELD_NUMBER = 4;
-    private volatile java.lang.Object dailyFrequency_;
-    /**
-     * <code>string daily_frequency = 4;</code>
-     */
-    public java.lang.String getDailyFrequency() {
-      java.lang.Object ref = dailyFrequency_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        dailyFrequency_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string daily_frequency = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDailyFrequencyBytes() {
-      java.lang.Object ref = dailyFrequency_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dailyFrequency_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PRESCRIPTION_DURATION_FIELD_NUMBER = 5;
-    private volatile java.lang.Object prescriptionDuration_;
-    /**
-     * <code>string prescription_duration = 5;</code>
-     */
-    public java.lang.String getPrescriptionDuration() {
-      java.lang.Object ref = prescriptionDuration_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        prescriptionDuration_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string prescription_duration = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPrescriptionDurationBytes() {
-      java.lang.Object ref = prescriptionDuration_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        prescriptionDuration_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int USAGE_FIELD_NUMBER = 6;
-    private volatile java.lang.Object usage_;
-    /**
-     * <code>string usage = 6;</code>
-     */
-    public java.lang.String getUsage() {
-      java.lang.Object ref = usage_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        usage_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string usage = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUsageBytes() {
-      java.lang.Object ref = usage_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        usage_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getDrugCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, drugCode_);
-      }
-      if (!getDrugNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, drugName_);
-      }
-      if (!getDailyDoseBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dailyDose_);
-      }
-      if (!getDailyFrequencyBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, dailyFrequency_);
-      }
-      if (!getPrescriptionDurationBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, prescriptionDuration_);
-      }
-      if (!getUsageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, usage_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getDrugCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, drugCode_);
-      }
-      if (!getDrugNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, drugName_);
-      }
-      if (!getDailyDoseBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dailyDose_);
-      }
-      if (!getDailyFrequencyBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, dailyFrequency_);
-      }
-      if (!getPrescriptionDurationBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, prescriptionDuration_);
-      }
-      if (!getUsageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, usage_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof org.medibloc.phr.ClaimDataV1.PrescriptionItem)) {
-        return super.equals(obj);
-      }
-      org.medibloc.phr.ClaimDataV1.PrescriptionItem other = (org.medibloc.phr.ClaimDataV1.PrescriptionItem) obj;
-
-      boolean result = true;
-      result = result && getDrugCode()
-          .equals(other.getDrugCode());
-      result = result && getDrugName()
-          .equals(other.getDrugName());
-      result = result && getDailyDose()
-          .equals(other.getDailyDose());
-      result = result && getDailyFrequency()
-          .equals(other.getDailyFrequency());
-      result = result && getPrescriptionDuration()
-          .equals(other.getPrescriptionDuration());
-      result = result && getUsage()
-          .equals(other.getUsage());
-      result = result && unknownFields.equals(other.unknownFields);
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DRUG_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getDrugCode().hashCode();
-      hash = (37 * hash) + DRUG_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getDrugName().hashCode();
-      hash = (37 * hash) + DAILY_DOSE_FIELD_NUMBER;
-      hash = (53 * hash) + getDailyDose().hashCode();
-      hash = (37 * hash) + DAILY_FREQUENCY_FIELD_NUMBER;
-      hash = (53 * hash) + getDailyFrequency().hashCode();
-      hash = (37 * hash) + PRESCRIPTION_DURATION_FIELD_NUMBER;
-      hash = (53 * hash) + getPrescriptionDuration().hashCode();
-      hash = (37 * hash) + USAGE_FIELD_NUMBER;
-      hash = (53 * hash) + getUsage().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(org.medibloc.phr.ClaimDataV1.PrescriptionItem prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code PrescriptionItem}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:PrescriptionItem)
-        org.medibloc.phr.ClaimDataV1.PrescriptionItemOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_PrescriptionItem_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_PrescriptionItem_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                org.medibloc.phr.ClaimDataV1.PrescriptionItem.class, org.medibloc.phr.ClaimDataV1.PrescriptionItem.Builder.class);
-      }
-
-      // Construct using org.medibloc.phr.ClaimDataV1.PrescriptionItem.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        drugCode_ = "";
-
-        drugName_ = "";
-
-        dailyDose_ = "";
-
-        dailyFrequency_ = "";
-
-        prescriptionDuration_ = "";
-
-        usage_ = "";
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return org.medibloc.phr.ClaimDataV1.internal_static_PrescriptionItem_descriptor;
-      }
-
-      @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem getDefaultInstanceForType() {
-        return org.medibloc.phr.ClaimDataV1.PrescriptionItem.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem build() {
-        org.medibloc.phr.ClaimDataV1.PrescriptionItem result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public org.medibloc.phr.ClaimDataV1.PrescriptionItem buildPartial() {
-        org.medibloc.phr.ClaimDataV1.PrescriptionItem result = new org.medibloc.phr.ClaimDataV1.PrescriptionItem(this);
-        result.drugCode_ = drugCode_;
-        result.drugName_ = drugName_;
-        result.dailyDose_ = dailyDose_;
-        result.dailyFrequency_ = dailyFrequency_;
-        result.prescriptionDuration_ = prescriptionDuration_;
-        result.usage_ = usage_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof org.medibloc.phr.ClaimDataV1.PrescriptionItem) {
-          return mergeFrom((org.medibloc.phr.ClaimDataV1.PrescriptionItem)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.PrescriptionItem other) {
-        if (other == org.medibloc.phr.ClaimDataV1.PrescriptionItem.getDefaultInstance()) return this;
-        if (!other.getDrugCode().isEmpty()) {
-          drugCode_ = other.drugCode_;
-          onChanged();
-        }
-        if (!other.getDrugName().isEmpty()) {
-          drugName_ = other.drugName_;
-          onChanged();
-        }
-        if (!other.getDailyDose().isEmpty()) {
-          dailyDose_ = other.dailyDose_;
-          onChanged();
-        }
-        if (!other.getDailyFrequency().isEmpty()) {
-          dailyFrequency_ = other.dailyFrequency_;
-          onChanged();
-        }
-        if (!other.getPrescriptionDuration().isEmpty()) {
-          prescriptionDuration_ = other.prescriptionDuration_;
-          onChanged();
-        }
-        if (!other.getUsage().isEmpty()) {
-          usage_ = other.usage_;
-          onChanged();
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        org.medibloc.phr.ClaimDataV1.PrescriptionItem parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (org.medibloc.phr.ClaimDataV1.PrescriptionItem) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object drugCode_ = "";
-      /**
-       * <code>string drug_code = 1;</code>
-       */
-      public java.lang.String getDrugCode() {
-        java.lang.Object ref = drugCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          drugCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string drug_code = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDrugCodeBytes() {
-        java.lang.Object ref = drugCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          drugCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string drug_code = 1;</code>
-       */
-      public Builder setDrugCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        drugCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string drug_code = 1;</code>
-       */
-      public Builder clearDrugCode() {
-        
-        drugCode_ = getDefaultInstance().getDrugCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string drug_code = 1;</code>
-       */
-      public Builder setDrugCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        drugCode_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object drugName_ = "";
-      /**
-       * <code>string drug_name = 2;</code>
-       */
-      public java.lang.String getDrugName() {
-        java.lang.Object ref = drugName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          drugName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string drug_name = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDrugNameBytes() {
-        java.lang.Object ref = drugName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          drugName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string drug_name = 2;</code>
-       */
-      public Builder setDrugName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        drugName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string drug_name = 2;</code>
-       */
-      public Builder clearDrugName() {
-        
-        drugName_ = getDefaultInstance().getDrugName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string drug_name = 2;</code>
-       */
-      public Builder setDrugNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        drugName_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object dailyDose_ = "";
-      /**
-       * <code>string daily_dose = 3;</code>
-       */
-      public java.lang.String getDailyDose() {
-        java.lang.Object ref = dailyDose_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          dailyDose_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string daily_dose = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDailyDoseBytes() {
-        java.lang.Object ref = dailyDose_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dailyDose_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string daily_dose = 3;</code>
-       */
-      public Builder setDailyDose(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        dailyDose_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string daily_dose = 3;</code>
-       */
-      public Builder clearDailyDose() {
-        
-        dailyDose_ = getDefaultInstance().getDailyDose();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string daily_dose = 3;</code>
-       */
-      public Builder setDailyDoseBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        dailyDose_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object dailyFrequency_ = "";
-      /**
-       * <code>string daily_frequency = 4;</code>
-       */
-      public java.lang.String getDailyFrequency() {
-        java.lang.Object ref = dailyFrequency_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          dailyFrequency_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string daily_frequency = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDailyFrequencyBytes() {
-        java.lang.Object ref = dailyFrequency_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dailyFrequency_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string daily_frequency = 4;</code>
-       */
-      public Builder setDailyFrequency(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        dailyFrequency_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string daily_frequency = 4;</code>
-       */
-      public Builder clearDailyFrequency() {
-        
-        dailyFrequency_ = getDefaultInstance().getDailyFrequency();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string daily_frequency = 4;</code>
-       */
-      public Builder setDailyFrequencyBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        dailyFrequency_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object prescriptionDuration_ = "";
-      /**
-       * <code>string prescription_duration = 5;</code>
-       */
-      public java.lang.String getPrescriptionDuration() {
-        java.lang.Object ref = prescriptionDuration_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          prescriptionDuration_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string prescription_duration = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPrescriptionDurationBytes() {
-        java.lang.Object ref = prescriptionDuration_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          prescriptionDuration_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string prescription_duration = 5;</code>
-       */
-      public Builder setPrescriptionDuration(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        prescriptionDuration_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prescription_duration = 5;</code>
-       */
-      public Builder clearPrescriptionDuration() {
-        
-        prescriptionDuration_ = getDefaultInstance().getPrescriptionDuration();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string prescription_duration = 5;</code>
-       */
-      public Builder setPrescriptionDurationBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        prescriptionDuration_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object usage_ = "";
-      /**
-       * <code>string usage = 6;</code>
-       */
-      public java.lang.String getUsage() {
-        java.lang.Object ref = usage_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          usage_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string usage = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUsageBytes() {
-        java.lang.Object ref = usage_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          usage_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string usage = 6;</code>
-       */
-      public Builder setUsage(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        usage_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string usage = 6;</code>
-       */
-      public Builder clearUsage() {
-        
-        usage_ = getDefaultInstance().getUsage();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string usage = 6;</code>
-       */
-      public Builder setUsageBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        usage_ = value;
+        diagnosisName_ = 0;
         onChanged();
         return this;
       }
@@ -12079,41 +8617,41 @@ public final class ClaimDataV1 {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:PrescriptionItem)
+      // @@protoc_insertion_point(builder_scope:Diagnosis)
     }
 
-    // @@protoc_insertion_point(class_scope:PrescriptionItem)
-    private static final org.medibloc.phr.ClaimDataV1.PrescriptionItem DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:Diagnosis)
+    private static final org.medibloc.phr.ClaimDataV1.Diagnosis DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new org.medibloc.phr.ClaimDataV1.PrescriptionItem();
+      DEFAULT_INSTANCE = new org.medibloc.phr.ClaimDataV1.Diagnosis();
     }
 
-    public static org.medibloc.phr.ClaimDataV1.PrescriptionItem getDefaultInstance() {
+    public static org.medibloc.phr.ClaimDataV1.Diagnosis getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<PrescriptionItem>
-        PARSER = new com.google.protobuf.AbstractParser<PrescriptionItem>() {
+    private static final com.google.protobuf.Parser<Diagnosis>
+        PARSER = new com.google.protobuf.AbstractParser<Diagnosis>() {
       @java.lang.Override
-      public PrescriptionItem parsePartialFrom(
+      public Diagnosis parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new PrescriptionItem(input, extensionRegistry);
+        return new Diagnosis(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<PrescriptionItem> parser() {
+    public static com.google.protobuf.Parser<Diagnosis> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<PrescriptionItem> getParserForType() {
+    public com.google.protobuf.Parser<Diagnosis> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public org.medibloc.phr.ClaimDataV1.PrescriptionItem getDefaultInstanceForType() {
+    public org.medibloc.phr.ClaimDataV1.Diagnosis getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -12135,15 +8673,10 @@ public final class ClaimDataV1 {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FeeItem_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Prescription_descriptor;
+    internal_static_Diagnosis_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Prescription_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_PrescriptionItem_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_PrescriptionItem_fieldAccessorTable;
+      internal_static_Diagnosis_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -12153,51 +8686,38 @@ public final class ClaimDataV1 {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021ClaimDataV1.proto\"\337\001\n\005Claim\022\017\n\007version" +
-      "\030\001 \001(\r\022\017\n\007bill_no\030\002 \001(\t\022\024\n\014treatment_no\030" +
-      "\003 \001(\t\022\031\n\021pay_complete_date\030\004 \001(\t\022\027\n\017bill" +
-      "_issue_date\030\005 \001(\t\022\022\n\npatient_no\030\006 \001(\t\022\024\n" +
-      "\014patient_name\030\007 \001(\t\022\032\n\010receipts\030\010 \003(\0132\010." +
-      "Receipt\022$\n\rprescriptions\030\t \003(\0132\r.Prescri" +
-      "ption\"\211\005\n\007Receipt\022\022\n\nreceipt_no\030\001 \001(\t\022\024\n" +
-      "\014receipt_type\030\002 \001(\t\022\022\n\npatient_no\030\003 \001(\t\022" +
-      "\024\n\014patient_name\030\004 \001(\t\022\037\n\027company_registr" +
-      "ation_no\030\005 \001(\t\022\034\n\024treatment_start_date\030\006" +
-      " \001(\t\022\032\n\022treatment_end_date\030\007 \001(\t\022\034\n\024trea" +
-      "tment_department\030\010 \001(\t\022!\n\031treatment_depa" +
-      "rtment_code\030\t \001(\t\022\026\n\016treatment_type\030\n \001(" +
-      "\t\022\033\n\023treatment_type_code\030\013 \001(\t\022\023\n\013covere" +
-      "d_fee\030\014 \001(\t\022\025\n\runcovered_fee\030\r \001(\t\022\032\n\022up" +
-      "per_limit_excess\030\016 \001(\t\022\021\n\tpay_total\030\017 \001(" +
-      "\t\022\031\n\021patient_pay_total\030\020 \001(\t\022\025\n\rdeduct_a" +
-      "mount\030\021 \001(\t\022\032\n\022advance_pay_amount\030\022 \001(\t\022" +
-      "\022\n\npay_amount\030\023 \001(\t\022\036\n\026uncollected_pay_a" +
-      "mount\030\024 \001(\t\022\026\n\016receipt_amount\030\025 \001(\t\022\025\n\rs" +
-      "urtax_amount\030\026 \001(\t\022\027\n\017cash_pay_amount\030\027 " +
-      "\001(\t\022\027\n\017card_pay_amount\030\030 \001(\t\022\033\n\tfee_item" +
-      "s\030\031 \003(\0132\010.FeeItem\"\350\002\n\007FeeItem\022\025\n\rfee_ite" +
-      "m_name\030\001 \001(\t\022\025\n\rfee_item_code\030\002 \001(\t\022\026\n\016t" +
-      "reatment_date\030\003 \001(\t\022\024\n\014covered_type\030\004 \001(" +
-      "\t\022\033\n\023medical_charge_code\030\005 \001(\t\022\r\n\005price\030" +
-      "\006 \001(\t\022\020\n\010quantity\030\007 \001(\t\022\025\n\rrepeat_number" +
-      "\030\010 \001(\t\022\021\n\tfee_total\030\t \001(\t\022\033\n\023covered_pat" +
-      "ient_fee\030\n \001(\t\022\035\n\025covered_insurance_fee\030" +
-      "\013 \001(\t\022\037\n\027covered_patient_all_fee\030\014 \001(\t\022\034" +
-      "\n\024uncovered_chosen_fee\030\r \001(\t\022\036\n\026uncovere" +
-      "d_unchosen_fee\030\016 \001(\t\"\356\002\n\014Prescription\022\027\n" +
-      "\017prescription_no\030\001 \001(\t\022\022\n\nreceipt_no\030\002 \001" +
-      "(\t\022\033\n\023treatment_type_code\030\003 \001(\t\022\020\n\010given" +
-      "_no\030\004 \001(\t\022\024\n\014patient_name\030\005 \001(\t\022\031\n\021patie" +
-      "nt_birthdate\030\006 \001(\t\022\026\n\016patient_gender\030\007 \001" +
-      "(\t\022 \n\030medical_institution_type\030\010 \001(\t\022 \n\030" +
-      "medical_institution_name\030\t \001(\t\022\026\n\016diagno" +
-      "sis_code\030\n \001(\t\022\023\n\013doctor_name\030\013 \001(\t\022\031\n\021d" +
-      "octor_license_no\030\014 \001(\t\022-\n\022prescription_i" +
-      "tems\030\r \003(\0132\021.PrescriptionItem\"\223\001\n\020Prescr" +
-      "iptionItem\022\021\n\tdrug_code\030\001 \001(\t\022\021\n\tdrug_na" +
-      "me\030\002 \001(\t\022\022\n\ndaily_dose\030\003 \001(\t\022\027\n\017daily_fr" +
-      "equency\030\004 \001(\t\022\035\n\025prescription_duration\030\005" +
-      " \001(\t\022\r\n\005usage\030\006 \001(\tB\037\n\020org.medibloc.phrB" +
+      "\n\021ClaimDataV1.proto\"e\n\005Claim\022\017\n\007version\030" +
+      "\001 \001(\r\022\020\n\010claim_no\030\002 \001(\t\022\032\n\010receipts\030\003 \003(" +
+      "\0132\010.Receipt\022\035\n\tdiagnoses\030\004 \003(\0132\n.Diagnos" +
+      "is\"\211\005\n\007Receipt\022\022\n\nreceipt_no\030\001 \001(\t\022\024\n\014re" +
+      "ceipt_type\030\002 \001(\t\022\022\n\npatient_no\030\003 \001(\t\022\024\n\014" +
+      "patient_name\030\004 \001(\t\022\037\n\027company_registrati" +
+      "on_no\030\005 \001(\t\022\034\n\024treatment_start_date\030\006 \001(" +
+      "\t\022\032\n\022treatment_end_date\030\007 \001(\t\022\034\n\024treatme" +
+      "nt_department\030\010 \001(\t\022!\n\031treatment_departm" +
+      "ent_code\030\t \001(\t\022\026\n\016treatment_type\030\n \001(\t\022\033" +
+      "\n\023treatment_type_code\030\013 \001(\t\022\023\n\013covered_f" +
+      "ee\030\014 \001(\t\022\025\n\runcovered_fee\030\r \001(\t\022\032\n\022upper" +
+      "_limit_excess\030\016 \001(\t\022\021\n\tpay_total\030\017 \001(\t\022\031" +
+      "\n\021patient_pay_total\030\020 \001(\t\022\025\n\rdeduct_amou" +
+      "nt\030\021 \001(\t\022\032\n\022advance_pay_amount\030\022 \001(\t\022\022\n\n" +
+      "pay_amount\030\023 \001(\t\022\036\n\026uncollected_pay_amou" +
+      "nt\030\024 \001(\t\022\026\n\016receipt_amount\030\025 \001(\t\022\025\n\rsurt" +
+      "ax_amount\030\026 \001(\t\022\027\n\017cash_pay_amount\030\027 \001(\t" +
+      "\022\027\n\017card_pay_amount\030\030 \001(\t\022\033\n\tfee_items\030\031" +
+      " \003(\0132\010.FeeItem\"\350\002\n\007FeeItem\022\025\n\rfee_item_n" +
+      "ame\030\001 \001(\t\022\025\n\rfee_item_code\030\002 \001(\t\022\026\n\016trea" +
+      "tment_date\030\003 \001(\t\022\024\n\014covered_type\030\004 \001(\t\022\033" +
+      "\n\023medical_charge_code\030\005 \001(\t\022\r\n\005price\030\006 \001" +
+      "(\t\022\020\n\010quantity\030\007 \001(\t\022\025\n\rrepeat_number\030\010 " +
+      "\001(\t\022\021\n\tfee_total\030\t \001(\t\022\033\n\023covered_patien" +
+      "t_fee\030\n \001(\t\022\035\n\025covered_insurance_fee\030\013 \001" +
+      "(\t\022\037\n\027covered_patient_all_fee\030\014 \001(\t\022\034\n\024u" +
+      "ncovered_chosen_fee\030\r \001(\t\022\036\n\026uncovered_u" +
+      "nchosen_fee\030\016 \001(\t\"x\n\tDiagnosis\022\036\n\026diagno" +
+      "sis_code_version\030\001 \001(\t\022\033\n\023diagnosis_code" +
+      "_type\030\002 \001(\t\022\026\n\016diagnosis_code\030\003 \001(\t\022\026\n\016d" +
+      "iagnosis_name\030\004 \001(\rB\037\n\020org.medibloc.phrB" +
       "\013ClaimDataV1b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
@@ -12217,7 +8737,7 @@ public final class ClaimDataV1 {
     internal_static_Claim_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Claim_descriptor,
-        new java.lang.String[] { "Version", "BillNo", "TreatmentNo", "PayCompleteDate", "BillIssueDate", "PatientNo", "PatientName", "Receipts", "Prescriptions", });
+        new java.lang.String[] { "Version", "ClaimNo", "Receipts", "Diagnoses", });
     internal_static_Receipt_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Receipt_fieldAccessorTable = new
@@ -12230,18 +8750,12 @@ public final class ClaimDataV1 {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FeeItem_descriptor,
         new java.lang.String[] { "FeeItemName", "FeeItemCode", "TreatmentDate", "CoveredType", "MedicalChargeCode", "Price", "Quantity", "RepeatNumber", "FeeTotal", "CoveredPatientFee", "CoveredInsuranceFee", "CoveredPatientAllFee", "UncoveredChosenFee", "UncoveredUnchosenFee", });
-    internal_static_Prescription_descriptor =
+    internal_static_Diagnosis_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_Prescription_fieldAccessorTable = new
+    internal_static_Diagnosis_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Prescription_descriptor,
-        new java.lang.String[] { "PrescriptionNo", "ReceiptNo", "TreatmentTypeCode", "GivenNo", "PatientName", "PatientBirthdate", "PatientGender", "MedicalInstitutionType", "MedicalInstitutionName", "DiagnosisCode", "DoctorName", "DoctorLicenseNo", "PrescriptionItems", });
-    internal_static_PrescriptionItem_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_PrescriptionItem_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_PrescriptionItem_descriptor,
-        new java.lang.String[] { "DrugCode", "DrugName", "DailyDose", "DailyFrequency", "PrescriptionDuration", "Usage", });
+        internal_static_Diagnosis_descriptor,
+        new java.lang.String[] { "DiagnosisCodeVersion", "DiagnosisCodeType", "DiagnosisCode", "DiagnosisName", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
