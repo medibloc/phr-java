@@ -56,8 +56,8 @@ public class ClaimDataV1UtilsTest {
         receiptBuilder.addFeeItems(FeeItem.newBuilder()
                 .setFeeItemName("검사료")
                 .setFeeItemCode("")
-                .setCoveredType("")
                 .setTreatmentDate("2018-12-06")
+                .setCoveredType("")
                 .setMedicalChargeCode("BB157")
                 .setPrice("20000")
                 .setQuantity("1")
@@ -80,7 +80,6 @@ public class ClaimDataV1UtilsTest {
         diagnosisBuilder2.setDiagnosisCodeType(20); // 부상병
         diagnosisBuilder2.setDiagnosisCode("J30.3");
 
-        /*** Claim - build, fill, and return ***/
         Claim.Builder partialClaim = claimBuilder
                 .addReceipts(receiptBuilder)
                 .addDiagnoses(diagnosisBuilder1)
