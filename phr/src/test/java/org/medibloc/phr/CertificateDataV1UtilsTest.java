@@ -1,20 +1,27 @@
 package org.medibloc.phr;
 
-import com.google.protobuf.ByteString;
-import org.junit.Assert;
 import org.junit.Test;
+import org.medibloc.phr.CertificateDataV1.*;
 
 public class CertificateDataV1UtilsTest {
     @Test
     public void testFillCertificate() {
-        CertificateDataV1.Certificate proto = CertificateDataV1.Certificate.newBuilder().build();
-        CertificateDataV1.Certificate actual = CertificateDataV1Utils.fillCertificate(proto);
+        /*** Certificate ***/
+        Certificate.Builder certificateBuilder = Certificate.newBuilder();
+        certificateBuilder.setBlockchainAddress("03107c5eae25e0443be09496162362fee885402379ee4c0fca30af8dbaa340e507");
+        certificateBuilder.setExpiryDate("2019-07-01 15:01:20");
 
-        /*
-        Assert.assertEquals(ByteString.copyFromUtf8(""), proto.getNonce());
-        Assert.assertEquals(ByteString.copyFromUtf8(""), proto.getCertification().getNonce());
-        Assert.assertNotEquals(ByteString.copyFromUtf8(""), actual.getNonce());
-        Assert.assertNotEquals(ByteString.copyFromUtf8(""), actual.getCertification().getNonce());
-        */
+        /*** Certificate.Certification ***/
+        certificateBuilder.setCertification(Certification.newBuilder()
+                .setCertificationResult("success")
+                .setPersonName("홍길동")
+                .setPersonBirthdate("19750101")
+                .setPersonGender("1")
+                .setPersonNation("0")
+                .setPersonCi("136a78e6v7awe8arw71ver89es17vr8a9ws612vr78es1vr7a8691v7res74164sa7ver68asv6sb87r9h6tg9a2")
+                .setPersonMobileCompany("ABC")
+                .setPersonMobileNumber("01012345678"));
+
+        CertificateDataV1Utils.fillCertificate(certificateBuilder);
     }
 }
