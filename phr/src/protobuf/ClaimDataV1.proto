@@ -1,61 +1,61 @@
-syntax = "proto3";
+syntax = "proto2";
 option java_package = "org.medibloc.phr";
 option java_outer_classname = "ClaimDataV1";
 
 message Claim {
-    uint32 version = 1;
-    string claim_no = 2;
+    required uint32 version = 1;
+    required string claim_no = 2;
     repeated Receipt receipts = 3;
     repeated Diagnosis diagnoses = 4;
 }
 
 message Receipt {
-    string receipt_no = 1;
-    string receipt_type = 2;
-    string patient_no = 3;
-    string patient_name = 4;
-    string company_registration_no = 5;
-    string treatment_start_date = 6;
-    string treatment_end_date = 7;
-    string treatment_department = 8;
-    string treatment_department_code = 9;
-    string treatment_type = 10;
-    string treatment_type_code = 11;
-    string covered_fee = 12;
-    string uncovered_fee = 13;
-    string upper_limit_excess = 14;
-    string pay_total = 15;
-    string patient_pay_total = 16;
-    string deduct_amount = 17;
-    string advance_pay_amount = 18;
-    string pay_amount = 19;
-    string uncollected_pay_amount = 20;
-    string receipt_amount = 21;
-    string surtax_amount = 22;
-    string cash_pay_amount = 23;
-    string card_pay_amount = 24;
+    required string receipt_no = 1;
+    required string receipt_type = 2;
+    required string patient_no = 3;
+    required string patient_name = 4;
+    required string company_registration_no = 5;
+    required string treatment_start_date = 6;
+    required string treatment_end_date = 7;
+    required string treatment_department = 8;
+    required string treatment_department_code = 9;
+    required string treatment_type = 10;
+    required string treatment_type_code = 11;
+    required string covered_fee = 12;
+    required string uncovered_fee = 13;
+    required string upper_limit_excess = 14;
+    required string pay_total = 15;
+    required string patient_pay_total = 16;
+    required string deduct_amount = 17;
+    required string advance_pay_amount = 18;
+    required string pay_amount = 19;
+    required string uncollected_pay_amount = 20;
+    required string receipt_amount = 21;
+    required string surtax_amount = 22;
+    required string cash_pay_amount = 23;
+    required string card_pay_amount = 24;
     repeated FeeItem fee_items = 25;
 }
 
 message FeeItem {
-    string fee_item_name = 1;
-    string fee_item_code = 2;
-    string treatment_date = 3;
-    string covered_type = 4;
-    string medical_charge_code = 5;
-    string price = 6;
-    string quantity = 7;
-    string repeat_number = 8;
-    string fee_total = 9;
-    string covered_patient_fee = 10;
-    string covered_insurance_fee = 11;
-    string covered_patient_all_fee = 12;
-    string uncovered_chosen_fee = 13;
-    string uncovered_unchosen_fee = 14;
+    required string fee_item_name = 1;
+    required string fee_item_code = 2;
+    required string treatment_date = 3;
+    required string covered_type = 4;
+    required string medical_charge_code = 5;
+    required string price = 6;
+    required string quantity = 7;
+    required string repeat_number = 8;
+    required string fee_total = 9;
+    required string covered_patient_fee = 10;
+    required string covered_insurance_fee = 11;
+    required string covered_patient_all_fee = 12;
+    required string uncovered_chosen_fee = 13;
+    required string uncovered_unchosen_fee = 14;
 }
 
 message Diagnosis {
-    string diagnosis_code_version = 1;
-    uint32 diagnosis_code_type = 2;
-    string diagnosis_code = 3;
+    required string diagnosis_code_version = 1;
+    required uint32 diagnosis_code_type = 2;
+    required string diagnosis_code = 3;
 }

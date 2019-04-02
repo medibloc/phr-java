@@ -19,16 +19,24 @@ public final class ClaimDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>uint32 version = 1;</code>
+     * <code>required uint32 version = 1;</code>
+     */
+    boolean hasVersion();
+    /**
+     * <code>required uint32 version = 1;</code>
      */
     int getVersion();
 
     /**
-     * <code>string claim_no = 2;</code>
+     * <code>required string claim_no = 2;</code>
+     */
+    boolean hasClaimNo();
+    /**
+     * <code>required string claim_no = 2;</code>
      */
     java.lang.String getClaimNo();
     /**
-     * <code>string claim_no = 2;</code>
+     * <code>required string claim_no = 2;</code>
      */
     com.google.protobuf.ByteString
         getClaimNoBytes();
@@ -125,14 +133,14 @@ public final class ClaimDataV1 {
               done = true;
               break;
             case 8: {
-
+              bitField0_ |= 0x00000001;
               version_ = input.readUInt32();
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              claimNo_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              claimNo_ = bs;
               break;
             }
             case 26: {
@@ -141,7 +149,7 @@ public final class ClaimDataV1 {
                 mutable_bitField0_ |= 0x00000004;
               }
               receipts_.add(
-                  input.readMessage(org.medibloc.phr.ClaimDataV1.Receipt.parser(), extensionRegistry));
+                  input.readMessage(org.medibloc.phr.ClaimDataV1.Receipt.PARSER, extensionRegistry));
               break;
             }
             case 34: {
@@ -150,11 +158,11 @@ public final class ClaimDataV1 {
                 mutable_bitField0_ |= 0x00000008;
               }
               diagnoses_.add(
-                  input.readMessage(org.medibloc.phr.ClaimDataV1.Diagnosis.parser(), extensionRegistry));
+                  input.readMessage(org.medibloc.phr.ClaimDataV1.Diagnosis.PARSER, extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -195,7 +203,13 @@ public final class ClaimDataV1 {
     public static final int VERSION_FIELD_NUMBER = 1;
     private int version_;
     /**
-     * <code>uint32 version = 1;</code>
+     * <code>required uint32 version = 1;</code>
+     */
+    public boolean hasVersion() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 version = 1;</code>
      */
     public int getVersion() {
       return version_;
@@ -204,7 +218,13 @@ public final class ClaimDataV1 {
     public static final int CLAIM_NO_FIELD_NUMBER = 2;
     private volatile java.lang.Object claimNo_;
     /**
-     * <code>string claim_no = 2;</code>
+     * <code>required string claim_no = 2;</code>
+     */
+    public boolean hasClaimNo() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string claim_no = 2;</code>
      */
     public java.lang.String getClaimNo() {
       java.lang.Object ref = claimNo_;
@@ -214,12 +234,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        claimNo_ = s;
+        if (bs.isValidUtf8()) {
+          claimNo_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string claim_no = 2;</code>
+     * <code>required string claim_no = 2;</code>
      */
     public com.google.protobuf.ByteString
         getClaimNoBytes() {
@@ -312,6 +334,26 @@ public final class ClaimDataV1 {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasVersion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClaimNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getReceiptsCount(); i++) {
+        if (!getReceipts(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getDiagnosesCount(); i++) {
+        if (!getDiagnoses(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -319,10 +361,10 @@ public final class ClaimDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (version_ != 0) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeUInt32(1, version_);
       }
-      if (!getClaimNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, claimNo_);
       }
       for (int i = 0; i < receipts_.size(); i++) {
@@ -340,11 +382,11 @@ public final class ClaimDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (version_ != 0) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(1, version_);
       }
-      if (!getClaimNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, claimNo_);
       }
       for (int i = 0; i < receipts_.size(); i++) {
@@ -371,10 +413,16 @@ public final class ClaimDataV1 {
       org.medibloc.phr.ClaimDataV1.Claim other = (org.medibloc.phr.ClaimDataV1.Claim) obj;
 
       boolean result = true;
-      result = result && (getVersion()
-          == other.getVersion());
-      result = result && getClaimNo()
-          .equals(other.getClaimNo());
+      result = result && (hasVersion() == other.hasVersion());
+      if (hasVersion()) {
+        result = result && (getVersion()
+            == other.getVersion());
+      }
+      result = result && (hasClaimNo() == other.hasClaimNo());
+      if (hasClaimNo()) {
+        result = result && getClaimNo()
+            .equals(other.getClaimNo());
+      }
       result = result && getReceiptsList()
           .equals(other.getReceiptsList());
       result = result && getDiagnosesList()
@@ -390,10 +438,14 @@ public final class ClaimDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getVersion();
-      hash = (37 * hash) + CLAIM_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getClaimNo().hashCode();
+      if (hasVersion()) {
+        hash = (37 * hash) + VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + getVersion();
+      }
+      if (hasClaimNo()) {
+        hash = (37 * hash) + CLAIM_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getClaimNo().hashCode();
+      }
       if (getReceiptsCount() > 0) {
         hash = (37 * hash) + RECEIPTS_FIELD_NUMBER;
         hash = (53 * hash) + getReceiptsList().hashCode();
@@ -538,9 +590,9 @@ public final class ClaimDataV1 {
       public Builder clear() {
         super.clear();
         version_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         claimNo_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (receiptsBuilder_ == null) {
           receipts_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000004);
@@ -581,7 +633,13 @@ public final class ClaimDataV1 {
         org.medibloc.phr.ClaimDataV1.Claim result = new org.medibloc.phr.ClaimDataV1.Claim(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.version_ = version_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.claimNo_ = claimNo_;
         if (receiptsBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004)) {
@@ -650,10 +708,11 @@ public final class ClaimDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.Claim other) {
         if (other == org.medibloc.phr.ClaimDataV1.Claim.getDefaultInstance()) return this;
-        if (other.getVersion() != 0) {
+        if (other.hasVersion()) {
           setVersion(other.getVersion());
         }
-        if (!other.getClaimNo().isEmpty()) {
+        if (other.hasClaimNo()) {
+          bitField0_ |= 0x00000002;
           claimNo_ = other.claimNo_;
           onChanged();
         }
@@ -716,6 +775,22 @@ public final class ClaimDataV1 {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasVersion()) {
+          return false;
+        }
+        if (!hasClaimNo()) {
+          return false;
+        }
+        for (int i = 0; i < getReceiptsCount(); i++) {
+          if (!getReceipts(i).isInitialized()) {
+            return false;
+          }
+        }
+        for (int i = 0; i < getDiagnosesCount(); i++) {
+          if (!getDiagnoses(i).isInitialized()) {
+            return false;
+          }
+        }
         return true;
       }
 
@@ -741,25 +816,31 @@ public final class ClaimDataV1 {
 
       private int version_ ;
       /**
-       * <code>uint32 version = 1;</code>
+       * <code>required uint32 version = 1;</code>
+       */
+      public boolean hasVersion() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 version = 1;</code>
        */
       public int getVersion() {
         return version_;
       }
       /**
-       * <code>uint32 version = 1;</code>
+       * <code>required uint32 version = 1;</code>
        */
       public Builder setVersion(int value) {
-        
+        bitField0_ |= 0x00000001;
         version_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 version = 1;</code>
+       * <code>required uint32 version = 1;</code>
        */
       public Builder clearVersion() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         version_ = 0;
         onChanged();
         return this;
@@ -767,7 +848,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object claimNo_ = "";
       /**
-       * <code>string claim_no = 2;</code>
+       * <code>required string claim_no = 2;</code>
+       */
+      public boolean hasClaimNo() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string claim_no = 2;</code>
        */
       public java.lang.String getClaimNo() {
         java.lang.Object ref = claimNo_;
@@ -775,14 +862,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          claimNo_ = s;
+          if (bs.isValidUtf8()) {
+            claimNo_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string claim_no = 2;</code>
+       * <code>required string claim_no = 2;</code>
        */
       public com.google.protobuf.ByteString
           getClaimNoBytes() {
@@ -798,37 +887,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string claim_no = 2;</code>
+       * <code>required string claim_no = 2;</code>
        */
       public Builder setClaimNo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         claimNo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string claim_no = 2;</code>
+       * <code>required string claim_no = 2;</code>
        */
       public Builder clearClaimNo() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         claimNo_ = getDefaultInstance().getClaimNo();
         onChanged();
         return this;
       }
       /**
-       * <code>string claim_no = 2;</code>
+       * <code>required string claim_no = 2;</code>
        */
       public Builder setClaimNoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         claimNo_ = value;
         onChanged();
         return this;
@@ -1316,7 +1404,7 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -1339,7 +1427,7 @@ public final class ClaimDataV1 {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Claim>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Claim>
         PARSER = new com.google.protobuf.AbstractParser<Claim>() {
       @java.lang.Override
       public Claim parsePartialFrom(
@@ -1371,241 +1459,337 @@ public final class ClaimDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string receipt_no = 1;</code>
+     * <code>required string receipt_no = 1;</code>
+     */
+    boolean hasReceiptNo();
+    /**
+     * <code>required string receipt_no = 1;</code>
      */
     java.lang.String getReceiptNo();
     /**
-     * <code>string receipt_no = 1;</code>
+     * <code>required string receipt_no = 1;</code>
      */
     com.google.protobuf.ByteString
         getReceiptNoBytes();
 
     /**
-     * <code>string receipt_type = 2;</code>
+     * <code>required string receipt_type = 2;</code>
+     */
+    boolean hasReceiptType();
+    /**
+     * <code>required string receipt_type = 2;</code>
      */
     java.lang.String getReceiptType();
     /**
-     * <code>string receipt_type = 2;</code>
+     * <code>required string receipt_type = 2;</code>
      */
     com.google.protobuf.ByteString
         getReceiptTypeBytes();
 
     /**
-     * <code>string patient_no = 3;</code>
+     * <code>required string patient_no = 3;</code>
+     */
+    boolean hasPatientNo();
+    /**
+     * <code>required string patient_no = 3;</code>
      */
     java.lang.String getPatientNo();
     /**
-     * <code>string patient_no = 3;</code>
+     * <code>required string patient_no = 3;</code>
      */
     com.google.protobuf.ByteString
         getPatientNoBytes();
 
     /**
-     * <code>string patient_name = 4;</code>
+     * <code>required string patient_name = 4;</code>
+     */
+    boolean hasPatientName();
+    /**
+     * <code>required string patient_name = 4;</code>
      */
     java.lang.String getPatientName();
     /**
-     * <code>string patient_name = 4;</code>
+     * <code>required string patient_name = 4;</code>
      */
     com.google.protobuf.ByteString
         getPatientNameBytes();
 
     /**
-     * <code>string company_registration_no = 5;</code>
+     * <code>required string company_registration_no = 5;</code>
+     */
+    boolean hasCompanyRegistrationNo();
+    /**
+     * <code>required string company_registration_no = 5;</code>
      */
     java.lang.String getCompanyRegistrationNo();
     /**
-     * <code>string company_registration_no = 5;</code>
+     * <code>required string company_registration_no = 5;</code>
      */
     com.google.protobuf.ByteString
         getCompanyRegistrationNoBytes();
 
     /**
-     * <code>string treatment_start_date = 6;</code>
+     * <code>required string treatment_start_date = 6;</code>
+     */
+    boolean hasTreatmentStartDate();
+    /**
+     * <code>required string treatment_start_date = 6;</code>
      */
     java.lang.String getTreatmentStartDate();
     /**
-     * <code>string treatment_start_date = 6;</code>
+     * <code>required string treatment_start_date = 6;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentStartDateBytes();
 
     /**
-     * <code>string treatment_end_date = 7;</code>
+     * <code>required string treatment_end_date = 7;</code>
+     */
+    boolean hasTreatmentEndDate();
+    /**
+     * <code>required string treatment_end_date = 7;</code>
      */
     java.lang.String getTreatmentEndDate();
     /**
-     * <code>string treatment_end_date = 7;</code>
+     * <code>required string treatment_end_date = 7;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentEndDateBytes();
 
     /**
-     * <code>string treatment_department = 8;</code>
+     * <code>required string treatment_department = 8;</code>
+     */
+    boolean hasTreatmentDepartment();
+    /**
+     * <code>required string treatment_department = 8;</code>
      */
     java.lang.String getTreatmentDepartment();
     /**
-     * <code>string treatment_department = 8;</code>
+     * <code>required string treatment_department = 8;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentDepartmentBytes();
 
     /**
-     * <code>string treatment_department_code = 9;</code>
+     * <code>required string treatment_department_code = 9;</code>
+     */
+    boolean hasTreatmentDepartmentCode();
+    /**
+     * <code>required string treatment_department_code = 9;</code>
      */
     java.lang.String getTreatmentDepartmentCode();
     /**
-     * <code>string treatment_department_code = 9;</code>
+     * <code>required string treatment_department_code = 9;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentDepartmentCodeBytes();
 
     /**
-     * <code>string treatment_type = 10;</code>
+     * <code>required string treatment_type = 10;</code>
+     */
+    boolean hasTreatmentType();
+    /**
+     * <code>required string treatment_type = 10;</code>
      */
     java.lang.String getTreatmentType();
     /**
-     * <code>string treatment_type = 10;</code>
+     * <code>required string treatment_type = 10;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentTypeBytes();
 
     /**
-     * <code>string treatment_type_code = 11;</code>
+     * <code>required string treatment_type_code = 11;</code>
+     */
+    boolean hasTreatmentTypeCode();
+    /**
+     * <code>required string treatment_type_code = 11;</code>
      */
     java.lang.String getTreatmentTypeCode();
     /**
-     * <code>string treatment_type_code = 11;</code>
+     * <code>required string treatment_type_code = 11;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentTypeCodeBytes();
 
     /**
-     * <code>string covered_fee = 12;</code>
+     * <code>required string covered_fee = 12;</code>
+     */
+    boolean hasCoveredFee();
+    /**
+     * <code>required string covered_fee = 12;</code>
      */
     java.lang.String getCoveredFee();
     /**
-     * <code>string covered_fee = 12;</code>
+     * <code>required string covered_fee = 12;</code>
      */
     com.google.protobuf.ByteString
         getCoveredFeeBytes();
 
     /**
-     * <code>string uncovered_fee = 13;</code>
+     * <code>required string uncovered_fee = 13;</code>
+     */
+    boolean hasUncoveredFee();
+    /**
+     * <code>required string uncovered_fee = 13;</code>
      */
     java.lang.String getUncoveredFee();
     /**
-     * <code>string uncovered_fee = 13;</code>
+     * <code>required string uncovered_fee = 13;</code>
      */
     com.google.protobuf.ByteString
         getUncoveredFeeBytes();
 
     /**
-     * <code>string upper_limit_excess = 14;</code>
+     * <code>required string upper_limit_excess = 14;</code>
+     */
+    boolean hasUpperLimitExcess();
+    /**
+     * <code>required string upper_limit_excess = 14;</code>
      */
     java.lang.String getUpperLimitExcess();
     /**
-     * <code>string upper_limit_excess = 14;</code>
+     * <code>required string upper_limit_excess = 14;</code>
      */
     com.google.protobuf.ByteString
         getUpperLimitExcessBytes();
 
     /**
-     * <code>string pay_total = 15;</code>
+     * <code>required string pay_total = 15;</code>
+     */
+    boolean hasPayTotal();
+    /**
+     * <code>required string pay_total = 15;</code>
      */
     java.lang.String getPayTotal();
     /**
-     * <code>string pay_total = 15;</code>
+     * <code>required string pay_total = 15;</code>
      */
     com.google.protobuf.ByteString
         getPayTotalBytes();
 
     /**
-     * <code>string patient_pay_total = 16;</code>
+     * <code>required string patient_pay_total = 16;</code>
+     */
+    boolean hasPatientPayTotal();
+    /**
+     * <code>required string patient_pay_total = 16;</code>
      */
     java.lang.String getPatientPayTotal();
     /**
-     * <code>string patient_pay_total = 16;</code>
+     * <code>required string patient_pay_total = 16;</code>
      */
     com.google.protobuf.ByteString
         getPatientPayTotalBytes();
 
     /**
-     * <code>string deduct_amount = 17;</code>
+     * <code>required string deduct_amount = 17;</code>
+     */
+    boolean hasDeductAmount();
+    /**
+     * <code>required string deduct_amount = 17;</code>
      */
     java.lang.String getDeductAmount();
     /**
-     * <code>string deduct_amount = 17;</code>
+     * <code>required string deduct_amount = 17;</code>
      */
     com.google.protobuf.ByteString
         getDeductAmountBytes();
 
     /**
-     * <code>string advance_pay_amount = 18;</code>
+     * <code>required string advance_pay_amount = 18;</code>
+     */
+    boolean hasAdvancePayAmount();
+    /**
+     * <code>required string advance_pay_amount = 18;</code>
      */
     java.lang.String getAdvancePayAmount();
     /**
-     * <code>string advance_pay_amount = 18;</code>
+     * <code>required string advance_pay_amount = 18;</code>
      */
     com.google.protobuf.ByteString
         getAdvancePayAmountBytes();
 
     /**
-     * <code>string pay_amount = 19;</code>
+     * <code>required string pay_amount = 19;</code>
+     */
+    boolean hasPayAmount();
+    /**
+     * <code>required string pay_amount = 19;</code>
      */
     java.lang.String getPayAmount();
     /**
-     * <code>string pay_amount = 19;</code>
+     * <code>required string pay_amount = 19;</code>
      */
     com.google.protobuf.ByteString
         getPayAmountBytes();
 
     /**
-     * <code>string uncollected_pay_amount = 20;</code>
+     * <code>required string uncollected_pay_amount = 20;</code>
+     */
+    boolean hasUncollectedPayAmount();
+    /**
+     * <code>required string uncollected_pay_amount = 20;</code>
      */
     java.lang.String getUncollectedPayAmount();
     /**
-     * <code>string uncollected_pay_amount = 20;</code>
+     * <code>required string uncollected_pay_amount = 20;</code>
      */
     com.google.protobuf.ByteString
         getUncollectedPayAmountBytes();
 
     /**
-     * <code>string receipt_amount = 21;</code>
+     * <code>required string receipt_amount = 21;</code>
+     */
+    boolean hasReceiptAmount();
+    /**
+     * <code>required string receipt_amount = 21;</code>
      */
     java.lang.String getReceiptAmount();
     /**
-     * <code>string receipt_amount = 21;</code>
+     * <code>required string receipt_amount = 21;</code>
      */
     com.google.protobuf.ByteString
         getReceiptAmountBytes();
 
     /**
-     * <code>string surtax_amount = 22;</code>
+     * <code>required string surtax_amount = 22;</code>
+     */
+    boolean hasSurtaxAmount();
+    /**
+     * <code>required string surtax_amount = 22;</code>
      */
     java.lang.String getSurtaxAmount();
     /**
-     * <code>string surtax_amount = 22;</code>
+     * <code>required string surtax_amount = 22;</code>
      */
     com.google.protobuf.ByteString
         getSurtaxAmountBytes();
 
     /**
-     * <code>string cash_pay_amount = 23;</code>
+     * <code>required string cash_pay_amount = 23;</code>
+     */
+    boolean hasCashPayAmount();
+    /**
+     * <code>required string cash_pay_amount = 23;</code>
      */
     java.lang.String getCashPayAmount();
     /**
-     * <code>string cash_pay_amount = 23;</code>
+     * <code>required string cash_pay_amount = 23;</code>
      */
     com.google.protobuf.ByteString
         getCashPayAmountBytes();
 
     /**
-     * <code>string card_pay_amount = 24;</code>
+     * <code>required string card_pay_amount = 24;</code>
+     */
+    boolean hasCardPayAmount();
+    /**
+     * <code>required string card_pay_amount = 24;</code>
      */
     java.lang.String getCardPayAmount();
     /**
-     * <code>string card_pay_amount = 24;</code>
+     * <code>required string card_pay_amount = 24;</code>
      */
     com.google.protobuf.ByteString
         getCardPayAmountBytes();
@@ -1699,147 +1883,147 @@ public final class ClaimDataV1 {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              receiptNo_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              receiptNo_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              receiptType_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              receiptType_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientNo_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              patientNo_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              patientName_ = bs;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              companyRegistrationNo_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              companyRegistrationNo_ = bs;
               break;
             }
             case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentStartDate_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              treatmentStartDate_ = bs;
               break;
             }
             case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentEndDate_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              treatmentEndDate_ = bs;
               break;
             }
             case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentDepartment_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000080;
+              treatmentDepartment_ = bs;
               break;
             }
             case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentDepartmentCode_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000100;
+              treatmentDepartmentCode_ = bs;
               break;
             }
             case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentType_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000200;
+              treatmentType_ = bs;
               break;
             }
             case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentTypeCode_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000400;
+              treatmentTypeCode_ = bs;
               break;
             }
             case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              coveredFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000800;
+              coveredFee_ = bs;
               break;
             }
             case 106: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uncoveredFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00001000;
+              uncoveredFee_ = bs;
               break;
             }
             case 114: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              upperLimitExcess_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00002000;
+              upperLimitExcess_ = bs;
               break;
             }
             case 122: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              payTotal_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00004000;
+              payTotal_ = bs;
               break;
             }
             case 130: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              patientPayTotal_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00008000;
+              patientPayTotal_ = bs;
               break;
             }
             case 138: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              deductAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00010000;
+              deductAmount_ = bs;
               break;
             }
             case 146: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              advancePayAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00020000;
+              advancePayAmount_ = bs;
               break;
             }
             case 154: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              payAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00040000;
+              payAmount_ = bs;
               break;
             }
             case 162: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uncollectedPayAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00080000;
+              uncollectedPayAmount_ = bs;
               break;
             }
             case 170: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              receiptAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00100000;
+              receiptAmount_ = bs;
               break;
             }
             case 178: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              surtaxAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00200000;
+              surtaxAmount_ = bs;
               break;
             }
             case 186: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cashPayAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00400000;
+              cashPayAmount_ = bs;
               break;
             }
             case 194: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              cardPayAmount_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00800000;
+              cardPayAmount_ = bs;
               break;
             }
             case 202: {
@@ -1848,11 +2032,11 @@ public final class ClaimDataV1 {
                 mutable_bitField0_ |= 0x01000000;
               }
               feeItems_.add(
-                  input.readMessage(org.medibloc.phr.ClaimDataV1.FeeItem.parser(), extensionRegistry));
+                  input.readMessage(org.medibloc.phr.ClaimDataV1.FeeItem.PARSER, extensionRegistry));
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -1890,7 +2074,13 @@ public final class ClaimDataV1 {
     public static final int RECEIPT_NO_FIELD_NUMBER = 1;
     private volatile java.lang.Object receiptNo_;
     /**
-     * <code>string receipt_no = 1;</code>
+     * <code>required string receipt_no = 1;</code>
+     */
+    public boolean hasReceiptNo() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string receipt_no = 1;</code>
      */
     public java.lang.String getReceiptNo() {
       java.lang.Object ref = receiptNo_;
@@ -1900,12 +2090,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        receiptNo_ = s;
+        if (bs.isValidUtf8()) {
+          receiptNo_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string receipt_no = 1;</code>
+     * <code>required string receipt_no = 1;</code>
      */
     public com.google.protobuf.ByteString
         getReceiptNoBytes() {
@@ -1924,7 +2116,13 @@ public final class ClaimDataV1 {
     public static final int RECEIPT_TYPE_FIELD_NUMBER = 2;
     private volatile java.lang.Object receiptType_;
     /**
-     * <code>string receipt_type = 2;</code>
+     * <code>required string receipt_type = 2;</code>
+     */
+    public boolean hasReceiptType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string receipt_type = 2;</code>
      */
     public java.lang.String getReceiptType() {
       java.lang.Object ref = receiptType_;
@@ -1934,12 +2132,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        receiptType_ = s;
+        if (bs.isValidUtf8()) {
+          receiptType_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string receipt_type = 2;</code>
+     * <code>required string receipt_type = 2;</code>
      */
     public com.google.protobuf.ByteString
         getReceiptTypeBytes() {
@@ -1958,7 +2158,13 @@ public final class ClaimDataV1 {
     public static final int PATIENT_NO_FIELD_NUMBER = 3;
     private volatile java.lang.Object patientNo_;
     /**
-     * <code>string patient_no = 3;</code>
+     * <code>required string patient_no = 3;</code>
+     */
+    public boolean hasPatientNo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string patient_no = 3;</code>
      */
     public java.lang.String getPatientNo() {
       java.lang.Object ref = patientNo_;
@@ -1968,12 +2174,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        patientNo_ = s;
+        if (bs.isValidUtf8()) {
+          patientNo_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string patient_no = 3;</code>
+     * <code>required string patient_no = 3;</code>
      */
     public com.google.protobuf.ByteString
         getPatientNoBytes() {
@@ -1992,7 +2200,13 @@ public final class ClaimDataV1 {
     public static final int PATIENT_NAME_FIELD_NUMBER = 4;
     private volatile java.lang.Object patientName_;
     /**
-     * <code>string patient_name = 4;</code>
+     * <code>required string patient_name = 4;</code>
+     */
+    public boolean hasPatientName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string patient_name = 4;</code>
      */
     public java.lang.String getPatientName() {
       java.lang.Object ref = patientName_;
@@ -2002,12 +2216,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        patientName_ = s;
+        if (bs.isValidUtf8()) {
+          patientName_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string patient_name = 4;</code>
+     * <code>required string patient_name = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPatientNameBytes() {
@@ -2026,7 +2242,13 @@ public final class ClaimDataV1 {
     public static final int COMPANY_REGISTRATION_NO_FIELD_NUMBER = 5;
     private volatile java.lang.Object companyRegistrationNo_;
     /**
-     * <code>string company_registration_no = 5;</code>
+     * <code>required string company_registration_no = 5;</code>
+     */
+    public boolean hasCompanyRegistrationNo() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required string company_registration_no = 5;</code>
      */
     public java.lang.String getCompanyRegistrationNo() {
       java.lang.Object ref = companyRegistrationNo_;
@@ -2036,12 +2258,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        companyRegistrationNo_ = s;
+        if (bs.isValidUtf8()) {
+          companyRegistrationNo_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string company_registration_no = 5;</code>
+     * <code>required string company_registration_no = 5;</code>
      */
     public com.google.protobuf.ByteString
         getCompanyRegistrationNoBytes() {
@@ -2060,7 +2284,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_START_DATE_FIELD_NUMBER = 6;
     private volatile java.lang.Object treatmentStartDate_;
     /**
-     * <code>string treatment_start_date = 6;</code>
+     * <code>required string treatment_start_date = 6;</code>
+     */
+    public boolean hasTreatmentStartDate() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string treatment_start_date = 6;</code>
      */
     public java.lang.String getTreatmentStartDate() {
       java.lang.Object ref = treatmentStartDate_;
@@ -2070,12 +2300,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentStartDate_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentStartDate_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_start_date = 6;</code>
+     * <code>required string treatment_start_date = 6;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentStartDateBytes() {
@@ -2094,7 +2326,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_END_DATE_FIELD_NUMBER = 7;
     private volatile java.lang.Object treatmentEndDate_;
     /**
-     * <code>string treatment_end_date = 7;</code>
+     * <code>required string treatment_end_date = 7;</code>
+     */
+    public boolean hasTreatmentEndDate() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required string treatment_end_date = 7;</code>
      */
     public java.lang.String getTreatmentEndDate() {
       java.lang.Object ref = treatmentEndDate_;
@@ -2104,12 +2342,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentEndDate_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentEndDate_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_end_date = 7;</code>
+     * <code>required string treatment_end_date = 7;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentEndDateBytes() {
@@ -2128,7 +2368,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_DEPARTMENT_FIELD_NUMBER = 8;
     private volatile java.lang.Object treatmentDepartment_;
     /**
-     * <code>string treatment_department = 8;</code>
+     * <code>required string treatment_department = 8;</code>
+     */
+    public boolean hasTreatmentDepartment() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required string treatment_department = 8;</code>
      */
     public java.lang.String getTreatmentDepartment() {
       java.lang.Object ref = treatmentDepartment_;
@@ -2138,12 +2384,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentDepartment_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentDepartment_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_department = 8;</code>
+     * <code>required string treatment_department = 8;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentDepartmentBytes() {
@@ -2162,7 +2410,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_DEPARTMENT_CODE_FIELD_NUMBER = 9;
     private volatile java.lang.Object treatmentDepartmentCode_;
     /**
-     * <code>string treatment_department_code = 9;</code>
+     * <code>required string treatment_department_code = 9;</code>
+     */
+    public boolean hasTreatmentDepartmentCode() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required string treatment_department_code = 9;</code>
      */
     public java.lang.String getTreatmentDepartmentCode() {
       java.lang.Object ref = treatmentDepartmentCode_;
@@ -2172,12 +2426,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentDepartmentCode_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentDepartmentCode_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_department_code = 9;</code>
+     * <code>required string treatment_department_code = 9;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentDepartmentCodeBytes() {
@@ -2196,7 +2452,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_TYPE_FIELD_NUMBER = 10;
     private volatile java.lang.Object treatmentType_;
     /**
-     * <code>string treatment_type = 10;</code>
+     * <code>required string treatment_type = 10;</code>
+     */
+    public boolean hasTreatmentType() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required string treatment_type = 10;</code>
      */
     public java.lang.String getTreatmentType() {
       java.lang.Object ref = treatmentType_;
@@ -2206,12 +2468,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentType_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentType_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_type = 10;</code>
+     * <code>required string treatment_type = 10;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentTypeBytes() {
@@ -2230,7 +2494,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_TYPE_CODE_FIELD_NUMBER = 11;
     private volatile java.lang.Object treatmentTypeCode_;
     /**
-     * <code>string treatment_type_code = 11;</code>
+     * <code>required string treatment_type_code = 11;</code>
+     */
+    public boolean hasTreatmentTypeCode() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required string treatment_type_code = 11;</code>
      */
     public java.lang.String getTreatmentTypeCode() {
       java.lang.Object ref = treatmentTypeCode_;
@@ -2240,12 +2510,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentTypeCode_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentTypeCode_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_type_code = 11;</code>
+     * <code>required string treatment_type_code = 11;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentTypeCodeBytes() {
@@ -2264,7 +2536,13 @@ public final class ClaimDataV1 {
     public static final int COVERED_FEE_FIELD_NUMBER = 12;
     private volatile java.lang.Object coveredFee_;
     /**
-     * <code>string covered_fee = 12;</code>
+     * <code>required string covered_fee = 12;</code>
+     */
+    public boolean hasCoveredFee() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>required string covered_fee = 12;</code>
      */
     public java.lang.String getCoveredFee() {
       java.lang.Object ref = coveredFee_;
@@ -2274,12 +2552,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        coveredFee_ = s;
+        if (bs.isValidUtf8()) {
+          coveredFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string covered_fee = 12;</code>
+     * <code>required string covered_fee = 12;</code>
      */
     public com.google.protobuf.ByteString
         getCoveredFeeBytes() {
@@ -2298,7 +2578,13 @@ public final class ClaimDataV1 {
     public static final int UNCOVERED_FEE_FIELD_NUMBER = 13;
     private volatile java.lang.Object uncoveredFee_;
     /**
-     * <code>string uncovered_fee = 13;</code>
+     * <code>required string uncovered_fee = 13;</code>
+     */
+    public boolean hasUncoveredFee() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>required string uncovered_fee = 13;</code>
      */
     public java.lang.String getUncoveredFee() {
       java.lang.Object ref = uncoveredFee_;
@@ -2308,12 +2594,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uncoveredFee_ = s;
+        if (bs.isValidUtf8()) {
+          uncoveredFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string uncovered_fee = 13;</code>
+     * <code>required string uncovered_fee = 13;</code>
      */
     public com.google.protobuf.ByteString
         getUncoveredFeeBytes() {
@@ -2332,7 +2620,13 @@ public final class ClaimDataV1 {
     public static final int UPPER_LIMIT_EXCESS_FIELD_NUMBER = 14;
     private volatile java.lang.Object upperLimitExcess_;
     /**
-     * <code>string upper_limit_excess = 14;</code>
+     * <code>required string upper_limit_excess = 14;</code>
+     */
+    public boolean hasUpperLimitExcess() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>required string upper_limit_excess = 14;</code>
      */
     public java.lang.String getUpperLimitExcess() {
       java.lang.Object ref = upperLimitExcess_;
@@ -2342,12 +2636,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        upperLimitExcess_ = s;
+        if (bs.isValidUtf8()) {
+          upperLimitExcess_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string upper_limit_excess = 14;</code>
+     * <code>required string upper_limit_excess = 14;</code>
      */
     public com.google.protobuf.ByteString
         getUpperLimitExcessBytes() {
@@ -2366,7 +2662,13 @@ public final class ClaimDataV1 {
     public static final int PAY_TOTAL_FIELD_NUMBER = 15;
     private volatile java.lang.Object payTotal_;
     /**
-     * <code>string pay_total = 15;</code>
+     * <code>required string pay_total = 15;</code>
+     */
+    public boolean hasPayTotal() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>required string pay_total = 15;</code>
      */
     public java.lang.String getPayTotal() {
       java.lang.Object ref = payTotal_;
@@ -2376,12 +2678,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        payTotal_ = s;
+        if (bs.isValidUtf8()) {
+          payTotal_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string pay_total = 15;</code>
+     * <code>required string pay_total = 15;</code>
      */
     public com.google.protobuf.ByteString
         getPayTotalBytes() {
@@ -2400,7 +2704,13 @@ public final class ClaimDataV1 {
     public static final int PATIENT_PAY_TOTAL_FIELD_NUMBER = 16;
     private volatile java.lang.Object patientPayTotal_;
     /**
-     * <code>string patient_pay_total = 16;</code>
+     * <code>required string patient_pay_total = 16;</code>
+     */
+    public boolean hasPatientPayTotal() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    /**
+     * <code>required string patient_pay_total = 16;</code>
      */
     public java.lang.String getPatientPayTotal() {
       java.lang.Object ref = patientPayTotal_;
@@ -2410,12 +2720,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        patientPayTotal_ = s;
+        if (bs.isValidUtf8()) {
+          patientPayTotal_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string patient_pay_total = 16;</code>
+     * <code>required string patient_pay_total = 16;</code>
      */
     public com.google.protobuf.ByteString
         getPatientPayTotalBytes() {
@@ -2434,7 +2746,13 @@ public final class ClaimDataV1 {
     public static final int DEDUCT_AMOUNT_FIELD_NUMBER = 17;
     private volatile java.lang.Object deductAmount_;
     /**
-     * <code>string deduct_amount = 17;</code>
+     * <code>required string deduct_amount = 17;</code>
+     */
+    public boolean hasDeductAmount() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>required string deduct_amount = 17;</code>
      */
     public java.lang.String getDeductAmount() {
       java.lang.Object ref = deductAmount_;
@@ -2444,12 +2762,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        deductAmount_ = s;
+        if (bs.isValidUtf8()) {
+          deductAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string deduct_amount = 17;</code>
+     * <code>required string deduct_amount = 17;</code>
      */
     public com.google.protobuf.ByteString
         getDeductAmountBytes() {
@@ -2468,7 +2788,13 @@ public final class ClaimDataV1 {
     public static final int ADVANCE_PAY_AMOUNT_FIELD_NUMBER = 18;
     private volatile java.lang.Object advancePayAmount_;
     /**
-     * <code>string advance_pay_amount = 18;</code>
+     * <code>required string advance_pay_amount = 18;</code>
+     */
+    public boolean hasAdvancePayAmount() {
+      return ((bitField0_ & 0x00020000) == 0x00020000);
+    }
+    /**
+     * <code>required string advance_pay_amount = 18;</code>
      */
     public java.lang.String getAdvancePayAmount() {
       java.lang.Object ref = advancePayAmount_;
@@ -2478,12 +2804,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        advancePayAmount_ = s;
+        if (bs.isValidUtf8()) {
+          advancePayAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string advance_pay_amount = 18;</code>
+     * <code>required string advance_pay_amount = 18;</code>
      */
     public com.google.protobuf.ByteString
         getAdvancePayAmountBytes() {
@@ -2502,7 +2830,13 @@ public final class ClaimDataV1 {
     public static final int PAY_AMOUNT_FIELD_NUMBER = 19;
     private volatile java.lang.Object payAmount_;
     /**
-     * <code>string pay_amount = 19;</code>
+     * <code>required string pay_amount = 19;</code>
+     */
+    public boolean hasPayAmount() {
+      return ((bitField0_ & 0x00040000) == 0x00040000);
+    }
+    /**
+     * <code>required string pay_amount = 19;</code>
      */
     public java.lang.String getPayAmount() {
       java.lang.Object ref = payAmount_;
@@ -2512,12 +2846,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        payAmount_ = s;
+        if (bs.isValidUtf8()) {
+          payAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string pay_amount = 19;</code>
+     * <code>required string pay_amount = 19;</code>
      */
     public com.google.protobuf.ByteString
         getPayAmountBytes() {
@@ -2536,7 +2872,13 @@ public final class ClaimDataV1 {
     public static final int UNCOLLECTED_PAY_AMOUNT_FIELD_NUMBER = 20;
     private volatile java.lang.Object uncollectedPayAmount_;
     /**
-     * <code>string uncollected_pay_amount = 20;</code>
+     * <code>required string uncollected_pay_amount = 20;</code>
+     */
+    public boolean hasUncollectedPayAmount() {
+      return ((bitField0_ & 0x00080000) == 0x00080000);
+    }
+    /**
+     * <code>required string uncollected_pay_amount = 20;</code>
      */
     public java.lang.String getUncollectedPayAmount() {
       java.lang.Object ref = uncollectedPayAmount_;
@@ -2546,12 +2888,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uncollectedPayAmount_ = s;
+        if (bs.isValidUtf8()) {
+          uncollectedPayAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string uncollected_pay_amount = 20;</code>
+     * <code>required string uncollected_pay_amount = 20;</code>
      */
     public com.google.protobuf.ByteString
         getUncollectedPayAmountBytes() {
@@ -2570,7 +2914,13 @@ public final class ClaimDataV1 {
     public static final int RECEIPT_AMOUNT_FIELD_NUMBER = 21;
     private volatile java.lang.Object receiptAmount_;
     /**
-     * <code>string receipt_amount = 21;</code>
+     * <code>required string receipt_amount = 21;</code>
+     */
+    public boolean hasReceiptAmount() {
+      return ((bitField0_ & 0x00100000) == 0x00100000);
+    }
+    /**
+     * <code>required string receipt_amount = 21;</code>
      */
     public java.lang.String getReceiptAmount() {
       java.lang.Object ref = receiptAmount_;
@@ -2580,12 +2930,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        receiptAmount_ = s;
+        if (bs.isValidUtf8()) {
+          receiptAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string receipt_amount = 21;</code>
+     * <code>required string receipt_amount = 21;</code>
      */
     public com.google.protobuf.ByteString
         getReceiptAmountBytes() {
@@ -2604,7 +2956,13 @@ public final class ClaimDataV1 {
     public static final int SURTAX_AMOUNT_FIELD_NUMBER = 22;
     private volatile java.lang.Object surtaxAmount_;
     /**
-     * <code>string surtax_amount = 22;</code>
+     * <code>required string surtax_amount = 22;</code>
+     */
+    public boolean hasSurtaxAmount() {
+      return ((bitField0_ & 0x00200000) == 0x00200000);
+    }
+    /**
+     * <code>required string surtax_amount = 22;</code>
      */
     public java.lang.String getSurtaxAmount() {
       java.lang.Object ref = surtaxAmount_;
@@ -2614,12 +2972,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        surtaxAmount_ = s;
+        if (bs.isValidUtf8()) {
+          surtaxAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string surtax_amount = 22;</code>
+     * <code>required string surtax_amount = 22;</code>
      */
     public com.google.protobuf.ByteString
         getSurtaxAmountBytes() {
@@ -2638,7 +2998,13 @@ public final class ClaimDataV1 {
     public static final int CASH_PAY_AMOUNT_FIELD_NUMBER = 23;
     private volatile java.lang.Object cashPayAmount_;
     /**
-     * <code>string cash_pay_amount = 23;</code>
+     * <code>required string cash_pay_amount = 23;</code>
+     */
+    public boolean hasCashPayAmount() {
+      return ((bitField0_ & 0x00400000) == 0x00400000);
+    }
+    /**
+     * <code>required string cash_pay_amount = 23;</code>
      */
     public java.lang.String getCashPayAmount() {
       java.lang.Object ref = cashPayAmount_;
@@ -2648,12 +3014,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        cashPayAmount_ = s;
+        if (bs.isValidUtf8()) {
+          cashPayAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string cash_pay_amount = 23;</code>
+     * <code>required string cash_pay_amount = 23;</code>
      */
     public com.google.protobuf.ByteString
         getCashPayAmountBytes() {
@@ -2672,7 +3040,13 @@ public final class ClaimDataV1 {
     public static final int CARD_PAY_AMOUNT_FIELD_NUMBER = 24;
     private volatile java.lang.Object cardPayAmount_;
     /**
-     * <code>string card_pay_amount = 24;</code>
+     * <code>required string card_pay_amount = 24;</code>
+     */
+    public boolean hasCardPayAmount() {
+      return ((bitField0_ & 0x00800000) == 0x00800000);
+    }
+    /**
+     * <code>required string card_pay_amount = 24;</code>
      */
     public java.lang.String getCardPayAmount() {
       java.lang.Object ref = cardPayAmount_;
@@ -2682,12 +3056,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        cardPayAmount_ = s;
+        if (bs.isValidUtf8()) {
+          cardPayAmount_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string card_pay_amount = 24;</code>
+     * <code>required string card_pay_amount = 24;</code>
      */
     public com.google.protobuf.ByteString
         getCardPayAmountBytes() {
@@ -2745,6 +3121,108 @@ public final class ClaimDataV1 {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasReceiptNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasReceiptType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPatientNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPatientName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCompanyRegistrationNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentStartDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentEndDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentDepartment()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentDepartmentCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentTypeCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoveredFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUncoveredFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUpperLimitExcess()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPayTotal()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPatientPayTotal()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDeductAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasAdvancePayAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPayAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUncollectedPayAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasReceiptAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSurtaxAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCashPayAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCardPayAmount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getFeeItemsCount(); i++) {
+        if (!getFeeItems(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -2752,76 +3230,76 @@ public final class ClaimDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getReceiptNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, receiptNo_);
       }
-      if (!getReceiptTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, receiptType_);
       }
-      if (!getPatientNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, patientNo_);
       }
-      if (!getPatientNameBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, patientName_);
       }
-      if (!getCompanyRegistrationNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, companyRegistrationNo_);
       }
-      if (!getTreatmentStartDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, treatmentStartDate_);
       }
-      if (!getTreatmentEndDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, treatmentEndDate_);
       }
-      if (!getTreatmentDepartmentBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, treatmentDepartment_);
       }
-      if (!getTreatmentDepartmentCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, treatmentDepartmentCode_);
       }
-      if (!getTreatmentTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, treatmentType_);
       }
-      if (!getTreatmentTypeCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 11, treatmentTypeCode_);
       }
-      if (!getCoveredFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 12, coveredFee_);
       }
-      if (!getUncoveredFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 13, uncoveredFee_);
       }
-      if (!getUpperLimitExcessBytes().isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 14, upperLimitExcess_);
       }
-      if (!getPayTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 15, payTotal_);
       }
-      if (!getPatientPayTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 16, patientPayTotal_);
       }
-      if (!getDeductAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 17, deductAmount_);
       }
-      if (!getAdvancePayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 18, advancePayAmount_);
       }
-      if (!getPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 19, payAmount_);
       }
-      if (!getUncollectedPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 20, uncollectedPayAmount_);
       }
-      if (!getReceiptAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 21, receiptAmount_);
       }
-      if (!getSurtaxAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 22, surtaxAmount_);
       }
-      if (!getCashPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 23, cashPayAmount_);
       }
-      if (!getCardPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 24, cardPayAmount_);
       }
       for (int i = 0; i < feeItems_.size(); i++) {
@@ -2836,76 +3314,76 @@ public final class ClaimDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!getReceiptNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, receiptNo_);
       }
-      if (!getReceiptTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, receiptType_);
       }
-      if (!getPatientNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, patientNo_);
       }
-      if (!getPatientNameBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, patientName_);
       }
-      if (!getCompanyRegistrationNoBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, companyRegistrationNo_);
       }
-      if (!getTreatmentStartDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, treatmentStartDate_);
       }
-      if (!getTreatmentEndDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, treatmentEndDate_);
       }
-      if (!getTreatmentDepartmentBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, treatmentDepartment_);
       }
-      if (!getTreatmentDepartmentCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, treatmentDepartmentCode_);
       }
-      if (!getTreatmentTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, treatmentType_);
       }
-      if (!getTreatmentTypeCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, treatmentTypeCode_);
       }
-      if (!getCoveredFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, coveredFee_);
       }
-      if (!getUncoveredFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, uncoveredFee_);
       }
-      if (!getUpperLimitExcessBytes().isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, upperLimitExcess_);
       }
-      if (!getPayTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(15, payTotal_);
       }
-      if (!getPatientPayTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(16, patientPayTotal_);
       }
-      if (!getDeductAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, deductAmount_);
       }
-      if (!getAdvancePayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00020000) == 0x00020000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(18, advancePayAmount_);
       }
-      if (!getPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, payAmount_);
       }
-      if (!getUncollectedPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00080000) == 0x00080000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, uncollectedPayAmount_);
       }
-      if (!getReceiptAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, receiptAmount_);
       }
-      if (!getSurtaxAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, surtaxAmount_);
       }
-      if (!getCashPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, cashPayAmount_);
       }
-      if (!getCardPayAmountBytes().isEmpty()) {
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(24, cardPayAmount_);
       }
       for (int i = 0; i < feeItems_.size(); i++) {
@@ -2928,54 +3406,126 @@ public final class ClaimDataV1 {
       org.medibloc.phr.ClaimDataV1.Receipt other = (org.medibloc.phr.ClaimDataV1.Receipt) obj;
 
       boolean result = true;
-      result = result && getReceiptNo()
-          .equals(other.getReceiptNo());
-      result = result && getReceiptType()
-          .equals(other.getReceiptType());
-      result = result && getPatientNo()
-          .equals(other.getPatientNo());
-      result = result && getPatientName()
-          .equals(other.getPatientName());
-      result = result && getCompanyRegistrationNo()
-          .equals(other.getCompanyRegistrationNo());
-      result = result && getTreatmentStartDate()
-          .equals(other.getTreatmentStartDate());
-      result = result && getTreatmentEndDate()
-          .equals(other.getTreatmentEndDate());
-      result = result && getTreatmentDepartment()
-          .equals(other.getTreatmentDepartment());
-      result = result && getTreatmentDepartmentCode()
-          .equals(other.getTreatmentDepartmentCode());
-      result = result && getTreatmentType()
-          .equals(other.getTreatmentType());
-      result = result && getTreatmentTypeCode()
-          .equals(other.getTreatmentTypeCode());
-      result = result && getCoveredFee()
-          .equals(other.getCoveredFee());
-      result = result && getUncoveredFee()
-          .equals(other.getUncoveredFee());
-      result = result && getUpperLimitExcess()
-          .equals(other.getUpperLimitExcess());
-      result = result && getPayTotal()
-          .equals(other.getPayTotal());
-      result = result && getPatientPayTotal()
-          .equals(other.getPatientPayTotal());
-      result = result && getDeductAmount()
-          .equals(other.getDeductAmount());
-      result = result && getAdvancePayAmount()
-          .equals(other.getAdvancePayAmount());
-      result = result && getPayAmount()
-          .equals(other.getPayAmount());
-      result = result && getUncollectedPayAmount()
-          .equals(other.getUncollectedPayAmount());
-      result = result && getReceiptAmount()
-          .equals(other.getReceiptAmount());
-      result = result && getSurtaxAmount()
-          .equals(other.getSurtaxAmount());
-      result = result && getCashPayAmount()
-          .equals(other.getCashPayAmount());
-      result = result && getCardPayAmount()
-          .equals(other.getCardPayAmount());
+      result = result && (hasReceiptNo() == other.hasReceiptNo());
+      if (hasReceiptNo()) {
+        result = result && getReceiptNo()
+            .equals(other.getReceiptNo());
+      }
+      result = result && (hasReceiptType() == other.hasReceiptType());
+      if (hasReceiptType()) {
+        result = result && getReceiptType()
+            .equals(other.getReceiptType());
+      }
+      result = result && (hasPatientNo() == other.hasPatientNo());
+      if (hasPatientNo()) {
+        result = result && getPatientNo()
+            .equals(other.getPatientNo());
+      }
+      result = result && (hasPatientName() == other.hasPatientName());
+      if (hasPatientName()) {
+        result = result && getPatientName()
+            .equals(other.getPatientName());
+      }
+      result = result && (hasCompanyRegistrationNo() == other.hasCompanyRegistrationNo());
+      if (hasCompanyRegistrationNo()) {
+        result = result && getCompanyRegistrationNo()
+            .equals(other.getCompanyRegistrationNo());
+      }
+      result = result && (hasTreatmentStartDate() == other.hasTreatmentStartDate());
+      if (hasTreatmentStartDate()) {
+        result = result && getTreatmentStartDate()
+            .equals(other.getTreatmentStartDate());
+      }
+      result = result && (hasTreatmentEndDate() == other.hasTreatmentEndDate());
+      if (hasTreatmentEndDate()) {
+        result = result && getTreatmentEndDate()
+            .equals(other.getTreatmentEndDate());
+      }
+      result = result && (hasTreatmentDepartment() == other.hasTreatmentDepartment());
+      if (hasTreatmentDepartment()) {
+        result = result && getTreatmentDepartment()
+            .equals(other.getTreatmentDepartment());
+      }
+      result = result && (hasTreatmentDepartmentCode() == other.hasTreatmentDepartmentCode());
+      if (hasTreatmentDepartmentCode()) {
+        result = result && getTreatmentDepartmentCode()
+            .equals(other.getTreatmentDepartmentCode());
+      }
+      result = result && (hasTreatmentType() == other.hasTreatmentType());
+      if (hasTreatmentType()) {
+        result = result && getTreatmentType()
+            .equals(other.getTreatmentType());
+      }
+      result = result && (hasTreatmentTypeCode() == other.hasTreatmentTypeCode());
+      if (hasTreatmentTypeCode()) {
+        result = result && getTreatmentTypeCode()
+            .equals(other.getTreatmentTypeCode());
+      }
+      result = result && (hasCoveredFee() == other.hasCoveredFee());
+      if (hasCoveredFee()) {
+        result = result && getCoveredFee()
+            .equals(other.getCoveredFee());
+      }
+      result = result && (hasUncoveredFee() == other.hasUncoveredFee());
+      if (hasUncoveredFee()) {
+        result = result && getUncoveredFee()
+            .equals(other.getUncoveredFee());
+      }
+      result = result && (hasUpperLimitExcess() == other.hasUpperLimitExcess());
+      if (hasUpperLimitExcess()) {
+        result = result && getUpperLimitExcess()
+            .equals(other.getUpperLimitExcess());
+      }
+      result = result && (hasPayTotal() == other.hasPayTotal());
+      if (hasPayTotal()) {
+        result = result && getPayTotal()
+            .equals(other.getPayTotal());
+      }
+      result = result && (hasPatientPayTotal() == other.hasPatientPayTotal());
+      if (hasPatientPayTotal()) {
+        result = result && getPatientPayTotal()
+            .equals(other.getPatientPayTotal());
+      }
+      result = result && (hasDeductAmount() == other.hasDeductAmount());
+      if (hasDeductAmount()) {
+        result = result && getDeductAmount()
+            .equals(other.getDeductAmount());
+      }
+      result = result && (hasAdvancePayAmount() == other.hasAdvancePayAmount());
+      if (hasAdvancePayAmount()) {
+        result = result && getAdvancePayAmount()
+            .equals(other.getAdvancePayAmount());
+      }
+      result = result && (hasPayAmount() == other.hasPayAmount());
+      if (hasPayAmount()) {
+        result = result && getPayAmount()
+            .equals(other.getPayAmount());
+      }
+      result = result && (hasUncollectedPayAmount() == other.hasUncollectedPayAmount());
+      if (hasUncollectedPayAmount()) {
+        result = result && getUncollectedPayAmount()
+            .equals(other.getUncollectedPayAmount());
+      }
+      result = result && (hasReceiptAmount() == other.hasReceiptAmount());
+      if (hasReceiptAmount()) {
+        result = result && getReceiptAmount()
+            .equals(other.getReceiptAmount());
+      }
+      result = result && (hasSurtaxAmount() == other.hasSurtaxAmount());
+      if (hasSurtaxAmount()) {
+        result = result && getSurtaxAmount()
+            .equals(other.getSurtaxAmount());
+      }
+      result = result && (hasCashPayAmount() == other.hasCashPayAmount());
+      if (hasCashPayAmount()) {
+        result = result && getCashPayAmount()
+            .equals(other.getCashPayAmount());
+      }
+      result = result && (hasCardPayAmount() == other.hasCardPayAmount());
+      if (hasCardPayAmount()) {
+        result = result && getCardPayAmount()
+            .equals(other.getCardPayAmount());
+      }
       result = result && getFeeItemsList()
           .equals(other.getFeeItemsList());
       result = result && unknownFields.equals(other.unknownFields);
@@ -2989,54 +3539,102 @@ public final class ClaimDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + RECEIPT_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getReceiptNo().hashCode();
-      hash = (37 * hash) + RECEIPT_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getReceiptType().hashCode();
-      hash = (37 * hash) + PATIENT_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientNo().hashCode();
-      hash = (37 * hash) + PATIENT_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientName().hashCode();
-      hash = (37 * hash) + COMPANY_REGISTRATION_NO_FIELD_NUMBER;
-      hash = (53 * hash) + getCompanyRegistrationNo().hashCode();
-      hash = (37 * hash) + TREATMENT_START_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentStartDate().hashCode();
-      hash = (37 * hash) + TREATMENT_END_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentEndDate().hashCode();
-      hash = (37 * hash) + TREATMENT_DEPARTMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentDepartment().hashCode();
-      hash = (37 * hash) + TREATMENT_DEPARTMENT_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentDepartmentCode().hashCode();
-      hash = (37 * hash) + TREATMENT_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentType().hashCode();
-      hash = (37 * hash) + TREATMENT_TYPE_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentTypeCode().hashCode();
-      hash = (37 * hash) + COVERED_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoveredFee().hashCode();
-      hash = (37 * hash) + UNCOVERED_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getUncoveredFee().hashCode();
-      hash = (37 * hash) + UPPER_LIMIT_EXCESS_FIELD_NUMBER;
-      hash = (53 * hash) + getUpperLimitExcess().hashCode();
-      hash = (37 * hash) + PAY_TOTAL_FIELD_NUMBER;
-      hash = (53 * hash) + getPayTotal().hashCode();
-      hash = (37 * hash) + PATIENT_PAY_TOTAL_FIELD_NUMBER;
-      hash = (53 * hash) + getPatientPayTotal().hashCode();
-      hash = (37 * hash) + DEDUCT_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getDeductAmount().hashCode();
-      hash = (37 * hash) + ADVANCE_PAY_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getAdvancePayAmount().hashCode();
-      hash = (37 * hash) + PAY_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getPayAmount().hashCode();
-      hash = (37 * hash) + UNCOLLECTED_PAY_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getUncollectedPayAmount().hashCode();
-      hash = (37 * hash) + RECEIPT_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getReceiptAmount().hashCode();
-      hash = (37 * hash) + SURTAX_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getSurtaxAmount().hashCode();
-      hash = (37 * hash) + CASH_PAY_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getCashPayAmount().hashCode();
-      hash = (37 * hash) + CARD_PAY_AMOUNT_FIELD_NUMBER;
-      hash = (53 * hash) + getCardPayAmount().hashCode();
+      if (hasReceiptNo()) {
+        hash = (37 * hash) + RECEIPT_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiptNo().hashCode();
+      }
+      if (hasReceiptType()) {
+        hash = (37 * hash) + RECEIPT_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiptType().hashCode();
+      }
+      if (hasPatientNo()) {
+        hash = (37 * hash) + PATIENT_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getPatientNo().hashCode();
+      }
+      if (hasPatientName()) {
+        hash = (37 * hash) + PATIENT_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getPatientName().hashCode();
+      }
+      if (hasCompanyRegistrationNo()) {
+        hash = (37 * hash) + COMPANY_REGISTRATION_NO_FIELD_NUMBER;
+        hash = (53 * hash) + getCompanyRegistrationNo().hashCode();
+      }
+      if (hasTreatmentStartDate()) {
+        hash = (37 * hash) + TREATMENT_START_DATE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentStartDate().hashCode();
+      }
+      if (hasTreatmentEndDate()) {
+        hash = (37 * hash) + TREATMENT_END_DATE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentEndDate().hashCode();
+      }
+      if (hasTreatmentDepartment()) {
+        hash = (37 * hash) + TREATMENT_DEPARTMENT_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentDepartment().hashCode();
+      }
+      if (hasTreatmentDepartmentCode()) {
+        hash = (37 * hash) + TREATMENT_DEPARTMENT_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentDepartmentCode().hashCode();
+      }
+      if (hasTreatmentType()) {
+        hash = (37 * hash) + TREATMENT_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentType().hashCode();
+      }
+      if (hasTreatmentTypeCode()) {
+        hash = (37 * hash) + TREATMENT_TYPE_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentTypeCode().hashCode();
+      }
+      if (hasCoveredFee()) {
+        hash = (37 * hash) + COVERED_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getCoveredFee().hashCode();
+      }
+      if (hasUncoveredFee()) {
+        hash = (37 * hash) + UNCOVERED_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getUncoveredFee().hashCode();
+      }
+      if (hasUpperLimitExcess()) {
+        hash = (37 * hash) + UPPER_LIMIT_EXCESS_FIELD_NUMBER;
+        hash = (53 * hash) + getUpperLimitExcess().hashCode();
+      }
+      if (hasPayTotal()) {
+        hash = (37 * hash) + PAY_TOTAL_FIELD_NUMBER;
+        hash = (53 * hash) + getPayTotal().hashCode();
+      }
+      if (hasPatientPayTotal()) {
+        hash = (37 * hash) + PATIENT_PAY_TOTAL_FIELD_NUMBER;
+        hash = (53 * hash) + getPatientPayTotal().hashCode();
+      }
+      if (hasDeductAmount()) {
+        hash = (37 * hash) + DEDUCT_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getDeductAmount().hashCode();
+      }
+      if (hasAdvancePayAmount()) {
+        hash = (37 * hash) + ADVANCE_PAY_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getAdvancePayAmount().hashCode();
+      }
+      if (hasPayAmount()) {
+        hash = (37 * hash) + PAY_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getPayAmount().hashCode();
+      }
+      if (hasUncollectedPayAmount()) {
+        hash = (37 * hash) + UNCOLLECTED_PAY_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getUncollectedPayAmount().hashCode();
+      }
+      if (hasReceiptAmount()) {
+        hash = (37 * hash) + RECEIPT_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getReceiptAmount().hashCode();
+      }
+      if (hasSurtaxAmount()) {
+        hash = (37 * hash) + SURTAX_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getSurtaxAmount().hashCode();
+      }
+      if (hasCashPayAmount()) {
+        hash = (37 * hash) + CASH_PAY_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getCashPayAmount().hashCode();
+      }
+      if (hasCardPayAmount()) {
+        hash = (37 * hash) + CARD_PAY_AMOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getCardPayAmount().hashCode();
+      }
       if (getFeeItemsCount() > 0) {
         hash = (37 * hash) + FEE_ITEMS_FIELD_NUMBER;
         hash = (53 * hash) + getFeeItemsList().hashCode();
@@ -3176,53 +3774,53 @@ public final class ClaimDataV1 {
       public Builder clear() {
         super.clear();
         receiptNo_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         receiptType_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         patientNo_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         patientName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         companyRegistrationNo_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         treatmentStartDate_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         treatmentEndDate_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         treatmentDepartment_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000080);
         treatmentDepartmentCode_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000100);
         treatmentType_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000200);
         treatmentTypeCode_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000400);
         coveredFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000800);
         uncoveredFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00001000);
         upperLimitExcess_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00002000);
         payTotal_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00004000);
         patientPayTotal_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00008000);
         deductAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00010000);
         advancePayAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00020000);
         payAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00040000);
         uncollectedPayAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00080000);
         receiptAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00100000);
         surtaxAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00200000);
         cashPayAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00400000);
         cardPayAmount_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00800000);
         if (feeItemsBuilder_ == null) {
           feeItems_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x01000000);
@@ -3257,29 +3855,101 @@ public final class ClaimDataV1 {
         org.medibloc.phr.ClaimDataV1.Receipt result = new org.medibloc.phr.ClaimDataV1.Receipt(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.receiptNo_ = receiptNo_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.receiptType_ = receiptType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.patientNo_ = patientNo_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.patientName_ = patientName_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.companyRegistrationNo_ = companyRegistrationNo_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.treatmentStartDate_ = treatmentStartDate_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.treatmentEndDate_ = treatmentEndDate_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.treatmentDepartment_ = treatmentDepartment_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.treatmentDepartmentCode_ = treatmentDepartmentCode_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.treatmentType_ = treatmentType_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
         result.treatmentTypeCode_ = treatmentTypeCode_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.coveredFee_ = coveredFee_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
         result.uncoveredFee_ = uncoveredFee_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
         result.upperLimitExcess_ = upperLimitExcess_;
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
         result.payTotal_ = payTotal_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
         result.patientPayTotal_ = patientPayTotal_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
         result.deductAmount_ = deductAmount_;
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00020000;
+        }
         result.advancePayAmount_ = advancePayAmount_;
+        if (((from_bitField0_ & 0x00040000) == 0x00040000)) {
+          to_bitField0_ |= 0x00040000;
+        }
         result.payAmount_ = payAmount_;
+        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
+          to_bitField0_ |= 0x00080000;
+        }
         result.uncollectedPayAmount_ = uncollectedPayAmount_;
+        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
+          to_bitField0_ |= 0x00100000;
+        }
         result.receiptAmount_ = receiptAmount_;
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00200000;
+        }
         result.surtaxAmount_ = surtaxAmount_;
+        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
+          to_bitField0_ |= 0x00400000;
+        }
         result.cashPayAmount_ = cashPayAmount_;
+        if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
+          to_bitField0_ |= 0x00800000;
+        }
         result.cardPayAmount_ = cardPayAmount_;
         if (feeItemsBuilder_ == null) {
           if (((bitField0_ & 0x01000000) == 0x01000000)) {
@@ -3339,99 +4009,123 @@ public final class ClaimDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.Receipt other) {
         if (other == org.medibloc.phr.ClaimDataV1.Receipt.getDefaultInstance()) return this;
-        if (!other.getReceiptNo().isEmpty()) {
+        if (other.hasReceiptNo()) {
+          bitField0_ |= 0x00000001;
           receiptNo_ = other.receiptNo_;
           onChanged();
         }
-        if (!other.getReceiptType().isEmpty()) {
+        if (other.hasReceiptType()) {
+          bitField0_ |= 0x00000002;
           receiptType_ = other.receiptType_;
           onChanged();
         }
-        if (!other.getPatientNo().isEmpty()) {
+        if (other.hasPatientNo()) {
+          bitField0_ |= 0x00000004;
           patientNo_ = other.patientNo_;
           onChanged();
         }
-        if (!other.getPatientName().isEmpty()) {
+        if (other.hasPatientName()) {
+          bitField0_ |= 0x00000008;
           patientName_ = other.patientName_;
           onChanged();
         }
-        if (!other.getCompanyRegistrationNo().isEmpty()) {
+        if (other.hasCompanyRegistrationNo()) {
+          bitField0_ |= 0x00000010;
           companyRegistrationNo_ = other.companyRegistrationNo_;
           onChanged();
         }
-        if (!other.getTreatmentStartDate().isEmpty()) {
+        if (other.hasTreatmentStartDate()) {
+          bitField0_ |= 0x00000020;
           treatmentStartDate_ = other.treatmentStartDate_;
           onChanged();
         }
-        if (!other.getTreatmentEndDate().isEmpty()) {
+        if (other.hasTreatmentEndDate()) {
+          bitField0_ |= 0x00000040;
           treatmentEndDate_ = other.treatmentEndDate_;
           onChanged();
         }
-        if (!other.getTreatmentDepartment().isEmpty()) {
+        if (other.hasTreatmentDepartment()) {
+          bitField0_ |= 0x00000080;
           treatmentDepartment_ = other.treatmentDepartment_;
           onChanged();
         }
-        if (!other.getTreatmentDepartmentCode().isEmpty()) {
+        if (other.hasTreatmentDepartmentCode()) {
+          bitField0_ |= 0x00000100;
           treatmentDepartmentCode_ = other.treatmentDepartmentCode_;
           onChanged();
         }
-        if (!other.getTreatmentType().isEmpty()) {
+        if (other.hasTreatmentType()) {
+          bitField0_ |= 0x00000200;
           treatmentType_ = other.treatmentType_;
           onChanged();
         }
-        if (!other.getTreatmentTypeCode().isEmpty()) {
+        if (other.hasTreatmentTypeCode()) {
+          bitField0_ |= 0x00000400;
           treatmentTypeCode_ = other.treatmentTypeCode_;
           onChanged();
         }
-        if (!other.getCoveredFee().isEmpty()) {
+        if (other.hasCoveredFee()) {
+          bitField0_ |= 0x00000800;
           coveredFee_ = other.coveredFee_;
           onChanged();
         }
-        if (!other.getUncoveredFee().isEmpty()) {
+        if (other.hasUncoveredFee()) {
+          bitField0_ |= 0x00001000;
           uncoveredFee_ = other.uncoveredFee_;
           onChanged();
         }
-        if (!other.getUpperLimitExcess().isEmpty()) {
+        if (other.hasUpperLimitExcess()) {
+          bitField0_ |= 0x00002000;
           upperLimitExcess_ = other.upperLimitExcess_;
           onChanged();
         }
-        if (!other.getPayTotal().isEmpty()) {
+        if (other.hasPayTotal()) {
+          bitField0_ |= 0x00004000;
           payTotal_ = other.payTotal_;
           onChanged();
         }
-        if (!other.getPatientPayTotal().isEmpty()) {
+        if (other.hasPatientPayTotal()) {
+          bitField0_ |= 0x00008000;
           patientPayTotal_ = other.patientPayTotal_;
           onChanged();
         }
-        if (!other.getDeductAmount().isEmpty()) {
+        if (other.hasDeductAmount()) {
+          bitField0_ |= 0x00010000;
           deductAmount_ = other.deductAmount_;
           onChanged();
         }
-        if (!other.getAdvancePayAmount().isEmpty()) {
+        if (other.hasAdvancePayAmount()) {
+          bitField0_ |= 0x00020000;
           advancePayAmount_ = other.advancePayAmount_;
           onChanged();
         }
-        if (!other.getPayAmount().isEmpty()) {
+        if (other.hasPayAmount()) {
+          bitField0_ |= 0x00040000;
           payAmount_ = other.payAmount_;
           onChanged();
         }
-        if (!other.getUncollectedPayAmount().isEmpty()) {
+        if (other.hasUncollectedPayAmount()) {
+          bitField0_ |= 0x00080000;
           uncollectedPayAmount_ = other.uncollectedPayAmount_;
           onChanged();
         }
-        if (!other.getReceiptAmount().isEmpty()) {
+        if (other.hasReceiptAmount()) {
+          bitField0_ |= 0x00100000;
           receiptAmount_ = other.receiptAmount_;
           onChanged();
         }
-        if (!other.getSurtaxAmount().isEmpty()) {
+        if (other.hasSurtaxAmount()) {
+          bitField0_ |= 0x00200000;
           surtaxAmount_ = other.surtaxAmount_;
           onChanged();
         }
-        if (!other.getCashPayAmount().isEmpty()) {
+        if (other.hasCashPayAmount()) {
+          bitField0_ |= 0x00400000;
           cashPayAmount_ = other.cashPayAmount_;
           onChanged();
         }
-        if (!other.getCardPayAmount().isEmpty()) {
+        if (other.hasCardPayAmount()) {
+          bitField0_ |= 0x00800000;
           cardPayAmount_ = other.cardPayAmount_;
           onChanged();
         }
@@ -3468,6 +4162,83 @@ public final class ClaimDataV1 {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasReceiptNo()) {
+          return false;
+        }
+        if (!hasReceiptType()) {
+          return false;
+        }
+        if (!hasPatientNo()) {
+          return false;
+        }
+        if (!hasPatientName()) {
+          return false;
+        }
+        if (!hasCompanyRegistrationNo()) {
+          return false;
+        }
+        if (!hasTreatmentStartDate()) {
+          return false;
+        }
+        if (!hasTreatmentEndDate()) {
+          return false;
+        }
+        if (!hasTreatmentDepartment()) {
+          return false;
+        }
+        if (!hasTreatmentDepartmentCode()) {
+          return false;
+        }
+        if (!hasTreatmentType()) {
+          return false;
+        }
+        if (!hasTreatmentTypeCode()) {
+          return false;
+        }
+        if (!hasCoveredFee()) {
+          return false;
+        }
+        if (!hasUncoveredFee()) {
+          return false;
+        }
+        if (!hasUpperLimitExcess()) {
+          return false;
+        }
+        if (!hasPayTotal()) {
+          return false;
+        }
+        if (!hasPatientPayTotal()) {
+          return false;
+        }
+        if (!hasDeductAmount()) {
+          return false;
+        }
+        if (!hasAdvancePayAmount()) {
+          return false;
+        }
+        if (!hasPayAmount()) {
+          return false;
+        }
+        if (!hasUncollectedPayAmount()) {
+          return false;
+        }
+        if (!hasReceiptAmount()) {
+          return false;
+        }
+        if (!hasSurtaxAmount()) {
+          return false;
+        }
+        if (!hasCashPayAmount()) {
+          return false;
+        }
+        if (!hasCardPayAmount()) {
+          return false;
+        }
+        for (int i = 0; i < getFeeItemsCount(); i++) {
+          if (!getFeeItems(i).isInitialized()) {
+            return false;
+          }
+        }
         return true;
       }
 
@@ -3493,7 +4264,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object receiptNo_ = "";
       /**
-       * <code>string receipt_no = 1;</code>
+       * <code>required string receipt_no = 1;</code>
+       */
+      public boolean hasReceiptNo() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string receipt_no = 1;</code>
        */
       public java.lang.String getReceiptNo() {
         java.lang.Object ref = receiptNo_;
@@ -3501,14 +4278,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          receiptNo_ = s;
+          if (bs.isValidUtf8()) {
+            receiptNo_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string receipt_no = 1;</code>
+       * <code>required string receipt_no = 1;</code>
        */
       public com.google.protobuf.ByteString
           getReceiptNoBytes() {
@@ -3524,37 +4303,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string receipt_no = 1;</code>
+       * <code>required string receipt_no = 1;</code>
        */
       public Builder setReceiptNo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         receiptNo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_no = 1;</code>
+       * <code>required string receipt_no = 1;</code>
        */
       public Builder clearReceiptNo() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         receiptNo_ = getDefaultInstance().getReceiptNo();
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_no = 1;</code>
+       * <code>required string receipt_no = 1;</code>
        */
       public Builder setReceiptNoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         receiptNo_ = value;
         onChanged();
         return this;
@@ -3562,7 +4340,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object receiptType_ = "";
       /**
-       * <code>string receipt_type = 2;</code>
+       * <code>required string receipt_type = 2;</code>
+       */
+      public boolean hasReceiptType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string receipt_type = 2;</code>
        */
       public java.lang.String getReceiptType() {
         java.lang.Object ref = receiptType_;
@@ -3570,14 +4354,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          receiptType_ = s;
+          if (bs.isValidUtf8()) {
+            receiptType_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string receipt_type = 2;</code>
+       * <code>required string receipt_type = 2;</code>
        */
       public com.google.protobuf.ByteString
           getReceiptTypeBytes() {
@@ -3593,37 +4379,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string receipt_type = 2;</code>
+       * <code>required string receipt_type = 2;</code>
        */
       public Builder setReceiptType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         receiptType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_type = 2;</code>
+       * <code>required string receipt_type = 2;</code>
        */
       public Builder clearReceiptType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         receiptType_ = getDefaultInstance().getReceiptType();
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_type = 2;</code>
+       * <code>required string receipt_type = 2;</code>
        */
       public Builder setReceiptTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         receiptType_ = value;
         onChanged();
         return this;
@@ -3631,7 +4416,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object patientNo_ = "";
       /**
-       * <code>string patient_no = 3;</code>
+       * <code>required string patient_no = 3;</code>
+       */
+      public boolean hasPatientNo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string patient_no = 3;</code>
        */
       public java.lang.String getPatientNo() {
         java.lang.Object ref = patientNo_;
@@ -3639,14 +4430,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          patientNo_ = s;
+          if (bs.isValidUtf8()) {
+            patientNo_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string patient_no = 3;</code>
+       * <code>required string patient_no = 3;</code>
        */
       public com.google.protobuf.ByteString
           getPatientNoBytes() {
@@ -3662,37 +4455,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string patient_no = 3;</code>
+       * <code>required string patient_no = 3;</code>
        */
       public Builder setPatientNo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         patientNo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_no = 3;</code>
+       * <code>required string patient_no = 3;</code>
        */
       public Builder clearPatientNo() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         patientNo_ = getDefaultInstance().getPatientNo();
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_no = 3;</code>
+       * <code>required string patient_no = 3;</code>
        */
       public Builder setPatientNoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         patientNo_ = value;
         onChanged();
         return this;
@@ -3700,7 +4492,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object patientName_ = "";
       /**
-       * <code>string patient_name = 4;</code>
+       * <code>required string patient_name = 4;</code>
+       */
+      public boolean hasPatientName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string patient_name = 4;</code>
        */
       public java.lang.String getPatientName() {
         java.lang.Object ref = patientName_;
@@ -3708,14 +4506,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          patientName_ = s;
+          if (bs.isValidUtf8()) {
+            patientName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string patient_name = 4;</code>
+       * <code>required string patient_name = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPatientNameBytes() {
@@ -3731,37 +4531,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string patient_name = 4;</code>
+       * <code>required string patient_name = 4;</code>
        */
       public Builder setPatientName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         patientName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_name = 4;</code>
+       * <code>required string patient_name = 4;</code>
        */
       public Builder clearPatientName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         patientName_ = getDefaultInstance().getPatientName();
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_name = 4;</code>
+       * <code>required string patient_name = 4;</code>
        */
       public Builder setPatientNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         patientName_ = value;
         onChanged();
         return this;
@@ -3769,7 +4568,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object companyRegistrationNo_ = "";
       /**
-       * <code>string company_registration_no = 5;</code>
+       * <code>required string company_registration_no = 5;</code>
+       */
+      public boolean hasCompanyRegistrationNo() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required string company_registration_no = 5;</code>
        */
       public java.lang.String getCompanyRegistrationNo() {
         java.lang.Object ref = companyRegistrationNo_;
@@ -3777,14 +4582,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          companyRegistrationNo_ = s;
+          if (bs.isValidUtf8()) {
+            companyRegistrationNo_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string company_registration_no = 5;</code>
+       * <code>required string company_registration_no = 5;</code>
        */
       public com.google.protobuf.ByteString
           getCompanyRegistrationNoBytes() {
@@ -3800,37 +4607,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string company_registration_no = 5;</code>
+       * <code>required string company_registration_no = 5;</code>
        */
       public Builder setCompanyRegistrationNo(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         companyRegistrationNo_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string company_registration_no = 5;</code>
+       * <code>required string company_registration_no = 5;</code>
        */
       public Builder clearCompanyRegistrationNo() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         companyRegistrationNo_ = getDefaultInstance().getCompanyRegistrationNo();
         onChanged();
         return this;
       }
       /**
-       * <code>string company_registration_no = 5;</code>
+       * <code>required string company_registration_no = 5;</code>
        */
       public Builder setCompanyRegistrationNoBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         companyRegistrationNo_ = value;
         onChanged();
         return this;
@@ -3838,7 +4644,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentStartDate_ = "";
       /**
-       * <code>string treatment_start_date = 6;</code>
+       * <code>required string treatment_start_date = 6;</code>
+       */
+      public boolean hasTreatmentStartDate() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string treatment_start_date = 6;</code>
        */
       public java.lang.String getTreatmentStartDate() {
         java.lang.Object ref = treatmentStartDate_;
@@ -3846,14 +4658,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentStartDate_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentStartDate_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_start_date = 6;</code>
+       * <code>required string treatment_start_date = 6;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentStartDateBytes() {
@@ -3869,37 +4683,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_start_date = 6;</code>
+       * <code>required string treatment_start_date = 6;</code>
        */
       public Builder setTreatmentStartDate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000020;
         treatmentStartDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_start_date = 6;</code>
+       * <code>required string treatment_start_date = 6;</code>
        */
       public Builder clearTreatmentStartDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         treatmentStartDate_ = getDefaultInstance().getTreatmentStartDate();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_start_date = 6;</code>
+       * <code>required string treatment_start_date = 6;</code>
        */
       public Builder setTreatmentStartDateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000020;
         treatmentStartDate_ = value;
         onChanged();
         return this;
@@ -3907,7 +4720,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentEndDate_ = "";
       /**
-       * <code>string treatment_end_date = 7;</code>
+       * <code>required string treatment_end_date = 7;</code>
+       */
+      public boolean hasTreatmentEndDate() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required string treatment_end_date = 7;</code>
        */
       public java.lang.String getTreatmentEndDate() {
         java.lang.Object ref = treatmentEndDate_;
@@ -3915,14 +4734,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentEndDate_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentEndDate_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_end_date = 7;</code>
+       * <code>required string treatment_end_date = 7;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentEndDateBytes() {
@@ -3938,37 +4759,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_end_date = 7;</code>
+       * <code>required string treatment_end_date = 7;</code>
        */
       public Builder setTreatmentEndDate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000040;
         treatmentEndDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_end_date = 7;</code>
+       * <code>required string treatment_end_date = 7;</code>
        */
       public Builder clearTreatmentEndDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         treatmentEndDate_ = getDefaultInstance().getTreatmentEndDate();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_end_date = 7;</code>
+       * <code>required string treatment_end_date = 7;</code>
        */
       public Builder setTreatmentEndDateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000040;
         treatmentEndDate_ = value;
         onChanged();
         return this;
@@ -3976,7 +4796,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentDepartment_ = "";
       /**
-       * <code>string treatment_department = 8;</code>
+       * <code>required string treatment_department = 8;</code>
+       */
+      public boolean hasTreatmentDepartment() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required string treatment_department = 8;</code>
        */
       public java.lang.String getTreatmentDepartment() {
         java.lang.Object ref = treatmentDepartment_;
@@ -3984,14 +4810,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentDepartment_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentDepartment_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_department = 8;</code>
+       * <code>required string treatment_department = 8;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentDepartmentBytes() {
@@ -4007,37 +4835,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_department = 8;</code>
+       * <code>required string treatment_department = 8;</code>
        */
       public Builder setTreatmentDepartment(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000080;
         treatmentDepartment_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_department = 8;</code>
+       * <code>required string treatment_department = 8;</code>
        */
       public Builder clearTreatmentDepartment() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         treatmentDepartment_ = getDefaultInstance().getTreatmentDepartment();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_department = 8;</code>
+       * <code>required string treatment_department = 8;</code>
        */
       public Builder setTreatmentDepartmentBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000080;
         treatmentDepartment_ = value;
         onChanged();
         return this;
@@ -4045,7 +4872,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentDepartmentCode_ = "";
       /**
-       * <code>string treatment_department_code = 9;</code>
+       * <code>required string treatment_department_code = 9;</code>
+       */
+      public boolean hasTreatmentDepartmentCode() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required string treatment_department_code = 9;</code>
        */
       public java.lang.String getTreatmentDepartmentCode() {
         java.lang.Object ref = treatmentDepartmentCode_;
@@ -4053,14 +4886,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentDepartmentCode_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentDepartmentCode_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_department_code = 9;</code>
+       * <code>required string treatment_department_code = 9;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentDepartmentCodeBytes() {
@@ -4076,37 +4911,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_department_code = 9;</code>
+       * <code>required string treatment_department_code = 9;</code>
        */
       public Builder setTreatmentDepartmentCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000100;
         treatmentDepartmentCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_department_code = 9;</code>
+       * <code>required string treatment_department_code = 9;</code>
        */
       public Builder clearTreatmentDepartmentCode() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         treatmentDepartmentCode_ = getDefaultInstance().getTreatmentDepartmentCode();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_department_code = 9;</code>
+       * <code>required string treatment_department_code = 9;</code>
        */
       public Builder setTreatmentDepartmentCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000100;
         treatmentDepartmentCode_ = value;
         onChanged();
         return this;
@@ -4114,7 +4948,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentType_ = "";
       /**
-       * <code>string treatment_type = 10;</code>
+       * <code>required string treatment_type = 10;</code>
+       */
+      public boolean hasTreatmentType() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required string treatment_type = 10;</code>
        */
       public java.lang.String getTreatmentType() {
         java.lang.Object ref = treatmentType_;
@@ -4122,14 +4962,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentType_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentType_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_type = 10;</code>
+       * <code>required string treatment_type = 10;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentTypeBytes() {
@@ -4145,37 +4987,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_type = 10;</code>
+       * <code>required string treatment_type = 10;</code>
        */
       public Builder setTreatmentType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000200;
         treatmentType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_type = 10;</code>
+       * <code>required string treatment_type = 10;</code>
        */
       public Builder clearTreatmentType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         treatmentType_ = getDefaultInstance().getTreatmentType();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_type = 10;</code>
+       * <code>required string treatment_type = 10;</code>
        */
       public Builder setTreatmentTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000200;
         treatmentType_ = value;
         onChanged();
         return this;
@@ -4183,7 +5024,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentTypeCode_ = "";
       /**
-       * <code>string treatment_type_code = 11;</code>
+       * <code>required string treatment_type_code = 11;</code>
+       */
+      public boolean hasTreatmentTypeCode() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>required string treatment_type_code = 11;</code>
        */
       public java.lang.String getTreatmentTypeCode() {
         java.lang.Object ref = treatmentTypeCode_;
@@ -4191,14 +5038,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentTypeCode_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentTypeCode_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_type_code = 11;</code>
+       * <code>required string treatment_type_code = 11;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentTypeCodeBytes() {
@@ -4214,37 +5063,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_type_code = 11;</code>
+       * <code>required string treatment_type_code = 11;</code>
        */
       public Builder setTreatmentTypeCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000400;
         treatmentTypeCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_type_code = 11;</code>
+       * <code>required string treatment_type_code = 11;</code>
        */
       public Builder clearTreatmentTypeCode() {
-        
+        bitField0_ = (bitField0_ & ~0x00000400);
         treatmentTypeCode_ = getDefaultInstance().getTreatmentTypeCode();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_type_code = 11;</code>
+       * <code>required string treatment_type_code = 11;</code>
        */
       public Builder setTreatmentTypeCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000400;
         treatmentTypeCode_ = value;
         onChanged();
         return this;
@@ -4252,7 +5100,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object coveredFee_ = "";
       /**
-       * <code>string covered_fee = 12;</code>
+       * <code>required string covered_fee = 12;</code>
+       */
+      public boolean hasCoveredFee() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>required string covered_fee = 12;</code>
        */
       public java.lang.String getCoveredFee() {
         java.lang.Object ref = coveredFee_;
@@ -4260,14 +5114,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          coveredFee_ = s;
+          if (bs.isValidUtf8()) {
+            coveredFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string covered_fee = 12;</code>
+       * <code>required string covered_fee = 12;</code>
        */
       public com.google.protobuf.ByteString
           getCoveredFeeBytes() {
@@ -4283,37 +5139,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string covered_fee = 12;</code>
+       * <code>required string covered_fee = 12;</code>
        */
       public Builder setCoveredFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000800;
         coveredFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_fee = 12;</code>
+       * <code>required string covered_fee = 12;</code>
        */
       public Builder clearCoveredFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00000800);
         coveredFee_ = getDefaultInstance().getCoveredFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_fee = 12;</code>
+       * <code>required string covered_fee = 12;</code>
        */
       public Builder setCoveredFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000800;
         coveredFee_ = value;
         onChanged();
         return this;
@@ -4321,7 +5176,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object uncoveredFee_ = "";
       /**
-       * <code>string uncovered_fee = 13;</code>
+       * <code>required string uncovered_fee = 13;</code>
+       */
+      public boolean hasUncoveredFee() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>required string uncovered_fee = 13;</code>
        */
       public java.lang.String getUncoveredFee() {
         java.lang.Object ref = uncoveredFee_;
@@ -4329,14 +5190,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uncoveredFee_ = s;
+          if (bs.isValidUtf8()) {
+            uncoveredFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uncovered_fee = 13;</code>
+       * <code>required string uncovered_fee = 13;</code>
        */
       public com.google.protobuf.ByteString
           getUncoveredFeeBytes() {
@@ -4352,37 +5215,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string uncovered_fee = 13;</code>
+       * <code>required string uncovered_fee = 13;</code>
        */
       public Builder setUncoveredFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00001000;
         uncoveredFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_fee = 13;</code>
+       * <code>required string uncovered_fee = 13;</code>
        */
       public Builder clearUncoveredFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00001000);
         uncoveredFee_ = getDefaultInstance().getUncoveredFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_fee = 13;</code>
+       * <code>required string uncovered_fee = 13;</code>
        */
       public Builder setUncoveredFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00001000;
         uncoveredFee_ = value;
         onChanged();
         return this;
@@ -4390,7 +5252,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object upperLimitExcess_ = "";
       /**
-       * <code>string upper_limit_excess = 14;</code>
+       * <code>required string upper_limit_excess = 14;</code>
+       */
+      public boolean hasUpperLimitExcess() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>required string upper_limit_excess = 14;</code>
        */
       public java.lang.String getUpperLimitExcess() {
         java.lang.Object ref = upperLimitExcess_;
@@ -4398,14 +5266,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          upperLimitExcess_ = s;
+          if (bs.isValidUtf8()) {
+            upperLimitExcess_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string upper_limit_excess = 14;</code>
+       * <code>required string upper_limit_excess = 14;</code>
        */
       public com.google.protobuf.ByteString
           getUpperLimitExcessBytes() {
@@ -4421,37 +5291,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string upper_limit_excess = 14;</code>
+       * <code>required string upper_limit_excess = 14;</code>
        */
       public Builder setUpperLimitExcess(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00002000;
         upperLimitExcess_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string upper_limit_excess = 14;</code>
+       * <code>required string upper_limit_excess = 14;</code>
        */
       public Builder clearUpperLimitExcess() {
-        
+        bitField0_ = (bitField0_ & ~0x00002000);
         upperLimitExcess_ = getDefaultInstance().getUpperLimitExcess();
         onChanged();
         return this;
       }
       /**
-       * <code>string upper_limit_excess = 14;</code>
+       * <code>required string upper_limit_excess = 14;</code>
        */
       public Builder setUpperLimitExcessBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00002000;
         upperLimitExcess_ = value;
         onChanged();
         return this;
@@ -4459,7 +5328,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object payTotal_ = "";
       /**
-       * <code>string pay_total = 15;</code>
+       * <code>required string pay_total = 15;</code>
+       */
+      public boolean hasPayTotal() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>required string pay_total = 15;</code>
        */
       public java.lang.String getPayTotal() {
         java.lang.Object ref = payTotal_;
@@ -4467,14 +5342,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          payTotal_ = s;
+          if (bs.isValidUtf8()) {
+            payTotal_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string pay_total = 15;</code>
+       * <code>required string pay_total = 15;</code>
        */
       public com.google.protobuf.ByteString
           getPayTotalBytes() {
@@ -4490,37 +5367,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string pay_total = 15;</code>
+       * <code>required string pay_total = 15;</code>
        */
       public Builder setPayTotal(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00004000;
         payTotal_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string pay_total = 15;</code>
+       * <code>required string pay_total = 15;</code>
        */
       public Builder clearPayTotal() {
-        
+        bitField0_ = (bitField0_ & ~0x00004000);
         payTotal_ = getDefaultInstance().getPayTotal();
         onChanged();
         return this;
       }
       /**
-       * <code>string pay_total = 15;</code>
+       * <code>required string pay_total = 15;</code>
        */
       public Builder setPayTotalBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00004000;
         payTotal_ = value;
         onChanged();
         return this;
@@ -4528,7 +5404,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object patientPayTotal_ = "";
       /**
-       * <code>string patient_pay_total = 16;</code>
+       * <code>required string patient_pay_total = 16;</code>
+       */
+      public boolean hasPatientPayTotal() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      /**
+       * <code>required string patient_pay_total = 16;</code>
        */
       public java.lang.String getPatientPayTotal() {
         java.lang.Object ref = patientPayTotal_;
@@ -4536,14 +5418,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          patientPayTotal_ = s;
+          if (bs.isValidUtf8()) {
+            patientPayTotal_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string patient_pay_total = 16;</code>
+       * <code>required string patient_pay_total = 16;</code>
        */
       public com.google.protobuf.ByteString
           getPatientPayTotalBytes() {
@@ -4559,37 +5443,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string patient_pay_total = 16;</code>
+       * <code>required string patient_pay_total = 16;</code>
        */
       public Builder setPatientPayTotal(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00008000;
         patientPayTotal_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_pay_total = 16;</code>
+       * <code>required string patient_pay_total = 16;</code>
        */
       public Builder clearPatientPayTotal() {
-        
+        bitField0_ = (bitField0_ & ~0x00008000);
         patientPayTotal_ = getDefaultInstance().getPatientPayTotal();
         onChanged();
         return this;
       }
       /**
-       * <code>string patient_pay_total = 16;</code>
+       * <code>required string patient_pay_total = 16;</code>
        */
       public Builder setPatientPayTotalBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00008000;
         patientPayTotal_ = value;
         onChanged();
         return this;
@@ -4597,7 +5480,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object deductAmount_ = "";
       /**
-       * <code>string deduct_amount = 17;</code>
+       * <code>required string deduct_amount = 17;</code>
+       */
+      public boolean hasDeductAmount() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>required string deduct_amount = 17;</code>
        */
       public java.lang.String getDeductAmount() {
         java.lang.Object ref = deductAmount_;
@@ -4605,14 +5494,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          deductAmount_ = s;
+          if (bs.isValidUtf8()) {
+            deductAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string deduct_amount = 17;</code>
+       * <code>required string deduct_amount = 17;</code>
        */
       public com.google.protobuf.ByteString
           getDeductAmountBytes() {
@@ -4628,37 +5519,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string deduct_amount = 17;</code>
+       * <code>required string deduct_amount = 17;</code>
        */
       public Builder setDeductAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00010000;
         deductAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string deduct_amount = 17;</code>
+       * <code>required string deduct_amount = 17;</code>
        */
       public Builder clearDeductAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00010000);
         deductAmount_ = getDefaultInstance().getDeductAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string deduct_amount = 17;</code>
+       * <code>required string deduct_amount = 17;</code>
        */
       public Builder setDeductAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00010000;
         deductAmount_ = value;
         onChanged();
         return this;
@@ -4666,7 +5556,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object advancePayAmount_ = "";
       /**
-       * <code>string advance_pay_amount = 18;</code>
+       * <code>required string advance_pay_amount = 18;</code>
+       */
+      public boolean hasAdvancePayAmount() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      /**
+       * <code>required string advance_pay_amount = 18;</code>
        */
       public java.lang.String getAdvancePayAmount() {
         java.lang.Object ref = advancePayAmount_;
@@ -4674,14 +5570,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          advancePayAmount_ = s;
+          if (bs.isValidUtf8()) {
+            advancePayAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string advance_pay_amount = 18;</code>
+       * <code>required string advance_pay_amount = 18;</code>
        */
       public com.google.protobuf.ByteString
           getAdvancePayAmountBytes() {
@@ -4697,37 +5595,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string advance_pay_amount = 18;</code>
+       * <code>required string advance_pay_amount = 18;</code>
        */
       public Builder setAdvancePayAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00020000;
         advancePayAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string advance_pay_amount = 18;</code>
+       * <code>required string advance_pay_amount = 18;</code>
        */
       public Builder clearAdvancePayAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00020000);
         advancePayAmount_ = getDefaultInstance().getAdvancePayAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string advance_pay_amount = 18;</code>
+       * <code>required string advance_pay_amount = 18;</code>
        */
       public Builder setAdvancePayAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00020000;
         advancePayAmount_ = value;
         onChanged();
         return this;
@@ -4735,7 +5632,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object payAmount_ = "";
       /**
-       * <code>string pay_amount = 19;</code>
+       * <code>required string pay_amount = 19;</code>
+       */
+      public boolean hasPayAmount() {
+        return ((bitField0_ & 0x00040000) == 0x00040000);
+      }
+      /**
+       * <code>required string pay_amount = 19;</code>
        */
       public java.lang.String getPayAmount() {
         java.lang.Object ref = payAmount_;
@@ -4743,14 +5646,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          payAmount_ = s;
+          if (bs.isValidUtf8()) {
+            payAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string pay_amount = 19;</code>
+       * <code>required string pay_amount = 19;</code>
        */
       public com.google.protobuf.ByteString
           getPayAmountBytes() {
@@ -4766,37 +5671,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string pay_amount = 19;</code>
+       * <code>required string pay_amount = 19;</code>
        */
       public Builder setPayAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00040000;
         payAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string pay_amount = 19;</code>
+       * <code>required string pay_amount = 19;</code>
        */
       public Builder clearPayAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00040000);
         payAmount_ = getDefaultInstance().getPayAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string pay_amount = 19;</code>
+       * <code>required string pay_amount = 19;</code>
        */
       public Builder setPayAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00040000;
         payAmount_ = value;
         onChanged();
         return this;
@@ -4804,7 +5708,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object uncollectedPayAmount_ = "";
       /**
-       * <code>string uncollected_pay_amount = 20;</code>
+       * <code>required string uncollected_pay_amount = 20;</code>
+       */
+      public boolean hasUncollectedPayAmount() {
+        return ((bitField0_ & 0x00080000) == 0x00080000);
+      }
+      /**
+       * <code>required string uncollected_pay_amount = 20;</code>
        */
       public java.lang.String getUncollectedPayAmount() {
         java.lang.Object ref = uncollectedPayAmount_;
@@ -4812,14 +5722,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uncollectedPayAmount_ = s;
+          if (bs.isValidUtf8()) {
+            uncollectedPayAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uncollected_pay_amount = 20;</code>
+       * <code>required string uncollected_pay_amount = 20;</code>
        */
       public com.google.protobuf.ByteString
           getUncollectedPayAmountBytes() {
@@ -4835,37 +5747,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string uncollected_pay_amount = 20;</code>
+       * <code>required string uncollected_pay_amount = 20;</code>
        */
       public Builder setUncollectedPayAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00080000;
         uncollectedPayAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uncollected_pay_amount = 20;</code>
+       * <code>required string uncollected_pay_amount = 20;</code>
        */
       public Builder clearUncollectedPayAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00080000);
         uncollectedPayAmount_ = getDefaultInstance().getUncollectedPayAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string uncollected_pay_amount = 20;</code>
+       * <code>required string uncollected_pay_amount = 20;</code>
        */
       public Builder setUncollectedPayAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00080000;
         uncollectedPayAmount_ = value;
         onChanged();
         return this;
@@ -4873,7 +5784,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object receiptAmount_ = "";
       /**
-       * <code>string receipt_amount = 21;</code>
+       * <code>required string receipt_amount = 21;</code>
+       */
+      public boolean hasReceiptAmount() {
+        return ((bitField0_ & 0x00100000) == 0x00100000);
+      }
+      /**
+       * <code>required string receipt_amount = 21;</code>
        */
       public java.lang.String getReceiptAmount() {
         java.lang.Object ref = receiptAmount_;
@@ -4881,14 +5798,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          receiptAmount_ = s;
+          if (bs.isValidUtf8()) {
+            receiptAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string receipt_amount = 21;</code>
+       * <code>required string receipt_amount = 21;</code>
        */
       public com.google.protobuf.ByteString
           getReceiptAmountBytes() {
@@ -4904,37 +5823,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string receipt_amount = 21;</code>
+       * <code>required string receipt_amount = 21;</code>
        */
       public Builder setReceiptAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00100000;
         receiptAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_amount = 21;</code>
+       * <code>required string receipt_amount = 21;</code>
        */
       public Builder clearReceiptAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00100000);
         receiptAmount_ = getDefaultInstance().getReceiptAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string receipt_amount = 21;</code>
+       * <code>required string receipt_amount = 21;</code>
        */
       public Builder setReceiptAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00100000;
         receiptAmount_ = value;
         onChanged();
         return this;
@@ -4942,7 +5860,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object surtaxAmount_ = "";
       /**
-       * <code>string surtax_amount = 22;</code>
+       * <code>required string surtax_amount = 22;</code>
+       */
+      public boolean hasSurtaxAmount() {
+        return ((bitField0_ & 0x00200000) == 0x00200000);
+      }
+      /**
+       * <code>required string surtax_amount = 22;</code>
        */
       public java.lang.String getSurtaxAmount() {
         java.lang.Object ref = surtaxAmount_;
@@ -4950,14 +5874,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          surtaxAmount_ = s;
+          if (bs.isValidUtf8()) {
+            surtaxAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string surtax_amount = 22;</code>
+       * <code>required string surtax_amount = 22;</code>
        */
       public com.google.protobuf.ByteString
           getSurtaxAmountBytes() {
@@ -4973,37 +5899,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string surtax_amount = 22;</code>
+       * <code>required string surtax_amount = 22;</code>
        */
       public Builder setSurtaxAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00200000;
         surtaxAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string surtax_amount = 22;</code>
+       * <code>required string surtax_amount = 22;</code>
        */
       public Builder clearSurtaxAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00200000);
         surtaxAmount_ = getDefaultInstance().getSurtaxAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string surtax_amount = 22;</code>
+       * <code>required string surtax_amount = 22;</code>
        */
       public Builder setSurtaxAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00200000;
         surtaxAmount_ = value;
         onChanged();
         return this;
@@ -5011,7 +5936,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object cashPayAmount_ = "";
       /**
-       * <code>string cash_pay_amount = 23;</code>
+       * <code>required string cash_pay_amount = 23;</code>
+       */
+      public boolean hasCashPayAmount() {
+        return ((bitField0_ & 0x00400000) == 0x00400000);
+      }
+      /**
+       * <code>required string cash_pay_amount = 23;</code>
        */
       public java.lang.String getCashPayAmount() {
         java.lang.Object ref = cashPayAmount_;
@@ -5019,14 +5950,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          cashPayAmount_ = s;
+          if (bs.isValidUtf8()) {
+            cashPayAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string cash_pay_amount = 23;</code>
+       * <code>required string cash_pay_amount = 23;</code>
        */
       public com.google.protobuf.ByteString
           getCashPayAmountBytes() {
@@ -5042,37 +5975,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string cash_pay_amount = 23;</code>
+       * <code>required string cash_pay_amount = 23;</code>
        */
       public Builder setCashPayAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00400000;
         cashPayAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string cash_pay_amount = 23;</code>
+       * <code>required string cash_pay_amount = 23;</code>
        */
       public Builder clearCashPayAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00400000);
         cashPayAmount_ = getDefaultInstance().getCashPayAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string cash_pay_amount = 23;</code>
+       * <code>required string cash_pay_amount = 23;</code>
        */
       public Builder setCashPayAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00400000;
         cashPayAmount_ = value;
         onChanged();
         return this;
@@ -5080,7 +6012,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object cardPayAmount_ = "";
       /**
-       * <code>string card_pay_amount = 24;</code>
+       * <code>required string card_pay_amount = 24;</code>
+       */
+      public boolean hasCardPayAmount() {
+        return ((bitField0_ & 0x00800000) == 0x00800000);
+      }
+      /**
+       * <code>required string card_pay_amount = 24;</code>
        */
       public java.lang.String getCardPayAmount() {
         java.lang.Object ref = cardPayAmount_;
@@ -5088,14 +6026,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          cardPayAmount_ = s;
+          if (bs.isValidUtf8()) {
+            cardPayAmount_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string card_pay_amount = 24;</code>
+       * <code>required string card_pay_amount = 24;</code>
        */
       public com.google.protobuf.ByteString
           getCardPayAmountBytes() {
@@ -5111,37 +6051,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string card_pay_amount = 24;</code>
+       * <code>required string card_pay_amount = 24;</code>
        */
       public Builder setCardPayAmount(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00800000;
         cardPayAmount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string card_pay_amount = 24;</code>
+       * <code>required string card_pay_amount = 24;</code>
        */
       public Builder clearCardPayAmount() {
-        
+        bitField0_ = (bitField0_ & ~0x00800000);
         cardPayAmount_ = getDefaultInstance().getCardPayAmount();
         onChanged();
         return this;
       }
       /**
-       * <code>string card_pay_amount = 24;</code>
+       * <code>required string card_pay_amount = 24;</code>
        */
       public Builder setCardPayAmountBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00800000;
         cardPayAmount_ = value;
         onChanged();
         return this;
@@ -5389,7 +6328,7 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -5412,7 +6351,7 @@ public final class ClaimDataV1 {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Receipt>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Receipt>
         PARSER = new com.google.protobuf.AbstractParser<Receipt>() {
       @java.lang.Override
       public Receipt parsePartialFrom(
@@ -5444,141 +6383,197 @@ public final class ClaimDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string fee_item_name = 1;</code>
+     * <code>required string fee_item_name = 1;</code>
+     */
+    boolean hasFeeItemName();
+    /**
+     * <code>required string fee_item_name = 1;</code>
      */
     java.lang.String getFeeItemName();
     /**
-     * <code>string fee_item_name = 1;</code>
+     * <code>required string fee_item_name = 1;</code>
      */
     com.google.protobuf.ByteString
         getFeeItemNameBytes();
 
     /**
-     * <code>string fee_item_code = 2;</code>
+     * <code>required string fee_item_code = 2;</code>
+     */
+    boolean hasFeeItemCode();
+    /**
+     * <code>required string fee_item_code = 2;</code>
      */
     java.lang.String getFeeItemCode();
     /**
-     * <code>string fee_item_code = 2;</code>
+     * <code>required string fee_item_code = 2;</code>
      */
     com.google.protobuf.ByteString
         getFeeItemCodeBytes();
 
     /**
-     * <code>string treatment_date = 3;</code>
+     * <code>required string treatment_date = 3;</code>
+     */
+    boolean hasTreatmentDate();
+    /**
+     * <code>required string treatment_date = 3;</code>
      */
     java.lang.String getTreatmentDate();
     /**
-     * <code>string treatment_date = 3;</code>
+     * <code>required string treatment_date = 3;</code>
      */
     com.google.protobuf.ByteString
         getTreatmentDateBytes();
 
     /**
-     * <code>string covered_type = 4;</code>
+     * <code>required string covered_type = 4;</code>
+     */
+    boolean hasCoveredType();
+    /**
+     * <code>required string covered_type = 4;</code>
      */
     java.lang.String getCoveredType();
     /**
-     * <code>string covered_type = 4;</code>
+     * <code>required string covered_type = 4;</code>
      */
     com.google.protobuf.ByteString
         getCoveredTypeBytes();
 
     /**
-     * <code>string medical_charge_code = 5;</code>
+     * <code>required string medical_charge_code = 5;</code>
+     */
+    boolean hasMedicalChargeCode();
+    /**
+     * <code>required string medical_charge_code = 5;</code>
      */
     java.lang.String getMedicalChargeCode();
     /**
-     * <code>string medical_charge_code = 5;</code>
+     * <code>required string medical_charge_code = 5;</code>
      */
     com.google.protobuf.ByteString
         getMedicalChargeCodeBytes();
 
     /**
-     * <code>string price = 6;</code>
+     * <code>required string price = 6;</code>
+     */
+    boolean hasPrice();
+    /**
+     * <code>required string price = 6;</code>
      */
     java.lang.String getPrice();
     /**
-     * <code>string price = 6;</code>
+     * <code>required string price = 6;</code>
      */
     com.google.protobuf.ByteString
         getPriceBytes();
 
     /**
-     * <code>string quantity = 7;</code>
+     * <code>required string quantity = 7;</code>
+     */
+    boolean hasQuantity();
+    /**
+     * <code>required string quantity = 7;</code>
      */
     java.lang.String getQuantity();
     /**
-     * <code>string quantity = 7;</code>
+     * <code>required string quantity = 7;</code>
      */
     com.google.protobuf.ByteString
         getQuantityBytes();
 
     /**
-     * <code>string repeat_number = 8;</code>
+     * <code>required string repeat_number = 8;</code>
+     */
+    boolean hasRepeatNumber();
+    /**
+     * <code>required string repeat_number = 8;</code>
      */
     java.lang.String getRepeatNumber();
     /**
-     * <code>string repeat_number = 8;</code>
+     * <code>required string repeat_number = 8;</code>
      */
     com.google.protobuf.ByteString
         getRepeatNumberBytes();
 
     /**
-     * <code>string fee_total = 9;</code>
+     * <code>required string fee_total = 9;</code>
+     */
+    boolean hasFeeTotal();
+    /**
+     * <code>required string fee_total = 9;</code>
      */
     java.lang.String getFeeTotal();
     /**
-     * <code>string fee_total = 9;</code>
+     * <code>required string fee_total = 9;</code>
      */
     com.google.protobuf.ByteString
         getFeeTotalBytes();
 
     /**
-     * <code>string covered_patient_fee = 10;</code>
+     * <code>required string covered_patient_fee = 10;</code>
+     */
+    boolean hasCoveredPatientFee();
+    /**
+     * <code>required string covered_patient_fee = 10;</code>
      */
     java.lang.String getCoveredPatientFee();
     /**
-     * <code>string covered_patient_fee = 10;</code>
+     * <code>required string covered_patient_fee = 10;</code>
      */
     com.google.protobuf.ByteString
         getCoveredPatientFeeBytes();
 
     /**
-     * <code>string covered_insurance_fee = 11;</code>
+     * <code>required string covered_insurance_fee = 11;</code>
+     */
+    boolean hasCoveredInsuranceFee();
+    /**
+     * <code>required string covered_insurance_fee = 11;</code>
      */
     java.lang.String getCoveredInsuranceFee();
     /**
-     * <code>string covered_insurance_fee = 11;</code>
+     * <code>required string covered_insurance_fee = 11;</code>
      */
     com.google.protobuf.ByteString
         getCoveredInsuranceFeeBytes();
 
     /**
-     * <code>string covered_patient_all_fee = 12;</code>
+     * <code>required string covered_patient_all_fee = 12;</code>
+     */
+    boolean hasCoveredPatientAllFee();
+    /**
+     * <code>required string covered_patient_all_fee = 12;</code>
      */
     java.lang.String getCoveredPatientAllFee();
     /**
-     * <code>string covered_patient_all_fee = 12;</code>
+     * <code>required string covered_patient_all_fee = 12;</code>
      */
     com.google.protobuf.ByteString
         getCoveredPatientAllFeeBytes();
 
     /**
-     * <code>string uncovered_chosen_fee = 13;</code>
+     * <code>required string uncovered_chosen_fee = 13;</code>
+     */
+    boolean hasUncoveredChosenFee();
+    /**
+     * <code>required string uncovered_chosen_fee = 13;</code>
      */
     java.lang.String getUncoveredChosenFee();
     /**
-     * <code>string uncovered_chosen_fee = 13;</code>
+     * <code>required string uncovered_chosen_fee = 13;</code>
      */
     com.google.protobuf.ByteString
         getUncoveredChosenFeeBytes();
 
     /**
-     * <code>string uncovered_unchosen_fee = 14;</code>
+     * <code>required string uncovered_unchosen_fee = 14;</code>
+     */
+    boolean hasUncoveredUnchosenFee();
+    /**
+     * <code>required string uncovered_unchosen_fee = 14;</code>
      */
     java.lang.String getUncoveredUnchosenFee();
     /**
-     * <code>string uncovered_unchosen_fee = 14;</code>
+     * <code>required string uncovered_unchosen_fee = 14;</code>
      */
     com.google.protobuf.ByteString
         getUncoveredUnchosenFeeBytes();
@@ -5637,91 +6632,91 @@ public final class ClaimDataV1 {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              feeItemName_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              feeItemName_ = bs;
               break;
             }
             case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              feeItemCode_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              feeItemCode_ = bs;
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              treatmentDate_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              treatmentDate_ = bs;
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              coveredType_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              coveredType_ = bs;
               break;
             }
             case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              medicalChargeCode_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000010;
+              medicalChargeCode_ = bs;
               break;
             }
             case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              price_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000020;
+              price_ = bs;
               break;
             }
             case 58: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              quantity_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              quantity_ = bs;
               break;
             }
             case 66: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              repeatNumber_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000080;
+              repeatNumber_ = bs;
               break;
             }
             case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              feeTotal_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000100;
+              feeTotal_ = bs;
               break;
             }
             case 82: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              coveredPatientFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000200;
+              coveredPatientFee_ = bs;
               break;
             }
             case 90: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              coveredInsuranceFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000400;
+              coveredInsuranceFee_ = bs;
               break;
             }
             case 98: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              coveredPatientAllFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000800;
+              coveredPatientAllFee_ = bs;
               break;
             }
             case 106: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uncoveredChosenFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00001000;
+              uncoveredChosenFee_ = bs;
               break;
             }
             case 114: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              uncoveredUnchosenFee_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00002000;
+              uncoveredUnchosenFee_ = bs;
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -5752,10 +6747,17 @@ public final class ClaimDataV1 {
               org.medibloc.phr.ClaimDataV1.FeeItem.class, org.medibloc.phr.ClaimDataV1.FeeItem.Builder.class);
     }
 
+    private int bitField0_;
     public static final int FEE_ITEM_NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object feeItemName_;
     /**
-     * <code>string fee_item_name = 1;</code>
+     * <code>required string fee_item_name = 1;</code>
+     */
+    public boolean hasFeeItemName() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string fee_item_name = 1;</code>
      */
     public java.lang.String getFeeItemName() {
       java.lang.Object ref = feeItemName_;
@@ -5765,12 +6767,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        feeItemName_ = s;
+        if (bs.isValidUtf8()) {
+          feeItemName_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string fee_item_name = 1;</code>
+     * <code>required string fee_item_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getFeeItemNameBytes() {
@@ -5789,7 +6793,13 @@ public final class ClaimDataV1 {
     public static final int FEE_ITEM_CODE_FIELD_NUMBER = 2;
     private volatile java.lang.Object feeItemCode_;
     /**
-     * <code>string fee_item_code = 2;</code>
+     * <code>required string fee_item_code = 2;</code>
+     */
+    public boolean hasFeeItemCode() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string fee_item_code = 2;</code>
      */
     public java.lang.String getFeeItemCode() {
       java.lang.Object ref = feeItemCode_;
@@ -5799,12 +6809,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        feeItemCode_ = s;
+        if (bs.isValidUtf8()) {
+          feeItemCode_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string fee_item_code = 2;</code>
+     * <code>required string fee_item_code = 2;</code>
      */
     public com.google.protobuf.ByteString
         getFeeItemCodeBytes() {
@@ -5823,7 +6835,13 @@ public final class ClaimDataV1 {
     public static final int TREATMENT_DATE_FIELD_NUMBER = 3;
     private volatile java.lang.Object treatmentDate_;
     /**
-     * <code>string treatment_date = 3;</code>
+     * <code>required string treatment_date = 3;</code>
+     */
+    public boolean hasTreatmentDate() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string treatment_date = 3;</code>
      */
     public java.lang.String getTreatmentDate() {
       java.lang.Object ref = treatmentDate_;
@@ -5833,12 +6851,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        treatmentDate_ = s;
+        if (bs.isValidUtf8()) {
+          treatmentDate_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string treatment_date = 3;</code>
+     * <code>required string treatment_date = 3;</code>
      */
     public com.google.protobuf.ByteString
         getTreatmentDateBytes() {
@@ -5857,7 +6877,13 @@ public final class ClaimDataV1 {
     public static final int COVERED_TYPE_FIELD_NUMBER = 4;
     private volatile java.lang.Object coveredType_;
     /**
-     * <code>string covered_type = 4;</code>
+     * <code>required string covered_type = 4;</code>
+     */
+    public boolean hasCoveredType() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string covered_type = 4;</code>
      */
     public java.lang.String getCoveredType() {
       java.lang.Object ref = coveredType_;
@@ -5867,12 +6893,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        coveredType_ = s;
+        if (bs.isValidUtf8()) {
+          coveredType_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string covered_type = 4;</code>
+     * <code>required string covered_type = 4;</code>
      */
     public com.google.protobuf.ByteString
         getCoveredTypeBytes() {
@@ -5891,7 +6919,13 @@ public final class ClaimDataV1 {
     public static final int MEDICAL_CHARGE_CODE_FIELD_NUMBER = 5;
     private volatile java.lang.Object medicalChargeCode_;
     /**
-     * <code>string medical_charge_code = 5;</code>
+     * <code>required string medical_charge_code = 5;</code>
+     */
+    public boolean hasMedicalChargeCode() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required string medical_charge_code = 5;</code>
      */
     public java.lang.String getMedicalChargeCode() {
       java.lang.Object ref = medicalChargeCode_;
@@ -5901,12 +6935,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        medicalChargeCode_ = s;
+        if (bs.isValidUtf8()) {
+          medicalChargeCode_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string medical_charge_code = 5;</code>
+     * <code>required string medical_charge_code = 5;</code>
      */
     public com.google.protobuf.ByteString
         getMedicalChargeCodeBytes() {
@@ -5925,7 +6961,13 @@ public final class ClaimDataV1 {
     public static final int PRICE_FIELD_NUMBER = 6;
     private volatile java.lang.Object price_;
     /**
-     * <code>string price = 6;</code>
+     * <code>required string price = 6;</code>
+     */
+    public boolean hasPrice() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required string price = 6;</code>
      */
     public java.lang.String getPrice() {
       java.lang.Object ref = price_;
@@ -5935,12 +6977,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        price_ = s;
+        if (bs.isValidUtf8()) {
+          price_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string price = 6;</code>
+     * <code>required string price = 6;</code>
      */
     public com.google.protobuf.ByteString
         getPriceBytes() {
@@ -5959,7 +7003,13 @@ public final class ClaimDataV1 {
     public static final int QUANTITY_FIELD_NUMBER = 7;
     private volatile java.lang.Object quantity_;
     /**
-     * <code>string quantity = 7;</code>
+     * <code>required string quantity = 7;</code>
+     */
+    public boolean hasQuantity() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required string quantity = 7;</code>
      */
     public java.lang.String getQuantity() {
       java.lang.Object ref = quantity_;
@@ -5969,12 +7019,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        quantity_ = s;
+        if (bs.isValidUtf8()) {
+          quantity_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string quantity = 7;</code>
+     * <code>required string quantity = 7;</code>
      */
     public com.google.protobuf.ByteString
         getQuantityBytes() {
@@ -5993,7 +7045,13 @@ public final class ClaimDataV1 {
     public static final int REPEAT_NUMBER_FIELD_NUMBER = 8;
     private volatile java.lang.Object repeatNumber_;
     /**
-     * <code>string repeat_number = 8;</code>
+     * <code>required string repeat_number = 8;</code>
+     */
+    public boolean hasRepeatNumber() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>required string repeat_number = 8;</code>
      */
     public java.lang.String getRepeatNumber() {
       java.lang.Object ref = repeatNumber_;
@@ -6003,12 +7061,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        repeatNumber_ = s;
+        if (bs.isValidUtf8()) {
+          repeatNumber_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string repeat_number = 8;</code>
+     * <code>required string repeat_number = 8;</code>
      */
     public com.google.protobuf.ByteString
         getRepeatNumberBytes() {
@@ -6027,7 +7087,13 @@ public final class ClaimDataV1 {
     public static final int FEE_TOTAL_FIELD_NUMBER = 9;
     private volatile java.lang.Object feeTotal_;
     /**
-     * <code>string fee_total = 9;</code>
+     * <code>required string fee_total = 9;</code>
+     */
+    public boolean hasFeeTotal() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required string fee_total = 9;</code>
      */
     public java.lang.String getFeeTotal() {
       java.lang.Object ref = feeTotal_;
@@ -6037,12 +7103,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        feeTotal_ = s;
+        if (bs.isValidUtf8()) {
+          feeTotal_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string fee_total = 9;</code>
+     * <code>required string fee_total = 9;</code>
      */
     public com.google.protobuf.ByteString
         getFeeTotalBytes() {
@@ -6061,7 +7129,13 @@ public final class ClaimDataV1 {
     public static final int COVERED_PATIENT_FEE_FIELD_NUMBER = 10;
     private volatile java.lang.Object coveredPatientFee_;
     /**
-     * <code>string covered_patient_fee = 10;</code>
+     * <code>required string covered_patient_fee = 10;</code>
+     */
+    public boolean hasCoveredPatientFee() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>required string covered_patient_fee = 10;</code>
      */
     public java.lang.String getCoveredPatientFee() {
       java.lang.Object ref = coveredPatientFee_;
@@ -6071,12 +7145,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        coveredPatientFee_ = s;
+        if (bs.isValidUtf8()) {
+          coveredPatientFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string covered_patient_fee = 10;</code>
+     * <code>required string covered_patient_fee = 10;</code>
      */
     public com.google.protobuf.ByteString
         getCoveredPatientFeeBytes() {
@@ -6095,7 +7171,13 @@ public final class ClaimDataV1 {
     public static final int COVERED_INSURANCE_FEE_FIELD_NUMBER = 11;
     private volatile java.lang.Object coveredInsuranceFee_;
     /**
-     * <code>string covered_insurance_fee = 11;</code>
+     * <code>required string covered_insurance_fee = 11;</code>
+     */
+    public boolean hasCoveredInsuranceFee() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>required string covered_insurance_fee = 11;</code>
      */
     public java.lang.String getCoveredInsuranceFee() {
       java.lang.Object ref = coveredInsuranceFee_;
@@ -6105,12 +7187,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        coveredInsuranceFee_ = s;
+        if (bs.isValidUtf8()) {
+          coveredInsuranceFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string covered_insurance_fee = 11;</code>
+     * <code>required string covered_insurance_fee = 11;</code>
      */
     public com.google.protobuf.ByteString
         getCoveredInsuranceFeeBytes() {
@@ -6129,7 +7213,13 @@ public final class ClaimDataV1 {
     public static final int COVERED_PATIENT_ALL_FEE_FIELD_NUMBER = 12;
     private volatile java.lang.Object coveredPatientAllFee_;
     /**
-     * <code>string covered_patient_all_fee = 12;</code>
+     * <code>required string covered_patient_all_fee = 12;</code>
+     */
+    public boolean hasCoveredPatientAllFee() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>required string covered_patient_all_fee = 12;</code>
      */
     public java.lang.String getCoveredPatientAllFee() {
       java.lang.Object ref = coveredPatientAllFee_;
@@ -6139,12 +7229,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        coveredPatientAllFee_ = s;
+        if (bs.isValidUtf8()) {
+          coveredPatientAllFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string covered_patient_all_fee = 12;</code>
+     * <code>required string covered_patient_all_fee = 12;</code>
      */
     public com.google.protobuf.ByteString
         getCoveredPatientAllFeeBytes() {
@@ -6163,7 +7255,13 @@ public final class ClaimDataV1 {
     public static final int UNCOVERED_CHOSEN_FEE_FIELD_NUMBER = 13;
     private volatile java.lang.Object uncoveredChosenFee_;
     /**
-     * <code>string uncovered_chosen_fee = 13;</code>
+     * <code>required string uncovered_chosen_fee = 13;</code>
+     */
+    public boolean hasUncoveredChosenFee() {
+      return ((bitField0_ & 0x00001000) == 0x00001000);
+    }
+    /**
+     * <code>required string uncovered_chosen_fee = 13;</code>
      */
     public java.lang.String getUncoveredChosenFee() {
       java.lang.Object ref = uncoveredChosenFee_;
@@ -6173,12 +7271,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uncoveredChosenFee_ = s;
+        if (bs.isValidUtf8()) {
+          uncoveredChosenFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string uncovered_chosen_fee = 13;</code>
+     * <code>required string uncovered_chosen_fee = 13;</code>
      */
     public com.google.protobuf.ByteString
         getUncoveredChosenFeeBytes() {
@@ -6197,7 +7297,13 @@ public final class ClaimDataV1 {
     public static final int UNCOVERED_UNCHOSEN_FEE_FIELD_NUMBER = 14;
     private volatile java.lang.Object uncoveredUnchosenFee_;
     /**
-     * <code>string uncovered_unchosen_fee = 14;</code>
+     * <code>required string uncovered_unchosen_fee = 14;</code>
+     */
+    public boolean hasUncoveredUnchosenFee() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>required string uncovered_unchosen_fee = 14;</code>
      */
     public java.lang.String getUncoveredUnchosenFee() {
       java.lang.Object ref = uncoveredUnchosenFee_;
@@ -6207,12 +7313,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        uncoveredUnchosenFee_ = s;
+        if (bs.isValidUtf8()) {
+          uncoveredUnchosenFee_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string uncovered_unchosen_fee = 14;</code>
+     * <code>required string uncovered_unchosen_fee = 14;</code>
      */
     public com.google.protobuf.ByteString
         getUncoveredUnchosenFeeBytes() {
@@ -6235,6 +7343,62 @@ public final class ClaimDataV1 {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasFeeItemName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFeeItemCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreatmentDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoveredType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMedicalChargeCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPrice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasQuantity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRepeatNumber()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasFeeTotal()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoveredPatientFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoveredInsuranceFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCoveredPatientAllFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUncoveredChosenFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasUncoveredUnchosenFee()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6242,46 +7406,46 @@ public final class ClaimDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getFeeItemNameBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, feeItemName_);
       }
-      if (!getFeeItemCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, feeItemCode_);
       }
-      if (!getTreatmentDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, treatmentDate_);
       }
-      if (!getCoveredTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 4, coveredType_);
       }
-      if (!getMedicalChargeCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, medicalChargeCode_);
       }
-      if (!getPriceBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 6, price_);
       }
-      if (!getQuantityBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 7, quantity_);
       }
-      if (!getRepeatNumberBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, repeatNumber_);
       }
-      if (!getFeeTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 9, feeTotal_);
       }
-      if (!getCoveredPatientFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 10, coveredPatientFee_);
       }
-      if (!getCoveredInsuranceFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 11, coveredInsuranceFee_);
       }
-      if (!getCoveredPatientAllFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 12, coveredPatientAllFee_);
       }
-      if (!getUncoveredChosenFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 13, uncoveredChosenFee_);
       }
-      if (!getUncoveredUnchosenFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 14, uncoveredUnchosenFee_);
       }
       unknownFields.writeTo(output);
@@ -6293,46 +7457,46 @@ public final class ClaimDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!getFeeItemNameBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, feeItemName_);
       }
-      if (!getFeeItemCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, feeItemCode_);
       }
-      if (!getTreatmentDateBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, treatmentDate_);
       }
-      if (!getCoveredTypeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, coveredType_);
       }
-      if (!getMedicalChargeCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, medicalChargeCode_);
       }
-      if (!getPriceBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, price_);
       }
-      if (!getQuantityBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, quantity_);
       }
-      if (!getRepeatNumberBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, repeatNumber_);
       }
-      if (!getFeeTotalBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, feeTotal_);
       }
-      if (!getCoveredPatientFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, coveredPatientFee_);
       }
-      if (!getCoveredInsuranceFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(11, coveredInsuranceFee_);
       }
-      if (!getCoveredPatientAllFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, coveredPatientAllFee_);
       }
-      if (!getUncoveredChosenFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(13, uncoveredChosenFee_);
       }
-      if (!getUncoveredUnchosenFeeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, uncoveredUnchosenFee_);
       }
       size += unknownFields.getSerializedSize();
@@ -6351,34 +7515,76 @@ public final class ClaimDataV1 {
       org.medibloc.phr.ClaimDataV1.FeeItem other = (org.medibloc.phr.ClaimDataV1.FeeItem) obj;
 
       boolean result = true;
-      result = result && getFeeItemName()
-          .equals(other.getFeeItemName());
-      result = result && getFeeItemCode()
-          .equals(other.getFeeItemCode());
-      result = result && getTreatmentDate()
-          .equals(other.getTreatmentDate());
-      result = result && getCoveredType()
-          .equals(other.getCoveredType());
-      result = result && getMedicalChargeCode()
-          .equals(other.getMedicalChargeCode());
-      result = result && getPrice()
-          .equals(other.getPrice());
-      result = result && getQuantity()
-          .equals(other.getQuantity());
-      result = result && getRepeatNumber()
-          .equals(other.getRepeatNumber());
-      result = result && getFeeTotal()
-          .equals(other.getFeeTotal());
-      result = result && getCoveredPatientFee()
-          .equals(other.getCoveredPatientFee());
-      result = result && getCoveredInsuranceFee()
-          .equals(other.getCoveredInsuranceFee());
-      result = result && getCoveredPatientAllFee()
-          .equals(other.getCoveredPatientAllFee());
-      result = result && getUncoveredChosenFee()
-          .equals(other.getUncoveredChosenFee());
-      result = result && getUncoveredUnchosenFee()
-          .equals(other.getUncoveredUnchosenFee());
+      result = result && (hasFeeItemName() == other.hasFeeItemName());
+      if (hasFeeItemName()) {
+        result = result && getFeeItemName()
+            .equals(other.getFeeItemName());
+      }
+      result = result && (hasFeeItemCode() == other.hasFeeItemCode());
+      if (hasFeeItemCode()) {
+        result = result && getFeeItemCode()
+            .equals(other.getFeeItemCode());
+      }
+      result = result && (hasTreatmentDate() == other.hasTreatmentDate());
+      if (hasTreatmentDate()) {
+        result = result && getTreatmentDate()
+            .equals(other.getTreatmentDate());
+      }
+      result = result && (hasCoveredType() == other.hasCoveredType());
+      if (hasCoveredType()) {
+        result = result && getCoveredType()
+            .equals(other.getCoveredType());
+      }
+      result = result && (hasMedicalChargeCode() == other.hasMedicalChargeCode());
+      if (hasMedicalChargeCode()) {
+        result = result && getMedicalChargeCode()
+            .equals(other.getMedicalChargeCode());
+      }
+      result = result && (hasPrice() == other.hasPrice());
+      if (hasPrice()) {
+        result = result && getPrice()
+            .equals(other.getPrice());
+      }
+      result = result && (hasQuantity() == other.hasQuantity());
+      if (hasQuantity()) {
+        result = result && getQuantity()
+            .equals(other.getQuantity());
+      }
+      result = result && (hasRepeatNumber() == other.hasRepeatNumber());
+      if (hasRepeatNumber()) {
+        result = result && getRepeatNumber()
+            .equals(other.getRepeatNumber());
+      }
+      result = result && (hasFeeTotal() == other.hasFeeTotal());
+      if (hasFeeTotal()) {
+        result = result && getFeeTotal()
+            .equals(other.getFeeTotal());
+      }
+      result = result && (hasCoveredPatientFee() == other.hasCoveredPatientFee());
+      if (hasCoveredPatientFee()) {
+        result = result && getCoveredPatientFee()
+            .equals(other.getCoveredPatientFee());
+      }
+      result = result && (hasCoveredInsuranceFee() == other.hasCoveredInsuranceFee());
+      if (hasCoveredInsuranceFee()) {
+        result = result && getCoveredInsuranceFee()
+            .equals(other.getCoveredInsuranceFee());
+      }
+      result = result && (hasCoveredPatientAllFee() == other.hasCoveredPatientAllFee());
+      if (hasCoveredPatientAllFee()) {
+        result = result && getCoveredPatientAllFee()
+            .equals(other.getCoveredPatientAllFee());
+      }
+      result = result && (hasUncoveredChosenFee() == other.hasUncoveredChosenFee());
+      if (hasUncoveredChosenFee()) {
+        result = result && getUncoveredChosenFee()
+            .equals(other.getUncoveredChosenFee());
+      }
+      result = result && (hasUncoveredUnchosenFee() == other.hasUncoveredUnchosenFee());
+      if (hasUncoveredUnchosenFee()) {
+        result = result && getUncoveredUnchosenFee()
+            .equals(other.getUncoveredUnchosenFee());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -6390,34 +7596,62 @@ public final class ClaimDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + FEE_ITEM_NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getFeeItemName().hashCode();
-      hash = (37 * hash) + FEE_ITEM_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getFeeItemCode().hashCode();
-      hash = (37 * hash) + TREATMENT_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getTreatmentDate().hashCode();
-      hash = (37 * hash) + COVERED_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoveredType().hashCode();
-      hash = (37 * hash) + MEDICAL_CHARGE_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getMedicalChargeCode().hashCode();
-      hash = (37 * hash) + PRICE_FIELD_NUMBER;
-      hash = (53 * hash) + getPrice().hashCode();
-      hash = (37 * hash) + QUANTITY_FIELD_NUMBER;
-      hash = (53 * hash) + getQuantity().hashCode();
-      hash = (37 * hash) + REPEAT_NUMBER_FIELD_NUMBER;
-      hash = (53 * hash) + getRepeatNumber().hashCode();
-      hash = (37 * hash) + FEE_TOTAL_FIELD_NUMBER;
-      hash = (53 * hash) + getFeeTotal().hashCode();
-      hash = (37 * hash) + COVERED_PATIENT_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoveredPatientFee().hashCode();
-      hash = (37 * hash) + COVERED_INSURANCE_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoveredInsuranceFee().hashCode();
-      hash = (37 * hash) + COVERED_PATIENT_ALL_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoveredPatientAllFee().hashCode();
-      hash = (37 * hash) + UNCOVERED_CHOSEN_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getUncoveredChosenFee().hashCode();
-      hash = (37 * hash) + UNCOVERED_UNCHOSEN_FEE_FIELD_NUMBER;
-      hash = (53 * hash) + getUncoveredUnchosenFee().hashCode();
+      if (hasFeeItemName()) {
+        hash = (37 * hash) + FEE_ITEM_NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getFeeItemName().hashCode();
+      }
+      if (hasFeeItemCode()) {
+        hash = (37 * hash) + FEE_ITEM_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getFeeItemCode().hashCode();
+      }
+      if (hasTreatmentDate()) {
+        hash = (37 * hash) + TREATMENT_DATE_FIELD_NUMBER;
+        hash = (53 * hash) + getTreatmentDate().hashCode();
+      }
+      if (hasCoveredType()) {
+        hash = (37 * hash) + COVERED_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getCoveredType().hashCode();
+      }
+      if (hasMedicalChargeCode()) {
+        hash = (37 * hash) + MEDICAL_CHARGE_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getMedicalChargeCode().hashCode();
+      }
+      if (hasPrice()) {
+        hash = (37 * hash) + PRICE_FIELD_NUMBER;
+        hash = (53 * hash) + getPrice().hashCode();
+      }
+      if (hasQuantity()) {
+        hash = (37 * hash) + QUANTITY_FIELD_NUMBER;
+        hash = (53 * hash) + getQuantity().hashCode();
+      }
+      if (hasRepeatNumber()) {
+        hash = (37 * hash) + REPEAT_NUMBER_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatNumber().hashCode();
+      }
+      if (hasFeeTotal()) {
+        hash = (37 * hash) + FEE_TOTAL_FIELD_NUMBER;
+        hash = (53 * hash) + getFeeTotal().hashCode();
+      }
+      if (hasCoveredPatientFee()) {
+        hash = (37 * hash) + COVERED_PATIENT_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getCoveredPatientFee().hashCode();
+      }
+      if (hasCoveredInsuranceFee()) {
+        hash = (37 * hash) + COVERED_INSURANCE_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getCoveredInsuranceFee().hashCode();
+      }
+      if (hasCoveredPatientAllFee()) {
+        hash = (37 * hash) + COVERED_PATIENT_ALL_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getCoveredPatientAllFee().hashCode();
+      }
+      if (hasUncoveredChosenFee()) {
+        hash = (37 * hash) + UNCOVERED_CHOSEN_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getUncoveredChosenFee().hashCode();
+      }
+      if (hasUncoveredUnchosenFee()) {
+        hash = (37 * hash) + UNCOVERED_UNCHOSEN_FEE_FIELD_NUMBER;
+        hash = (53 * hash) + getUncoveredUnchosenFee().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6552,33 +7786,33 @@ public final class ClaimDataV1 {
       public Builder clear() {
         super.clear();
         feeItemName_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         feeItemCode_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         treatmentDate_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         coveredType_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000008);
         medicalChargeCode_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000010);
         price_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000020);
         quantity_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000040);
         repeatNumber_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000080);
         feeTotal_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000100);
         coveredPatientFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000200);
         coveredInsuranceFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000400);
         coveredPatientAllFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000800);
         uncoveredChosenFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00001000);
         uncoveredUnchosenFee_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -6605,20 +7839,65 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public org.medibloc.phr.ClaimDataV1.FeeItem buildPartial() {
         org.medibloc.phr.ClaimDataV1.FeeItem result = new org.medibloc.phr.ClaimDataV1.FeeItem(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.feeItemName_ = feeItemName_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.feeItemCode_ = feeItemCode_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.treatmentDate_ = treatmentDate_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         result.coveredType_ = coveredType_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.medicalChargeCode_ = medicalChargeCode_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
         result.price_ = price_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
         result.quantity_ = quantity_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
         result.repeatNumber_ = repeatNumber_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
         result.feeTotal_ = feeTotal_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
         result.coveredPatientFee_ = coveredPatientFee_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
         result.coveredInsuranceFee_ = coveredInsuranceFee_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
         result.coveredPatientAllFee_ = coveredPatientAllFee_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
         result.uncoveredChosenFee_ = uncoveredChosenFee_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
         result.uncoveredUnchosenFee_ = uncoveredUnchosenFee_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -6667,59 +7946,73 @@ public final class ClaimDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.FeeItem other) {
         if (other == org.medibloc.phr.ClaimDataV1.FeeItem.getDefaultInstance()) return this;
-        if (!other.getFeeItemName().isEmpty()) {
+        if (other.hasFeeItemName()) {
+          bitField0_ |= 0x00000001;
           feeItemName_ = other.feeItemName_;
           onChanged();
         }
-        if (!other.getFeeItemCode().isEmpty()) {
+        if (other.hasFeeItemCode()) {
+          bitField0_ |= 0x00000002;
           feeItemCode_ = other.feeItemCode_;
           onChanged();
         }
-        if (!other.getTreatmentDate().isEmpty()) {
+        if (other.hasTreatmentDate()) {
+          bitField0_ |= 0x00000004;
           treatmentDate_ = other.treatmentDate_;
           onChanged();
         }
-        if (!other.getCoveredType().isEmpty()) {
+        if (other.hasCoveredType()) {
+          bitField0_ |= 0x00000008;
           coveredType_ = other.coveredType_;
           onChanged();
         }
-        if (!other.getMedicalChargeCode().isEmpty()) {
+        if (other.hasMedicalChargeCode()) {
+          bitField0_ |= 0x00000010;
           medicalChargeCode_ = other.medicalChargeCode_;
           onChanged();
         }
-        if (!other.getPrice().isEmpty()) {
+        if (other.hasPrice()) {
+          bitField0_ |= 0x00000020;
           price_ = other.price_;
           onChanged();
         }
-        if (!other.getQuantity().isEmpty()) {
+        if (other.hasQuantity()) {
+          bitField0_ |= 0x00000040;
           quantity_ = other.quantity_;
           onChanged();
         }
-        if (!other.getRepeatNumber().isEmpty()) {
+        if (other.hasRepeatNumber()) {
+          bitField0_ |= 0x00000080;
           repeatNumber_ = other.repeatNumber_;
           onChanged();
         }
-        if (!other.getFeeTotal().isEmpty()) {
+        if (other.hasFeeTotal()) {
+          bitField0_ |= 0x00000100;
           feeTotal_ = other.feeTotal_;
           onChanged();
         }
-        if (!other.getCoveredPatientFee().isEmpty()) {
+        if (other.hasCoveredPatientFee()) {
+          bitField0_ |= 0x00000200;
           coveredPatientFee_ = other.coveredPatientFee_;
           onChanged();
         }
-        if (!other.getCoveredInsuranceFee().isEmpty()) {
+        if (other.hasCoveredInsuranceFee()) {
+          bitField0_ |= 0x00000400;
           coveredInsuranceFee_ = other.coveredInsuranceFee_;
           onChanged();
         }
-        if (!other.getCoveredPatientAllFee().isEmpty()) {
+        if (other.hasCoveredPatientAllFee()) {
+          bitField0_ |= 0x00000800;
           coveredPatientAllFee_ = other.coveredPatientAllFee_;
           onChanged();
         }
-        if (!other.getUncoveredChosenFee().isEmpty()) {
+        if (other.hasUncoveredChosenFee()) {
+          bitField0_ |= 0x00001000;
           uncoveredChosenFee_ = other.uncoveredChosenFee_;
           onChanged();
         }
-        if (!other.getUncoveredUnchosenFee().isEmpty()) {
+        if (other.hasUncoveredUnchosenFee()) {
+          bitField0_ |= 0x00002000;
           uncoveredUnchosenFee_ = other.uncoveredUnchosenFee_;
           onChanged();
         }
@@ -6730,6 +8023,48 @@ public final class ClaimDataV1 {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasFeeItemName()) {
+          return false;
+        }
+        if (!hasFeeItemCode()) {
+          return false;
+        }
+        if (!hasTreatmentDate()) {
+          return false;
+        }
+        if (!hasCoveredType()) {
+          return false;
+        }
+        if (!hasMedicalChargeCode()) {
+          return false;
+        }
+        if (!hasPrice()) {
+          return false;
+        }
+        if (!hasQuantity()) {
+          return false;
+        }
+        if (!hasRepeatNumber()) {
+          return false;
+        }
+        if (!hasFeeTotal()) {
+          return false;
+        }
+        if (!hasCoveredPatientFee()) {
+          return false;
+        }
+        if (!hasCoveredInsuranceFee()) {
+          return false;
+        }
+        if (!hasCoveredPatientAllFee()) {
+          return false;
+        }
+        if (!hasUncoveredChosenFee()) {
+          return false;
+        }
+        if (!hasUncoveredUnchosenFee()) {
+          return false;
+        }
         return true;
       }
 
@@ -6751,10 +8086,17 @@ public final class ClaimDataV1 {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object feeItemName_ = "";
       /**
-       * <code>string fee_item_name = 1;</code>
+       * <code>required string fee_item_name = 1;</code>
+       */
+      public boolean hasFeeItemName() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string fee_item_name = 1;</code>
        */
       public java.lang.String getFeeItemName() {
         java.lang.Object ref = feeItemName_;
@@ -6762,14 +8104,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          feeItemName_ = s;
+          if (bs.isValidUtf8()) {
+            feeItemName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string fee_item_name = 1;</code>
+       * <code>required string fee_item_name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getFeeItemNameBytes() {
@@ -6785,37 +8129,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string fee_item_name = 1;</code>
+       * <code>required string fee_item_name = 1;</code>
        */
       public Builder setFeeItemName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         feeItemName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_item_name = 1;</code>
+       * <code>required string fee_item_name = 1;</code>
        */
       public Builder clearFeeItemName() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         feeItemName_ = getDefaultInstance().getFeeItemName();
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_item_name = 1;</code>
+       * <code>required string fee_item_name = 1;</code>
        */
       public Builder setFeeItemNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         feeItemName_ = value;
         onChanged();
         return this;
@@ -6823,7 +8166,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object feeItemCode_ = "";
       /**
-       * <code>string fee_item_code = 2;</code>
+       * <code>required string fee_item_code = 2;</code>
+       */
+      public boolean hasFeeItemCode() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string fee_item_code = 2;</code>
        */
       public java.lang.String getFeeItemCode() {
         java.lang.Object ref = feeItemCode_;
@@ -6831,14 +8180,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          feeItemCode_ = s;
+          if (bs.isValidUtf8()) {
+            feeItemCode_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string fee_item_code = 2;</code>
+       * <code>required string fee_item_code = 2;</code>
        */
       public com.google.protobuf.ByteString
           getFeeItemCodeBytes() {
@@ -6854,37 +8205,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string fee_item_code = 2;</code>
+       * <code>required string fee_item_code = 2;</code>
        */
       public Builder setFeeItemCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000002;
         feeItemCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_item_code = 2;</code>
+       * <code>required string fee_item_code = 2;</code>
        */
       public Builder clearFeeItemCode() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         feeItemCode_ = getDefaultInstance().getFeeItemCode();
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_item_code = 2;</code>
+       * <code>required string fee_item_code = 2;</code>
        */
       public Builder setFeeItemCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000002;
         feeItemCode_ = value;
         onChanged();
         return this;
@@ -6892,7 +8242,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object treatmentDate_ = "";
       /**
-       * <code>string treatment_date = 3;</code>
+       * <code>required string treatment_date = 3;</code>
+       */
+      public boolean hasTreatmentDate() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string treatment_date = 3;</code>
        */
       public java.lang.String getTreatmentDate() {
         java.lang.Object ref = treatmentDate_;
@@ -6900,14 +8256,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          treatmentDate_ = s;
+          if (bs.isValidUtf8()) {
+            treatmentDate_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string treatment_date = 3;</code>
+       * <code>required string treatment_date = 3;</code>
        */
       public com.google.protobuf.ByteString
           getTreatmentDateBytes() {
@@ -6923,37 +8281,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string treatment_date = 3;</code>
+       * <code>required string treatment_date = 3;</code>
        */
       public Builder setTreatmentDate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         treatmentDate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_date = 3;</code>
+       * <code>required string treatment_date = 3;</code>
        */
       public Builder clearTreatmentDate() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         treatmentDate_ = getDefaultInstance().getTreatmentDate();
         onChanged();
         return this;
       }
       /**
-       * <code>string treatment_date = 3;</code>
+       * <code>required string treatment_date = 3;</code>
        */
       public Builder setTreatmentDateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         treatmentDate_ = value;
         onChanged();
         return this;
@@ -6961,7 +8318,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object coveredType_ = "";
       /**
-       * <code>string covered_type = 4;</code>
+       * <code>required string covered_type = 4;</code>
+       */
+      public boolean hasCoveredType() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string covered_type = 4;</code>
        */
       public java.lang.String getCoveredType() {
         java.lang.Object ref = coveredType_;
@@ -6969,14 +8332,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          coveredType_ = s;
+          if (bs.isValidUtf8()) {
+            coveredType_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string covered_type = 4;</code>
+       * <code>required string covered_type = 4;</code>
        */
       public com.google.protobuf.ByteString
           getCoveredTypeBytes() {
@@ -6992,37 +8357,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string covered_type = 4;</code>
+       * <code>required string covered_type = 4;</code>
        */
       public Builder setCoveredType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000008;
         coveredType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_type = 4;</code>
+       * <code>required string covered_type = 4;</code>
        */
       public Builder clearCoveredType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000008);
         coveredType_ = getDefaultInstance().getCoveredType();
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_type = 4;</code>
+       * <code>required string covered_type = 4;</code>
        */
       public Builder setCoveredTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000008;
         coveredType_ = value;
         onChanged();
         return this;
@@ -7030,7 +8394,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object medicalChargeCode_ = "";
       /**
-       * <code>string medical_charge_code = 5;</code>
+       * <code>required string medical_charge_code = 5;</code>
+       */
+      public boolean hasMedicalChargeCode() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required string medical_charge_code = 5;</code>
        */
       public java.lang.String getMedicalChargeCode() {
         java.lang.Object ref = medicalChargeCode_;
@@ -7038,14 +8408,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          medicalChargeCode_ = s;
+          if (bs.isValidUtf8()) {
+            medicalChargeCode_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string medical_charge_code = 5;</code>
+       * <code>required string medical_charge_code = 5;</code>
        */
       public com.google.protobuf.ByteString
           getMedicalChargeCodeBytes() {
@@ -7061,37 +8433,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string medical_charge_code = 5;</code>
+       * <code>required string medical_charge_code = 5;</code>
        */
       public Builder setMedicalChargeCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000010;
         medicalChargeCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string medical_charge_code = 5;</code>
+       * <code>required string medical_charge_code = 5;</code>
        */
       public Builder clearMedicalChargeCode() {
-        
+        bitField0_ = (bitField0_ & ~0x00000010);
         medicalChargeCode_ = getDefaultInstance().getMedicalChargeCode();
         onChanged();
         return this;
       }
       /**
-       * <code>string medical_charge_code = 5;</code>
+       * <code>required string medical_charge_code = 5;</code>
        */
       public Builder setMedicalChargeCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000010;
         medicalChargeCode_ = value;
         onChanged();
         return this;
@@ -7099,7 +8470,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object price_ = "";
       /**
-       * <code>string price = 6;</code>
+       * <code>required string price = 6;</code>
+       */
+      public boolean hasPrice() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required string price = 6;</code>
        */
       public java.lang.String getPrice() {
         java.lang.Object ref = price_;
@@ -7107,14 +8484,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          price_ = s;
+          if (bs.isValidUtf8()) {
+            price_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string price = 6;</code>
+       * <code>required string price = 6;</code>
        */
       public com.google.protobuf.ByteString
           getPriceBytes() {
@@ -7130,37 +8509,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string price = 6;</code>
+       * <code>required string price = 6;</code>
        */
       public Builder setPrice(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000020;
         price_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string price = 6;</code>
+       * <code>required string price = 6;</code>
        */
       public Builder clearPrice() {
-        
+        bitField0_ = (bitField0_ & ~0x00000020);
         price_ = getDefaultInstance().getPrice();
         onChanged();
         return this;
       }
       /**
-       * <code>string price = 6;</code>
+       * <code>required string price = 6;</code>
        */
       public Builder setPriceBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000020;
         price_ = value;
         onChanged();
         return this;
@@ -7168,7 +8546,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object quantity_ = "";
       /**
-       * <code>string quantity = 7;</code>
+       * <code>required string quantity = 7;</code>
+       */
+      public boolean hasQuantity() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required string quantity = 7;</code>
        */
       public java.lang.String getQuantity() {
         java.lang.Object ref = quantity_;
@@ -7176,14 +8560,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          quantity_ = s;
+          if (bs.isValidUtf8()) {
+            quantity_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string quantity = 7;</code>
+       * <code>required string quantity = 7;</code>
        */
       public com.google.protobuf.ByteString
           getQuantityBytes() {
@@ -7199,37 +8585,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string quantity = 7;</code>
+       * <code>required string quantity = 7;</code>
        */
       public Builder setQuantity(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000040;
         quantity_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string quantity = 7;</code>
+       * <code>required string quantity = 7;</code>
        */
       public Builder clearQuantity() {
-        
+        bitField0_ = (bitField0_ & ~0x00000040);
         quantity_ = getDefaultInstance().getQuantity();
         onChanged();
         return this;
       }
       /**
-       * <code>string quantity = 7;</code>
+       * <code>required string quantity = 7;</code>
        */
       public Builder setQuantityBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000040;
         quantity_ = value;
         onChanged();
         return this;
@@ -7237,7 +8622,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object repeatNumber_ = "";
       /**
-       * <code>string repeat_number = 8;</code>
+       * <code>required string repeat_number = 8;</code>
+       */
+      public boolean hasRepeatNumber() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>required string repeat_number = 8;</code>
        */
       public java.lang.String getRepeatNumber() {
         java.lang.Object ref = repeatNumber_;
@@ -7245,14 +8636,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          repeatNumber_ = s;
+          if (bs.isValidUtf8()) {
+            repeatNumber_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string repeat_number = 8;</code>
+       * <code>required string repeat_number = 8;</code>
        */
       public com.google.protobuf.ByteString
           getRepeatNumberBytes() {
@@ -7268,37 +8661,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string repeat_number = 8;</code>
+       * <code>required string repeat_number = 8;</code>
        */
       public Builder setRepeatNumber(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000080;
         repeatNumber_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string repeat_number = 8;</code>
+       * <code>required string repeat_number = 8;</code>
        */
       public Builder clearRepeatNumber() {
-        
+        bitField0_ = (bitField0_ & ~0x00000080);
         repeatNumber_ = getDefaultInstance().getRepeatNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>string repeat_number = 8;</code>
+       * <code>required string repeat_number = 8;</code>
        */
       public Builder setRepeatNumberBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000080;
         repeatNumber_ = value;
         onChanged();
         return this;
@@ -7306,7 +8698,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object feeTotal_ = "";
       /**
-       * <code>string fee_total = 9;</code>
+       * <code>required string fee_total = 9;</code>
+       */
+      public boolean hasFeeTotal() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>required string fee_total = 9;</code>
        */
       public java.lang.String getFeeTotal() {
         java.lang.Object ref = feeTotal_;
@@ -7314,14 +8712,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          feeTotal_ = s;
+          if (bs.isValidUtf8()) {
+            feeTotal_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string fee_total = 9;</code>
+       * <code>required string fee_total = 9;</code>
        */
       public com.google.protobuf.ByteString
           getFeeTotalBytes() {
@@ -7337,37 +8737,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string fee_total = 9;</code>
+       * <code>required string fee_total = 9;</code>
        */
       public Builder setFeeTotal(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000100;
         feeTotal_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_total = 9;</code>
+       * <code>required string fee_total = 9;</code>
        */
       public Builder clearFeeTotal() {
-        
+        bitField0_ = (bitField0_ & ~0x00000100);
         feeTotal_ = getDefaultInstance().getFeeTotal();
         onChanged();
         return this;
       }
       /**
-       * <code>string fee_total = 9;</code>
+       * <code>required string fee_total = 9;</code>
        */
       public Builder setFeeTotalBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000100;
         feeTotal_ = value;
         onChanged();
         return this;
@@ -7375,7 +8774,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object coveredPatientFee_ = "";
       /**
-       * <code>string covered_patient_fee = 10;</code>
+       * <code>required string covered_patient_fee = 10;</code>
+       */
+      public boolean hasCoveredPatientFee() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required string covered_patient_fee = 10;</code>
        */
       public java.lang.String getCoveredPatientFee() {
         java.lang.Object ref = coveredPatientFee_;
@@ -7383,14 +8788,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          coveredPatientFee_ = s;
+          if (bs.isValidUtf8()) {
+            coveredPatientFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string covered_patient_fee = 10;</code>
+       * <code>required string covered_patient_fee = 10;</code>
        */
       public com.google.protobuf.ByteString
           getCoveredPatientFeeBytes() {
@@ -7406,37 +8813,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string covered_patient_fee = 10;</code>
+       * <code>required string covered_patient_fee = 10;</code>
        */
       public Builder setCoveredPatientFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000200;
         coveredPatientFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_patient_fee = 10;</code>
+       * <code>required string covered_patient_fee = 10;</code>
        */
       public Builder clearCoveredPatientFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00000200);
         coveredPatientFee_ = getDefaultInstance().getCoveredPatientFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_patient_fee = 10;</code>
+       * <code>required string covered_patient_fee = 10;</code>
        */
       public Builder setCoveredPatientFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000200;
         coveredPatientFee_ = value;
         onChanged();
         return this;
@@ -7444,7 +8850,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object coveredInsuranceFee_ = "";
       /**
-       * <code>string covered_insurance_fee = 11;</code>
+       * <code>required string covered_insurance_fee = 11;</code>
+       */
+      public boolean hasCoveredInsuranceFee() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>required string covered_insurance_fee = 11;</code>
        */
       public java.lang.String getCoveredInsuranceFee() {
         java.lang.Object ref = coveredInsuranceFee_;
@@ -7452,14 +8864,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          coveredInsuranceFee_ = s;
+          if (bs.isValidUtf8()) {
+            coveredInsuranceFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string covered_insurance_fee = 11;</code>
+       * <code>required string covered_insurance_fee = 11;</code>
        */
       public com.google.protobuf.ByteString
           getCoveredInsuranceFeeBytes() {
@@ -7475,37 +8889,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string covered_insurance_fee = 11;</code>
+       * <code>required string covered_insurance_fee = 11;</code>
        */
       public Builder setCoveredInsuranceFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000400;
         coveredInsuranceFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_insurance_fee = 11;</code>
+       * <code>required string covered_insurance_fee = 11;</code>
        */
       public Builder clearCoveredInsuranceFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00000400);
         coveredInsuranceFee_ = getDefaultInstance().getCoveredInsuranceFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_insurance_fee = 11;</code>
+       * <code>required string covered_insurance_fee = 11;</code>
        */
       public Builder setCoveredInsuranceFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000400;
         coveredInsuranceFee_ = value;
         onChanged();
         return this;
@@ -7513,7 +8926,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object coveredPatientAllFee_ = "";
       /**
-       * <code>string covered_patient_all_fee = 12;</code>
+       * <code>required string covered_patient_all_fee = 12;</code>
+       */
+      public boolean hasCoveredPatientAllFee() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>required string covered_patient_all_fee = 12;</code>
        */
       public java.lang.String getCoveredPatientAllFee() {
         java.lang.Object ref = coveredPatientAllFee_;
@@ -7521,14 +8940,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          coveredPatientAllFee_ = s;
+          if (bs.isValidUtf8()) {
+            coveredPatientAllFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string covered_patient_all_fee = 12;</code>
+       * <code>required string covered_patient_all_fee = 12;</code>
        */
       public com.google.protobuf.ByteString
           getCoveredPatientAllFeeBytes() {
@@ -7544,37 +8965,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string covered_patient_all_fee = 12;</code>
+       * <code>required string covered_patient_all_fee = 12;</code>
        */
       public Builder setCoveredPatientAllFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000800;
         coveredPatientAllFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_patient_all_fee = 12;</code>
+       * <code>required string covered_patient_all_fee = 12;</code>
        */
       public Builder clearCoveredPatientAllFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00000800);
         coveredPatientAllFee_ = getDefaultInstance().getCoveredPatientAllFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string covered_patient_all_fee = 12;</code>
+       * <code>required string covered_patient_all_fee = 12;</code>
        */
       public Builder setCoveredPatientAllFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000800;
         coveredPatientAllFee_ = value;
         onChanged();
         return this;
@@ -7582,7 +9002,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object uncoveredChosenFee_ = "";
       /**
-       * <code>string uncovered_chosen_fee = 13;</code>
+       * <code>required string uncovered_chosen_fee = 13;</code>
+       */
+      public boolean hasUncoveredChosenFee() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>required string uncovered_chosen_fee = 13;</code>
        */
       public java.lang.String getUncoveredChosenFee() {
         java.lang.Object ref = uncoveredChosenFee_;
@@ -7590,14 +9016,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uncoveredChosenFee_ = s;
+          if (bs.isValidUtf8()) {
+            uncoveredChosenFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uncovered_chosen_fee = 13;</code>
+       * <code>required string uncovered_chosen_fee = 13;</code>
        */
       public com.google.protobuf.ByteString
           getUncoveredChosenFeeBytes() {
@@ -7613,37 +9041,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string uncovered_chosen_fee = 13;</code>
+       * <code>required string uncovered_chosen_fee = 13;</code>
        */
       public Builder setUncoveredChosenFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00001000;
         uncoveredChosenFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_chosen_fee = 13;</code>
+       * <code>required string uncovered_chosen_fee = 13;</code>
        */
       public Builder clearUncoveredChosenFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00001000);
         uncoveredChosenFee_ = getDefaultInstance().getUncoveredChosenFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_chosen_fee = 13;</code>
+       * <code>required string uncovered_chosen_fee = 13;</code>
        */
       public Builder setUncoveredChosenFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00001000;
         uncoveredChosenFee_ = value;
         onChanged();
         return this;
@@ -7651,7 +9078,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object uncoveredUnchosenFee_ = "";
       /**
-       * <code>string uncovered_unchosen_fee = 14;</code>
+       * <code>required string uncovered_unchosen_fee = 14;</code>
+       */
+      public boolean hasUncoveredUnchosenFee() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>required string uncovered_unchosen_fee = 14;</code>
        */
       public java.lang.String getUncoveredUnchosenFee() {
         java.lang.Object ref = uncoveredUnchosenFee_;
@@ -7659,14 +9092,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          uncoveredUnchosenFee_ = s;
+          if (bs.isValidUtf8()) {
+            uncoveredUnchosenFee_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string uncovered_unchosen_fee = 14;</code>
+       * <code>required string uncovered_unchosen_fee = 14;</code>
        */
       public com.google.protobuf.ByteString
           getUncoveredUnchosenFeeBytes() {
@@ -7682,37 +9117,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string uncovered_unchosen_fee = 14;</code>
+       * <code>required string uncovered_unchosen_fee = 14;</code>
        */
       public Builder setUncoveredUnchosenFee(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00002000;
         uncoveredUnchosenFee_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_unchosen_fee = 14;</code>
+       * <code>required string uncovered_unchosen_fee = 14;</code>
        */
       public Builder clearUncoveredUnchosenFee() {
-        
+        bitField0_ = (bitField0_ & ~0x00002000);
         uncoveredUnchosenFee_ = getDefaultInstance().getUncoveredUnchosenFee();
         onChanged();
         return this;
       }
       /**
-       * <code>string uncovered_unchosen_fee = 14;</code>
+       * <code>required string uncovered_unchosen_fee = 14;</code>
        */
       public Builder setUncoveredUnchosenFeeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00002000;
         uncoveredUnchosenFee_ = value;
         onChanged();
         return this;
@@ -7720,7 +9154,7 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -7743,7 +9177,7 @@ public final class ClaimDataV1 {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<FeeItem>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<FeeItem>
         PARSER = new com.google.protobuf.AbstractParser<FeeItem>() {
       @java.lang.Override
       public FeeItem parsePartialFrom(
@@ -7775,26 +9209,38 @@ public final class ClaimDataV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string diagnosis_code_version = 1;</code>
+     * <code>required string diagnosis_code_version = 1;</code>
+     */
+    boolean hasDiagnosisCodeVersion();
+    /**
+     * <code>required string diagnosis_code_version = 1;</code>
      */
     java.lang.String getDiagnosisCodeVersion();
     /**
-     * <code>string diagnosis_code_version = 1;</code>
+     * <code>required string diagnosis_code_version = 1;</code>
      */
     com.google.protobuf.ByteString
         getDiagnosisCodeVersionBytes();
 
     /**
-     * <code>uint32 diagnosis_code_type = 2;</code>
+     * <code>required uint32 diagnosis_code_type = 2;</code>
+     */
+    boolean hasDiagnosisCodeType();
+    /**
+     * <code>required uint32 diagnosis_code_type = 2;</code>
      */
     int getDiagnosisCodeType();
 
     /**
-     * <code>string diagnosis_code = 3;</code>
+     * <code>required string diagnosis_code = 3;</code>
+     */
+    boolean hasDiagnosisCode();
+    /**
+     * <code>required string diagnosis_code = 3;</code>
      */
     java.lang.String getDiagnosisCode();
     /**
-     * <code>string diagnosis_code = 3;</code>
+     * <code>required string diagnosis_code = 3;</code>
      */
     com.google.protobuf.ByteString
         getDiagnosisCodeBytes();
@@ -7842,24 +9288,24 @@ public final class ClaimDataV1 {
               done = true;
               break;
             case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              diagnosisCodeVersion_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              diagnosisCodeVersion_ = bs;
               break;
             }
             case 16: {
-
+              bitField0_ |= 0x00000002;
               diagnosisCodeType_ = input.readUInt32();
               break;
             }
             case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              diagnosisCode_ = s;
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              diagnosisCode_ = bs;
               break;
             }
             default: {
-              if (!parseUnknownFieldProto3(
+              if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
@@ -7890,10 +9336,17 @@ public final class ClaimDataV1 {
               org.medibloc.phr.ClaimDataV1.Diagnosis.class, org.medibloc.phr.ClaimDataV1.Diagnosis.Builder.class);
     }
 
+    private int bitField0_;
     public static final int DIAGNOSIS_CODE_VERSION_FIELD_NUMBER = 1;
     private volatile java.lang.Object diagnosisCodeVersion_;
     /**
-     * <code>string diagnosis_code_version = 1;</code>
+     * <code>required string diagnosis_code_version = 1;</code>
+     */
+    public boolean hasDiagnosisCodeVersion() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string diagnosis_code_version = 1;</code>
      */
     public java.lang.String getDiagnosisCodeVersion() {
       java.lang.Object ref = diagnosisCodeVersion_;
@@ -7903,12 +9356,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        diagnosisCodeVersion_ = s;
+        if (bs.isValidUtf8()) {
+          diagnosisCodeVersion_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string diagnosis_code_version = 1;</code>
+     * <code>required string diagnosis_code_version = 1;</code>
      */
     public com.google.protobuf.ByteString
         getDiagnosisCodeVersionBytes() {
@@ -7927,7 +9382,13 @@ public final class ClaimDataV1 {
     public static final int DIAGNOSIS_CODE_TYPE_FIELD_NUMBER = 2;
     private int diagnosisCodeType_;
     /**
-     * <code>uint32 diagnosis_code_type = 2;</code>
+     * <code>required uint32 diagnosis_code_type = 2;</code>
+     */
+    public boolean hasDiagnosisCodeType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 diagnosis_code_type = 2;</code>
      */
     public int getDiagnosisCodeType() {
       return diagnosisCodeType_;
@@ -7936,7 +9397,13 @@ public final class ClaimDataV1 {
     public static final int DIAGNOSIS_CODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object diagnosisCode_;
     /**
-     * <code>string diagnosis_code = 3;</code>
+     * <code>required string diagnosis_code = 3;</code>
+     */
+    public boolean hasDiagnosisCode() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string diagnosis_code = 3;</code>
      */
     public java.lang.String getDiagnosisCode() {
       java.lang.Object ref = diagnosisCode_;
@@ -7946,12 +9413,14 @@ public final class ClaimDataV1 {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        diagnosisCode_ = s;
+        if (bs.isValidUtf8()) {
+          diagnosisCode_ = s;
+        }
         return s;
       }
     }
     /**
-     * <code>string diagnosis_code = 3;</code>
+     * <code>required string diagnosis_code = 3;</code>
      */
     public com.google.protobuf.ByteString
         getDiagnosisCodeBytes() {
@@ -7974,6 +9443,18 @@ public final class ClaimDataV1 {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasDiagnosisCodeVersion()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDiagnosisCodeType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasDiagnosisCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7981,13 +9462,13 @@ public final class ClaimDataV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getDiagnosisCodeVersionBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, diagnosisCodeVersion_);
       }
-      if (diagnosisCodeType_ != 0) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt32(2, diagnosisCodeType_);
       }
-      if (!getDiagnosisCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, diagnosisCode_);
       }
       unknownFields.writeTo(output);
@@ -7999,14 +9480,14 @@ public final class ClaimDataV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!getDiagnosisCodeVersionBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, diagnosisCodeVersion_);
       }
-      if (diagnosisCodeType_ != 0) {
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(2, diagnosisCodeType_);
       }
-      if (!getDiagnosisCodeBytes().isEmpty()) {
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, diagnosisCode_);
       }
       size += unknownFields.getSerializedSize();
@@ -8025,12 +9506,21 @@ public final class ClaimDataV1 {
       org.medibloc.phr.ClaimDataV1.Diagnosis other = (org.medibloc.phr.ClaimDataV1.Diagnosis) obj;
 
       boolean result = true;
-      result = result && getDiagnosisCodeVersion()
-          .equals(other.getDiagnosisCodeVersion());
-      result = result && (getDiagnosisCodeType()
-          == other.getDiagnosisCodeType());
-      result = result && getDiagnosisCode()
-          .equals(other.getDiagnosisCode());
+      result = result && (hasDiagnosisCodeVersion() == other.hasDiagnosisCodeVersion());
+      if (hasDiagnosisCodeVersion()) {
+        result = result && getDiagnosisCodeVersion()
+            .equals(other.getDiagnosisCodeVersion());
+      }
+      result = result && (hasDiagnosisCodeType() == other.hasDiagnosisCodeType());
+      if (hasDiagnosisCodeType()) {
+        result = result && (getDiagnosisCodeType()
+            == other.getDiagnosisCodeType());
+      }
+      result = result && (hasDiagnosisCode() == other.hasDiagnosisCode());
+      if (hasDiagnosisCode()) {
+        result = result && getDiagnosisCode()
+            .equals(other.getDiagnosisCode());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -8042,12 +9532,18 @@ public final class ClaimDataV1 {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + DIAGNOSIS_CODE_VERSION_FIELD_NUMBER;
-      hash = (53 * hash) + getDiagnosisCodeVersion().hashCode();
-      hash = (37 * hash) + DIAGNOSIS_CODE_TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getDiagnosisCodeType();
-      hash = (37 * hash) + DIAGNOSIS_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getDiagnosisCode().hashCode();
+      if (hasDiagnosisCodeVersion()) {
+        hash = (37 * hash) + DIAGNOSIS_CODE_VERSION_FIELD_NUMBER;
+        hash = (53 * hash) + getDiagnosisCodeVersion().hashCode();
+      }
+      if (hasDiagnosisCodeType()) {
+        hash = (37 * hash) + DIAGNOSIS_CODE_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + getDiagnosisCodeType();
+      }
+      if (hasDiagnosisCode()) {
+        hash = (37 * hash) + DIAGNOSIS_CODE_FIELD_NUMBER;
+        hash = (53 * hash) + getDiagnosisCode().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -8182,11 +9678,11 @@ public final class ClaimDataV1 {
       public Builder clear() {
         super.clear();
         diagnosisCodeVersion_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000001);
         diagnosisCodeType_ = 0;
-
+        bitField0_ = (bitField0_ & ~0x00000002);
         diagnosisCode_ = "";
-
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -8213,9 +9709,21 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public org.medibloc.phr.ClaimDataV1.Diagnosis buildPartial() {
         org.medibloc.phr.ClaimDataV1.Diagnosis result = new org.medibloc.phr.ClaimDataV1.Diagnosis(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
         result.diagnosisCodeVersion_ = diagnosisCodeVersion_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
         result.diagnosisCodeType_ = diagnosisCodeType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
         result.diagnosisCode_ = diagnosisCode_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -8264,14 +9772,16 @@ public final class ClaimDataV1 {
 
       public Builder mergeFrom(org.medibloc.phr.ClaimDataV1.Diagnosis other) {
         if (other == org.medibloc.phr.ClaimDataV1.Diagnosis.getDefaultInstance()) return this;
-        if (!other.getDiagnosisCodeVersion().isEmpty()) {
+        if (other.hasDiagnosisCodeVersion()) {
+          bitField0_ |= 0x00000001;
           diagnosisCodeVersion_ = other.diagnosisCodeVersion_;
           onChanged();
         }
-        if (other.getDiagnosisCodeType() != 0) {
+        if (other.hasDiagnosisCodeType()) {
           setDiagnosisCodeType(other.getDiagnosisCodeType());
         }
-        if (!other.getDiagnosisCode().isEmpty()) {
+        if (other.hasDiagnosisCode()) {
+          bitField0_ |= 0x00000004;
           diagnosisCode_ = other.diagnosisCode_;
           onChanged();
         }
@@ -8282,6 +9792,15 @@ public final class ClaimDataV1 {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasDiagnosisCodeVersion()) {
+          return false;
+        }
+        if (!hasDiagnosisCodeType()) {
+          return false;
+        }
+        if (!hasDiagnosisCode()) {
+          return false;
+        }
         return true;
       }
 
@@ -8303,10 +9822,17 @@ public final class ClaimDataV1 {
         }
         return this;
       }
+      private int bitField0_;
 
       private java.lang.Object diagnosisCodeVersion_ = "";
       /**
-       * <code>string diagnosis_code_version = 1;</code>
+       * <code>required string diagnosis_code_version = 1;</code>
+       */
+      public boolean hasDiagnosisCodeVersion() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string diagnosis_code_version = 1;</code>
        */
       public java.lang.String getDiagnosisCodeVersion() {
         java.lang.Object ref = diagnosisCodeVersion_;
@@ -8314,14 +9840,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          diagnosisCodeVersion_ = s;
+          if (bs.isValidUtf8()) {
+            diagnosisCodeVersion_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string diagnosis_code_version = 1;</code>
+       * <code>required string diagnosis_code_version = 1;</code>
        */
       public com.google.protobuf.ByteString
           getDiagnosisCodeVersionBytes() {
@@ -8337,37 +9865,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string diagnosis_code_version = 1;</code>
+       * <code>required string diagnosis_code_version = 1;</code>
        */
       public Builder setDiagnosisCodeVersion(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000001;
         diagnosisCodeVersion_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string diagnosis_code_version = 1;</code>
+       * <code>required string diagnosis_code_version = 1;</code>
        */
       public Builder clearDiagnosisCodeVersion() {
-        
+        bitField0_ = (bitField0_ & ~0x00000001);
         diagnosisCodeVersion_ = getDefaultInstance().getDiagnosisCodeVersion();
         onChanged();
         return this;
       }
       /**
-       * <code>string diagnosis_code_version = 1;</code>
+       * <code>required string diagnosis_code_version = 1;</code>
        */
       public Builder setDiagnosisCodeVersionBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000001;
         diagnosisCodeVersion_ = value;
         onChanged();
         return this;
@@ -8375,25 +9902,31 @@ public final class ClaimDataV1 {
 
       private int diagnosisCodeType_ ;
       /**
-       * <code>uint32 diagnosis_code_type = 2;</code>
+       * <code>required uint32 diagnosis_code_type = 2;</code>
+       */
+      public boolean hasDiagnosisCodeType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 diagnosis_code_type = 2;</code>
        */
       public int getDiagnosisCodeType() {
         return diagnosisCodeType_;
       }
       /**
-       * <code>uint32 diagnosis_code_type = 2;</code>
+       * <code>required uint32 diagnosis_code_type = 2;</code>
        */
       public Builder setDiagnosisCodeType(int value) {
-        
+        bitField0_ |= 0x00000002;
         diagnosisCodeType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>uint32 diagnosis_code_type = 2;</code>
+       * <code>required uint32 diagnosis_code_type = 2;</code>
        */
       public Builder clearDiagnosisCodeType() {
-        
+        bitField0_ = (bitField0_ & ~0x00000002);
         diagnosisCodeType_ = 0;
         onChanged();
         return this;
@@ -8401,7 +9934,13 @@ public final class ClaimDataV1 {
 
       private java.lang.Object diagnosisCode_ = "";
       /**
-       * <code>string diagnosis_code = 3;</code>
+       * <code>required string diagnosis_code = 3;</code>
+       */
+      public boolean hasDiagnosisCode() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string diagnosis_code = 3;</code>
        */
       public java.lang.String getDiagnosisCode() {
         java.lang.Object ref = diagnosisCode_;
@@ -8409,14 +9948,16 @@ public final class ClaimDataV1 {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          diagnosisCode_ = s;
+          if (bs.isValidUtf8()) {
+            diagnosisCode_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string diagnosis_code = 3;</code>
+       * <code>required string diagnosis_code = 3;</code>
        */
       public com.google.protobuf.ByteString
           getDiagnosisCodeBytes() {
@@ -8432,37 +9973,36 @@ public final class ClaimDataV1 {
         }
       }
       /**
-       * <code>string diagnosis_code = 3;</code>
+       * <code>required string diagnosis_code = 3;</code>
        */
       public Builder setDiagnosisCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
+  bitField0_ |= 0x00000004;
         diagnosisCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string diagnosis_code = 3;</code>
+       * <code>required string diagnosis_code = 3;</code>
        */
       public Builder clearDiagnosisCode() {
-        
+        bitField0_ = (bitField0_ & ~0x00000004);
         diagnosisCode_ = getDefaultInstance().getDiagnosisCode();
         onChanged();
         return this;
       }
       /**
-       * <code>string diagnosis_code = 3;</code>
+       * <code>required string diagnosis_code = 3;</code>
        */
       public Builder setDiagnosisCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  checkByteStringIsUtf8(value);
-        
+  bitField0_ |= 0x00000004;
         diagnosisCode_ = value;
         onChanged();
         return this;
@@ -8470,7 +10010,7 @@ public final class ClaimDataV1 {
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFieldsProto3(unknownFields);
+        return super.setUnknownFields(unknownFields);
       }
 
       @java.lang.Override
@@ -8493,7 +10033,7 @@ public final class ClaimDataV1 {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Diagnosis>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Diagnosis>
         PARSER = new com.google.protobuf.AbstractParser<Diagnosis>() {
       @java.lang.Override
       public Diagnosis parsePartialFrom(
@@ -8550,37 +10090,37 @@ public final class ClaimDataV1 {
   static {
     java.lang.String[] descriptorData = {
       "\n\021ClaimDataV1.proto\"e\n\005Claim\022\017\n\007version\030" +
-      "\001 \001(\r\022\020\n\010claim_no\030\002 \001(\t\022\032\n\010receipts\030\003 \003(" +
+      "\001 \002(\r\022\020\n\010claim_no\030\002 \002(\t\022\032\n\010receipts\030\003 \003(" +
       "\0132\010.Receipt\022\035\n\tdiagnoses\030\004 \003(\0132\n.Diagnos" +
-      "is\"\211\005\n\007Receipt\022\022\n\nreceipt_no\030\001 \001(\t\022\024\n\014re" +
-      "ceipt_type\030\002 \001(\t\022\022\n\npatient_no\030\003 \001(\t\022\024\n\014" +
-      "patient_name\030\004 \001(\t\022\037\n\027company_registrati" +
-      "on_no\030\005 \001(\t\022\034\n\024treatment_start_date\030\006 \001(" +
-      "\t\022\032\n\022treatment_end_date\030\007 \001(\t\022\034\n\024treatme" +
-      "nt_department\030\010 \001(\t\022!\n\031treatment_departm" +
-      "ent_code\030\t \001(\t\022\026\n\016treatment_type\030\n \001(\t\022\033" +
-      "\n\023treatment_type_code\030\013 \001(\t\022\023\n\013covered_f" +
-      "ee\030\014 \001(\t\022\025\n\runcovered_fee\030\r \001(\t\022\032\n\022upper" +
-      "_limit_excess\030\016 \001(\t\022\021\n\tpay_total\030\017 \001(\t\022\031" +
-      "\n\021patient_pay_total\030\020 \001(\t\022\025\n\rdeduct_amou" +
-      "nt\030\021 \001(\t\022\032\n\022advance_pay_amount\030\022 \001(\t\022\022\n\n" +
-      "pay_amount\030\023 \001(\t\022\036\n\026uncollected_pay_amou" +
-      "nt\030\024 \001(\t\022\026\n\016receipt_amount\030\025 \001(\t\022\025\n\rsurt" +
-      "ax_amount\030\026 \001(\t\022\027\n\017cash_pay_amount\030\027 \001(\t" +
-      "\022\027\n\017card_pay_amount\030\030 \001(\t\022\033\n\tfee_items\030\031" +
+      "is\"\211\005\n\007Receipt\022\022\n\nreceipt_no\030\001 \002(\t\022\024\n\014re" +
+      "ceipt_type\030\002 \002(\t\022\022\n\npatient_no\030\003 \002(\t\022\024\n\014" +
+      "patient_name\030\004 \002(\t\022\037\n\027company_registrati" +
+      "on_no\030\005 \002(\t\022\034\n\024treatment_start_date\030\006 \002(" +
+      "\t\022\032\n\022treatment_end_date\030\007 \002(\t\022\034\n\024treatme" +
+      "nt_department\030\010 \002(\t\022!\n\031treatment_departm" +
+      "ent_code\030\t \002(\t\022\026\n\016treatment_type\030\n \002(\t\022\033" +
+      "\n\023treatment_type_code\030\013 \002(\t\022\023\n\013covered_f" +
+      "ee\030\014 \002(\t\022\025\n\runcovered_fee\030\r \002(\t\022\032\n\022upper" +
+      "_limit_excess\030\016 \002(\t\022\021\n\tpay_total\030\017 \002(\t\022\031" +
+      "\n\021patient_pay_total\030\020 \002(\t\022\025\n\rdeduct_amou" +
+      "nt\030\021 \002(\t\022\032\n\022advance_pay_amount\030\022 \002(\t\022\022\n\n" +
+      "pay_amount\030\023 \002(\t\022\036\n\026uncollected_pay_amou" +
+      "nt\030\024 \002(\t\022\026\n\016receipt_amount\030\025 \002(\t\022\025\n\rsurt" +
+      "ax_amount\030\026 \002(\t\022\027\n\017cash_pay_amount\030\027 \002(\t" +
+      "\022\027\n\017card_pay_amount\030\030 \002(\t\022\033\n\tfee_items\030\031" +
       " \003(\0132\010.FeeItem\"\350\002\n\007FeeItem\022\025\n\rfee_item_n" +
-      "ame\030\001 \001(\t\022\025\n\rfee_item_code\030\002 \001(\t\022\026\n\016trea" +
-      "tment_date\030\003 \001(\t\022\024\n\014covered_type\030\004 \001(\t\022\033" +
-      "\n\023medical_charge_code\030\005 \001(\t\022\r\n\005price\030\006 \001" +
-      "(\t\022\020\n\010quantity\030\007 \001(\t\022\025\n\rrepeat_number\030\010 " +
-      "\001(\t\022\021\n\tfee_total\030\t \001(\t\022\033\n\023covered_patien" +
-      "t_fee\030\n \001(\t\022\035\n\025covered_insurance_fee\030\013 \001" +
-      "(\t\022\037\n\027covered_patient_all_fee\030\014 \001(\t\022\034\n\024u" +
-      "ncovered_chosen_fee\030\r \001(\t\022\036\n\026uncovered_u" +
-      "nchosen_fee\030\016 \001(\t\"`\n\tDiagnosis\022\036\n\026diagno" +
-      "sis_code_version\030\001 \001(\t\022\033\n\023diagnosis_code" +
-      "_type\030\002 \001(\r\022\026\n\016diagnosis_code\030\003 \001(\tB\037\n\020o" +
-      "rg.medibloc.phrB\013ClaimDataV1b\006proto3"
+      "ame\030\001 \002(\t\022\025\n\rfee_item_code\030\002 \002(\t\022\026\n\016trea" +
+      "tment_date\030\003 \002(\t\022\024\n\014covered_type\030\004 \002(\t\022\033" +
+      "\n\023medical_charge_code\030\005 \002(\t\022\r\n\005price\030\006 \002" +
+      "(\t\022\020\n\010quantity\030\007 \002(\t\022\025\n\rrepeat_number\030\010 " +
+      "\002(\t\022\021\n\tfee_total\030\t \002(\t\022\033\n\023covered_patien" +
+      "t_fee\030\n \002(\t\022\035\n\025covered_insurance_fee\030\013 \002" +
+      "(\t\022\037\n\027covered_patient_all_fee\030\014 \002(\t\022\034\n\024u" +
+      "ncovered_chosen_fee\030\r \002(\t\022\036\n\026uncovered_u" +
+      "nchosen_fee\030\016 \002(\t\"`\n\tDiagnosis\022\036\n\026diagno" +
+      "sis_code_version\030\001 \002(\t\022\033\n\023diagnosis_code" +
+      "_type\030\002 \002(\r\022\026\n\016diagnosis_code\030\003 \002(\tB\037\n\020o" +
+      "rg.medibloc.phrB\013ClaimDataV1"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

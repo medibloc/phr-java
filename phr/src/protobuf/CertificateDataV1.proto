@@ -1,21 +1,21 @@
-syntax = "proto3";
+syntax = "proto2";
 option java_package="org.medibloc.phr";
 option java_outer_classname="CertificateDataV1";
 
 message Certificate {
-    uint32 version = 1;
-    string blockchain_address = 2;
-    string expiry_date = 3;
-    Certification certification = 4;
+    required uint32 version = 1;
+    required string blockchain_address = 2;
+    required string expiry_date = 3;
+    required Certification certification = 4;
 }
 
 message Certification {
-    string certification_result = 1;
-    string person_name = 2;
-    string person_birthdate = 3;
-    string person_gender = 4;
-    string person_nation = 5;
-    string person_ci = 6;
-    string person_mobile_company = 7;
-    string person_mobile_number = 8;
+    required string certification_result = 1;
+    required string person_name = 2;
+    required string person_birthdate = 3;
+    required string person_gender = 4;
+    required string person_nation = 5;
+    required string person_ci = 6;
+    required string person_mobile_company = 7;
+    required string person_mobile_number = 8;
 }
