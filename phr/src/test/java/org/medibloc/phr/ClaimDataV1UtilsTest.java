@@ -1,11 +1,12 @@
 package org.medibloc.phr;
 
+import com.google.protobuf.util.JsonFormat;
 import org.junit.Test;
 import org.medibloc.phr.ClaimDataV1.*;
 
 public class ClaimDataV1UtilsTest {
     @Test
-    public void testFillClaim() {
+    public void testFillClaim() throws Exception {
         /*** Claim ***/
         Claim.Builder claimBuilder = Claim.newBuilder();
         claimBuilder.setClaimNo("20181204-S1284");
@@ -85,6 +86,7 @@ public class ClaimDataV1UtilsTest {
                 .addDiagnoses(diagnosisBuilder1)
                 .addDiagnoses(diagnosisBuilder2);
 
-        ClaimDataV1Utils.fillClaim(partialClaim);
+        Claim actual = ClaimDataV1Utils.fillClaim(partialClaim);
+        System.out.println(JsonFormat.printer().print(actual));
     }
 }

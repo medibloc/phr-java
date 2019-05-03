@@ -15,10 +15,13 @@ public class ClaimDataV1Utils {
     public static Claim fillClaim(Claim.Builder claimBuilder) {
         claimBuilder.setVersion(1);
 
+        List<ClaimDataV1.Receipt> filledReceiptList = fillReceiptList(claimBuilder.getReceiptsBuilderList());
         claimBuilder.clearReceipts();
-        claimBuilder.addAllReceipts(fillReceiptList(claimBuilder.getReceiptsBuilderList()));
+        claimBuilder.addAllReceipts(filledReceiptList);
+
+        List<ClaimDataV1.Diagnosis> filledDiagnosisList = fillDiagnosisList(claimBuilder.getDiagnosesBuilderList());
         claimBuilder.clearDiagnoses();
-        claimBuilder.addAllDiagnoses(fillDiagnosisList(claimBuilder.getDiagnosesBuilderList()));
+        claimBuilder.addAllDiagnoses(filledDiagnosisList);
 
         return claimBuilder.build();
     }
@@ -32,8 +35,9 @@ public class ClaimDataV1Utils {
     }
 
     public static ClaimDataV1.Receipt fillReceipt(ClaimDataV1.Receipt.Builder receiptBuilder) {
+        List<ClaimDataV1.FeeItem> filledFeeItemList = fillFeeItemList(receiptBuilder.getFeeItemsBuilderList());
         receiptBuilder.clearFeeItems();
-        receiptBuilder.addAllFeeItems(fillFeeItemList(receiptBuilder.getFeeItemsBuilderList()));
+        receiptBuilder.addAllFeeItems(filledFeeItemList);
 
         return receiptBuilder.build();
     }
