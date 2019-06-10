@@ -2,16 +2,16 @@ package org.medibloc.phr;
 
 import com.google.protobuf.util.JsonFormat;
 import org.junit.Test;
-import org.medibloc.phr.ClaimDataV1.*;
+import org.medibloc.phr.BillDataV1.*;
 
-public class ClaimDataV1UtilsTest {
+public class BillDataV1UtilsTest {
     @Test
-    public void testFillClaim() throws Exception {
-        /*** Claim ***/
-        Claim.Builder claimBuilder = Claim.newBuilder();
-        claimBuilder.setClaimNo("20181204-S1284");
+    public void testFillBill() throws Exception {
+        /*** Bill ***/
+        Bill.Builder billBuilder = Bill.newBuilder();
+        billBuilder.setBillNo("20181204-S1284");
 
-        /*** Claim.Receipts ***/
+        /*** Bill.Receipts ***/
         Receipt.Builder receiptBuilder = Receipt.newBuilder();
         receiptBuilder.setReceiptNo("20181204-S1284");
         receiptBuilder.setReceiptType("I");
@@ -38,7 +38,7 @@ public class ClaimDataV1UtilsTest {
         receiptBuilder.setCashPayAmount("0");
         receiptBuilder.setCardPayAmount("21000");
 
-        /*** Claim.Receipt.FeeItems ***/
+        /*** Bill.Receipt.FeeItems ***/
         receiptBuilder.addFeeItems(FeeItem.newBuilder()
                 .setFeeItemName("초진 진찰료")
                 .setFeeItemCode("")
@@ -70,7 +70,7 @@ public class ClaimDataV1UtilsTest {
                 .setUncoveredChosenFee("20000")
                 .setUncoveredUnchosenFee("0"));
 
-        /*** Claim.Diagnoses ***/
+        /*** Bill.Diagnoses ***/
         Diagnosis.Builder diagnosisBuilder1 = Diagnosis.newBuilder();
         diagnosisBuilder1.setDiagnosisCodeVersion("ICD-10-2016");
         diagnosisBuilder1.setDiagnosisCodeType(10); // 주상병
@@ -81,12 +81,12 @@ public class ClaimDataV1UtilsTest {
         diagnosisBuilder2.setDiagnosisCodeType(20); // 부상병
         diagnosisBuilder2.setDiagnosisCode("J30.3");
 
-        Claim.Builder partialClaim = claimBuilder
+        Bill.Builder partialBill = billBuilder
                 .addReceipts(receiptBuilder)
                 .addDiagnoses(diagnosisBuilder1)
                 .addDiagnoses(diagnosisBuilder2);
 
-        Claim actual = ClaimDataV1Utils.fillClaim(partialClaim);
+        Bill actual = BillDataV1Utils.fillBill(partialBill);
         System.out.println(JsonFormat.printer().print(actual));
     }
 }

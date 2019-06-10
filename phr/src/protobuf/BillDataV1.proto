@@ -1,10 +1,10 @@
 syntax = "proto2";
 option java_package = "org.medibloc.phr";
-option java_outer_classname = "ClaimDataV1";
+option java_outer_classname = "BillDataV1";
 
-message Claim {
+message Bill {
     required uint32 version = 1;
-    required string claim_no = 2;
+    required string bill_no = 2;
     repeated Receipt receipts = 3;
     repeated Diagnosis diagnoses = 4;
 }
